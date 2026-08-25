@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Mummentum Discord
+    url: https://discord.gg/T8MEvRtKB5
+    about: Austausch und Anwendungsfragen ohne individuellen Supportanspruch
+  - name: Sicherheitsproblem melden
+    url: https://github.com/vincentmumme/personalos-boilerplate/security/advisories/new
+    about: Secrets, private Daten oder Schwachstellen ausschließlich vertraulich melden

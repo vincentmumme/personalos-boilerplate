@@ -1,0 +1,39 @@
+---
+schema_version: pos-v1
+id: 019ff260-fc3a-76ef-b0c4-4e3c0a902bc3
+type: day-record
+title: "Invalid Day Record"
+created: 2026-08-11
+updated: 2026-08-11
+day_date: 2026-08-11
+---
+
+# Invalid Day Record
+
+## Day Summary
+
+The timezone is missing and the logical path has the wrong date.
+
+## Key Outcomes
+
+- Invalid.
+
+## Activity Contributions
+
+- None.
+
+## Journal
+
+- None.
+
+## Affected Owners
+
+- None.
+
+## Sources
+
+- Invalid fixture.
+
+## Corrections
+
+None.

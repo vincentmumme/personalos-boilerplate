@@ -1,0 +1,69 @@
+name: knowledge-context
+purpose: Typed topic ownership, provenance, maturity and lifecycle metadata for the reusable Knowledge layer.
+admission_state: pilot
+planned_consumers: [knowledge-topic, knowledge-source, knowledge-article, knowledge-inventory-item, knowledge-dataset, knowledge-assessment, knowledge-log]
+fields:
+  topic_ref:
+    datatype: wikilink
+    target_profiles: [knowledge-topic]
+    legacy_targets: reject
+  related_topic_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [knowledge-topic]
+    legacy_targets: reject
+  source_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [knowledge-source, content-source]
+    legacy_targets: reject
+  knowledge_source_kind:
+    datatype: enum
+    enum: [article, paper, repository, note, dataset, video, audio, social, manual, conversation, unknown]
+  source_locator:
+    datatype: plain-text
+  captured_on:
+    datatype: date
+  source_integrity:
+    datatype: enum
+    enum: [complete, partial, unknown]
+  immutable:
+    datatype: literal
+    value: true
+  knowledge_article_kind:
+    datatype: enum
+    enum: [concept, topic, reference, thesis, pattern, framework, source, analysis]
+  knowledge_maturity:
+    datatype: enum
+    enum: [core, useful, emerging, needs-review, unclassified]
+  knowledge_confidence:
+    datatype: enum
+    enum: [high, medium, low, unknown]
+  knowledge_volatility:
+    datatype: enum
+    enum: [hot, warm, cold, unknown]
+  verified_on:
+    datatype: date
+  inventory_kind:
+    datatype: enum
+    enum: [item, candidate, entity, corpus, question, watch]
+  inventory_state:
+    datatype: enum
+    enum: [proposed, accepted, blocked, parked, rejected, superseded]
+  dataset_kind:
+    datatype: enum
+    enum: [external, mutable, binary, sensitive, queryable, corpus]
+  assessment_kind:
+    datatype: enum
+    enum: [quality, freshness, coherence, schema, migration, research]
+  assessment_outcome:
+    datatype: enum
+    enum: [healthy, findings, partial, blocked, historical]
+  knowledge_log_scope:
+    datatype: enum
+    enum: [hub, topic]
+invariants:
+  one_primary_topic_owner: true
+  knowledge_never_owns_operative_truth: true
+  raw_sources_are_immutable: true
+  indexes_and_registries_are_derived: true

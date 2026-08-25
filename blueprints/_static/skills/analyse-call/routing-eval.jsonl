@@ -1,0 +1,2 @@
+{"intent":"Analysiere diesen lokalen Call und aktualisiere den belegten Kontext.","expected_skill":"analyse-call"}
+{"intent":"Was wurde in diesem Gespräch entschieden und was muss im Projekt geändert werden?","expected_skill":"analyse-call"}

@@ -1,0 +1,27 @@
+name: skill-prompt
+page_shape: normative-record
+canonical_owner: owning-skill-runtime-prompt
+allowed_roots: [skills]
+path_pattern: ^skills/[a-z0-9]+(?:-[a-z0-9]+)*/cron-prompt\.md$
+required_modules: [lifecycle, normative-lineage, system-dependencies, capability-io]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, system_refs, invokes_skill_refs]
+optional_fields: [derived_from_refs, supersedes_refs, reads_profile_keys, writes_profile_keys, template_refs, check_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+conditional_rules:
+  pos_record_write:
+    when_present: writes_profile_keys
+    require_fields: [check_refs]
+required_sections: []
+section_order: []
+template: system/templates/skills/cron-prompt.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-skill-prompt.fixture
+  positive_logical_path: skills/example-skill/cron-prompt.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-skill-prompt.fixture
+  negative_logical_path: skills/example-skill/cron-prompt.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

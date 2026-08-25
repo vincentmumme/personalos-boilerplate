@@ -1,0 +1,45 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ece3-7773-b4ba-b6061acc6303
+type: brand
+title: "Example Brand"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Brand
+
+## Current Truth
+
+Example context.
+
+## Definition
+
+Example context.
+
+## Scope and Boundaries
+
+Example context.
+
+## Identity and Promise
+
+Example context.
+
+## Positioning and Expression
+
+Example context.
+
+## Relationships
+
+Example context.
+
+## Sources
+
+Example context.
+
+## Timeline
+
+- **2026-08-13** | Record created.

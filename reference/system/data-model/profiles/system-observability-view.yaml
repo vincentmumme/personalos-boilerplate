@@ -1,0 +1,32 @@
+name: system-observability-view
+page_shape: view-record
+canonical_owner: system-observability
+allowed_roots: [system]
+path_pattern: ^system/observability/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, observability_scope, observed_at, observability_source_refs]
+optional_fields: []
+fields:
+  observability_scope:
+    datatype: enum
+    enum: [host, runtime, service, automation, access, integration, system]
+  observed_at:
+    datatype: datetime
+  observability_source_refs:
+    datatype: wikilink-list
+    min_items: 1
+    legacy_targets: warn
+module_constraints:
+  lifecycle:
+    enum: [active, stale, retired]
+required_sections: [Purpose, Observed Scope, Desired versus Observed, Sources and Freshness, Limitations]
+section_order: [Purpose, Observed Scope, Desired versus Observed, Sources and Freshness, Limitations]
+template: system/templates/topology/system-observability-view.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-system-observability-view.fixture
+  positive_logical_path: system/observability/example-observability.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-system-observability-view.fixture
+  negative_logical_path: system/observability/example-observability.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

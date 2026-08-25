@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-eef4-7dff-8e63-8d829cac5033
+type: business-model
+title: "Example Business Model"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Business Model
+
+## Current Truth
+
+Missing the profile contract.

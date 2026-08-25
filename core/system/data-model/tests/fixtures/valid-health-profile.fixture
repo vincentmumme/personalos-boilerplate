@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000003
+type: health-profile
+title: "Health Profile"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+subject_ref: "[[identity/me]]"
+---
+
+# Health Profile
+
+## Current Truth
+
+Current profile.
+
+## Goals and Context
+
+Better fitness.
+
+## Constraints
+
+Known constraints.
+
+## Coaching Mode
+
+Pragmatic.
+
+## Open Calibration
+
+None.
+
+## Timeline
+
+- **2026-08-14** | Created.

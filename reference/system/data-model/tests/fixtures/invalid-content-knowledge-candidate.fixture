@@ -1,0 +1,21 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7b35-a7ee-3b653c3dab7a"
+type: "unknown-content-profile"
+title: "Example content-knowledge-candidate"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+candidate_state: "proposed"
+candidate_class: "framework-delta"
+---
+
+# Example content-knowledge-candidate
+
+## Purpose
+
+<purpose>
+
+## Working Notes
+
+<working_notes>

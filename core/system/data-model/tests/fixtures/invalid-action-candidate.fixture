@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 019ff139-ad56-7d9a-a989-6dd7c244748c
+type: action-candidate
+title: "Unclassified candidate"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: maybe
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+---
+
+# Unclassified candidate
+
+## Current Truth
+
+The lifecycle is outside the closed candidate state machine.
+
+## Candidate Assessment
+
+Unknown.
+
+## Promotion Gate
+
+Unknown.
+
+## Context and Evidence
+
+The shape is intentionally invalid.
+
+## Timeline
+
+- **2026-08-11** | Invalid fixture created.

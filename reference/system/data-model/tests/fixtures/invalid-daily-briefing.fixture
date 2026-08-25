@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a00149-b5ad-7a6c-8850-308e325cdcb8
+type: daily-briefing
+title: "Invalid Briefing"
+created: 2026-08-14
+updated: 2026-08-14
+day_date: 2026-08-14
+timezone: Europe/Berlin
+generated_at: "2026-08-14 06:00"
+briefing_kind: scheduled
+producer_skill_ref: invalid
+---
+
+# Invalid Briefing
+
+## Briefing
+
+Invalid.
+
+## Source Notes
+
+Invalid.
+
+## Verification
+
+Invalid.
+
+## Corrections
+
+None.

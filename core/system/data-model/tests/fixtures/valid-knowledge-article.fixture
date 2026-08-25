@@ -1,0 +1,34 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-000000000005
+type: knowledge-article
+title: "Example Concept"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+topic_ref: "[[knowledge/topics/example-topic/example-topic]]"
+knowledge_article_kind: concept
+knowledge_maturity: useful
+knowledge_confidence: medium
+knowledge_volatility: warm
+source_refs: ["[[knowledge/topics/example-topic/raw/articles/example-source]]"]
+verified_on: 2026-08-14
+---
+
+# Example Concept
+
+## Current Knowledge
+
+Example synthesis.
+
+## Applicability Boundaries
+
+Examples only.
+
+## Sources
+
+[[knowledge/topics/example-topic/raw/articles/example-source]]
+
+## Timeline
+
+- **2026-08-14** - Compiled.

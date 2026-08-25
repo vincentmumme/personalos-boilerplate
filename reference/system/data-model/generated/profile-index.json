@@ -1,0 +1,4484 @@
+{
+  "contract": "pos-v1",
+  "derived": true,
+  "profiles": {
+    "access-record": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-access-registry",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "access_kind",
+        "secret_owner",
+        "provisioning_state",
+        "access_target_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Access Identity",
+        "Targets",
+        "Provisioning",
+        "Security Boundary",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/access-record.md",
+      "write_state": "pilot"
+    },
+    "action": {
+      "allowed_roots": [
+        "operations"
+      ],
+      "canonical_owner": "operations-action-record",
+      "optional_fields": [
+        "action_priority",
+        "due",
+        "target",
+        "not_before",
+        "follow_up_at",
+        "waiting_on",
+        "blocked_by",
+        "affected_owner_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "execution_mode",
+        "evidence_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Desired Outcome",
+        "Done Boundary",
+        "Next Action",
+        "Context and Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/action.md",
+      "write_state": "pilot"
+    },
+    "action-candidate": {
+      "allowed_roots": [
+        "inbox"
+      ],
+      "canonical_owner": "inbox-action-candidate",
+      "optional_fields": [
+        "triage_by"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "evidence_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Candidate Assessment",
+        "Promotion Gate",
+        "Context and Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/action-candidate.md",
+      "write_state": "pilot"
+    },
+    "activity-contribution": {
+      "allowed_roots": [
+        "daily"
+      ],
+      "canonical_owner": "daily-activity-contribution",
+      "optional_fields": [
+        "runtime_name",
+        "producer_ref",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone",
+        "occurred_at",
+        "recorded_at",
+        "producer_kind",
+        "producer_name",
+        "activity_outcome",
+        "affected_owner_refs"
+      ],
+      "required_modules": [
+        "daily-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Activity",
+        "Outcome",
+        "Affected Owners",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/daily/activity-contribution.md",
+      "write_state": "pilot"
+    },
+    "agent": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-agent-registry",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "agent_kind",
+        "agent_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Scope and Responsibilities",
+        "Persona and Behavior",
+        "Runtime and Hosts",
+        "Access and Boundaries",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/agent.md",
+      "write_state": "pilot"
+    },
+    "agent-entry-pointer": {
+      "allowed_roots": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "canonical_owner": "root-agent-bootstrap",
+      "optional_fields": [
+        "bootstrap_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "entry_kind"
+      ],
+      "required_modules": [],
+      "required_sections": [],
+      "template": "system/templates/core/bootstrap/agent-entry.md",
+      "write_state": "pilot"
+    },
+    "agent-persona": {
+      "allowed_roots": [
+        "SOUL.md"
+      ],
+      "canonical_owner": "root-shared-agent-persona",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "system_refs",
+        "persona_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage",
+        "system-dependencies"
+      ],
+      "required_sections": [
+        "Mission",
+        "Grundhaltung",
+        "Arbeitsweise",
+        "Truth-Seeking",
+        "System-Subject verstehen",
+        "Kommunikation",
+        "Externe und folgenreiche Handlungen",
+        "Konfliktgrenzen",
+        "Pflege",
+        "Change History"
+      ],
+      "template": "system/templates/core/bootstrap/agent-persona.md",
+      "write_state": "pilot"
+    },
+    "agent-persona-overlay": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-agent-persona-overlay",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "agent_ref",
+        "shared_persona_ref",
+        "overlay_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Inheritance",
+        "Behavior Additions",
+        "Communication",
+        "Boundaries",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/agent-persona-overlay.md",
+      "write_state": "pilot"
+    },
+    "attention-trigger": {
+      "allowed_roots": [
+        "operations"
+      ],
+      "canonical_owner": "operations-attention-record",
+      "optional_fields": [
+        "trigger_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "trigger_kind",
+        "review_at",
+        "evidence_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Trigger",
+        "Reassessment Rule",
+        "Context and Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/attention-trigger.md",
+      "write_state": "pilot"
+    },
+    "automation": {
+      "allowed_roots": [
+        "automations"
+      ],
+      "canonical_owner": "automation-registry-record",
+      "optional_fields": [
+        "producer_skill_ref",
+        "schedule_timezone"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "automation_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Trigger and Cadence",
+        "Capability and Runtime",
+        "Inputs and Outputs",
+        "Credentials Required",
+        "Health and Freshness",
+        "Timeline"
+      ],
+      "template": "system/templates/automations/automation.md",
+      "write_state": "pilot"
+    },
+    "automation-day-summary": {
+      "allowed_roots": [
+        "automations"
+      ],
+      "canonical_owner": "automation-daily-processing-summary",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "log-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone",
+        "processed_until",
+        "producer_skill_ref",
+        "retention_class",
+        "day_summary_outcome"
+      ],
+      "required_modules": [
+        "daily-context",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Run Summary",
+        "Coverage",
+        "Material Receipts",
+        "No-op Accounting",
+        "Failures and Pending",
+        "Propagation",
+        "Corrections"
+      ],
+      "template": "system/templates/automations/automation-day-summary.md",
+      "write_state": "pilot"
+    },
+    "automation-run-receipt": {
+      "allowed_roots": [
+        "automations"
+      ],
+      "canonical_owner": "automation-material-run-receipt",
+      "optional_fields": [
+        "retention_reason",
+        "affected_owner_refs",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "run_id",
+        "run_started_at",
+        "run_ended_at",
+        "run_outcome",
+        "run_trigger",
+        "producer_skill_ref",
+        "retention_class"
+      ],
+      "required_modules": [
+        "relations",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Run Summary",
+        "Coverage",
+        "Propagation",
+        "Errors and Pending",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/automations/automation-run-receipt.md",
+      "write_state": "pilot"
+    },
+    "brand": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-brand",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Identity and Promise",
+        "Positioning and Expression",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/brand.md",
+      "write_state": "pilot"
+    },
+    "brand-design-system": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-brand-design-system",
+      "optional_fields": [
+        "company_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "brand_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Design Principles",
+        "Visual System",
+        "Components and Tokens",
+        "Application",
+        "Boundaries",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/brand-design-system.md",
+      "write_state": "pilot"
+    },
+    "brand-voice": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-brand-voice",
+      "optional_fields": [
+        "company_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "brand_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Voice Principles",
+        "Tone and Register",
+        "Language Patterns",
+        "Boundaries",
+        "Application",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/brand-voice.md",
+      "write_state": "pilot"
+    },
+    "business-model": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-model",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Value Creation",
+        "Revenue and Economics",
+        "System and Constraints",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/business-model.md",
+      "write_state": "pilot"
+    },
+    "capture": {
+      "allowed_roots": [
+        "inbox"
+      ],
+      "canonical_owner": "inbox-capture-record",
+      "optional_fields": [
+        "processing_outcome",
+        "retention_disposition",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "input_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Original Input",
+        "Source Basis",
+        "Processing and Routing",
+        "Retention",
+        "Timeline"
+      ],
+      "template": "system/templates/capture.md",
+      "write_state": "pilot"
+    },
+    "check": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-checks",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "system_refs",
+        "check_kind",
+        "verifies_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage",
+        "system-dependencies"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Assertions",
+        "Implementation",
+        "Invocation",
+        "Outcomes",
+        "Change History"
+      ],
+      "template": "system/templates/check.md",
+      "write_state": "pilot"
+    },
+    "company": {
+      "allowed_roots": [
+        "companies"
+      ],
+      "canonical_owner": "companies-company-record",
+      "optional_fields": [
+        "primary_contact_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Entity Facts",
+        "Relationship to Subject",
+        "People and Roles",
+        "Connected Business Context",
+        "Relevant Context",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/entities/company.md",
+      "write_state": "pilot"
+    },
+    "content-asset-manifest": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-asset-manifest",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "asset_ids",
+        "canonical_final_asset_id"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "piece_ref",
+        "storage_profile_key",
+        "asset_base"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-asset-manifest.md",
+      "write_state": "pilot"
+    },
+    "content-configuration": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-configuration",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "configuration_kind"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-configuration.md",
+      "write_state": "pilot"
+    },
+    "content-context-pack": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-context-pack",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "brand_revision",
+        "strategy_revision",
+        "channel_revisions",
+        "recipe_revisions",
+        "ckb_revisions"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "piece_ref"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-context-pack.md",
+      "write_state": "pilot"
+    },
+    "content-evidence": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-evidence",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "publication_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "evidence_state",
+        "piece_ref",
+        "content_evidence_kind",
+        "collection_state",
+        "content_observed_at",
+        "provenance_key"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Summary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/content/content-evidence.md",
+      "write_state": "pilot"
+    },
+    "content-format": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-format",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "default_channel_keys",
+        "quality_profile_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "format_family",
+        "definition"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-format.md",
+      "write_state": "pilot"
+    },
+    "content-guide": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-guide",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-guide.md",
+      "write_state": "pilot"
+    },
+    "content-idea": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-idea",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "half_life",
+        "topic_keys",
+        "source_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "idea_kind",
+        "input_refs"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-idea.md",
+      "write_state": "pilot"
+    },
+    "content-input": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-input",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "result_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "content_captured_at",
+        "routing_decision"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Summary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/content/content-input.md",
+      "write_state": "pilot"
+    },
+    "content-knowledge-candidate": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "contentos-knowledge-candidate",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "source_refs",
+        "content_evidence_refs",
+        "target_owner_ref",
+        "approver_key"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "candidate_state",
+        "candidate_class"
+      ],
+      "required_modules": [
+        "content-core",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Working Notes"
+      ],
+      "template": "system/templates/content/content-knowledge-candidate.md",
+      "write_state": "pilot"
+    },
+    "content-learning-candidate": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-learning-candidate",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "content_evidence_refs",
+        "observation_ids",
+        "hypothesis_ids",
+        "target_owner_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "candidate_state"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Working Notes"
+      ],
+      "template": "system/templates/content/content-learning-candidate.md",
+      "write_state": "pilot"
+    },
+    "content-piece": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-piece",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "idea_refs",
+        "source_refs",
+        "research_refs",
+        "format_ref",
+        "series_ref",
+        "recipe_refs",
+        "derived_from_ref",
+        "primary_intents",
+        "audience_keys",
+        "funnel_stages",
+        "awareness_stages",
+        "primary_pillar_key",
+        "secondary_pillar_keys"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "slug",
+        "creation_mode",
+        "input_refs"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-piece.md",
+      "write_state": "pilot"
+    },
+    "content-production-job": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-production-job",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "executor_key",
+        "expected_outputs",
+        "asset_ids"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "job_state",
+        "piece_ref",
+        "production_spec_ref",
+        "executor_type",
+        "idempotency_key",
+        "attempt"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Summary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/content/content-production-job.md",
+      "write_state": "pilot"
+    },
+    "content-production-recipe": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-production-recipe",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "series_ref",
+        "recipe_steps",
+        "quality_profile_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "format_ref"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-production-recipe.md",
+      "write_state": "pilot"
+    },
+    "content-production-spec": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-production-spec",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "piece_ref"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-production-spec.md",
+      "write_state": "pilot"
+    },
+    "content-publication": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-publication",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "native_id",
+        "live_url",
+        "published_at",
+        "content_published_on",
+        "tracking_link_refs",
+        "discovery_method",
+        "published_at_precision",
+        "custom_thumbnail_asset_id"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "publication_state",
+        "piece_ref",
+        "version_ref",
+        "platform",
+        "publishing_account_key"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Summary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/content/content-publication.md",
+      "write_state": "pilot"
+    },
+    "content-research": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-research",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "research_question",
+        "source_refs"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Working Notes"
+      ],
+      "template": "system/templates/content/content-research.md",
+      "write_state": "pilot"
+    },
+    "content-series": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-series",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "content_cadence",
+        "recipe_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "format_ref",
+        "editorial_promise"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-series.md",
+      "write_state": "pilot"
+    },
+    "content-source": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-source",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "input_refs",
+        "canonical_url",
+        "requested_extraction",
+        "extraction_gaps"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "source_kind",
+        "source_state"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Summary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/content/content-source.md",
+      "write_state": "pilot"
+    },
+    "content-tracking-link": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-tracking-link",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "publication_ref",
+        "cta_intents",
+        "provider_id"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "revision",
+        "link_state",
+        "piece_ref",
+        "channel_key",
+        "placement",
+        "destination_url",
+        "provider_key"
+      ],
+      "required_modules": [
+        "content-core"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-tracking-link.md",
+      "write_state": "pilot"
+    },
+    "content-version": {
+      "allowed_roots": [
+        "content"
+      ],
+      "canonical_owner": "contentos-version",
+      "optional_fields": [
+        "origin_operation_id",
+        "content_tags",
+        "cta_intents",
+        "tracking_link_refs",
+        "asset_ids",
+        "caption_state",
+        "hashtag_count"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "revision",
+        "piece_ref",
+        "platform",
+        "publishing_account_key"
+      ],
+      "required_modules": [
+        "content-core",
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Details",
+        "Timeline"
+      ],
+      "template": "system/templates/content/content-version.md",
+      "write_state": "pilot"
+    },
+    "context-gap-review": {
+      "allowed_roots": [
+        "daily"
+      ],
+      "canonical_owner": "daily-context-gap-assessment",
+      "optional_fields": [
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "view-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone",
+        "generated_at",
+        "context_gap_kind",
+        "producer_skill_ref"
+      ],
+      "required_modules": [
+        "daily-context",
+        "signal-processing",
+        "relations"
+      ],
+      "required_sections": [
+        "Review",
+        "Gap Map",
+        "Questions and Answers",
+        "Routing and Propagation",
+        "Sources",
+        "Verification",
+        "Corrections"
+      ],
+      "template": "system/templates/daily/context-gap-review.md",
+      "write_state": "pilot"
+    },
+    "contract": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-contracts",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "contract_version"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [
+        "Contract",
+        "Scope",
+        "Invariants",
+        "Interfaces",
+        "Compliance",
+        "Evolution",
+        "Change History"
+      ],
+      "template": "system/templates/contract.md",
+      "write_state": "pilot"
+    },
+    "convention": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-conventions",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [
+        "Convention",
+        "Use When",
+        "Default",
+        "Allowed Variations",
+        "Examples",
+        "Change History"
+      ],
+      "template": "system/templates/convention.md",
+      "write_state": "pilot"
+    },
+    "conversation-stream": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "conversation-stream-record",
+      "optional_fields": [
+        "coverage_started_at",
+        "coverage_ended_at",
+        "last_material_at"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "stream_state",
+        "source_channel",
+        "participant_refs"
+      ],
+      "required_modules": [
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Participants",
+        "Coverage",
+        "Open Source Gaps",
+        "Owner Links",
+        "Timeline"
+      ],
+      "template": "system/templates/interactions/conversation-stream.md",
+      "write_state": "pilot"
+    },
+    "customer-profile": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-customer-profile",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Target Customer",
+        "Problems and Desired Outcomes",
+        "Qualification",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/customer-profile.md",
+      "write_state": "pilot"
+    },
+    "daily-briefing": {
+      "allowed_roots": [
+        "daily"
+      ],
+      "canonical_owner": "daily-derived-briefing",
+      "optional_fields": [
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "view-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone",
+        "generated_at",
+        "briefing_kind",
+        "producer_skill_ref"
+      ],
+      "required_modules": [
+        "daily-context",
+        "signal-processing",
+        "relations"
+      ],
+      "required_sections": [
+        "Briefing",
+        "Source Notes",
+        "Verification",
+        "Corrections"
+      ],
+      "template": "system/templates/daily/daily-briefing.md",
+      "write_state": "pilot"
+    },
+    "data-model-changelog": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "data-model-release-history",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "log-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated"
+      ],
+      "required_modules": [],
+      "required_sections": [],
+      "template": "system/templates/data-model/data-model-changelog.md",
+      "write_state": "pilot"
+    },
+    "data-model-document": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "data-model-human-contract",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "document_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [],
+      "template": "system/templates/data-model/data-model-document.md",
+      "write_state": "pilot"
+    },
+    "day-record": {
+      "allowed_roots": [
+        "daily"
+      ],
+      "canonical_owner": "daily-day-container",
+      "optional_fields": [
+        "activity_refs",
+        "journal_refs",
+        "briefing_refs",
+        "context_gap_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "log-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone"
+      ],
+      "required_modules": [
+        "daily-context"
+      ],
+      "required_sections": [
+        "Day Summary",
+        "Key Outcomes",
+        "Activity Contributions",
+        "Journal",
+        "Affected Owners",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/daily/day-record.md",
+      "write_state": "pilot"
+    },
+    "decision": {
+      "allowed_roots": [
+        "decisions"
+      ],
+      "canonical_owner": "decisions",
+      "optional_fields": [
+        "supersedes_decision_refs",
+        "reverses_decision_refs",
+        "successor_decision_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "decision_state",
+        "decision_confidence",
+        "decided_on",
+        "decided_by_refs",
+        "affected_owner_refs"
+      ],
+      "required_modules": [
+        "relations"
+      ],
+      "required_sections": [
+        "Decision",
+        "Context",
+        "Why",
+        "Alternatives",
+        "Consequences",
+        "Reconsider When",
+        "Affected Owners",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/decision.md",
+      "write_state": "pilot"
+    },
+    "finance-account": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-account-context",
+      "optional_fields": [
+        "company_ref",
+        "external_authority_ref",
+        "secure_locator",
+        "payment_source_registry_ref",
+        "iban",
+        "bic",
+        "account_number"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "account_state",
+        "finance_scope",
+        "institution",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "subject-context",
+        "finance-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose and Scope",
+        "Account Identity",
+        "Usage",
+        "External Authority",
+        "Security Boundary",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-account.md",
+      "write_state": "pilot"
+    },
+    "finance-client-cost": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-client-recharge-context",
+      "optional_fields": [
+        "project_ref",
+        "source_expense_ref",
+        "invoice_ref",
+        "amount_net",
+        "amount_gross",
+        "source_amount",
+        "currency",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "cost_period",
+        "recharge_state",
+        "client_ref"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Cost",
+        "Recharge State",
+        "Client and Project",
+        "Source Expense",
+        "Invoice Allocation",
+        "Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-client-cost.md",
+      "write_state": "pilot"
+    },
+    "finance-expense": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-expense-context",
+      "optional_fields": [
+        "payment_state",
+        "company_ref",
+        "external_authority_ref",
+        "external_record_id",
+        "project_ref",
+        "amount_net",
+        "amount_gross",
+        "source_amount",
+        "currency",
+        "tax_rate",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "expense_date",
+        "booking_state",
+        "finance_scope"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Expense",
+        "Booking and Payment State",
+        "Allocation",
+        "External Authority",
+        "Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-expense.md",
+      "write_state": "pilot"
+    },
+    "finance-invoice": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-outgoing-invoice-context",
+      "optional_fields": [
+        "due_on",
+        "paid_on",
+        "project_ref",
+        "external_record_id",
+        "tax_rate",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "issued_on",
+        "invoice_state",
+        "invoice_number",
+        "client_ref",
+        "external_authority_ref",
+        "amount_net",
+        "amount_gross",
+        "currency"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Invoice",
+        "Service and Amounts",
+        "Delivery",
+        "Payment State",
+        "Client and Project",
+        "External Authority",
+        "Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-invoice.md",
+      "write_state": "pilot"
+    },
+    "finance-payment-source-registry": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-payment-source-registry",
+      "optional_fields": [
+        "external_authority_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "registry_state",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "subject-context",
+        "finance-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Canonical Labels",
+        "Usage Rules",
+        "External Authority",
+        "Security Boundary",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-payment-source-registry.md",
+      "write_state": "pilot"
+    },
+    "finance-recurring-obligation": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-recurring-obligation",
+      "optional_fields": [
+        "next_due_on",
+        "due_day",
+        "last_booked_period",
+        "payment_source_registry_ref",
+        "company_ref",
+        "project_ref",
+        "amount_gross",
+        "source_amount",
+        "currency",
+        "tax_rate",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "obligation_state",
+        "finance_scope",
+        "cadence"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Obligation",
+        "Cadence and Due State",
+        "Cost and Allocation",
+        "Payment Source",
+        "External Authority",
+        "Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-recurring-obligation.md",
+      "write_state": "pilot"
+    },
+    "finance-tax-dossier": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-annual-tax-dossier",
+      "optional_fields": [
+        "filing_deadline",
+        "filed_at",
+        "external_authority_ref",
+        "finance_scope",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "tax_year",
+        "filing_state"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Filing Scope",
+        "Filing State",
+        "Tax Context",
+        "Documents and Evidence",
+        "External Authority",
+        "Open Assessment",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-tax-dossier.md",
+      "write_state": "pilot"
+    },
+    "finance-tax-manifest": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-annual-tax-source-manifest",
+      "optional_fields": [
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "tax_year",
+        "manifest_state",
+        "tax_dossier_ref"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Scope",
+        "Source Inventory",
+        "Integrity",
+        "Missing Sources",
+        "Dossier Relation",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-tax-manifest.md",
+      "write_state": "pilot"
+    },
+    "finance-time-entry": {
+      "allowed_roots": [
+        "finance"
+      ],
+      "canonical_owner": "finance-billable-time-context",
+      "optional_fields": [
+        "project_ref",
+        "invoice_ref",
+        "hourly_rate",
+        "amount_net",
+        "currency",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "service_date",
+        "billing_state",
+        "client_ref",
+        "hours"
+      ],
+      "required_modules": [
+        "finance-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Service",
+        "Time and Value",
+        "Billing State",
+        "Client and Project",
+        "Invoice Allocation",
+        "Evidence",
+        "Timeline"
+      ],
+      "template": "system/templates/finance/finance-time-entry.md",
+      "write_state": "pilot"
+    },
+    "framework": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-frameworks",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Model",
+        "Components",
+        "Decision Logic",
+        "Interfaces",
+        "Change History"
+      ],
+      "template": "system/templates/framework.md",
+      "write_state": "pilot"
+    },
+    "health-daily-assessment": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "health-daily-assessment",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "assessment_date",
+        "readiness_band",
+        "training_recommendation",
+        "provider_snapshot_ref",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Readiness",
+        "Training Guidance",
+        "Evidence",
+        "Data Gaps",
+        "Timeline"
+      ],
+      "template": "system/templates/health/health-daily-assessment.md",
+      "write_state": "pilot"
+    },
+    "health-measurement": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "health-measurement-context",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "measurement_scope",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Measurement Policy",
+        "Current Measurements",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/health/health-measurement.md",
+      "write_state": "pilot"
+    },
+    "health-operating-model": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "health-operating-model",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Active Data Flow",
+        "Active Object Model",
+        "Decision Logic",
+        "Boundaries",
+        "Timeline"
+      ],
+      "template": "system/templates/health/health-operating-model.md",
+      "write_state": "pilot"
+    },
+    "health-plan": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "health-plan",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "plan_state",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Plan",
+        "Calibration Rules",
+        "Progression Boundary",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/health/health-plan.md",
+      "write_state": "pilot"
+    },
+    "health-profile": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "personal-health-profile",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Goals and Context",
+        "Constraints",
+        "Coaching Mode",
+        "Open Calibration",
+        "Timeline"
+      ],
+      "template": "system/templates/health/health-profile.md",
+      "write_state": "pilot"
+    },
+    "health-provider-snapshot": {
+      "allowed_roots": [
+        "health"
+      ],
+      "canonical_owner": "health-provider-snapshot",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "snapshot_date",
+        "captured_at",
+        "snapshot_state",
+        "source_system",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "signal-processing",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Snapshot Summary",
+        "Metrics",
+        "Workouts",
+        "Body Measurement",
+        "Interpretation Boundary",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/health/health-provider-snapshot.md",
+      "write_state": "pilot"
+    },
+    "host": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-host-registry",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "host_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Operating System",
+        "Runtimes and Services",
+        "Access",
+        "Health",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/host.md",
+      "write_state": "pilot"
+    },
+    "idea": {
+      "allowed_roots": [
+        "identity",
+        "business",
+        "knowledge",
+        "finance",
+        "health",
+        "projects"
+      ],
+      "canonical_owner": "domain-owned-idea-record",
+      "optional_fields": [
+        "idea_outcome",
+        "promotion_ref",
+        "merge_target_ref",
+        "rejection_evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "evidence_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Idea",
+        "Why It Matters",
+        "Source Basis",
+        "Evidence and Assumptions",
+        "Development",
+        "Resolution",
+        "Timeline"
+      ],
+      "template": "system/templates/idea.md",
+      "write_state": "pilot"
+    },
+    "identity-biography": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-biography",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Life Phases",
+        "Formative Events",
+        "Biography Gaps",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/biography.md",
+      "write_state": "pilot"
+    },
+    "identity-capabilities": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-capabilities",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Capability Areas",
+        "Demonstrated Experience",
+        "Evidence and Credentials",
+        "Limits",
+        "Related Development Projects",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/capabilities.md",
+      "write_state": "pilot"
+    },
+    "identity-legal": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-legal",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Legal Identity Facts",
+        "Residency and Personal Status",
+        "Official Identifiers",
+        "External Document References",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/legal-identity.md",
+      "write_state": "pilot"
+    },
+    "identity-life-orientation": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-life-orientation",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Desired Way of Life",
+        "Long-Term Directions",
+        "Enduring Priorities",
+        "Non-Negotiables",
+        "Trade-offs",
+        "Related Projects",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/life-orientation.md",
+      "write_state": "pilot"
+    },
+    "identity-operating-profile": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-operating-profile",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Traits and Preferences",
+        "Thinking and Decision-Making",
+        "Learning",
+        "Communication",
+        "Work and Execution",
+        "Helpful Conditions",
+        "Failure Modes and Friction",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/operating-profile.md",
+      "write_state": "pilot"
+    },
+    "identity-personal-constitution": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-personal-constitution",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "subject-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Values",
+        "Personal Principles",
+        "Beliefs",
+        "Boundaries and Non-Negotiables",
+        "Internal Tensions",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/personal-constitution.md",
+      "write_state": "pilot"
+    },
+    "identity-record": {
+      "allowed_roots": [
+        "identity"
+      ],
+      "canonical_owner": "identity-subject",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Core Identity",
+        "Identity Facets",
+        "Connected Context",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/identity/identity-record.md",
+      "write_state": "pilot"
+    },
+    "integration": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-integration-registry",
+      "optional_fields": [
+        "integration_access_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "integration_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "External Boundary",
+        "Data and Authority",
+        "Credentials Required",
+        "Health",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/integration.md",
+      "write_state": "pilot"
+    },
+    "interaction-analysis": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "interaction-analysis-artifact",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "analysis_kind",
+        "analysis_outcome",
+        "interaction_ref",
+        "evidence_refs",
+        "affected_owner_refs"
+      ],
+      "required_modules": [
+        "relations",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Analysis",
+        "Findings",
+        "Contradictions and Uncertainty",
+        "Propagation",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/interactions/interaction-analysis.md",
+      "write_state": "pilot"
+    },
+    "interaction-event": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "interaction-event-record",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "interaction_date",
+        "interaction_kind",
+        "participant_refs",
+        "evidence_refs"
+      ],
+      "required_modules": [
+        "relations",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Event",
+        "Outcome",
+        "Commitments",
+        "Open Questions",
+        "Propagation",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/interactions/interaction-event.md",
+      "write_state": "pilot"
+    },
+    "journal-entry": {
+      "allowed_roots": [
+        "daily"
+      ],
+      "canonical_owner": "daily-journal-entry",
+      "optional_fields": [
+        "runtime_name",
+        "producer_ref",
+        "journal_author_ref",
+        "evidence_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "day_date",
+        "timezone",
+        "occurred_at",
+        "recorded_at",
+        "producer_kind",
+        "producer_name",
+        "journal_kind"
+      ],
+      "required_modules": [
+        "daily-context",
+        "relations"
+      ],
+      "required_sections": [
+        "Journal Entry",
+        "Context",
+        "Sources",
+        "Corrections"
+      ],
+      "template": "system/templates/daily/journal-entry.md",
+      "write_state": "pilot"
+    },
+    "knowledge-article": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "compiled-knowledge-article",
+      "optional_fields": [
+        "source_refs",
+        "related_topic_refs",
+        "verified_on"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "topic_ref",
+        "knowledge_article_kind",
+        "knowledge_maturity",
+        "knowledge_confidence",
+        "knowledge_volatility"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Current Knowledge",
+        "Applicability Boundaries",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/knowledge/knowledge-article.md",
+      "write_state": "pilot"
+    },
+    "knowledge-assessment": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-quality-assessment",
+      "optional_fields": [
+        "source_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "topic_ref",
+        "assessment_kind",
+        "assessment_outcome"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Assessment",
+        "Findings",
+        "Recommendations",
+        "Sources",
+        "Re-entry"
+      ],
+      "template": "system/templates/knowledge/knowledge-assessment.md",
+      "write_state": "pilot"
+    },
+    "knowledge-dataset": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-dataset-pointer",
+      "optional_fields": [
+        "source_refs",
+        "related_topic_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "topic_ref",
+        "dataset_kind",
+        "source_locator"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Dataset Boundary",
+        "Locations and Access",
+        "Schema and Query Notes",
+        "Provenance",
+        "Re-entry"
+      ],
+      "template": "system/templates/knowledge/knowledge-dataset.md",
+      "write_state": "pilot"
+    },
+    "knowledge-inventory-item": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-inventory-state",
+      "optional_fields": [
+        "source_refs",
+        "related_topic_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "topic_ref",
+        "inventory_kind",
+        "inventory_state"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Current State",
+        "Rationale",
+        "Handoff",
+        "Sources",
+        "Re-entry"
+      ],
+      "template": "system/templates/knowledge/knowledge-inventory-item.md",
+      "write_state": "pilot"
+    },
+    "knowledge-log": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-change-log",
+      "optional_fields": [
+        "topic_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "log-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "knowledge_log_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Entries",
+        "Corrections"
+      ],
+      "template": "system/templates/knowledge/knowledge-log.md",
+      "write_state": "pilot"
+    },
+    "knowledge-source": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-source-evidence",
+      "optional_fields": [
+        "related_topic_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "topic_ref",
+        "knowledge_source_kind",
+        "source_locator",
+        "captured_on",
+        "source_integrity",
+        "immutable"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "knowledge-context"
+      ],
+      "required_sections": [
+        "Source Summary",
+        "Routing",
+        "Source Boundary",
+        "Evidence",
+        "Extraction Gaps",
+        "Corrections"
+      ],
+      "template": "system/templates/knowledge/knowledge-source.md",
+      "write_state": "pilot"
+    },
+    "knowledge-topic": {
+      "allowed_roots": [
+        "knowledge"
+      ],
+      "canonical_owner": "knowledge-topic-truth",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle"
+      ],
+      "required_modules": [
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Scope",
+        "Ownership and Boundaries",
+        "Source and Compilation Policy",
+        "Timeline"
+      ],
+      "template": "system/templates/knowledge/knowledge-topic.md",
+      "write_state": "pilot"
+    },
+    "legacy-schema-pack": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "legacy-schema-compatibility-reference",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle"
+      ],
+      "required_modules": [
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "State",
+        "Open Threads",
+        "See Also",
+        "Timeline"
+      ],
+      "template": "system/templates/data-model/legacy-schema-pack.md",
+      "write_state": "pilot"
+    },
+    "market": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-market",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Market Dynamics",
+        "Evidence and Assumptions",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/market.md",
+      "write_state": "pilot"
+    },
+    "offer": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-offer",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Buyer and Problem",
+        "Scope and Delivery",
+        "Commercial Logic",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/offer.md",
+      "write_state": "pilot"
+    },
+    "operating-model": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-operating-model",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Operating Principles",
+        "Roles and Responsibilities",
+        "Processes and Cadence",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/operating-model.md",
+      "write_state": "pilot"
+    },
+    "operating-system": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-operating-system-registry",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "operating_system_kind"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Scope",
+        "Authority",
+        "Interfaces",
+        "Modules",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/operating-system.md",
+      "write_state": "pilot"
+    },
+    "owner-index": {
+      "allowed_roots": [
+        "inbox",
+        "identity",
+        "people",
+        "companies",
+        "business",
+        "projects",
+        "interactions",
+        "knowledge",
+        "content",
+        "finance",
+        "health",
+        "operations",
+        "decisions",
+        "automations",
+        "daily",
+        "skills",
+        "system",
+        "tables"
+      ],
+      "canonical_owner": "owner-local-navigation",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "index_scope"
+      ],
+      "required_modules": [],
+      "required_sections": [
+        "Purpose",
+        "Ownership and Boundaries",
+        "Navigation",
+        "Maintenance"
+      ],
+      "template": "system/templates/core/owner-index.md",
+      "write_state": "pilot"
+    },
+    "person": {
+      "allowed_roots": [
+        "people"
+      ],
+      "canonical_owner": "people-person-record",
+      "optional_fields": [
+        "primary_company_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Identity and Roles",
+        "Relationship to Subject",
+        "Communication Profile",
+        "Relevant Context",
+        "Affiliations and Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/entities/person.md",
+      "write_state": "pilot"
+    },
+    "principle": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-principles",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [
+        "Principle",
+        "Rationale",
+        "Implications",
+        "Boundaries",
+        "Change History"
+      ],
+      "template": "system/templates/principle.md",
+      "write_state": "pilot"
+    },
+    "priority-control": {
+      "allowed_roots": [
+        "operations"
+      ],
+      "canonical_owner": "operations-priority-control",
+      "optional_fields": [
+        "priority_control_expires_on",
+        "priority_focus_areas",
+        "priority_focus_action_refs",
+        "priority_ordered_action_refs",
+        "priority_excluded_action_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "priority_control_review_on"
+      ],
+      "required_modules": [
+        "lifecycle"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Manual Direction",
+        "Scope and Expiry",
+        "Timeline"
+      ],
+      "template": "system/templates/operations/priority-control.md",
+      "write_state": "pilot"
+    },
+    "processing-receipt": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "interaction-processing-receipt",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "receipt_kind",
+        "receipt_outcome",
+        "processed_at",
+        "verification_result",
+        "producer_skill_ref",
+        "interaction_ref",
+        "evidence_refs",
+        "affected_owner_refs"
+      ],
+      "required_modules": [
+        "relations",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Processing Summary",
+        "Coverage",
+        "Propagation",
+        "Verification",
+        "Errors and Pending",
+        "Corrections"
+      ],
+      "template": "system/templates/interactions/processing-receipt.md",
+      "write_state": "pilot"
+    },
+    "product": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-product",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Value and Capabilities",
+        "Product Lifecycle",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/product.md",
+      "write_state": "pilot"
+    },
+    "project": {
+      "allowed_roots": [
+        "projects"
+      ],
+      "canonical_owner": "project-main-record",
+      "optional_fields": [
+        "project_phase",
+        "commercial_state",
+        "closure_mode",
+        "project_outcome",
+        "closed_at",
+        "evidence_refs",
+        "parent_project_ref",
+        "dependency_project_refs",
+        "follow_on_project_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "priority",
+        "workflow",
+        "sponsor_refs",
+        "human_role",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "relations",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Outcome and Success Criteria",
+        "Scope",
+        "Authority and Roles",
+        "Navigation",
+        "Propagation",
+        "Timeline"
+      ],
+      "template": "system/templates/project.md",
+      "write_state": "pilot"
+    },
+    "redirect": {
+      "allowed_roots": [
+        "inbox",
+        "identity",
+        "projects",
+        "system",
+        "agents",
+        "operations",
+        "automations",
+        "deals",
+        "programs"
+      ],
+      "canonical_owner": "continuity-layer",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "redirect_target_ref"
+      ],
+      "required_modules": [
+        "relations"
+      ],
+      "required_sections": [
+        "Target",
+        "Continuity",
+        "Removal Prerequisite"
+      ],
+      "template": "system/templates/redirect.md",
+      "write_state": "pilot"
+    },
+    "root-index": {
+      "allowed_roots": [
+        "INDEX.md"
+      ],
+      "canonical_owner": "root-navigation",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated"
+      ],
+      "required_modules": [],
+      "required_sections": [
+        "Zentrale Einstiege",
+        "Root-Owner",
+        "Routing",
+        "Grundgrenzen",
+        "Pflege"
+      ],
+      "template": "system/templates/core/bootstrap/root-index.md",
+      "write_state": "pilot"
+    },
+    "rule": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-rules",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage"
+      ],
+      "required_sections": [
+        "Rule",
+        "Scope and Trigger",
+        "Required Behavior",
+        "Exceptions",
+        "Verification",
+        "Change History"
+      ],
+      "template": "system/templates/rule.md",
+      "write_state": "pilot"
+    },
+    "runbook": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-runbooks",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "system_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage",
+        "system-dependencies"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Trigger",
+        "Preconditions",
+        "Procedure",
+        "Verification",
+        "Escalation",
+        "Change History"
+      ],
+      "template": "system/templates/runbook.md",
+      "write_state": "pilot"
+    },
+    "runtime": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-runtime-registry",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "runtime_kind",
+        "agent_refs",
+        "host_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Agents",
+        "Hosts and Execution",
+        "Configuration",
+        "Credentials Required",
+        "Health",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/runtime.md",
+      "write_state": "pilot"
+    },
+    "signal-digest": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "interaction-signal-digest",
+      "optional_fields": [
+        "source_system",
+        "source_channel",
+        "evidence_refs",
+        "affected_owner_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "digest_date",
+        "digest_kind",
+        "digest_outcome",
+        "coverage_started_at",
+        "coverage_ended_at",
+        "producer_skill_ref"
+      ],
+      "required_modules": [
+        "relations",
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Digest Summary",
+        "Coverage",
+        "Signals",
+        "Source Map",
+        "Propagation",
+        "Gaps and Corrections"
+      ],
+      "template": "system/templates/interactions/signal-digest.md",
+      "write_state": "pilot"
+    },
+    "skill": {
+      "allowed_roots": [
+        "skills"
+      ],
+      "canonical_owner": "skill-capability",
+      "optional_fields": [
+        "decision_refs",
+        "derived_from_refs",
+        "supersedes_refs",
+        "system_refs",
+        "reads_profile_keys",
+        "writes_profile_keys",
+        "template_refs",
+        "invokes_skill_refs",
+        "check_refs"
+      ],
+      "optional_modules": [
+        "normative-lineage",
+        "system-dependencies",
+        "capability-io"
+      ],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "skill_version"
+      ],
+      "required_modules": [
+        "lifecycle"
+      ],
+      "required_sections": [],
+      "template": "system/templates/skill.md",
+      "write_state": "pilot"
+    },
+    "skill-prompt": {
+      "allowed_roots": [
+        "skills"
+      ],
+      "canonical_owner": "owning-skill-runtime-prompt",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs",
+        "reads_profile_keys",
+        "writes_profile_keys",
+        "template_refs",
+        "check_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "system_refs",
+        "invokes_skill_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage",
+        "system-dependencies",
+        "capability-io"
+      ],
+      "required_sections": [],
+      "template": "system/templates/skills/cron-prompt.md",
+      "write_state": "pilot"
+    },
+    "skill-reference": {
+      "allowed_roots": [
+        "skills"
+      ],
+      "canonical_owner": "owning-skill-local-reference",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs",
+        "system_refs"
+      ],
+      "optional_modules": [
+        "normative-lineage",
+        "system-dependencies"
+      ],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "owning_skill_ref",
+        "reference_kind"
+      ],
+      "required_modules": [
+        "lifecycle"
+      ],
+      "required_sections": [],
+      "template": "system/templates/skills/skill-reference.md",
+      "write_state": "pilot"
+    },
+    "skill-resolver": {
+      "allowed_roots": [
+        "skills"
+      ],
+      "canonical_owner": "capability-routing-control-plane",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated"
+      ],
+      "required_modules": [],
+      "required_sections": [
+        "Purpose",
+        "Routes",
+        "Routing Rules",
+        "Maintenance"
+      ],
+      "template": "system/templates/skills/skill-resolver.md",
+      "write_state": "pilot"
+    },
+    "source-evidence": {
+      "allowed_roots": [
+        "interactions"
+      ],
+      "canonical_owner": "interaction-source-evidence",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "event-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "evidence_kind",
+        "evidence_captured_at",
+        "source_system",
+        "source_ref",
+        "interaction_ref",
+        "redaction_mode"
+      ],
+      "required_modules": [
+        "signal-processing"
+      ],
+      "required_sections": [
+        "Evidence Summary",
+        "Source Boundary",
+        "Evidence",
+        "Corrections"
+      ],
+      "template": "system/templates/interactions/source-evidence.md",
+      "write_state": "pilot"
+    },
+    "strategy": {
+      "allowed_roots": [
+        "business"
+      ],
+      "canonical_owner": "business-strategy",
+      "optional_fields": [
+        "company_refs",
+        "brand_refs",
+        "market_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority",
+        "business-context"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Definition",
+        "Scope and Boundaries",
+        "Strategic Direction",
+        "Choices and Trade-offs",
+        "Assumptions and Measures",
+        "Relationships",
+        "Sources",
+        "Timeline"
+      ],
+      "template": "system/templates/business/strategy.md",
+      "write_state": "pilot"
+    },
+    "system-observability-view": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-observability",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "view-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "observability_scope",
+        "observed_at",
+        "observability_source_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Observed Scope",
+        "Desired versus Observed",
+        "Sources and Freshness",
+        "Limitations"
+      ],
+      "template": "system/templates/topology/system-observability-view.md",
+      "write_state": "pilot"
+    },
+    "system-service": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-service-registry",
+      "optional_fields": [
+        "service_integration_ref"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "service_kind",
+        "execution_target_refs",
+        "desired_state"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Current Truth",
+        "Purpose",
+        "Desired State",
+        "Execution Target",
+        "Trigger and Dependencies",
+        "Health",
+        "Timeline"
+      ],
+      "template": "system/templates/topology/system-service.md",
+      "write_state": "pilot"
+    },
+    "template": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-templates",
+      "optional_fields": [
+        "derived_from_refs",
+        "supersedes_refs"
+      ],
+      "optional_modules": [],
+      "page_shape": "normative-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "decision_refs",
+        "system_refs",
+        "target_profile_key"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "normative-lineage",
+        "system-dependencies"
+      ],
+      "required_sections": [
+        "Template Contract",
+        "Blueprint",
+        "Usage",
+        "Change History"
+      ],
+      "template": "system/templates/template.md",
+      "write_state": "pilot"
+    },
+    "truth-system": {
+      "allowed_roots": [
+        "system"
+      ],
+      "canonical_owner": "system-registry",
+      "optional_fields": [
+        "canonical_uri",
+        "default_timezone"
+      ],
+      "optional_modules": [],
+      "page_shape": "state-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "system_kind"
+      ],
+      "required_modules": [],
+      "required_sections": [
+        "Current Truth",
+        "Scope",
+        "Authority",
+        "Interfaces",
+        "Timeline"
+      ],
+      "template": "system/templates/truth-system.md",
+      "write_state": "pilot"
+    },
+    "user-context": {
+      "allowed_roots": [
+        "USER.md"
+      ],
+      "canonical_owner": "root-user-projection",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "pointer-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "subject_ref"
+      ],
+      "required_modules": [
+        "subject-context"
+      ],
+      "required_sections": [
+        "Kurzprofil",
+        "Arbeitsweise und Denkstil",
+        "Entscheidungen",
+        "Arbeitsbeziehung mit Agenten",
+        "Wichtige Beziehungen und Rollen",
+        "Werte und Haltung",
+        "Wahrheitskarte",
+        "Pflege"
+      ],
+      "template": "system/templates/core/bootstrap/user-context.md",
+      "write_state": "pilot"
+    },
+    "view-record": {
+      "allowed_roots": [
+        "system",
+        "operations"
+      ],
+      "canonical_owner": "system-derived-view",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "view-record",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "lifecycle",
+        "canonical_system_ref",
+        "authority_scope",
+        "view_kind",
+        "derivation_mode",
+        "source_owner_refs"
+      ],
+      "required_modules": [
+        "lifecycle",
+        "authority"
+      ],
+      "required_sections": [
+        "Purpose",
+        "Source Owners",
+        "Derivation",
+        "Freshness",
+        "Limitations"
+      ],
+      "template": "system/templates/topology/view-record.md",
+      "write_state": "pilot"
+    },
+    "working-note": {
+      "allowed_roots": [
+        "projects"
+      ],
+      "canonical_owner": "containing-work-context",
+      "optional_fields": [],
+      "optional_modules": [],
+      "page_shape": "work-artifact",
+      "required_fields": [
+        "schema_version",
+        "id",
+        "type",
+        "title",
+        "created",
+        "updated",
+        "project_ref"
+      ],
+      "required_modules": [
+        "relations"
+      ],
+      "required_sections": [
+        "Working Truth",
+        "Re-entry"
+      ],
+      "template": "system/templates/working-note.md",
+      "write_state": "pilot"
+    }
+  },
+  "registry_version": "0.40.0",
+  "writable_profiles": [
+    "access-record",
+    "action",
+    "action-candidate",
+    "activity-contribution",
+    "agent",
+    "agent-entry-pointer",
+    "agent-persona",
+    "agent-persona-overlay",
+    "attention-trigger",
+    "automation",
+    "automation-day-summary",
+    "automation-run-receipt",
+    "brand",
+    "brand-design-system",
+    "brand-voice",
+    "business-model",
+    "capture",
+    "check",
+    "company",
+    "content-asset-manifest",
+    "content-configuration",
+    "content-context-pack",
+    "content-evidence",
+    "content-format",
+    "content-guide",
+    "content-idea",
+    "content-input",
+    "content-knowledge-candidate",
+    "content-learning-candidate",
+    "content-piece",
+    "content-production-job",
+    "content-production-recipe",
+    "content-production-spec",
+    "content-publication",
+    "content-research",
+    "content-series",
+    "content-source",
+    "content-tracking-link",
+    "content-version",
+    "context-gap-review",
+    "contract",
+    "convention",
+    "conversation-stream",
+    "customer-profile",
+    "daily-briefing",
+    "data-model-changelog",
+    "data-model-document",
+    "day-record",
+    "decision",
+    "finance-account",
+    "finance-client-cost",
+    "finance-expense",
+    "finance-invoice",
+    "finance-payment-source-registry",
+    "finance-recurring-obligation",
+    "finance-tax-dossier",
+    "finance-tax-manifest",
+    "finance-time-entry",
+    "framework",
+    "health-daily-assessment",
+    "health-measurement",
+    "health-operating-model",
+    "health-plan",
+    "health-profile",
+    "health-provider-snapshot",
+    "host",
+    "idea",
+    "identity-biography",
+    "identity-capabilities",
+    "identity-legal",
+    "identity-life-orientation",
+    "identity-operating-profile",
+    "identity-personal-constitution",
+    "identity-record",
+    "integration",
+    "interaction-analysis",
+    "interaction-event",
+    "journal-entry",
+    "knowledge-article",
+    "knowledge-assessment",
+    "knowledge-dataset",
+    "knowledge-inventory-item",
+    "knowledge-log",
+    "knowledge-source",
+    "knowledge-topic",
+    "legacy-schema-pack",
+    "market",
+    "offer",
+    "operating-model",
+    "operating-system",
+    "owner-index",
+    "person",
+    "principle",
+    "priority-control",
+    "processing-receipt",
+    "product",
+    "project",
+    "redirect",
+    "root-index",
+    "rule",
+    "runbook",
+    "runtime",
+    "signal-digest",
+    "skill",
+    "skill-prompt",
+    "skill-reference",
+    "skill-resolver",
+    "source-evidence",
+    "strategy",
+    "system-observability-view",
+    "system-service",
+    "template",
+    "truth-system",
+    "user-context",
+    "view-record",
+    "working-note"
+  ]
+}

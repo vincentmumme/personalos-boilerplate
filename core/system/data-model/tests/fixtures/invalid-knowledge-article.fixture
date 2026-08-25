@@ -1,0 +1,20 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-000000000006
+type: knowledge-article
+title: "Example Concept"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+topic_ref: "[[knowledge/topics/example-topic/example-topic]]"
+knowledge_article_kind: concept
+knowledge_maturity: useful
+knowledge_confidence: medium
+knowledge_volatility: warm
+---
+
+# Example Concept
+
+## Current Knowledge
+
+Invalid placement.

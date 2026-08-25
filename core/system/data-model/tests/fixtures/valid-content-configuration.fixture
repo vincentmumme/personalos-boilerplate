@@ -1,0 +1,25 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7b86-a31e-1888a4d7d24d"
+type: "content-configuration"
+title: "Example content-configuration"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "active"
+revision: 1
+configuration_kind: "strategy"
+---
+
+# Example content-configuration
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

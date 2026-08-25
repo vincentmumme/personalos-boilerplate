@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 01a0011a-da13-76e2-baf0-966759bdc10c
+type: data-model-document
+title: "Frontmatter Guide"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+decision_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+document_kind: random-note
+---
+
+# Frontmatter Guide
+
+Unzulässige Datenmodell-Dokumentklasse.

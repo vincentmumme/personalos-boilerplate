@@ -1,0 +1,23 @@
+name: knowledge-article
+page_shape: state-record
+canonical_owner: compiled-knowledge-article
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/[a-z0-9]+(?:-[a-z0-9]+)*/wiki(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, topic_ref, knowledge_article_kind, knowledge_maturity, knowledge_confidence, knowledge_volatility]
+optional_fields: [source_refs, related_topic_refs, verified_on]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, needs-review, archived]
+required_sections: [Current Knowledge, Applicability Boundaries, Sources, Timeline]
+section_order: [Current Knowledge, Applicability Boundaries, Sources, Timeline]
+template: system/templates/knowledge/knowledge-article.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-article.fixture
+  positive_logical_path: knowledge/topics/example-topic/wiki/concepts/example-concept.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-article.fixture
+  negative_logical_path: knowledge/topics/example-topic/raw/articles/example-concept.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

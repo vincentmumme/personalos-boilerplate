@@ -1,0 +1,27 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5491-75c3-8d14-889f32115b80
+type: finance-payment-source-registry
+title: "Payment Sources"
+created: 2026-08-14
+updated: 2026-08-14
+registry_state: active
+subject_ref: "[[identity/me]]"
+---
+
+# Payment Sources
+
+## Current Truth
+Canonical safe payment labels.
+## Canonical Labels
+Example Business Card ending 1234.
+## Usage Rules
+Use exact labels.
+## External Authority
+Providers own instrument truth.
+## Security Boundary
+No full payment identifiers.
+## Sources
+Verified provider context.
+## Timeline
+- **2026-08-14** | Created.

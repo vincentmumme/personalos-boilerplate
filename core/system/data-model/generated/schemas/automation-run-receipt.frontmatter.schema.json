@@ -1,0 +1,137 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/automation-run-receipt.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "run_outcome": {
+            "enum": [
+              "audit-no-op"
+            ]
+          }
+        },
+        "required": [
+          "run_outcome"
+        ]
+      },
+      "then": {
+        "required": [
+          "retention_reason"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "affected_owner_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "producer_skill_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "retention_class": {
+      "enum": [
+        "material-run"
+      ],
+      "type": "string"
+    },
+    "retention_reason": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "run_ended_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "run_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "run_outcome": {
+      "enum": [
+        "changed",
+        "partial",
+        "failed",
+        "stale",
+        "deferred",
+        "pending",
+        "external-mutation",
+        "audit-no-op"
+      ],
+      "type": "string"
+    },
+    "run_started_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "run_trigger": {
+      "enum": [
+        "scheduled",
+        "manual",
+        "webhook",
+        "backfill",
+        "event"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "automation-run-receipt"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "producer_skill_ref",
+    "retention_class",
+    "run_ended_at",
+    "run_id",
+    "run_outcome",
+    "run_started_at",
+    "run_trigger"
+  ],
+  "title": "PersonalOS pos-v1 automation-run-receipt frontmatter",
+  "type": "object"
+}

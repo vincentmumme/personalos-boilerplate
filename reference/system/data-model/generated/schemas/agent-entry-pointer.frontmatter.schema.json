@@ -1,0 +1,98 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/agent-entry-pointer.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "entry_kind": {
+            "enum": [
+              "runtime-adapter"
+            ]
+          }
+        },
+        "required": [
+          "entry_kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "bootstrap_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entry_kind": {
+            "enum": [
+              "common-bootstrap"
+            ]
+          }
+        },
+        "required": [
+          "entry_kind"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "bootstrap_ref"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "bootstrap_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "entry_kind": {
+      "enum": [
+        "common-bootstrap",
+        "runtime-adapter"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "agent-entry-pointer"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "entry_kind"
+  ],
+  "title": "PersonalOS pos-v1 agent-entry-pointer frontmatter",
+  "type": "object"
+}

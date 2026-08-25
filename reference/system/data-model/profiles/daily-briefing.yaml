@@ -1,0 +1,30 @@
+name: daily-briefing
+page_shape: view-record
+canonical_owner: daily-derived-briefing
+allowed_roots: [daily]
+path_pattern: ^daily/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}/briefing/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+path_date_field: day_date
+path_date_prefix_template: daily/{year}/{date}/briefing/
+parent_record:
+  when_path_pattern: ^daily/(?P<year>[0-9]{4})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/briefing/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+  required_path_template: daily/{year}/{date}/{date}.md
+  required_profile: day-record
+  skip_when_relations_disabled: true
+required_modules: [daily-context, signal-processing, relations]
+optional_modules: []
+required_fields: [day_date, timezone, generated_at, briefing_kind, producer_skill_ref]
+optional_fields: [evidence_refs]
+fields:
+  briefing_kind:
+    datatype: enum
+    enum: [morning, midday, evening, ad-hoc]
+required_sections: [Briefing, Source Notes, Verification, Corrections]
+section_order: [Briefing, Source Notes, Verification, Corrections]
+template: system/templates/daily/daily-briefing.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-daily-briefing.fixture
+  positive_logical_path: daily/2026/2026-08-14/briefing/01a00149-b5ad-7daf-98aa-9dbb541f7f79.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-daily-briefing.fixture
+  negative_logical_path: daily/2026/2026-08-14/briefing/morning.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

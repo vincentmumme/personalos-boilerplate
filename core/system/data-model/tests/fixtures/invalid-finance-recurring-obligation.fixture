@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5659-71e3-af5c-272527bd358d
+type: finance-recurring-obligation
+title: "Invalid Subscription"
+created: 2026-08-14
+updated: 2026-08-14
+obligation_state: active
+finance_scope: business
+cadence: monthly
+due_day: "32"
+---
+
+# Invalid Subscription
+
+## Current Truth
+Invalid.
+## Obligation
+Invalid.
+## Cadence and Due State
+Invalid.
+## Cost and Allocation
+Invalid.
+## Payment Source
+Invalid.
+## External Authority
+Invalid.
+## Evidence
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

@@ -1,0 +1,21 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-000000000004
+type: knowledge-source
+title: "Example Source"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+topic_ref: "[[knowledge/topics/example-topic/example-topic]]"
+knowledge_source_kind: article
+source_locator: https://example.com/source
+captured_on: 2026-08-14
+source_integrity: complete
+immutable: false
+---
+
+# Example Source
+
+## Source Summary
+
+Invalid placement.

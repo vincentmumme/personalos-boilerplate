@@ -1,0 +1,19 @@
+---
+schema_version: pos-v1
+id: 01a0018c-3000-7000-8000-000000000004
+type: health-daily-assessment
+title: "Invalid Health Assessment"
+created: 2026-08-14
+updated: 2026-08-14
+assessment_date: 2026-08-14
+readiness_band: maybe
+training_recommendation: train
+provider_snapshot_ref: "[[examples/provider-snapshot]]"
+subject_ref: "[[identity/me]]"
+---
+
+# Invalid Health Assessment
+
+## Current Truth
+
+Invalid readiness.

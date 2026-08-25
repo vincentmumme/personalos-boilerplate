@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 019fec59-eef0-775a-819c-2acc1e9e435c
+type: principle
+title: "Example Principle"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+---
+
+# Example Principle
+
+## Principle
+
+Die Decision-Provenance fehlt.
+
+## Rationale
+
+Invalid fixture.
+
+## Implications
+
+Keine.
+
+## Boundaries
+
+Keine.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

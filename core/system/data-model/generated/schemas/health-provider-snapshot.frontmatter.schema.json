@@ -1,0 +1,71 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/health-provider-snapshot.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "captured_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "snapshot_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "snapshot_state": {
+      "enum": [
+        "complete",
+        "partial",
+        "pending",
+        "unavailable"
+      ],
+      "type": "string"
+    },
+    "source_system": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "subject_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "health-provider-snapshot"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "captured_at",
+    "snapshot_date",
+    "snapshot_state",
+    "source_system",
+    "subject_ref"
+  ],
+  "title": "PersonalOS pos-v1 health-provider-snapshot frontmatter",
+  "type": "object"
+}

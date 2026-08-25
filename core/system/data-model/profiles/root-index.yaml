@@ -1,0 +1,20 @@
+name: root-index
+page_shape: pointer-record
+canonical_owner: root-navigation
+allowed_roots: [INDEX.md]
+path_pattern: ^INDEX\.md$
+required_modules: []
+optional_modules: []
+required_fields: []
+optional_fields: []
+fields: {}
+required_sections: [Zentrale Einstiege, Root-Owner, Routing, Grundgrenzen, Pflege]
+section_order: [Zentrale Einstiege, Root-Owner, Routing, Grundgrenzen, Pflege]
+template: system/templates/core/bootstrap/root-index.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-root-index.fixture
+  positive_logical_path: INDEX.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-root-index.fixture
+  negative_logical_path: INDEX.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

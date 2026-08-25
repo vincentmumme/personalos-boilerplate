@@ -1,0 +1,23 @@
+name: finance-payment-source-registry
+page_shape: state-record
+canonical_owner: finance-payment-source-registry
+allowed_roots: [finance]
+path_pattern: ^finance/konten/payment-sources\.md$
+required_modules: [subject-context, finance-context]
+optional_modules: []
+required_fields: [registry_state, subject_ref]
+optional_fields: [external_authority_ref]
+fields:
+  registry_state:
+    datatype: enum
+    enum: [active, retired]
+required_sections: [Current Truth, Canonical Labels, Usage Rules, External Authority, Security Boundary, Sources, Timeline]
+section_order: [Current Truth, Canonical Labels, Usage Rules, External Authority, Security Boundary, Sources, Timeline]
+template: system/templates/finance/finance-payment-source-registry.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-payment-source-registry.fixture
+  positive_logical_path: finance/konten/payment-sources.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-payment-source-registry.fixture
+  negative_logical_path: finance/payment-sources.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

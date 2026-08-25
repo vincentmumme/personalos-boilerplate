@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-7b61-a0ce-1349dc60b5e1
+type: view-record
+title: "Example View Record"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: pointer
+view_kind: table
+derivation_mode: query
+source_owner_refs: ["[[system/agents/example-agent]]"]
+---
+
+# Example View Record
+
+## Purpose
+
+Example content.
+
+## Source Owners
+
+Example content.
+
+## Derivation
+
+Example content.
+
+## Freshness
+
+Example content.
+
+## Limitations
+
+Example content.

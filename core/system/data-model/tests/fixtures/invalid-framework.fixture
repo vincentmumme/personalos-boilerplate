@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019fec59-ef9c-7371-9203-bdc345491709
+type: framework
+title: "Example Framework"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+framework_status: active
+---
+
+# Example Framework
+
+## Purpose
+
+Ein unbekanntes Feld macht den Record ungültig.
+
+## Model
+
+Invalid fixture.
+
+## Components
+
+Keine.
+
+## Decision Logic
+
+Keine.
+
+## Interfaces
+
+Keine.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

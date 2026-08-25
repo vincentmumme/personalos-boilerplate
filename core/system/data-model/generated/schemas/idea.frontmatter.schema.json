@@ -1,0 +1,257 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/idea.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "terminal"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "required": [
+          "idea_outcome"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idea_outcome": {
+            "enum": [
+              "promoted"
+            ]
+          }
+        },
+        "required": [
+          "idea_outcome"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "merge_target_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "rejection_evidence_refs"
+              ]
+            }
+          }
+        ],
+        "required": [
+          "promotion_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idea_outcome": {
+            "enum": [
+              "merged"
+            ]
+          }
+        },
+        "required": [
+          "idea_outcome"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "promotion_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "rejection_evidence_refs"
+              ]
+            }
+          }
+        ],
+        "required": [
+          "merge_target_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "idea_outcome": {
+            "enum": [
+              "rejected"
+            ]
+          }
+        },
+        "required": [
+          "idea_outcome"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "promotion_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "merge_target_ref"
+              ]
+            }
+          }
+        ],
+        "required": [
+          "rejection_evidence_refs"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "active",
+              "parked"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "idea_outcome"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "promotion_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "merge_target_ref"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "rejection_evidence_refs"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "idea_outcome": {
+      "enum": [
+        "promoted",
+        "merged",
+        "rejected"
+      ],
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "parked",
+        "terminal"
+      ],
+      "type": "string"
+    },
+    "merge_target_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "promotion_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "rejection_evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "idea"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "evidence_refs",
+    "lifecycle"
+  ],
+  "title": "PersonalOS pos-v1 idea frontmatter",
+  "type": "object"
+}

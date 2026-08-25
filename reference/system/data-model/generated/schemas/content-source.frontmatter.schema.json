@@ -1,0 +1,110 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/content-source.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonical_url": {
+      "format": "uri",
+      "type": "string"
+    },
+    "content_tags": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "extraction_gaps": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "input_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "origin_operation_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "requested_extraction": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_kind": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "source_state": {
+      "enum": [
+        "captured",
+        "processing",
+        "processed",
+        "partial",
+        "failed",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "content-source"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "revision",
+    "source_kind",
+    "source_state"
+  ],
+  "title": "PersonalOS pos-v1 content-source frontmatter",
+  "type": "object"
+}

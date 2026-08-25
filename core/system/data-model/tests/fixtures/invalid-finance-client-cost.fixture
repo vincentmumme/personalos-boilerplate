@@ -1,0 +1,30 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5560-7cdf-98f0-750ed572abdf
+type: finance-client-cost
+title: "Invalid Client Cost"
+created: 2026-08-14
+updated: 2026-08-14
+cost_period: "August 2026"
+recharge_state: ready-to-bill
+client_ref: "[[companies/example-client]]"
+---
+
+# Invalid Client Cost
+
+## Current Truth
+Invalid.
+## Cost
+Invalid.
+## Recharge State
+Invalid.
+## Client and Project
+Invalid.
+## Source Expense
+Invalid.
+## Invoice Allocation
+Invalid.
+## Evidence
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

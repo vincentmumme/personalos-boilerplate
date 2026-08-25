@@ -1,0 +1,28 @@
+---
+schema_version: pos-v1
+id: 01a001a1-56fd-74dd-9e23-e054b8bef718
+type: finance-tax-manifest
+title: "Invalid Tax Manifest"
+created: 2026-08-14
+updated: 2026-08-14
+tax_year: "2025"
+manifest_state: unknown
+tax_dossier_ref: "[[examples/tax-dossier]]"
+---
+
+# Invalid Tax Manifest
+
+## Current Truth
+Invalid.
+## Scope
+Invalid.
+## Source Inventory
+Invalid.
+## Integrity
+Invalid.
+## Missing Sources
+Invalid.
+## Dossier Relation
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

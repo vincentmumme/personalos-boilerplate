@@ -1,0 +1,28 @@
+name: "content-version"
+page_shape: "state-record"
+canonical_owner: "contentos-version"
+allowed_roots: ["content"]
+path_pattern: "^content/pieces/[0-9]{4}/[a-z0-9]+(?:-[a-z0-9]+)*/versions/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "piece_ref", "platform", "publishing_account_key"]
+optional_fields: ["origin_operation_id", "content_tags", "cta_intents", "tracking_link_refs", "asset_ids", "caption_state", "hashtag_count"]
+fields:
+  caption_state:
+    datatype: "lower-kebab"
+  hashtag_count:
+    datatype: "integer"
+    minimum: 0
+module_constraints:
+  lifecycle:
+    enum: ["draft", "in-review", "approved", "superseded"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-version.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-version.fixture"
+  positive_logical_path: "content/pieces/2026/example-piece/versions/instagram.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-version.fixture"
+  negative_logical_path: "content/pieces/2026/example-piece/versions/instagram.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

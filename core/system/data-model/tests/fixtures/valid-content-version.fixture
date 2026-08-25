@@ -1,0 +1,27 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-720d-bb24-62f580a6fae5"
+type: "content-version"
+title: "Example content-version"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "draft"
+revision: 1
+piece_ref: "[[content/pieces/2026/example-piece/piece]]"
+platform: "instagram"
+publishing_account_key: "{{user_slug}}"
+---
+
+# Example content-version
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

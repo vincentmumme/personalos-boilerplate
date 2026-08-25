@@ -1,0 +1,11 @@
+name: lifecycle
+purpose: Profile-bound lifecycle state without a generic status field.
+admission_state: pilot
+planned_consumers: [person, company, automation, action, content-piece, finance-invoice]
+fields:
+  lifecycle:
+    datatype: enum
+    profile_constrained: true
+invariants:
+  generic_status_forbidden: true
+  transitions_profile_owned: true

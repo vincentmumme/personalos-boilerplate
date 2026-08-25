@@ -1,0 +1,101 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/content-knowledge-candidate.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "approver_key": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "candidate_class": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "candidate_state": {
+      "enum": [
+        "proposed",
+        "approved",
+        "rejected",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "content_evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "content_tags": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "origin_operation_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "target_owner_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "content-knowledge-candidate"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "candidate_class",
+    "candidate_state",
+    "revision"
+  ],
+  "title": "PersonalOS pos-v1 content-knowledge-candidate frontmatter",
+  "type": "object"
+}

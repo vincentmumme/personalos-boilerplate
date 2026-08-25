@@ -1,0 +1,25 @@
+name: "content-research"
+page_shape: "work-artifact"
+canonical_owner: "contentos-research"
+allowed_roots: ["content"]
+path_pattern: "^content/research/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle", "knowledge-context"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "research_question", "source_refs"]
+optional_fields: ["origin_operation_id", "content_tags"]
+fields:
+  research_question:
+    datatype: "plain-text"
+module_constraints:
+  lifecycle:
+    enum: ["draft", "in-review", "complete", "superseded", "archived"]
+required_sections: ["Purpose", "Working Notes"]
+section_order: ["Purpose", "Working Notes"]
+template: "system/templates/content/content-research.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-research.fixture"
+  positive_logical_path: "content/research/example-research.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-research.fixture"
+  negative_logical_path: "content/research/example-research.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

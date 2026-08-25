@@ -1,0 +1,59 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/truth-system.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "canonical_uri": {
+      "format": "uri",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "default_timezone": {
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_+.-]+(?:/[A-Za-z0-9_+.-]+)*$",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "system_kind": {
+      "enum": [
+        "personal-os",
+        "business-os",
+        "shared-workspace",
+        "external-service"
+      ],
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "truth-system"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "system_kind"
+  ],
+  "title": "PersonalOS pos-v1 truth-system frontmatter",
+  "type": "object"
+}

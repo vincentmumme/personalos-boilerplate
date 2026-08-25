@@ -1,0 +1,23 @@
+name: knowledge-assessment
+page_shape: work-artifact
+canonical_owner: knowledge-quality-assessment
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/[a-z0-9]+(?:-[a-z0-9]+)*/(?:output|\.librarian)(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, topic_ref, assessment_kind, assessment_outcome]
+optional_fields: [source_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, superseded, archived]
+required_sections: [Assessment, Findings, Recommendations, Sources, Re-entry]
+section_order: [Assessment, Findings, Recommendations, Sources, Re-entry]
+template: system/templates/knowledge/knowledge-assessment.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-assessment.fixture
+  positive_logical_path: knowledge/topics/example-topic/output/quality/knowledge-audit.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-assessment.fixture
+  negative_logical_path: knowledge/topics/example-topic/wiki/knowledge-audit.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

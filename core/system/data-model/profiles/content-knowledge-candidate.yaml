@@ -1,0 +1,27 @@
+name: "content-knowledge-candidate"
+page_shape: "work-artifact"
+canonical_owner: "contentos-knowledge-candidate"
+allowed_roots: ["knowledge"]
+path_pattern: "^knowledge/topics/content/inventory/candidates/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "knowledge-context"]
+optional_modules: []
+required_fields: ["revision", "candidate_state", "candidate_class"]
+optional_fields: ["origin_operation_id", "content_tags", "source_refs", "content_evidence_refs", "target_owner_ref", "approver_key"]
+fields:
+  candidate_class:
+    datatype: "lower-kebab"
+  approver_key:
+    datatype: "lower-kebab"
+module_constraints:
+  candidate_state:
+    enum: ["proposed", "approved", "rejected", "superseded"]
+required_sections: ["Purpose", "Working Notes"]
+section_order: ["Purpose", "Working Notes"]
+template: "system/templates/content/content-knowledge-candidate.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-knowledge-candidate.fixture"
+  positive_logical_path: "knowledge/topics/content/inventory/candidates/example-candidate.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-knowledge-candidate.fixture"
+  negative_logical_path: "knowledge/topics/content/inventory/candidates/example-candidate.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

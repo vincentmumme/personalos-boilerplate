@@ -1,0 +1,20 @@
+---
+name: Example Skill
+description: "Invalid runtime name and an undeclared POS metadata field."
+metadata:
+  pos_schema_version: pos-v1
+  pos_id: 019fec59-f047-70c8-860f-2473135e745f
+  pos_type: skill
+  pos_title: "Example Skill"
+  pos_created: 2026-08-10
+  pos_updated: 2026-08-10
+  pos_lifecycle: active
+  pos_skill_version: 1.0.0
+  pos_unknown_field: no
+---
+
+# Example Skill
+
+## Contract
+
+Invalid fixture.

@@ -1,0 +1,24 @@
+---
+name: example-skill
+description: "Use this example to verify the runtime-compatible PersonalOS skill envelope."
+metadata:
+  pos_schema_version: pos-v1
+  pos_id: 019fec59-f047-70c8-860f-2473135e745f
+  pos_type: skill
+  pos_title: "Example Skill"
+  pos_created: "2026-08-10"
+  pos_updated: "2026-08-10"
+  pos_lifecycle: active
+  pos_skill_version: 1.0.0
+  pos_system_refs: ["[[system/contracts/example-contract]]"]
+  pos_reads_profile_keys: ["project"]
+  pos_invokes_skill_refs: ["[[skills/example-helper/SKILL]]"]
+---
+
+# Example Skill
+
+## Contract
+
+Eine ausführbare Capability.
+
+Ein kurzer Fixture-Body ohne global erzwungene Section-Schablone.

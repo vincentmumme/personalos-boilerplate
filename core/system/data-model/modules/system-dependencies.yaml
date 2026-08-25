@@ -1,0 +1,13 @@
+name: system-dependencies
+purpose: Direct normative dependencies required by a template, runbook, check or skill at execution time.
+admission_state: active
+fields:
+  system_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [principle, rule, contract, convention, framework, template, runbook, check, truth-system, data-model-document]
+    legacy_targets: warn
+invariants:
+  dependencies_are_direct_only: true
+  transitive_context_is_derived: true
+  decisions_are_not_runtime_dependencies: true

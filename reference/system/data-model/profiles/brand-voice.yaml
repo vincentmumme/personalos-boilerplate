@@ -1,0 +1,23 @@
+name: brand-voice
+page_shape: state-record
+canonical_owner: business-brand-voice
+allowed_roots: [business]
+path_pattern: ^business/brands/[a-z0-9]+(?:-[a-z0-9]+)*/tone-of-voice\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, brand_refs]
+optional_fields: [company_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Voice Principles, Tone and Register, Language Patterns, Boundaries, Application, Sources, Timeline]
+section_order: [Current Truth, Voice Principles, Tone and Register, Language Patterns, Boundaries, Application, Sources, Timeline]
+template: system/templates/business/brand-voice.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-brand-voice.fixture
+  positive_logical_path: business/brands/example-brand/tone-of-voice.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-brand-voice.fixture
+  negative_logical_path: business/brands/example-brand/tone-of-voice.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

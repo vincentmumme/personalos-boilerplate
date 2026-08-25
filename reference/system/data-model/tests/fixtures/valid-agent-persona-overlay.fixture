@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-7290-ae7d-fda689770a45
+type: agent-persona-overlay
+title: "Example Agent Persona Overlay"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+agent_ref: "[[system/agents/example-agent]]"
+shared_persona_ref: "[[SOUL]]"
+overlay_kind: behavior-extension
+---
+
+# Example Agent Persona Overlay
+
+## Current Truth
+
+Example content.
+
+## Inheritance
+
+Example content.
+
+## Behavior Additions
+
+Example content.
+
+## Communication
+
+Example content.
+
+## Boundaries
+
+Example content.
+
+## Sources
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

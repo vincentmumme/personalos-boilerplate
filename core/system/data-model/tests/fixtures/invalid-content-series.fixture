@@ -1,0 +1,26 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-759c-ab2f-036c00a8e0b3"
+type: "unknown-content-profile"
+title: "Example content-series"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "active"
+revision: 1
+format_ref: "[[content/formats/example-format]]"
+editorial_promise: "A clear practical takeaway."
+---
+
+# Example content-series
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

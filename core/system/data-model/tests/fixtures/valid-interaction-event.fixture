@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000012
+type: interaction-event
+title: "Example Call"
+created: 2026-08-12
+updated: 2026-08-12
+interaction_date: 2026-08-12
+interaction_kind: call
+participant_refs: ["[[USER]]"]
+evidence_refs: ["[[interactions/meetings/2026/2026-08-12-example-call/evidence/019ff59c-1000-7000-8000-000000000001]]"]
+---
+
+# Example Call
+
+## Event
+
+An example call occurred.
+
+## Outcome
+
+One source-bounded outcome.
+
+## Commitments
+
+None.
+
+## Open Questions
+
+None.
+
+## Propagation
+
+No-op.
+
+## Sources
+
+- Example evidence.
+
+## Corrections
+
+None.

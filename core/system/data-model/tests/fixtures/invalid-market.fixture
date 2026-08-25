@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ed70-7ce9-914d-f7a5cf565062
+type: market
+title: "Example Market"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Market
+
+## Current Truth
+
+Missing the profile contract.

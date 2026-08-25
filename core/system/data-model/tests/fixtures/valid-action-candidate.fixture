@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 019ff139-ad27-7a78-b727-8487fe8d4d13
+type: action-candidate
+title: "Assess possible follow-up"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: pending
+triage_by: 2026-08-14
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+---
+
+# Assess possible follow-up
+
+## Current Truth
+
+The signal may matter but does not yet prove a commitment.
+
+## Candidate Assessment
+
+Clarify whether {{user_name}} promised a follow-up.
+
+## Promotion Gate
+
+Promote only when evidence establishes a personal commitment.
+
+## Context and Evidence
+
+The linked decision defines candidate semantics.
+
+## Timeline
+
+- **2026-08-11** | Action Candidate created.

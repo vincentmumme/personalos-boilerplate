@@ -1,0 +1,123 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/content-production-job.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "asset_ids": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "attempt": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "content_tags": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "executor_key": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "executor_type": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "expected_outputs": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "idempotency_key": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "job_state": {
+      "enum": [
+        "queued",
+        "in-progress",
+        "blocked",
+        "in-review",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "type": "string"
+    },
+    "origin_operation_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "piece_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "production_spec_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "content-production-job"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "attempt",
+    "executor_type",
+    "idempotency_key",
+    "job_state",
+    "piece_ref",
+    "production_spec_ref",
+    "revision"
+  ],
+  "title": "PersonalOS pos-v1 content-production-job frontmatter",
+  "type": "object"
+}

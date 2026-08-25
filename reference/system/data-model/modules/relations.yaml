@@ -1,0 +1,44 @@
+name: relations
+purpose: Typed local graph relationships represented by quoted Obsidian wikilinks.
+admission_state: active
+fields:
+  sponsor_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [person, company, identity-record]
+    legacy_targets: warn
+  project_ref:
+    datatype: wikilink
+    target_profiles: [project]
+    legacy_targets: reject
+  redirect_target_ref:
+    datatype: wikilink
+    target_profiles: [project, working-note, redirect, truth-system, owner-index, identity-record, identity-biography, identity-personal-constitution, identity-operating-profile, identity-life-orientation, identity-legal, identity-capabilities, person, company, brand, brand-voice, brand-design-system, market, customer-profile, product, offer, business-model, strategy, automation, agent, agent-persona-overlay, runtime, host, system-service, integration, access-record, operating-system, view-record, system-observability-view, principle, rule, contract, convention, framework, template, runbook, check]
+    legacy_targets: warn
+  evidence_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [evidence, source, report, decision, interaction, automation-run, day-record, working-note, source-evidence, interaction-event, conversation-stream, interaction-analysis, signal-digest, processing-receipt, automation-run-receipt, automation-day-summary, knowledge-source, health-provider-snapshot, health-daily-assessment, finance-invoice, finance-expense, finance-time-entry, finance-client-cost, finance-payment-source-registry, finance-recurring-obligation, finance-tax-dossier, content-piece, content-publication]
+    legacy_targets: warn
+  affected_owner_refs:
+    datatype: wikilink-list
+    min_items: 1
+    legacy_targets: warn
+  parent_project_ref:
+    datatype: wikilink
+    target_profiles: [project]
+    legacy_targets: warn
+  dependency_project_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [project]
+    legacy_targets: warn
+  follow_on_project_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [project]
+    legacy_targets: warn
+invariants:
+  singular_suffix: _ref
+  plural_suffix: _refs
+  inverse_lists: derived

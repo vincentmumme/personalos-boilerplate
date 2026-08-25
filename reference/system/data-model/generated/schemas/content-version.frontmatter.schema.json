@@ -1,0 +1,122 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/content-version.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "asset_ids": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "caption_state": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "content_tags": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "cta_intents": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "hashtag_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "draft",
+        "in-review",
+        "approved",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "origin_operation_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "piece_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "platform": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "publishing_account_key": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "tracking_link_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "type": {
+      "const": "content-version"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "lifecycle",
+    "piece_ref",
+    "platform",
+    "publishing_account_key",
+    "revision"
+  ],
+  "title": "PersonalOS pos-v1 content-version frontmatter",
+  "type": "object"
+}

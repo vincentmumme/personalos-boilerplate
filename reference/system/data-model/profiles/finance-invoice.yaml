@@ -1,0 +1,31 @@
+name: finance-invoice
+page_shape: state-record
+canonical_owner: finance-outgoing-invoice-context
+allowed_roots: [finance]
+path_pattern: ^finance/rechnungen/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [issued_on, invoice_state, invoice_number, client_ref, external_authority_ref, amount_net, amount_gross, currency]
+optional_fields: [due_on, paid_on, project_ref, external_record_id, tax_rate, evidence_refs]
+fields:
+  issued_on:
+    datatype: date
+  due_on:
+    datatype: date
+  paid_on:
+    datatype: date
+  invoice_state:
+    datatype: enum
+    enum: [draft, open, overdue, paid, voided]
+  invoice_number:
+    datatype: plain-text
+required_sections: [Current Truth, Invoice, Service and Amounts, Delivery, Payment State, Client and Project, External Authority, Evidence, Timeline]
+section_order: [Current Truth, Invoice, Service and Amounts, Delivery, Payment State, Client and Project, External Authority, Evidence, Timeline]
+template: system/templates/finance/finance-invoice.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-invoice.fixture
+  positive_logical_path: finance/rechnungen/re2026-9999-example-invoice.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-invoice.fixture
+  negative_logical_path: finance/belege/re2026-9999-example-invoice.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

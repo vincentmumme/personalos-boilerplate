@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-7d15-9e3c-6e9ad7c65280
+type: host
+title: "Example Host"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+host_kind: laptop
+---
+
+# Example Host
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Operating System
+
+Example content.
+
+## Runtimes and Services
+
+Example content.
+
+## Access
+
+Example content.
+
+## Health
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

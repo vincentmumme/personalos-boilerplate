@@ -1,0 +1,22 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7300-bc79-56b28e41f942"
+type: "content-research"
+title: "Example content-research"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "draft"
+revision: 1
+research_question: "What is supported by the sources?"
+source_refs: ["[[content/sources/example-source/source]]"]
+---
+
+# Example content-research
+
+## Purpose
+
+<purpose>
+
+## Working Notes
+
+<working_notes>

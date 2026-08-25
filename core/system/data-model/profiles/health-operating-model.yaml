@@ -1,0 +1,23 @@
+name: health-operating-model
+page_shape: state-record
+canonical_owner: health-operating-model
+allowed_roots: [health]
+path_pattern: ^health/healthos\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, subject_ref]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+required_sections: [Current Truth, Purpose, Active Data Flow, Active Object Model, Decision Logic, Boundaries, Timeline]
+section_order: [Current Truth, Purpose, Active Data Flow, Active Object Model, Decision Logic, Boundaries, Timeline]
+template: system/templates/health/health-operating-model.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-health-operating-model.fixture
+  positive_logical_path: health/healthos.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-health-operating-model.fixture
+  negative_logical_path: health/operating-model.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

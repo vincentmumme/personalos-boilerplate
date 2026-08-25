@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000004
+type: processing-receipt
+title: "Example Call Processing Receipt"
+created: 2026-08-12
+updated: 2026-08-12
+receipt_kind: semantic-propagation
+receipt_outcome: propagated
+processed_at: "2026-08-12T14:00:00+02:00"
+verification_result: pass
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+interaction_ref: "[[interactions/meetings/2026/2026-08-12-example-call/2026-08-12-example-call]]"
+evidence_refs: ["[[interactions/meetings/2026/2026-08-12-example-call/evidence/019ff59c-1000-7000-8000-000000000001]]"]
+affected_owner_refs: ["[[system/index]]"]
+---
+
+# Example Call Processing Receipt
+
+## Processing Summary
+
+Example processing run.
+
+## Coverage
+
+One interaction and one evidence record.
+
+## Propagation
+
+One owner updated.
+
+## Verification
+
+All checks passed.
+
+## Errors and Pending
+
+None.
+
+## Corrections
+
+None.

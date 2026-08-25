@@ -1,0 +1,15 @@
+{
+  "user_name": "Alex Example",
+  "user_slug": "alex-example",
+  "user_last_name": "Example",
+  "user_profile": "Ich bin selbstständig und baue digitale Produkte.",
+  "user_direction": "Ich möchte fokussierter arbeiten und wichtige Zusammenhänge nicht mehr verlieren.",
+  "user_working_style": "Ich denke visuell, entscheide gern mit konkreten Optionen und brauche eine einfache Struktur.",
+  "user_decision_style": "Ich möchte relevante Alternativen und Folgen verstehen, dann aber bewusst eine Richtung festlegen.",
+  "user_ai_collaboration": "KI-Agenten sollen vorhandenen Kontext zuerst lesen, Unsicherheit sichtbar machen und sichere Arbeit vollständig abschließen.",
+  "user_key_context": "Meine wichtigsten Beziehungen, Unternehmen und Verantwortungen werden nach dem Setup als eigene Records ergänzt.",
+  "user_identity_summary": "Ich bin ein neugieriger, eigenverantwortlicher Mensch und möchte Technik bewusst für mein Leben einsetzen.",
+  "user_values": "Klarheit, Ehrlichkeit, Selbstbestimmung und Verlässlichkeit.",
+  "organization_name": "Example Studio",
+  "organization_slug": "example-studio"
+}

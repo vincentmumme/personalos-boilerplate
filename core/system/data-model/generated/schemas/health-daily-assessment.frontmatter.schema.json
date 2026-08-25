@@ -1,0 +1,75 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/health-daily-assessment.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "assessment_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "provider_snapshot_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "readiness_band": {
+      "enum": [
+        "green",
+        "yellow",
+        "red",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "subject_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "training_recommendation": {
+      "enum": [
+        "train",
+        "light",
+        "rest",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "const": "health-daily-assessment"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "assessment_date",
+    "provider_snapshot_ref",
+    "readiness_band",
+    "subject_ref",
+    "training_recommendation"
+  ],
+  "title": "PersonalOS pos-v1 health-daily-assessment frontmatter",
+  "type": "object"
+}

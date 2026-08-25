@@ -1,0 +1,381 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/skill-prompt.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "writes_profile_keys"
+        ]
+      },
+      "then": {
+        "required": [
+          "check_refs"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "check_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "decision_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "derived_from_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "invokes_skill_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "paused",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "reads_profile_keys": {
+      "items": {
+        "enum": [
+          "access-record",
+          "action",
+          "action-candidate",
+          "activity-contribution",
+          "agent",
+          "agent-entry-pointer",
+          "agent-persona",
+          "agent-persona-overlay",
+          "attention-trigger",
+          "automation",
+          "automation-day-summary",
+          "automation-run-receipt",
+          "brand",
+          "brand-design-system",
+          "brand-voice",
+          "business-model",
+          "capture",
+          "check",
+          "company",
+          "content-asset-manifest",
+          "content-configuration",
+          "content-context-pack",
+          "content-evidence",
+          "content-format",
+          "content-guide",
+          "content-idea",
+          "content-input",
+          "content-knowledge-candidate",
+          "content-learning-candidate",
+          "content-piece",
+          "content-production-job",
+          "content-production-recipe",
+          "content-production-spec",
+          "content-publication",
+          "content-research",
+          "content-series",
+          "content-source",
+          "content-tracking-link",
+          "content-version",
+          "context-gap-review",
+          "contract",
+          "convention",
+          "conversation-stream",
+          "customer-profile",
+          "daily-briefing",
+          "data-model-changelog",
+          "data-model-document",
+          "day-record",
+          "decision",
+          "finance-account",
+          "finance-client-cost",
+          "finance-expense",
+          "finance-invoice",
+          "finance-payment-source-registry",
+          "finance-recurring-obligation",
+          "finance-tax-dossier",
+          "finance-tax-manifest",
+          "finance-time-entry",
+          "framework",
+          "health-daily-assessment",
+          "health-measurement",
+          "health-operating-model",
+          "health-plan",
+          "health-profile",
+          "health-provider-snapshot",
+          "host",
+          "idea",
+          "identity-biography",
+          "identity-capabilities",
+          "identity-legal",
+          "identity-life-orientation",
+          "identity-operating-profile",
+          "identity-personal-constitution",
+          "identity-record",
+          "integration",
+          "interaction-analysis",
+          "interaction-event",
+          "journal-entry",
+          "knowledge-article",
+          "knowledge-assessment",
+          "knowledge-dataset",
+          "knowledge-inventory-item",
+          "knowledge-log",
+          "knowledge-source",
+          "knowledge-topic",
+          "legacy-schema-pack",
+          "market",
+          "offer",
+          "operating-model",
+          "operating-system",
+          "owner-index",
+          "person",
+          "principle",
+          "priority-control",
+          "processing-receipt",
+          "product",
+          "project",
+          "redirect",
+          "root-index",
+          "rule",
+          "runbook",
+          "runtime",
+          "signal-digest",
+          "skill",
+          "skill-prompt",
+          "skill-reference",
+          "skill-resolver",
+          "source-evidence",
+          "strategy",
+          "system-observability-view",
+          "system-service",
+          "template",
+          "truth-system",
+          "user-context",
+          "view-record",
+          "working-note"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "supersedes_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "system_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "template_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "skill-prompt"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    },
+    "writes_profile_keys": {
+      "items": {
+        "enum": [
+          "access-record",
+          "action",
+          "action-candidate",
+          "activity-contribution",
+          "agent",
+          "agent-entry-pointer",
+          "agent-persona",
+          "agent-persona-overlay",
+          "attention-trigger",
+          "automation",
+          "automation-day-summary",
+          "automation-run-receipt",
+          "brand",
+          "brand-design-system",
+          "brand-voice",
+          "business-model",
+          "capture",
+          "check",
+          "company",
+          "content-asset-manifest",
+          "content-configuration",
+          "content-context-pack",
+          "content-evidence",
+          "content-format",
+          "content-guide",
+          "content-idea",
+          "content-input",
+          "content-knowledge-candidate",
+          "content-learning-candidate",
+          "content-piece",
+          "content-production-job",
+          "content-production-recipe",
+          "content-production-spec",
+          "content-publication",
+          "content-research",
+          "content-series",
+          "content-source",
+          "content-tracking-link",
+          "content-version",
+          "context-gap-review",
+          "contract",
+          "convention",
+          "conversation-stream",
+          "customer-profile",
+          "daily-briefing",
+          "data-model-changelog",
+          "data-model-document",
+          "day-record",
+          "decision",
+          "finance-account",
+          "finance-client-cost",
+          "finance-expense",
+          "finance-invoice",
+          "finance-payment-source-registry",
+          "finance-recurring-obligation",
+          "finance-tax-dossier",
+          "finance-tax-manifest",
+          "finance-time-entry",
+          "framework",
+          "health-daily-assessment",
+          "health-measurement",
+          "health-operating-model",
+          "health-plan",
+          "health-profile",
+          "health-provider-snapshot",
+          "host",
+          "idea",
+          "identity-biography",
+          "identity-capabilities",
+          "identity-legal",
+          "identity-life-orientation",
+          "identity-operating-profile",
+          "identity-personal-constitution",
+          "identity-record",
+          "integration",
+          "interaction-analysis",
+          "interaction-event",
+          "journal-entry",
+          "knowledge-article",
+          "knowledge-assessment",
+          "knowledge-dataset",
+          "knowledge-inventory-item",
+          "knowledge-log",
+          "knowledge-source",
+          "knowledge-topic",
+          "legacy-schema-pack",
+          "market",
+          "offer",
+          "operating-model",
+          "operating-system",
+          "owner-index",
+          "person",
+          "principle",
+          "priority-control",
+          "processing-receipt",
+          "product",
+          "project",
+          "redirect",
+          "root-index",
+          "rule",
+          "runbook",
+          "runtime",
+          "signal-digest",
+          "skill",
+          "skill-prompt",
+          "skill-reference",
+          "skill-resolver",
+          "source-evidence",
+          "strategy",
+          "system-observability-view",
+          "system-service",
+          "template",
+          "truth-system",
+          "user-context",
+          "view-record",
+          "working-note"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "decision_refs",
+    "invokes_skill_refs",
+    "lifecycle",
+    "system_refs"
+  ],
+  "title": "PersonalOS pos-v1 skill-prompt frontmatter",
+  "type": "object"
+}

@@ -1,0 +1,18 @@
+---
+schema_version: pos-v1
+id: 019fec26-264f-7e2f-8a86-eb582470bdb5
+type: working-note
+title: "Migration Workroom"
+created: 2026-08-10
+updated: 2026-08-10
+---
+
+# Migration Workroom
+
+## Working Truth
+
+This fixture deliberately omits its project relation.
+
+## Re-entry
+
+Repair the missing required relation.

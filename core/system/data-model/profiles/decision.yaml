@@ -1,0 +1,68 @@
+name: decision
+page_shape: event-record
+canonical_owner: decisions
+allowed_roots: [decisions]
+path_pattern: ^decisions/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+path_date_field: decided_on
+path_date_prefix_template: decisions/{year}/{date}-
+required_modules: [relations]
+optional_modules: []
+required_fields: [decision_state, decision_confidence, decided_on, decided_by_refs, affected_owner_refs]
+optional_fields: [supersedes_decision_refs, reverses_decision_refs, successor_decision_ref]
+fields:
+  decision_state:
+    datatype: enum
+    enum: [active, superseded, reversed]
+  decision_confidence:
+    datatype: enum
+    enum: [locked, leaning, open-bet]
+  decided_on:
+    datatype: date
+  decided_by_refs:
+    datatype: wikilink-list
+    min_items: 1
+    legacy_targets: warn
+  supersedes_decision_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [decision]
+    legacy_targets: warn
+  reverses_decision_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [decision]
+    legacy_targets: warn
+  successor_decision_ref:
+    datatype: wikilink
+    target_profiles: [decision]
+    legacy_targets: warn
+    forbid_self: true
+conditional_rules:
+  active:
+    when_field: decision_state
+    when_in: [active]
+    forbid_fields: [successor_decision_ref]
+  superseded:
+    when_field: decision_state
+    when_in: [superseded]
+    require_fields: [successor_decision_ref]
+  reversed:
+    when_field: decision_state
+    when_in: [reversed]
+    require_fields: [successor_decision_ref]
+  supersedes:
+    when_present: supersedes_decision_refs
+    forbid_fields: [reverses_decision_refs]
+  reverses:
+    when_present: reverses_decision_refs
+    forbid_fields: [supersedes_decision_refs]
+required_sections: [Decision, Context, Why, Alternatives, Consequences, Reconsider When, Affected Owners, Sources, Corrections]
+section_order: [Decision, Context, Why, Alternatives, Consequences, Reconsider When, Affected Owners, Sources, Corrections]
+template: system/templates/decision.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-decision.fixture
+  positive_logical_path: decisions/2026/2026-08-11-example-decision.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-decision.fixture
+  negative_logical_path: decisions/2026/2026-08-11-invalid-decision.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

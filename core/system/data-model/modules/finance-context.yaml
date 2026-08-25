@@ -1,0 +1,61 @@
+name: finance-context
+purpose: Shared query, relation, monetary and external-authority semantics for admitted Finance records.
+admission_state: pilot
+planned_consumers: [finance-account, finance-payment-source-registry, finance-expense, finance-client-cost, finance-time-entry, finance-invoice, finance-recurring-obligation, finance-tax-dossier, finance-tax-manifest]
+fields:
+  finance_scope:
+    datatype: enum
+    enum: [personal, business, mixed]
+  company_ref:
+    datatype: wikilink
+    target_profiles: [company]
+    legacy_targets: warn
+  client_ref:
+    datatype: wikilink
+    target_profiles: [person, company]
+    legacy_targets: warn
+  external_authority_ref:
+    datatype: wikilink
+    target_profiles: [integration, truth-system]
+    legacy_targets: reject
+  external_record_id:
+    datatype: plain-text
+  invoice_ref:
+    datatype: wikilink
+    target_profiles: [finance-invoice]
+    legacy_targets: reject
+  source_expense_ref:
+    datatype: wikilink
+    target_profiles: [finance-expense]
+    legacy_targets: reject
+  tax_dossier_ref:
+    datatype: wikilink
+    target_profiles: [finance-tax-dossier]
+    legacy_targets: reject
+  payment_source_registry_ref:
+    datatype: wikilink
+    target_profiles: [finance-payment-source-registry]
+    legacy_targets: reject
+  amount_net:
+    datatype: decimal
+  amount_gross:
+    datatype: decimal
+  source_amount:
+    datatype: decimal
+  tax_rate:
+    datatype: decimal
+  hours:
+    datatype: decimal
+  hourly_rate:
+    datatype: decimal
+  currency:
+    datatype: plain-text
+    pattern: ^[A-Z]{3}$
+  tax_year:
+    datatype: plain-text
+    pattern: ^[0-9]{4}$
+invariants:
+  external_authority_not_duplicated: true
+  monetary_values_use_decimal_strings: true
+  currency_uses_iso_4217_code: true
+  full_payment_identifiers_forbidden: true

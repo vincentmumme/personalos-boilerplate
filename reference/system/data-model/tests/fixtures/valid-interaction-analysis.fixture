@@ -1,0 +1,39 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000002
+type: interaction-analysis
+title: "Example Call Analysis"
+created: 2026-08-12
+updated: 2026-08-12
+analysis_kind: combined
+analysis_outcome: propagated
+interaction_ref: "[[interactions/meetings/2026/2026-08-12-example-call/2026-08-12-example-call]]"
+evidence_refs: ["[[interactions/meetings/2026/2026-08-12-example-call/evidence/019ff59c-1000-7000-8000-000000000001]]"]
+affected_owner_refs: ["[[system/index]]"]
+---
+
+# Example Call Analysis
+
+## Analysis
+
+Example interpretation.
+
+## Findings
+
+One finding.
+
+## Contradictions and Uncertainty
+
+None.
+
+## Propagation
+
+One owner updated.
+
+## Sources
+
+- Example evidence.
+
+## Corrections
+
+None.

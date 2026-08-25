@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000019
+type: automation-day-summary
+title: "Example Automation Day - 2026-08-12"
+created: 2026-08-12
+updated: 2026-08-12
+day_date: 2026-08-12
+timezone: Europe/Berlin
+processed_until: 2026-08-12T18:00:00+02:00
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+retention_class: daily-aggregate
+day_summary_outcome: success
+---
+
+# Example Automation Day - 2026-08-12
+
+## Run Summary
+
+Five runs, four routine No-ops and one material run.
+
+## Coverage
+
+Complete through 18:00.
+
+## Material Receipts
+
+- One example receipt.
+
+## No-op Accounting
+
+Four routine No-ops.
+
+## Failures and Pending
+
+None.
+
+## Propagation
+
+One owner changed.
+
+## Corrections
+
+None.

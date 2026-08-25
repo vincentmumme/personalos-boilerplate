@@ -1,0 +1,30 @@
+name: daily-context
+purpose: Shared temporal and producer metadata for Daily containers, Activity Contributions and Journal Entries.
+admission_state: active
+fields:
+  day_date:
+    datatype: date
+  timezone:
+    datatype: plain-text
+    iana_timezone: true
+  occurred_at:
+    datatype: datetime
+  recorded_at:
+    datatype: datetime
+  generated_at:
+    datatype: datetime
+  producer_kind:
+    datatype: enum
+    enum: [human, agent, automation, external-system, hybrid]
+  producer_name:
+    datatype: plain-text
+  runtime_name:
+    datatype: plain-text
+  producer_ref:
+    datatype: wikilink
+    legacy_targets: warn
+invariants:
+  day_date_selects_container: true
+  occurred_at_is_event_time: true
+  recorded_at_is_capture_time: true
+  producer_names_are_not_folder_semantics: true

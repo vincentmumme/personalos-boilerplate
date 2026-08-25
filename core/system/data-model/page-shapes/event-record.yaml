@@ -1,0 +1,6 @@
+name: event-record
+purpose: Immutable or append-only evidence of an event, source, decision, run or measurement with explicit correction and supersession paths.
+requires_current_truth: false
+requires_timeline: false
+timeline_mode: immutable-with-corrections
+allows_companion_data: true

@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5537-7f46-aaf5-c3da28edd7c3
+type: finance-client-cost
+title: "Example Client Cost"
+created: 2026-08-14
+updated: 2026-08-14
+cost_period: "2026-08"
+recharge_state: ready-to-bill
+client_ref: "[[companies/example-client]]"
+amount_gross: "50.00"
+currency: "EUR"
+---
+
+# Example Client Cost
+
+## Current Truth
+Ready to bill.
+## Cost
+50.00 EUR.
+## Recharge State
+Ready to bill.
+## Client and Project
+Example client.
+## Source Expense
+Source is documented in evidence.
+## Invoice Allocation
+Not yet allocated.
+## Evidence
+Provider invoice.
+## Timeline
+- **2026-08-14** | Created.

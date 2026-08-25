@@ -1,0 +1,40 @@
+name: signal-processing
+purpose: Shared source, coverage, relationship, producer and retention metadata for Interaction and Automation records.
+admission_state: active
+fields:
+  source_system:
+    datatype: plain-text
+  source_channel:
+    datatype: plain-text
+  source_ref:
+    datatype: plain-text
+  coverage_started_at:
+    datatype: datetime
+  coverage_ended_at:
+    datatype: datetime
+  processed_until:
+    datatype: datetime
+  participant_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [person, company, identity-record]
+    legacy_targets: warn
+  interaction_ref:
+    datatype: wikilink
+    target_profiles: [interaction-event, conversation-stream, signal-digest]
+    legacy_targets: reject
+  producer_skill_ref:
+    datatype: wikilink
+    target_profiles: [skill]
+    legacy_targets: warn
+  retention_class:
+    datatype: enum
+    enum: [material-run, daily-aggregate]
+  retention_reason:
+    datatype: plain-text
+invariants:
+  coverage_is_source_time_not_scheduler_time: true
+  interaction_ref_points_to_evidence_owner: true
+  producer_skill_ref_points_to_behavior_owner: true
+  routine_no_op_has_no_individual_receipt: true
+  retained_receipt_has_explicit_class: true

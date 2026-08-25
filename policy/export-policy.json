@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "description": "Ordered, fail-closed classification of the private PersonalOS reference repository.",
+  "rules": [
+    {
+      "id": "root-bootstrap",
+      "pattern": "AGENTS.md",
+      "action": "render",
+      "target": "core/AGENTS.md",
+      "reason": "Bootstrap structure is reusable but the private subject and runtime pointers must be neutralized."
+    },
+    {
+      "id": "root-claude-adapter",
+      "pattern": "CLAUDE.md",
+      "action": "render",
+      "target": "core/CLAUDE.md",
+      "reason": "Claude adapter is optional at runtime and must point to the generic bootstrap."
+    },
+    {
+      "id": "root-index",
+      "pattern": "INDEX.md",
+      "action": "render",
+      "target": "core/INDEX.md",
+      "reason": "Root ownership is reusable while subject-specific language must be removed."
+    },
+    {
+      "id": "root-soul",
+      "pattern": "SOUL.md",
+      "action": "render",
+      "target": "core/SOUL.md",
+      "reason": "The behavior contract is reusable but must address the installed system subject rather than the private source subject."
+    },
+    {
+      "id": "root-user",
+      "pattern": "USER.md",
+      "action": "render",
+      "target": "core/USER.md",
+      "reason": "Only the USER record shape is reusable; all private content is replaced."
+    },
+    {
+      "id": "root-gitignore",
+      "pattern": ".gitignore",
+      "action": "render",
+      "target": "core/.gitignore",
+      "reason": "Safe ignore rules are rebuilt for a portable installation."
+    },
+    {
+      "id": "private-syncthing-ignore",
+      "pattern": ".stignore",
+      "action": "exclude",
+      "reason": "Syncthing ignore rules belong to the private host setup and are not part of a portable PersonalOS."
+    },
+    {
+      "id": "claude-code-module",
+      "pattern": ".claude/**",
+      "action": "exclude",
+      "reason": "The private Claude Code installation is not portable; a clean adapter module is authored separately."
+    },
+    {
+      "id": "obsidian-module",
+      "pattern": ".obsidian/**",
+      "action": "exclude",
+      "reason": "The private Obsidian configuration is not portable; a clean adapter module is authored separately."
+    },
+    {
+      "id": "skills-lock-module",
+      "pattern": "skills-lock.json",
+      "action": "exclude",
+      "reason": "The private runtime lock belongs to the installed instance."
+    },
+    {
+      "id": "private-notion-collaboration-boundary",
+      "pattern": "system/contracts/integrations/notion-sync-boundary.md",
+      "action": "exclude",
+      "reason": "This contract describes one private collaboration and its existing Notion topology."
+    },
+    {
+      "id": "system-contracts",
+      "pattern": "system/contracts/**",
+      "action": "render",
+      "reason": "Normative system contracts are reusable core constitution."
+    },
+    {
+      "id": "system-conventions",
+      "pattern": "system/conventions/**",
+      "action": "render",
+      "reason": "Record, naming and discovery conventions are reusable core logic."
+    },
+    {
+      "id": "system-frameworks",
+      "pattern": "system/frameworks/**",
+      "action": "render",
+      "reason": "Context and workflow frameworks are reusable core logic."
+    },
+    {
+      "id": "system-principles",
+      "pattern": "system/principles/**",
+      "action": "render",
+      "reason": "Stable system principles belong to the universal core."
+    },
+    {
+      "id": "system-rules",
+      "pattern": "system/rules/**",
+      "action": "render",
+      "reason": "General rules belong to the universal core."
+    },
+    {
+      "id": "system-templates",
+      "pattern": "system/templates/**",
+      "action": "render",
+      "reason": "Registered record templates belong to the universal core."
+    },
+    {
+      "id": "private-data-model-fixtures",
+      "pattern": "system/data-model/tests/fixtures/*vincent*",
+      "action": "exclude",
+      "reason": "Fixtures that intentionally contain the private subject are not distributable."
+    },
+    {
+      "id": "historical-data-model-migrations",
+      "pattern": "system/data-model/migrations/**",
+      "action": "exclude",
+      "reason": "One-time migrations describe the history of the private reference instance."
+    },
+    {
+      "id": "private-bootstrap-derivation-script",
+      "pattern": "system/data-model/scripts/bootstrap_records.py",
+      "action": "exclude",
+      "reason": "The source-instance bootstrap validator embeds private token policy and is replaced by the boilerplate installer."
+    },
+    {
+      "id": "public-data-model-fixtures",
+      "pattern": "system/data-model/tests/fixtures/**",
+      "action": "render",
+      "reason": "Profile admission requires portable positive and negative fixtures."
+    },
+    {
+      "id": "private-data-model-tests",
+      "pattern": "system/data-model/tests/**",
+      "action": "exclude",
+      "reason": "Source-instance regression suites are replaced by one portable public registry contract; portable admission fixtures are classified above."
+    },
+    {
+      "id": "private-data-model-history",
+      "pattern": "system/data-model/changelog.md",
+      "action": "exclude",
+      "reason": "The changelog describes the private reference instance rather than a clean installation."
+    },
+    {
+      "id": "private-data-model-legacy-map",
+      "pattern": "system/data-model/legacy-mapping.md",
+      "action": "exclude",
+      "reason": "Legacy mappings describe the private reference instance."
+    },
+    {
+      "id": "private-data-model-deprecations",
+      "pattern": "system/data-model/deprecations.yaml",
+      "action": "render",
+      "reason": "The registry requires a deprecations map; current empty state is portable."
+    },
+    {
+      "id": "legacy-schema-packs",
+      "pattern": "system/schema-packs/**",
+      "action": "exclude",
+      "reason": "Legacy compatibility packs are not part of a clean new installation."
+    },
+    {
+      "id": "system-data-model",
+      "pattern": "system/data-model/**",
+      "action": "render",
+      "reason": "Profiles, modules, schemas, generators and generic tests define the reusable data model."
+    },
+    {
+      "id": "private-runtime-cron-checks",
+      "pattern": "system/checks/system/scripts/*cron*reliability*",
+      "action": "exclude",
+      "reason": "These checks encode the private scheduler and host topology."
+    },
+    {
+      "id": "system-checks",
+      "pattern": "system/checks/**",
+      "action": "render",
+      "reason": "Checks are reusable but paths and assumptions require portability review."
+    },
+    {
+      "id": "system-core-runbooks",
+      "pattern": "system/runbooks/core/**",
+      "action": "render",
+      "reason": "Core mutation and test-before-bulk runbooks belong to the portable kernel."
+    },
+    {
+      "id": "system-runbook-index",
+      "pattern": "system/runbooks/index.md",
+      "action": "render",
+      "reason": "The runbook index is rebuilt for the portable kernel."
+    },
+    {
+      "id": "system-runbooks",
+      "pattern": "system/runbooks/**",
+      "action": "exclude",
+      "reason": "Only explicitly selected core runbooks belong to the portable kernel."
+    },
+    {
+      "id": "system-index",
+      "pattern": "system/index.md",
+      "action": "render",
+      "target": "core/system/index.md",
+      "reason": "The system map is rebuilt from the modules actually shipped by the boilerplate."
+    },
+    {
+      "id": "system-operating-model",
+      "pattern": "system/operating-systems/module-contract.md",
+      "action": "render",
+      "reason": "The module boundary is reusable core system logic."
+    },
+    {
+      "id": "system-personalos-model",
+      "pattern": "system/operating-systems/personalos.md",
+      "action": "render",
+      "reason": "The PersonalOS operating model is core but private references must be neutralized."
+    },
+    {
+      "id": "system-operating-systems",
+      "pattern": "system/operating-systems/**",
+      "action": "exclude",
+      "reason": "BusinessOS and ContentOS extensions require separately reviewed public modules."
+    },
+    {
+      "id": "private-system-access",
+      "pattern": "system/access/**",
+      "action": "exclude",
+      "reason": "Access records and authorizations belong only to the installed instance."
+    },
+    {
+      "id": "private-agent-topology",
+      "pattern": "system/agents/**",
+      "action": "exclude",
+      "reason": "Concrete agent identities and persona overlays belong to the installed instance."
+    },
+    {
+      "id": "private-host-topology",
+      "pattern": "system/hosts/**",
+      "action": "exclude",
+      "reason": "Concrete hosts and their configuration belong to the installed instance."
+    },
+    {
+      "id": "private-integrations",
+      "pattern": "system/integrations/**",
+      "action": "exclude",
+      "reason": "Concrete integration state and identifiers belong to the installed instance."
+    },
+    {
+      "id": "private-observability",
+      "pattern": "system/observability/**",
+      "action": "exclude",
+      "reason": "Observed services, variables and health belong to the installed instance."
+    },
+    {
+      "id": "private-runtimes",
+      "pattern": "system/runtimes/**",
+      "action": "exclude",
+      "reason": "Installed runtimes are instance topology, not a universal requirement."
+    },
+    {
+      "id": "private-services",
+      "pattern": "system/services/**",
+      "action": "exclude",
+      "reason": "Running services and launch configuration belong to the installed instance."
+    },
+    {
+      "id": "private-truth-systems",
+      "pattern": "system/truth-systems/**",
+      "action": "render",
+      "reason": "Truth-system concepts are reusable while concrete paths and ownership are instance-bound."
+    },
+    {
+      "id": "private-views",
+      "pattern": "system/views/**",
+      "action": "exclude",
+      "reason": "Generated and observed views belong to the installed instance."
+    },
+    {
+      "id": "remaining-system-files",
+      "pattern": "system/**",
+      "action": "exclude",
+      "reason": "Fail-safe classification for reviewed instance-specific system records."
+    },
+    {
+      "id": "capability-control-plane",
+      "pattern": "skills/RESOLVER.md",
+      "action": "render",
+      "target": "core/skills/RESOLVER.md",
+      "reason": "Capability routing is core but the available skill set is installation-specific."
+    },
+    {
+      "id": "capability-index",
+      "pattern": "skills/index.md",
+      "action": "render",
+      "target": "core/skills/index.md",
+      "reason": "The capability index is generated from selected core and optional modules."
+    },
+    {
+      "id": "capability-manifest",
+      "pattern": "skills/manifest.json",
+      "action": "render",
+      "target": "core/skills/manifest.json",
+      "reason": "The manifest is generated from selected core and optional modules."
+    },
+    {
+      "id": "private-skill-operational-notes",
+      "pattern": "skills/**/references/operational-notes.md",
+      "action": "exclude",
+      "reason": "Operational notes contain instance history and personal workflow evidence, not portable capability logic."
+    },
+    {
+      "id": "private-skill-run-evidence",
+      "pattern": "skills/**/references/*2026*.md",
+      "action": "exclude",
+      "reason": "Dated references are source-instance run evidence or historical learnings and require separate abstraction before publication."
+    },
+    {
+      "id": "private-business-offer-capability",
+      "pattern": "skills/businessos-audit-offer/**",
+      "action": "exclude",
+      "reason": "This capability contains private provider, offer and brand logic rather than universal PersonalOS behavior."
+    },
+    {
+      "id": "private-branded-document-capability",
+      "pattern": "skills/mummentum-document/**",
+      "action": "exclude",
+      "reason": "This capability contains private brand and document-production logic rather than universal PersonalOS behavior."
+    },
+    {
+      "id": "private-core-skill-history",
+      "pattern": "skills/pos-verify/references/**",
+      "action": "exclude",
+      "reason": "Source-instance verification anecdotes are not part of the portable core capability."
+    },
+    {
+      "id": "private-legacy-skill-history",
+      "pattern": "skills/**/references/legacy-*.md",
+      "action": "exclude",
+      "reason": "Legacy operational history is not part of a clean new installation."
+    },
+    {
+      "id": "private-runtime-skill-adoption-notes",
+      "pattern": "skills/write-skill/references/hermes-skill-adoption.md",
+      "action": "exclude",
+      "reason": "Runtime-specific adoption history is not part of the portable skill authoring core."
+    },
+    {
+      "id": "core-pos-verification",
+      "pattern": "skills/pos-verify/**",
+      "action": "render",
+      "reason": "Post-mutation verification is a core capability with portable path handling."
+    },
+    {
+      "id": "core-task-management",
+      "pattern": "skills/task-manager/**",
+      "action": "render",
+      "reason": "Action and attention handling is a core capability with generic subject language."
+    },
+    {
+      "id": "private-priority-dashboard-scheduler-wrapper",
+      "pattern": "skills/priority-dashboard/scripts/hermes_wrapper.py",
+      "action": "exclude",
+      "reason": "A concrete runtime wrapper belongs in an optional host integration, not in the portable core."
+    },
+    {
+      "id": "private-priority-dashboard-cron-contract",
+      "pattern": "skills/priority-dashboard/cron-prompt.md",
+      "action": "exclude",
+      "reason": "A concrete scheduler contract belongs in an optional automation module, not in the portable core."
+    },
+    {
+      "id": "core-priority-dashboard",
+      "pattern": "skills/priority-dashboard/**",
+      "action": "render",
+      "reason": "The task manager depends on this deterministic derived view, so both ship as one core capability boundary."
+    },
+    {
+      "id": "core-context-log",
+      "pattern": "skills/log/**",
+      "action": "render",
+      "reason": "Durable context capture is a core capability with generic subject language."
+    },
+    {
+      "id": "core-skill-maintenance",
+      "pattern": "skills/skillify/**",
+      "action": "render",
+      "reason": "Capability evolution is reusable core logic with portability review."
+    },
+    {
+      "id": "core-skill-authoring",
+      "pattern": "skills/write-skill/**",
+      "action": "render",
+      "reason": "Capability authoring is reusable core logic with portability review."
+    },
+    {
+      "id": "optional-capability-library",
+      "pattern": "skills/**",
+      "action": "exclude",
+      "reason": "Non-core source skills remain classified but require a separately reviewed public module before distribution."
+    },
+    {
+      "id": "domain-business-index",
+      "pattern": "business/index.md",
+      "action": "module",
+      "module": "business",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-companies-index",
+      "pattern": "companies/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-content-index",
+      "pattern": "content/index.md",
+      "action": "module",
+      "module": "content",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-daily-index",
+      "pattern": "daily/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-decisions-index",
+      "pattern": "decisions/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-finance-index",
+      "pattern": "finance/index.md",
+      "action": "module",
+      "module": "finance",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-health-index",
+      "pattern": "health/index.md",
+      "action": "module",
+      "module": "health",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-identity-index",
+      "pattern": "identity/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-inbox-index",
+      "pattern": "inbox/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-interactions-index",
+      "pattern": "interactions/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-knowledge-index",
+      "pattern": "knowledge/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-operations-index",
+      "pattern": "operations/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-people-index",
+      "pattern": "people/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "domain-projects-index",
+      "pattern": "projects/index.md",
+      "action": "render",
+      "reason": "Domain navigation is part of the empty install structure."
+    },
+    {
+      "id": "private-business-data",
+      "pattern": "business/**",
+      "action": "exclude",
+      "reason": "Private business truth is never part of the boilerplate."
+    },
+    {
+      "id": "private-company-data",
+      "pattern": "companies/**",
+      "action": "exclude",
+      "reason": "Private company records are never part of the boilerplate."
+    },
+    {
+      "id": "private-content-data",
+      "pattern": "content/**",
+      "action": "exclude",
+      "reason": "Private content truth and production state are never part of the boilerplate."
+    },
+    {
+      "id": "private-daily-data",
+      "pattern": "daily/**",
+      "action": "exclude",
+      "reason": "Daily context and journal data are private."
+    },
+    {
+      "id": "private-decision-data",
+      "pattern": "decisions/**",
+      "action": "exclude",
+      "reason": "Private decision evidence is never part of the boilerplate."
+    },
+    {
+      "id": "private-finance-data",
+      "pattern": "finance/**",
+      "action": "exclude",
+      "reason": "Finance records and documents are private."
+    },
+    {
+      "id": "private-health-data",
+      "pattern": "health/**",
+      "action": "exclude",
+      "reason": "Health records and measurements are private."
+    },
+    {
+      "id": "private-identity-data",
+      "pattern": "identity/**",
+      "action": "exclude",
+      "reason": "Identity records are private."
+    },
+    {
+      "id": "private-inbox-data",
+      "pattern": "inbox/**",
+      "action": "exclude",
+      "reason": "Captured private input is never part of the boilerplate."
+    },
+    {
+      "id": "private-interaction-data",
+      "pattern": "interactions/**",
+      "action": "exclude",
+      "reason": "Conversations, meetings and external signals are private."
+    },
+    {
+      "id": "private-knowledge-data",
+      "pattern": "knowledge/**",
+      "action": "exclude",
+      "reason": "Private source material and compiled knowledge are not boilerplate content."
+    },
+    {
+      "id": "private-operations-data",
+      "pattern": "operations/**",
+      "action": "exclude",
+      "reason": "Actions, attention and execution state are private."
+    },
+    {
+      "id": "private-people-data",
+      "pattern": "people/**",
+      "action": "exclude",
+      "reason": "Person records and relationship context are private."
+    },
+    {
+      "id": "private-project-data",
+      "pattern": "projects/**",
+      "action": "exclude",
+      "reason": "Private project truth and evidence are never part of the boilerplate."
+    },
+    {
+      "id": "private-automation-data",
+      "pattern": "automations/**",
+      "action": "exclude",
+      "reason": "Installed automations, run output and host configuration belong to the private instance."
+    },
+    {
+      "id": "private-table-views",
+      "pattern": "tables/**",
+      "action": "exclude",
+      "reason": "Experimental and generated views belong to the private instance."
+    }
+  ]
+}

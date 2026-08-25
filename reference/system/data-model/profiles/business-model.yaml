@@ -1,0 +1,23 @@
+name: business-model
+page_shape: state-record
+canonical_owner: business-model
+allowed_roots: [business]
+path_pattern: ^business/business-models/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: [company_refs, brand_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Definition, Scope and Boundaries, Value Creation, Revenue and Economics, System and Constraints, Relationships, Sources, Timeline]
+section_order: [Current Truth, Definition, Scope and Boundaries, Value Creation, Revenue and Economics, System and Constraints, Relationships, Sources, Timeline]
+template: system/templates/business/business-model.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-business-model.fixture
+  positive_logical_path: business/business-models/example-model.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-business-model.fixture
+  negative_logical_path: business/business-models/example-model.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

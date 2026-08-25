@@ -1,0 +1,176 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/action.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "waiting"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "required": [
+          "waiting_on",
+          "follow_up_at"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "blocked"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "required": [
+          "blocked_by"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "deferred"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "required": [
+          "not_before"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "action_priority": {
+      "enum": [
+        "critical",
+        "high",
+        "normal",
+        "low"
+      ],
+      "type": "string"
+    },
+    "affected_owner_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "blocked_by": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "due": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "execution_mode": {
+      "enum": [
+        "agent-execute",
+        "agent-prepare",
+        "human-only"
+      ],
+      "type": "string"
+    },
+    "follow_up_at": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "ready",
+        "in-progress",
+        "waiting",
+        "blocked",
+        "deferred",
+        "completed",
+        "cancelled"
+      ],
+      "type": "string"
+    },
+    "not_before": {
+      "format": "date",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "target": {
+      "format": "date",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "action"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    },
+    "waiting_on": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "evidence_refs",
+    "execution_mode",
+    "lifecycle"
+  ],
+  "title": "PersonalOS pos-v1 action frontmatter",
+  "type": "object"
+}

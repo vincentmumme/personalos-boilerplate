@@ -1,0 +1,95 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/runtime.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "agent_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authority_scope": {
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "type": "string"
+    },
+    "canonical_system_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "host_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "active",
+        "paused",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "runtime_kind": {
+      "enum": [
+        "cli",
+        "daemon",
+        "desktop-app",
+        "server",
+        "orchestration-framework"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "runtime"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "agent_refs",
+    "authority_scope",
+    "canonical_system_ref",
+    "host_refs",
+    "lifecycle",
+    "runtime_kind"
+  ],
+  "title": "PersonalOS pos-v1 runtime frontmatter",
+  "type": "object"
+}

@@ -1,0 +1,26 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-791e-9499-92199e7eb809"
+type: "content-format"
+title: "Example content-format"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "active"
+revision: 1
+format_family: "short-form"
+definition: "A reusable Content format."
+---
+
+# Example content-format
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

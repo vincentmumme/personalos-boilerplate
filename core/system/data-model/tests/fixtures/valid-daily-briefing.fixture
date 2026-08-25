@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a00149-b5ad-7daf-98aa-9dbb541f7f79
+type: daily-briefing
+title: "Morning Briefing - 2026-08-14"
+created: 2026-08-14
+updated: 2026-08-14
+day_date: 2026-08-14
+timezone: Europe/Berlin
+generated_at: "2026-08-14T06:00:00+02:00"
+briefing_kind: morning
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+---
+
+# Morning Briefing - 2026-08-14
+
+## Briefing
+
+The important decisions for the day.
+
+## Source Notes
+
+Current local context was checked.
+
+## Verification
+
+Profile and payload checks passed.
+
+## Corrections
+
+None.

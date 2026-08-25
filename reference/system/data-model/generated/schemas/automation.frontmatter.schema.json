@@ -1,0 +1,91 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/automation.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "automation_kind": {
+            "enum": [
+              "scheduled"
+            ]
+          }
+        },
+        "required": [
+          "automation_kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "schedule_timezone"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "automation_kind": {
+      "enum": [
+        "scheduled",
+        "manual",
+        "event-driven",
+        "webhook",
+        "hybrid"
+      ],
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "active",
+        "paused",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "producer_skill_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "schedule_timezone": {
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_+.-]+(?:/[A-Za-z0-9_+.-]+)*$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "automation"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "automation_kind",
+    "lifecycle"
+  ],
+  "title": "PersonalOS pos-v1 automation frontmatter",
+  "type": "object"
+}

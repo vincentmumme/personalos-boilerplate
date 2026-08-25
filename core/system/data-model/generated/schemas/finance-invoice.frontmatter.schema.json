@@ -1,0 +1,118 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/finance-invoice.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "amount_gross": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "amount_net": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "client_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "currency": {
+      "minLength": 1,
+      "pattern": "^[A-Z]{3}$",
+      "type": "string"
+    },
+    "due_on": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "external_authority_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "external_record_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "invoice_number": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "invoice_state": {
+      "enum": [
+        "draft",
+        "open",
+        "overdue",
+        "paid",
+        "voided"
+      ],
+      "type": "string"
+    },
+    "issued_on": {
+      "format": "date",
+      "type": "string"
+    },
+    "paid_on": {
+      "format": "date",
+      "type": "string"
+    },
+    "project_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "tax_rate": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "finance-invoice"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "amount_gross",
+    "amount_net",
+    "client_ref",
+    "currency",
+    "external_authority_ref",
+    "invoice_number",
+    "invoice_state",
+    "issued_on"
+  ],
+  "title": "PersonalOS pos-v1 finance-invoice frontmatter",
+  "type": "object"
+}

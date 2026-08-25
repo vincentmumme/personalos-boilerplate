@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 01a00126-926d-791f-a39e-7bd292d20308
+type: skill-resolver
+title: "Skills Resolver"
+created: 2026-08-14
+updated: 2026-08-14
+status: active
+---
+
+# Skills Resolver
+
+## Routes
+
+Der Purpose, die Routing Rules und Maintenance fehlen.

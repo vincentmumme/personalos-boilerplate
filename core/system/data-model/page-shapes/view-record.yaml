@@ -1,0 +1,6 @@
+name: view-record
+purpose: Derived navigation, projection, inventory or observability over canonical source owners without competing truth.
+requires_current_truth: false
+requires_timeline: false
+timeline_mode: regenerated-or-refreshed
+allows_companion_data: true

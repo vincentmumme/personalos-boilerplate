@@ -1,0 +1,37 @@
+name: "content-publication"
+page_shape: "event-record"
+canonical_owner: "contentos-publication"
+allowed_roots: ["content"]
+path_pattern: "^content/pieces/[0-9]{4}/[a-z0-9]+(?:-[a-z0-9]+)*/publications/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "publication_state", "piece_ref", "version_ref", "platform", "publishing_account_key"]
+optional_fields: ["origin_operation_id", "content_tags", "native_id", "live_url", "published_at", "content_published_on", "tracking_link_refs", "discovery_method", "published_at_precision", "custom_thumbnail_asset_id"]
+fields:
+  publication_state:
+    datatype: "enum"
+    enum: ["planned", "approved", "publishing", "live", "outcome-unknown", "failed", "cancelled"]
+  native_id:
+    datatype: "plain-text"
+  live_url:
+    datatype: "uri"
+  published_at:
+    datatype: "datetime"
+  content_published_on:
+    datatype: "date"
+  discovery_method:
+    datatype: "lower-kebab"
+  published_at_precision:
+    datatype: "lower-kebab"
+  custom_thumbnail_asset_id:
+    datatype: "plain-text"
+required_sections: ["Summary", "Evidence", "Corrections"]
+section_order: ["Summary", "Evidence", "Corrections"]
+template: "system/templates/content/content-publication.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-publication.fixture"
+  positive_logical_path: "content/pieces/2026/example-piece/publications/instagram.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-publication.fixture"
+  negative_logical_path: "content/pieces/2026/example-piece/publications/instagram.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

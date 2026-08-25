@@ -1,0 +1,30 @@
+name: "content-idea"
+page_shape: "state-record"
+canonical_owner: "contentos-idea"
+allowed_roots: ["content"]
+path_pattern: "^content/ideas/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle", "knowledge-context"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "idea_kind", "input_refs"]
+optional_fields: ["origin_operation_id", "content_tags", "half_life", "topic_keys", "source_refs"]
+fields:
+  idea_kind:
+    datatype: "lower-kebab"
+  half_life:
+    datatype: "lower-kebab"
+  topic_keys:
+    datatype: "plain-text-list"
+    min_items: 1
+module_constraints:
+  lifecycle:
+    enum: ["captured", "qualified", "selected", "converted", "parked", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-idea.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-idea.fixture"
+  positive_logical_path: "content/ideas/example-idea.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-idea.fixture"
+  negative_logical_path: "content/ideas/example-idea.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

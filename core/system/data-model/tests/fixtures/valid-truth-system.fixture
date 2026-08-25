@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 019fec26-4da1-7c7f-a70d-95a2853ef399
+type: truth-system
+title: "PersonalOS"
+created: 2026-08-10
+updated: 2026-08-10
+system_kind: personal-os
+default_timezone: Europe/Berlin
+---
+
+# PersonalOS
+
+## Current Truth
+
+PersonalOS is {{user_name}}'s canonical personal context system.
+
+## Scope
+
+It holds personal context truth and system truth.
+
+## Authority
+
+{{user_name}} is the human authority for the system.
+
+## Interfaces
+
+Agents interact with PersonalOS through its entrypoints and skills.
+
+## Timeline
+
+- **2026-08-10** | Truth System record created.

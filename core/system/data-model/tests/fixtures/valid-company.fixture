@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019ffb82-bc4c-70f8-b122-e7977daa4974
+type: company
+title: "Example Company"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: personal-context
+---
+
+# Example Company
+
+## Current Truth
+Current entity truth.
+
+## Entity Facts
+Known facts.
+
+## Relationship to Subject
+Relationship context.
+
+## People and Roles
+Known people.
+
+## Connected Business Context
+Derived business navigation.
+
+## Relevant Context
+Durable context.
+
+## Sources
+Source context.
+
+## Timeline
+- **2026-08-13** | Record created.

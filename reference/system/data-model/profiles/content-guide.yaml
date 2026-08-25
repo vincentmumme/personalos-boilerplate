@@ -1,0 +1,24 @@
+name: "content-guide"
+page_shape: "state-record"
+canonical_owner: "contentos-guide"
+allowed_roots: ["content"]
+path_pattern: "^content/contentos\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision"]
+optional_fields: ["origin_operation_id", "content_tags"]
+fields:
+
+module_constraints:
+  lifecycle:
+    enum: ["draft", "active", "deprecated", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-guide.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-guide.fixture"
+  positive_logical_path: "content/contentos.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-guide.fixture"
+  negative_logical_path: "content/contentos.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

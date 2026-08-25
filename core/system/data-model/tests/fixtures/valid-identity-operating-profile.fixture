@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-aedd-703e-9dd7-0ca5d7e28012
+type: identity-operating-profile
+title: "Operating Profile"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Operating Profile
+
+## Current Truth
+Current operating context.
+
+## Traits and Preferences
+Traits.
+
+## Thinking and Decision-Making
+Thinking.
+
+## Learning
+Learning.
+
+## Communication
+Communication.
+
+## Work and Execution
+Work.
+
+## Helpful Conditions
+Conditions.
+
+## Failure Modes and Friction
+Friction.
+
+## Sources
+Subject context.
+
+## Timeline
+- **2026-08-13** | Record created.

@@ -1,0 +1,43 @@
+---
+schema_version: pos-v1
+id: 01a0018c-3000-7000-8000-000000000001
+type: health-provider-snapshot
+title: "WHOOP Snapshot - 2026-08-14"
+created: 2026-08-14
+updated: 2026-08-14
+snapshot_date: 2026-08-14
+captured_at: 2026-08-14T06:30:00+02:00
+snapshot_state: complete
+source_system: whoop-api
+subject_ref: "[[identity/me]]"
+---
+
+# WHOOP Snapshot - 2026-08-14
+
+## Snapshot Summary
+
+Scored WHOOP day.
+
+## Metrics
+
+Recovery and sleep available.
+
+## Workouts
+
+None.
+
+## Body Measurement
+
+None.
+
+## Interpretation Boundary
+
+Provider signal, no diagnosis.
+
+## Sources
+
+WHOOP API.
+
+## Corrections
+
+None.

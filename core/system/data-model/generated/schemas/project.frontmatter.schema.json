@@ -1,0 +1,203 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/project.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "closed",
+              "archived"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "required": [
+          "closure_mode",
+          "project_outcome",
+          "closed_at",
+          "evidence_refs"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "authority_scope": {
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "type": "string"
+    },
+    "canonical_system_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "closed_at": {
+      "format": "date",
+      "type": "string"
+    },
+    "closure_mode": {
+      "enum": [
+        "completed",
+        "cancelled",
+        "merged",
+        "duplicate",
+        "superseded",
+        "created-in-error"
+      ],
+      "type": "string"
+    },
+    "commercial_state": {
+      "enum": [
+        "open",
+        "won",
+        "lost",
+        "withdrawn"
+      ],
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "dependency_project_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "follow_on_project_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "active",
+        "waiting",
+        "paused",
+        "closed",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "parent_project_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "priority": {
+      "enum": [
+        "critical",
+        "high",
+        "normal",
+        "low"
+      ],
+      "type": "string"
+    },
+    "project_outcome": {
+      "enum": [
+        "achieved",
+        "partially-achieved",
+        "not-achieved",
+        "not-assessed"
+      ],
+      "type": "string"
+    },
+    "project_phase": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "sponsor_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "project"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    },
+    "human_role": {
+      "enum": [
+        "owner",
+        "sponsor",
+        "lead",
+        "contributor",
+        "observer"
+      ],
+      "type": "string"
+    },
+    "workflow": {
+      "enum": [
+        "general",
+        "commercial",
+        "delivery",
+        "migration",
+        "research",
+        "personal-change",
+        "program"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "authority_scope",
+    "canonical_system_ref",
+    "lifecycle",
+    "priority",
+    "sponsor_refs",
+    "human_role",
+    "workflow"
+  ],
+  "title": "PersonalOS pos-v1 project frontmatter",
+  "type": "object"
+}

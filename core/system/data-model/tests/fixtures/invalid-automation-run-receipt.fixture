@@ -1,0 +1,41 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000018
+type: automation-run-receipt
+title: "Invalid Routine No-op Receipt"
+created: 2026-08-12
+updated: 2026-08-12
+run_id: example-no-op
+run_started_at: 2026-08-12T10:00:00+02:00
+run_ended_at: 2026-08-12T10:01:00+02:00
+run_outcome: no-op
+run_trigger: scheduled
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+retention_class: daily-aggregate
+---
+
+# Invalid Routine No-op Receipt
+
+## Run Summary
+
+Routine No-op must not persist individually.
+
+## Coverage
+
+Complete.
+
+## Propagation
+
+None.
+
+## Errors and Pending
+
+None.
+
+## Evidence
+
+None.
+
+## Corrections
+
+None.

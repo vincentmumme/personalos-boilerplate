@@ -1,0 +1,26 @@
+name: interaction-analysis
+page_shape: work-artifact
+canonical_owner: interaction-analysis-artifact
+allowed_roots: [interactions]
+path_pattern: ^interactions/(?:(?:meetings/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*/analysis)|(?:conversations/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*/analysis/[0-9]{4}))/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [relations, signal-processing]
+optional_modules: []
+required_fields: [analysis_kind, analysis_outcome, interaction_ref, evidence_refs, affected_owner_refs]
+optional_fields: []
+fields:
+  analysis_kind:
+    datatype: enum
+    enum: [semantic, research, combined]
+  analysis_outcome:
+    datatype: enum
+    enum: [propagated, no-op, partial, blocked]
+required_sections: [Analysis, Findings, Contradictions and Uncertainty, Propagation, Sources, Corrections]
+section_order: [Analysis, Findings, Contradictions and Uncertainty, Propagation, Sources, Corrections]
+template: system/templates/interactions/interaction-analysis.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-interaction-analysis.fixture
+  positive_logical_path: interactions/meetings/2026/2026-08-12-example-call/analysis/019ff59c-1000-7000-8000-000000000002.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-interaction-analysis.fixture
+  negative_logical_path: interactions/meetings/2026/2026-08-12-example-call/analysis/example.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

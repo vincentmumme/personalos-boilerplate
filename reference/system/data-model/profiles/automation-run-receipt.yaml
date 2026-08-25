@@ -1,0 +1,42 @@
+name: automation-run-receipt
+page_shape: event-record
+canonical_owner: automation-material-run-receipt
+allowed_roots: [automations]
+path_pattern: ^automations/[a-z0-9]+(?:-[a-z0-9]+)*/receipts/[0-9]{4}/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+path_date_field: run_started_at
+path_date_group: date
+required_modules: [relations, signal-processing]
+optional_modules: []
+required_fields: [run_id, run_started_at, run_ended_at, run_outcome, run_trigger, producer_skill_ref, retention_class]
+optional_fields: [retention_reason, affected_owner_refs, evidence_refs]
+fields:
+  run_id:
+    datatype: plain-text
+  run_started_at:
+    datatype: datetime
+  run_ended_at:
+    datatype: datetime
+  run_outcome:
+    datatype: enum
+    enum: [changed, partial, failed, stale, deferred, pending, external-mutation, audit-no-op]
+  run_trigger:
+    datatype: enum
+    enum: [scheduled, manual, webhook, backfill, event]
+module_constraints:
+  retention_class:
+    enum: [material-run]
+conditional_rules:
+  audit_no_op_reason:
+    when_field: run_outcome
+    when_in: [audit-no-op]
+    require_fields: [retention_reason]
+required_sections: [Run Summary, Coverage, Propagation, Errors and Pending, Evidence, Corrections]
+section_order: [Run Summary, Coverage, Propagation, Errors and Pending, Evidence, Corrections]
+template: system/templates/automations/automation-run-receipt.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-automation-run-receipt.fixture
+  positive_logical_path: automations/example-automation/receipts/2026/2026-08-12/019ff59c-1000-7000-8000-000000000003.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-automation-run-receipt.fixture
+  negative_logical_path: automations/example-automation/receipts/2026/2026-08-12/no-op.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

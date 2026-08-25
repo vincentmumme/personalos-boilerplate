@@ -1,0 +1,35 @@
+name: attention-trigger
+page_shape: state-record
+canonical_owner: operations-attention-record
+allowed_roots: [operations]
+path_pattern: ^operations/attention-triggers/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [lifecycle, relations]
+optional_modules: []
+required_fields: [lifecycle, trigger_kind, review_at, evidence_refs]
+optional_fields: [trigger_ref]
+fields:
+  trigger_kind:
+    datatype: enum
+    enum: [date, event]
+  review_at:
+    datatype: date
+  trigger_ref:
+    datatype: wikilink
+module_constraints:
+  lifecycle:
+    enum: [scheduled, due, resolved, cancelled]
+conditional_rules:
+  event_bound:
+    when_field: trigger_kind
+    when_in: [event]
+    require_fields: [trigger_ref]
+required_sections: [Current Truth, Trigger, Reassessment Rule, Context and Evidence, Timeline]
+section_order: [Current Truth, Trigger, Reassessment Rule, Context and Evidence, Timeline]
+template: system/templates/attention-trigger.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-attention-trigger.fixture
+  positive_logical_path: operations/attention-triggers/019ff139-accc-7fd1-9eab-d3162ce891f6.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-attention-trigger.fixture
+  negative_logical_path: operations/attention-triggers/019ff139-acf9-7491-81b6-330d41509506.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

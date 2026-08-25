@@ -1,0 +1,3 @@
+{"intent":"Baue mein Priority Dashboard jetzt neu auf.","expected_skill":"priority-dashboard"}
+{"intent":"Setze diese drei Actions bis Freitag manuell an die Spitze und aktualisiere die Prioritätssicht.","expected_skill":"priority-dashboard"}
+{"intent":"Was steht heute im dynamischen Prioritäten-Dashboard und warum?","expected_skill":"priority-dashboard"}

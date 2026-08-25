@@ -1,0 +1,121 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/finance-recurring-obligation.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "amount_gross": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "cadence": {
+      "enum": [
+        "monthly",
+        "quarterly",
+        "yearly",
+        "irregular"
+      ],
+      "type": "string"
+    },
+    "company_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "currency": {
+      "minLength": 1,
+      "pattern": "^[A-Z]{3}$",
+      "type": "string"
+    },
+    "due_day": {
+      "minLength": 1,
+      "pattern": "^(?:[1-9]|[12][0-9]|3[01])$",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "finance_scope": {
+      "enum": [
+        "personal",
+        "business",
+        "mixed"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "last_booked_period": {
+      "minLength": 1,
+      "pattern": "^[0-9]{4}-[0-9]{2}$",
+      "type": "string"
+    },
+    "next_due_on": {
+      "format": "date",
+      "type": "string"
+    },
+    "obligation_state": {
+      "enum": [
+        "active",
+        "paused",
+        "cancelled",
+        "ended"
+      ],
+      "type": "string"
+    },
+    "payment_source_registry_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "project_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_amount": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "tax_rate": {
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "finance-recurring-obligation"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "cadence",
+    "finance_scope",
+    "obligation_state"
+  ],
+  "title": "PersonalOS pos-v1 finance-recurring-obligation frontmatter",
+  "type": "object"
+}

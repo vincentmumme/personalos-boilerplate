@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-701a-809f-82cd0ca15e15
+type: system-observability-view
+title: "Example System Observability View"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: pointer
+observability_scope: system
+observed_at: 2026-08-13T18:00:00+02:00
+observability_source_refs: ["[[system/hosts/example-host]]"]
+---
+
+# Example System Observability View
+
+## Purpose
+
+Example content.
+
+## Observed Scope
+
+Example content.
+
+## Desired versus Observed
+
+Example content.
+
+## Sources and Freshness
+
+Example content.
+
+## Limitations
+
+Example content.

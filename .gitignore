@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.pytest_cache/
+build/
+dist/
+reports/
+staging/
+.env
+.env.*
+!.env.example
+policy/*.local.json

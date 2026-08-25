@@ -1,0 +1,28 @@
+---
+schema_version: pos-v1
+id: 01a001a1-56d4-7ff9-a625-bab9dfbcde94
+type: finance-tax-manifest
+title: "Quellenmanifest 2025"
+created: 2026-08-14
+updated: 2026-08-14
+tax_year: "2025"
+manifest_state: complete
+tax_dossier_ref: "[[examples/tax-dossier]]"
+---
+
+# Quellenmanifest 2025
+
+## Current Truth
+Complete source manifest.
+## Scope
+Tax-year sources.
+## Source Inventory
+Source pointers.
+## Integrity
+Hashes verified.
+## Missing Sources
+None known.
+## Dossier Relation
+Tax dossier 2025.
+## Timeline
+- **2026-08-14** | Created.

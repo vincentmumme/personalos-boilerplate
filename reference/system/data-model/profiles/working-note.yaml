@@ -1,0 +1,20 @@
+name: working-note
+page_shape: work-artifact
+canonical_owner: containing-work-context
+allowed_roots: [projects]
+path_pattern: ^projects/[a-z0-9]+(?:-[a-z0-9]+)*/(?:context|definition|planning|working|deliverables|evidence)/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [relations]
+optional_modules: []
+required_fields: [project_ref]
+optional_fields: []
+fields: {}
+required_sections: [Working Truth, Re-entry]
+section_order: [Working Truth, Re-entry]
+template: system/templates/working-note.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-working-note.fixture
+  positive_logical_path: projects/example-migration/working/migration-workroom.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-working-note.fixture
+  negative_logical_path: projects/example-migration/working/migration-workroom.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

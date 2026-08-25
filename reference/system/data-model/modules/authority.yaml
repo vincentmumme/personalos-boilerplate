@@ -1,0 +1,15 @@
+name: authority
+purpose: Canonical truth-system ownership and the local authority boundary.
+admission_state: pilot
+planned_consumers: [external-truth-pointer, automation, interaction-stream, business-object]
+fields:
+  canonical_system_ref:
+    datatype: wikilink
+    target_profiles: [truth-system]
+    legacy_targets: reject
+  authority_scope:
+    datatype: enum
+    enum: [full, personal-context, pointer]
+invariants:
+  one_canonical_system: true
+  pointer_scope_cannot_claim_domain_truth: true

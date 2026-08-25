@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personalos-boilerplate"
+version = "0.1.0"
+description = "Build and verify the PersonalOS boilerplate without personal source data"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Vincent Mumme"}]
+requires-python = ">=3.11"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+
+[project.urls]
+Homepage = "https://github.com/vincentmumme/personalos-boilerplate"
+Issues = "https://github.com/vincentmumme/personalos-boilerplate/issues"
+Community = "https://discord.gg/T8MEvRtKB5"
+
+[project.scripts]
+pos-boilerplate = "pos_boilerplate.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

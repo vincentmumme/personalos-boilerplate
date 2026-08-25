@@ -1,0 +1,27 @@
+name: finance-tax-dossier
+page_shape: state-record
+canonical_owner: finance-annual-tax-dossier
+allowed_roots: [finance]
+path_pattern: ^finance/taxes/(?P<tax_year>[0-9]{4})/index\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [tax_year, filing_state]
+optional_fields: [filing_deadline, filed_at, external_authority_ref, finance_scope, evidence_refs]
+fields:
+  filing_state:
+    datatype: enum
+    enum: [preparation, ready-to-file, filed, assessed, closed]
+  filing_deadline:
+    datatype: date
+  filed_at:
+    datatype: datetime
+required_sections: [Current Truth, Filing Scope, Filing State, Tax Context, Documents and Evidence, External Authority, Open Assessment, Timeline]
+section_order: [Current Truth, Filing Scope, Filing State, Tax Context, Documents and Evidence, External Authority, Open Assessment, Timeline]
+template: system/templates/finance/finance-tax-dossier.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-tax-dossier.fixture
+  positive_logical_path: finance/taxes/2025/index.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-tax-dossier.fixture
+  negative_logical_path: finance/taxes/2026/dossier.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

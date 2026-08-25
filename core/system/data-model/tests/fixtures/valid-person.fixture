@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019ffb82-bbe9-76e2-b453-bbc3ebf02713
+type: person
+title: "Example Person"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: personal-context
+---
+
+# Example Person
+
+## Current Truth
+Current relationship context.
+
+## Identity and Roles
+Known roles.
+
+## Relationship to Subject
+Relationship context.
+
+## Communication Profile
+Communication context.
+
+## Relevant Context
+Durable relevant context.
+
+## Affiliations and Relationships
+Known affiliations.
+
+## Sources
+Source context.
+
+## Timeline
+- **2026-08-13** | Record created.

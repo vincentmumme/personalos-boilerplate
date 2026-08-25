@@ -1,0 +1,23 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-00000000000d
+type: knowledge-log
+title: "Example Topic Log"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+knowledge_log_scope: topic
+topic_ref: "[[knowledge/topics/example-topic/example-topic]]"
+---
+
+# Example Topic Log
+
+## Entries
+
+### 2026-08-14 | init
+
+Created.
+
+## Corrections
+
+None.

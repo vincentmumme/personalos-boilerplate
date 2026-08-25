@@ -1,0 +1,38 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-7016-bb4a-dd389e48cb31
+type: integration
+title: "Example Integration"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# Example Integration
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## External Boundary
+
+Example content.
+
+## Data and Authority
+
+Example content.
+
+## Credentials Required
+
+Example content.
+
+## Health
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

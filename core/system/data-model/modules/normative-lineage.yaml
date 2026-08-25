@@ -1,0 +1,23 @@
+name: normative-lineage
+purpose: Decision provenance, derivation and explicit supersession for normative and executable system artifacts.
+admission_state: active
+fields:
+  decision_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [decision]
+    legacy_targets: warn
+  derived_from_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [principle, rule, contract, convention, framework, decision]
+    legacy_targets: warn
+  supersedes_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [principle, rule, contract, convention, framework, template, runbook, check, skill]
+    legacy_targets: warn
+invariants:
+  decision_is_provenance_not_current_norm: true
+  supersession_must_be_explicit: true
+  inverse_relations_are_derived: true

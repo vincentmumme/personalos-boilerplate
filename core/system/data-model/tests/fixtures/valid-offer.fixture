@@ -1,0 +1,49 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ee62-7a39-9ff7-8fe9e750affb
+type: offer
+title: "Example Offer"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Offer
+
+## Current Truth
+
+Example context.
+
+## Definition
+
+Example context.
+
+## Scope and Boundaries
+
+Example context.
+
+## Buyer and Problem
+
+Example context.
+
+## Scope and Delivery
+
+Example context.
+
+## Commercial Logic
+
+Example context.
+
+## Relationships
+
+Example context.
+
+## Sources
+
+Example context.
+
+## Timeline
+
+- **2026-08-13** | Record created.

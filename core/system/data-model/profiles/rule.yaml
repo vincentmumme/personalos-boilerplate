@@ -1,0 +1,23 @@
+name: rule
+page_shape: normative-record
+canonical_owner: system-rules
+allowed_roots: [system]
+path_pattern: ^system/rules/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage]
+optional_modules: []
+required_fields: [lifecycle, decision_refs]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Rule, Scope and Trigger, Required Behavior, Exceptions, Verification, Change History]
+section_order: [Rule, Scope and Trigger, Required Behavior, Exceptions, Verification, Change History]
+template: system/templates/rule.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-rule.fixture
+  positive_logical_path: system/rules/example-rule.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-rule.fixture
+  negative_logical_path: system/rules/example-rule.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,33 @@
+name: "content-tracking-link"
+page_shape: "state-record"
+canonical_owner: "contentos-tracking-link"
+allowed_roots: ["content"]
+path_pattern: "^content/analytics/links/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "link_state", "piece_ref", "channel_key", "placement", "destination_url", "provider_key"]
+optional_fields: ["origin_operation_id", "content_tags", "publication_ref", "cta_intents", "provider_id"]
+fields:
+  link_state:
+    datatype: "enum"
+    enum: ["draft", "active", "paused", "expired", "archived"]
+  channel_key:
+    datatype: "lower-kebab"
+  placement:
+    datatype: "lower-kebab"
+  destination_url:
+    datatype: "uri"
+  provider_key:
+    datatype: "lower-kebab"
+  provider_id:
+    datatype: "plain-text"
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-tracking-link.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-tracking-link.fixture"
+  positive_logical_path: "content/analytics/links/example-link.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-tracking-link.fixture"
+  negative_logical_path: "content/analytics/links/example-link.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

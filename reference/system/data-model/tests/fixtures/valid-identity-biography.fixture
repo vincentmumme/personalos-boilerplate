@@ -1,0 +1,30 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-ae27-7623-8695-47a5728b8445
+type: identity-biography
+title: "Biografie"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Biografie
+
+## Current Truth
+Current biography.
+
+## Life Phases
+Known phases.
+
+## Formative Events
+Formative events.
+
+## Biography Gaps
+Open gaps.
+
+## Sources
+Subject context.
+
+## Timeline
+- **2026-08-13** | Record created.

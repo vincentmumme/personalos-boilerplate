@@ -1,0 +1,16 @@
+---
+schema_version: pos-v1
+id: 019ffb24-1f51-74fd-b3d4-edd90e6b1785
+type: agent-entry-pointer
+title: "Claude Code PersonalOS Adapter"
+created: 2026-08-13
+updated: 2026-08-13
+entry_kind: runtime-adapter
+bootstrap_ref: "[[AGENTS]]"
+---
+
+# Claude Code PersonalOS Adapter
+
+Lies vor jeder Arbeit in diesem PersonalOS [[AGENTS]] vollständig und folge dem dort definierten gemeinsamen Bootstrap.
+
+Diese Datei ist ausschließlich ein technischer Pointer auf [[AGENTS]].

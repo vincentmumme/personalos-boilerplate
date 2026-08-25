@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-000000000001
+type: knowledge-topic
+title: "Example Topic"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+---
+
+# Example Topic
+
+## Current Truth
+
+Reusable example knowledge.
+
+## Scope
+
+Examples only.
+
+## Ownership and Boundaries
+
+No operative truth.
+
+## Source and Compilation Policy
+
+Source-bound synthesis.
+
+## Timeline
+
+- **2026-08-14** - Created.

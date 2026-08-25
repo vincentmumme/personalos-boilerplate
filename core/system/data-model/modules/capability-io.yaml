@@ -1,0 +1,35 @@
+name: capability-io
+purpose: Machine-readable record, template, capability and verification interfaces of an executable POS capability.
+admission_state: pilot
+planned_consumers: [agent-profile, automation]
+fields:
+  reads_profile_keys:
+    datatype: profile-key-list
+    min_items: 1
+    registered_profile: true
+  writes_profile_keys:
+    datatype: profile-key-list
+    min_items: 1
+    registered_profile: true
+  template_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [template]
+    legacy_targets: reject
+  invokes_skill_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [skill]
+    legacy_targets: warn
+  check_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [check]
+    legacy_targets: reject
+invariants:
+  system_refs_are_normative_dependencies: true
+  profile_keys_describe_record_io_not_runtime_files: true
+  template_refs_are_creation_blueprints_only: true
+  invoked_skills_remain_independent_capabilities: true
+  pos_record_writes_require_checks: true
+  external_side_effects_are_not_pos_record_io: true

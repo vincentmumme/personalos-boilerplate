@@ -1,0 +1,77 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/interaction-event.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "interaction_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "interaction_kind": {
+      "enum": [
+        "call",
+        "meeting",
+        "workshop",
+        "in-person",
+        "interview",
+        "session"
+      ],
+      "type": "string"
+    },
+    "participant_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "interaction-event"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "evidence_refs",
+    "interaction_date",
+    "interaction_kind",
+    "participant_refs"
+  ],
+  "title": "PersonalOS pos-v1 interaction-event frontmatter",
+  "type": "object"
+}

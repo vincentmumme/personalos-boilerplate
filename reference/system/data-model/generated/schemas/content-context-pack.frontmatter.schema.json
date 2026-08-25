@@ -1,0 +1,114 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/content-context-pack.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "brand_revision": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "channel_revisions": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "ckb_revisions": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "content_tags": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "draft",
+        "locked",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "origin_operation_id": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "piece_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "recipe_revisions": {
+      "items": {
+        "minLength": 1,
+        "pattern": "^[^\\n]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "strategy_revision": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "content-context-pack"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "lifecycle",
+    "piece_ref",
+    "revision"
+  ],
+  "title": "PersonalOS pos-v1 content-context-pack frontmatter",
+  "type": "object"
+}

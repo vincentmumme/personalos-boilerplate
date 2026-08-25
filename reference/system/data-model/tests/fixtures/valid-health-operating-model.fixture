@@ -1,0 +1,40 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000001
+type: health-operating-model
+title: "HealthOS"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+subject_ref: "[[identity/me]]"
+---
+
+# HealthOS
+
+## Current Truth
+
+Minimal active model.
+
+## Purpose
+
+Support health decisions.
+
+## Active Data Flow
+
+Provider to snapshot to assessment.
+
+## Active Object Model
+
+Profile, snapshot, assessment and plan.
+
+## Decision Logic
+
+Use multiple signals.
+
+## Boundaries
+
+No diagnosis.
+
+## Timeline
+
+- **2026-08-14** | Created.

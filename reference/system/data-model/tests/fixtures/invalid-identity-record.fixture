@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-adf9-7080-8be9-0f91f730a185
+type: identity-record
+title: "Invalid Identity"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Invalid Identity
+
+## Current Truth
+
+Missing required sections.

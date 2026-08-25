@@ -1,0 +1,23 @@
+name: knowledge-dataset
+page_shape: pointer-record
+canonical_owner: knowledge-dataset-pointer
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/[a-z0-9]+(?:-[a-z0-9]+)*/datasets/[a-z0-9]+(?:-[a-z0-9]+)*/manifest\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, topic_ref, dataset_kind, source_locator]
+optional_fields: [source_refs, related_topic_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, paused, archived]
+required_sections: [Dataset Boundary, Locations and Access, Schema and Query Notes, Provenance, Re-entry]
+section_order: [Dataset Boundary, Locations and Access, Schema and Query Notes, Provenance, Re-entry]
+template: system/templates/knowledge/knowledge-dataset.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-dataset.fixture
+  positive_logical_path: knowledge/topics/example-topic/datasets/example-dataset/manifest.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-dataset.fixture
+  negative_logical_path: knowledge/topics/example-topic/datasets/example-dataset/data.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

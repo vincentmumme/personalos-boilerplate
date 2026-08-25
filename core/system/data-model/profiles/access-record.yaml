@@ -1,0 +1,37 @@
+name: access-record
+page_shape: state-record
+canonical_owner: system-access-registry
+allowed_roots: [system]
+path_pattern: ^system/access/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, access_kind, secret_owner, provisioning_state, access_target_refs]
+optional_fields: []
+fields:
+  access_kind:
+    datatype: enum
+    enum: [credential, account, cli-authorization, ssh-access, api-authorization]
+  secret_owner:
+    datatype: enum
+    enum: [onepassword, local-environment, runtime-store, external-provider, none]
+  provisioning_state:
+    datatype: enum
+    enum: [configured, partial, documented-only, retired]
+  access_target_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [agent, runtime, host, system-service, integration]
+    legacy_targets: reject
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+required_sections: [Current Truth, Purpose, Access Identity, Targets, Provisioning, Security Boundary, Timeline]
+section_order: [Current Truth, Purpose, Access Identity, Targets, Provisioning, Security Boundary, Timeline]
+template: system/templates/topology/access-record.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-access-record.fixture
+  positive_logical_path: system/access/example-access.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-access-record.fixture
+  negative_logical_path: system/access/example-access.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

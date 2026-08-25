@@ -1,0 +1,28 @@
+---
+schema_version: pos-v1
+id: 01a0251c-ad2b-7ffc-87d3-13cc8e0af437
+type: priority-control
+title: "Priority Control"
+created: 2026-08-21
+updated: 2026-08-21
+lifecycle: active
+priority_control_review_on: 2026-08-23
+---
+
+# Priority Control
+
+## Current Truth
+
+Missing active expiry.
+
+## Manual Direction
+
+Invalid example.
+
+## Scope and Expiry
+
+Invalid example.
+
+## Timeline
+
+- **2026-08-21** | Invalid control created.

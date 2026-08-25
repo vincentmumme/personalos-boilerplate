@@ -1,0 +1,23 @@
+name: product
+page_shape: state-record
+canonical_owner: business-product
+allowed_roots: [business]
+path_pattern: ^business/products/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: [company_refs, brand_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Definition, Scope and Boundaries, Value and Capabilities, Product Lifecycle, Relationships, Sources, Timeline]
+section_order: [Current Truth, Definition, Scope and Boundaries, Value and Capabilities, Product Lifecycle, Relationships, Sources, Timeline]
+template: system/templates/business/product.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-product.fixture
+  positive_logical_path: business/products/example-product.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-product.fixture
+  negative_logical_path: business/products/example-product.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

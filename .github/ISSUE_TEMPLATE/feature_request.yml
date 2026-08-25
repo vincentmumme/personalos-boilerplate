@@ -1,0 +1,38 @@
+name: Technische Verbesserung
+description: Schlage eine konkrete, portable Verbesserung für die Boilerplate vor.
+title: "[Verbesserung]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für deinen Vorschlag. Allgemeine Anwendungsfragen gehören in den Mummentum Discord. Bitte teile hier keine persönlichen PersonalOS- oder Kundendaten.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Welches Problem löst die Änderung?
+      description: Beschreibe den aktuellen Zustand und wer davon betroffen ist.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Gewünschtes Ergebnis
+      description: Beschreibe das beobachtbare Ergebnis, nicht nur eine mögliche Implementierung.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Vorgeschlagener Umfang
+      description: Welche Bereiche sind betroffen und was sollte bewusst außerhalb bleiben?
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Datenschutz
+      options:
+        - label: Der Vorschlag und alle Beispiele enthalten ausschließlich öffentliche oder eindeutig fiktive Informationen.
+          required: true

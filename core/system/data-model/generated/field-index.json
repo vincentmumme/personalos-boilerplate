@@ -1,0 +1,2492 @@
+{
+  "contract": "pos-v1",
+  "derived": true,
+  "fields": {
+    "access_kind": {
+      "datatype": "enum",
+      "enum": [
+        "credential",
+        "account",
+        "cli-authorization",
+        "ssh-access",
+        "api-authorization"
+      ],
+      "owner": "profile:access-record"
+    },
+    "access_target_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:access-record",
+      "target_profiles": [
+        "agent",
+        "runtime",
+        "host",
+        "system-service",
+        "integration"
+      ]
+    },
+    "account_number": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-account"
+    },
+    "account_state": {
+      "datatype": "enum",
+      "enum": [
+        "active",
+        "closed",
+        "unknown"
+      ],
+      "owner": "profile:finance-account"
+    },
+    "action_priority": {
+      "datatype": "enum",
+      "enum": [
+        "critical",
+        "high",
+        "normal",
+        "low"
+      ],
+      "owner": "profile:action"
+    },
+    "activity_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "changed",
+        "completed",
+        "decided",
+        "verified",
+        "observed",
+        "partial",
+        "failed"
+      ],
+      "owner": "profile:activity-contribution"
+    },
+    "activity_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:day-record",
+      "target_profiles": [
+        "activity-contribution"
+      ]
+    },
+    "affected_owner_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:relations"
+    },
+    "agent_kind": {
+      "datatype": "enum",
+      "enum": [
+        "general",
+        "orchestrator",
+        "specialist",
+        "adapter"
+      ],
+      "owner": "profile:agent"
+    },
+    "agent_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:agent-persona-overlay",
+      "target_profiles": [
+        "agent"
+      ]
+    },
+    "agent_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:runtime",
+      "target_profiles": [
+        "agent"
+      ]
+    },
+    "agent_scope": {
+      "datatype": "enum",
+      "enum": [
+        "personalos",
+        "domain",
+        "project",
+        "runtime"
+      ],
+      "owner": "profile:agent"
+    },
+    "amount_gross": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "amount_net": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "analysis_kind": {
+      "datatype": "enum",
+      "enum": [
+        "semantic",
+        "research",
+        "combined"
+      ],
+      "owner": "profile:interaction-analysis"
+    },
+    "analysis_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "propagated",
+        "no-op",
+        "partial",
+        "blocked"
+      ],
+      "owner": "profile:interaction-analysis"
+    },
+    "approver_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-knowledge-candidate"
+    },
+    "assessment_date": {
+      "datatype": "date",
+      "owner": "profile:health-daily-assessment"
+    },
+    "assessment_kind": {
+      "datatype": "enum",
+      "enum": [
+        "quality",
+        "freshness",
+        "coherence",
+        "schema",
+        "migration",
+        "research"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "assessment_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "healthy",
+        "findings",
+        "partial",
+        "blocked",
+        "historical"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "asset_base": {
+      "datatype": "uri",
+      "owner": "profile:content-asset-manifest"
+    },
+    "asset_ids": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "module:content-core"
+    },
+    "attempt": {
+      "datatype": "integer",
+      "minimum": 1,
+      "owner": "profile:content-production-job"
+    },
+    "audience_keys": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-piece"
+    },
+    "authority_scope": {
+      "datatype": "enum",
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "owner": "module:authority"
+    },
+    "automation_kind": {
+      "datatype": "enum",
+      "enum": [
+        "scheduled",
+        "manual",
+        "event-driven",
+        "webhook",
+        "hybrid"
+      ],
+      "owner": "profile:automation"
+    },
+    "awareness_stages": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-piece"
+    },
+    "bic": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-account"
+    },
+    "billing_state": {
+      "datatype": "enum",
+      "enum": [
+        "unbilled",
+        "invoiced",
+        "paid",
+        "non-billable",
+        "waived"
+      ],
+      "owner": "profile:finance-time-entry"
+    },
+    "blocked_by": {
+      "datatype": "plain-text",
+      "owner": "profile:action"
+    },
+    "booking_state": {
+      "datatype": "enum",
+      "enum": [
+        "received",
+        "pending-review",
+        "pending-booking",
+        "booked",
+        "rejected",
+        "cancelled"
+      ],
+      "owner": "profile:finance-expense"
+    },
+    "bootstrap_ref": {
+      "datatype": "wikilink",
+      "forbid_self": true,
+      "legacy_targets": "reject",
+      "owner": "profile:agent-entry-pointer",
+      "target_profiles": [
+        "agent-entry-pointer"
+      ]
+    },
+    "brand_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:business-context",
+      "target_profiles": [
+        "brand"
+      ]
+    },
+    "brand_revision": {
+      "datatype": "plain-text",
+      "owner": "profile:content-context-pack"
+    },
+    "briefing_kind": {
+      "datatype": "enum",
+      "enum": [
+        "morning",
+        "midday",
+        "evening",
+        "ad-hoc"
+      ],
+      "owner": "profile:daily-briefing"
+    },
+    "briefing_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:day-record",
+      "target_profiles": [
+        "daily-briefing"
+      ]
+    },
+    "cadence": {
+      "datatype": "enum",
+      "enum": [
+        "monthly",
+        "quarterly",
+        "yearly",
+        "irregular"
+      ],
+      "owner": "profile:finance-recurring-obligation"
+    },
+    "candidate_class": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-knowledge-candidate"
+    },
+    "candidate_state": {
+      "datatype": "enum",
+      "owner": "module:content-core",
+      "profile_constrained": true
+    },
+    "canonical_final_asset_id": {
+      "datatype": "plain-text",
+      "owner": "profile:content-asset-manifest"
+    },
+    "canonical_system_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:authority",
+      "target_profiles": [
+        "truth-system"
+      ]
+    },
+    "canonical_uri": {
+      "datatype": "uri",
+      "owner": "profile:truth-system"
+    },
+    "canonical_url": {
+      "datatype": "uri",
+      "owner": "profile:content-source"
+    },
+    "caption_state": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-version"
+    },
+    "captured_at": {
+      "datatype": "datetime",
+      "owner": "profile:health-provider-snapshot"
+    },
+    "captured_on": {
+      "datatype": "date",
+      "owner": "module:knowledge-context"
+    },
+    "channel_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-tracking-link"
+    },
+    "channel_revisions": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-context-pack"
+    },
+    "check_kind": {
+      "datatype": "enum",
+      "enum": [
+        "schema",
+        "content",
+        "relation",
+        "runtime",
+        "migration",
+        "health"
+      ],
+      "owner": "profile:check"
+    },
+    "check_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:capability-io",
+      "target_profiles": [
+        "check"
+      ]
+    },
+    "ckb_revisions": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-context-pack"
+    },
+    "client_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "person",
+        "company"
+      ]
+    },
+    "closed_at": {
+      "datatype": "date",
+      "owner": "profile:project"
+    },
+    "closure_mode": {
+      "datatype": "enum",
+      "enum": [
+        "completed",
+        "cancelled",
+        "merged",
+        "duplicate",
+        "superseded",
+        "created-in-error"
+      ],
+      "owner": "profile:project"
+    },
+    "collection_state": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-evidence"
+    },
+    "commercial_state": {
+      "datatype": "enum",
+      "enum": [
+        "open",
+        "won",
+        "lost",
+        "withdrawn"
+      ],
+      "owner": "profile:project"
+    },
+    "company_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "company"
+      ]
+    },
+    "company_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:business-context",
+      "target_profiles": [
+        "company"
+      ]
+    },
+    "configuration_kind": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-configuration"
+    },
+    "content_cadence": {
+      "datatype": "plain-text",
+      "owner": "profile:content-series"
+    },
+    "content_captured_at": {
+      "datatype": "datetime",
+      "owner": "profile:content-input"
+    },
+    "content_evidence_kind": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-evidence"
+    },
+    "content_evidence_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-evidence"
+      ]
+    },
+    "content_observed_at": {
+      "datatype": "datetime",
+      "owner": "profile:content-evidence"
+    },
+    "content_published_on": {
+      "datatype": "date",
+      "owner": "profile:content-publication"
+    },
+    "content_tags": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "module:content-core"
+    },
+    "context_gap_kind": {
+      "datatype": "enum",
+      "enum": [
+        "question-batch",
+        "answer-ingest",
+        "feedback-review",
+        "deep-map"
+      ],
+      "owner": "profile:context-gap-review"
+    },
+    "context_gap_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:day-record",
+      "target_profiles": [
+        "context-gap-review"
+      ]
+    },
+    "contract_version": {
+      "datatype": "semver",
+      "owner": "profile:contract"
+    },
+    "cost_period": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-client-cost",
+      "pattern": "^[0-9]{4}-[0-9]{2}$"
+    },
+    "coverage_ended_at": {
+      "datatype": "datetime",
+      "owner": "module:signal-processing"
+    },
+    "coverage_started_at": {
+      "datatype": "datetime",
+      "owner": "module:signal-processing"
+    },
+    "created": {
+      "datatype": "date",
+      "owner": "foundation"
+    },
+    "creation_mode": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-piece"
+    },
+    "cta_intents": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "module:content-core"
+    },
+    "currency": {
+      "datatype": "plain-text",
+      "owner": "module:finance-context",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "custom_thumbnail_asset_id": {
+      "datatype": "plain-text",
+      "owner": "profile:content-publication"
+    },
+    "dataset_kind": {
+      "datatype": "enum",
+      "enum": [
+        "external",
+        "mutable",
+        "binary",
+        "sensitive",
+        "queryable",
+        "corpus"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "day_date": {
+      "datatype": "date",
+      "owner": "module:daily-context"
+    },
+    "day_summary_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "success",
+        "partial",
+        "failed",
+        "stale"
+      ],
+      "owner": "profile:automation-day-summary"
+    },
+    "decided_by_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:decision"
+    },
+    "decided_on": {
+      "datatype": "date",
+      "owner": "profile:decision"
+    },
+    "decision_confidence": {
+      "datatype": "enum",
+      "enum": [
+        "locked",
+        "leaning",
+        "open-bet"
+      ],
+      "owner": "profile:decision"
+    },
+    "decision_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:normative-lineage",
+      "target_profiles": [
+        "decision"
+      ]
+    },
+    "decision_state": {
+      "datatype": "enum",
+      "enum": [
+        "active",
+        "superseded",
+        "reversed"
+      ],
+      "owner": "profile:decision"
+    },
+    "default_channel_keys": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-format"
+    },
+    "default_timezone": {
+      "datatype": "plain-text",
+      "iana_timezone": true,
+      "owner": "profile:truth-system"
+    },
+    "definition": {
+      "datatype": "plain-text",
+      "owner": "profile:content-format"
+    },
+    "dependency_project_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:relations",
+      "target_profiles": [
+        "project"
+      ]
+    },
+    "derivation_mode": {
+      "datatype": "enum",
+      "enum": [
+        "manual",
+        "generated",
+        "query",
+        "hybrid"
+      ],
+      "owner": "profile:view-record"
+    },
+    "derived_from_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-piece"
+      ]
+    },
+    "derived_from_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:normative-lineage",
+      "target_profiles": [
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "decision"
+      ]
+    },
+    "desired_state": {
+      "datatype": "enum",
+      "enum": [
+        "running",
+        "stopped",
+        "manual"
+      ],
+      "owner": "profile:system-service"
+    },
+    "destination_url": {
+      "datatype": "uri",
+      "owner": "profile:content-tracking-link"
+    },
+    "digest_date": {
+      "datatype": "date",
+      "owner": "profile:signal-digest"
+    },
+    "digest_kind": {
+      "datatype": "enum",
+      "enum": [
+        "news",
+        "creator-x",
+        "creator-youtube",
+        "weekly-synthesis"
+      ],
+      "owner": "profile:signal-digest"
+    },
+    "digest_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "success",
+        "partial",
+        "failed",
+        "stale",
+        "empty"
+      ],
+      "owner": "profile:signal-digest"
+    },
+    "discovery_method": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-publication"
+    },
+    "document_kind": {
+      "datatype": "enum",
+      "enum": [
+        "frontmatter-guide",
+        "registry-governance",
+        "legacy-mapping"
+      ],
+      "owner": "profile:data-model-document"
+    },
+    "due": {
+      "datatype": "date",
+      "owner": "profile:action"
+    },
+    "due_day": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-recurring-obligation",
+      "pattern": "^(?:[1-9]|[12][0-9]|3[01])$"
+    },
+    "due_on": {
+      "datatype": "date",
+      "owner": "profile:finance-invoice"
+    },
+    "editorial_promise": {
+      "datatype": "plain-text",
+      "owner": "profile:content-series"
+    },
+    "entry_kind": {
+      "datatype": "enum",
+      "enum": [
+        "common-bootstrap",
+        "runtime-adapter"
+      ],
+      "owner": "profile:agent-entry-pointer"
+    },
+    "evidence_captured_at": {
+      "datatype": "datetime",
+      "owner": "profile:source-evidence"
+    },
+    "evidence_kind": {
+      "datatype": "enum",
+      "enum": [
+        "transcript",
+        "message-batch",
+        "source-card",
+        "asset-pointer",
+        "visual-context",
+        "audio-transcript",
+        "research"
+      ],
+      "owner": "profile:source-evidence"
+    },
+    "evidence_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:relations",
+      "target_profiles": [
+        "evidence",
+        "source",
+        "report",
+        "decision",
+        "interaction",
+        "automation-run",
+        "day-record",
+        "working-note",
+        "source-evidence",
+        "interaction-event",
+        "conversation-stream",
+        "interaction-analysis",
+        "signal-digest",
+        "processing-receipt",
+        "automation-run-receipt",
+        "automation-day-summary",
+        "knowledge-source",
+        "health-provider-snapshot",
+        "health-daily-assessment",
+        "finance-invoice",
+        "finance-expense",
+        "finance-time-entry",
+        "finance-client-cost",
+        "finance-payment-source-registry",
+        "finance-recurring-obligation",
+        "finance-tax-dossier",
+        "content-piece",
+        "content-publication"
+      ]
+    },
+    "evidence_state": {
+      "datatype": "enum",
+      "enum": [
+        "captured",
+        "normalized",
+        "reviewed",
+        "rejected"
+      ],
+      "owner": "profile:content-evidence"
+    },
+    "execution_mode": {
+      "datatype": "enum",
+      "enum": [
+        "agent-execute",
+        "agent-prepare",
+        "human-only"
+      ],
+      "owner": "profile:action"
+    },
+    "execution_target_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:system-service",
+      "target_profiles": [
+        "runtime",
+        "host"
+      ]
+    },
+    "executor_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-production-job"
+    },
+    "executor_type": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-production-job"
+    },
+    "expected_outputs": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-production-job"
+    },
+    "expense_date": {
+      "datatype": "date",
+      "owner": "profile:finance-expense"
+    },
+    "external_authority_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "integration",
+        "truth-system"
+      ]
+    },
+    "external_record_id": {
+      "datatype": "plain-text",
+      "owner": "module:finance-context"
+    },
+    "extraction_gaps": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-source"
+    },
+    "filed_at": {
+      "datatype": "datetime",
+      "owner": "profile:finance-tax-dossier"
+    },
+    "filing_deadline": {
+      "datatype": "date",
+      "owner": "profile:finance-tax-dossier"
+    },
+    "filing_state": {
+      "datatype": "enum",
+      "enum": [
+        "preparation",
+        "ready-to-file",
+        "filed",
+        "assessed",
+        "closed"
+      ],
+      "owner": "profile:finance-tax-dossier"
+    },
+    "finance_scope": {
+      "datatype": "enum",
+      "enum": [
+        "personal",
+        "business",
+        "mixed"
+      ],
+      "owner": "module:finance-context"
+    },
+    "follow_on_project_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:relations",
+      "target_profiles": [
+        "project"
+      ]
+    },
+    "follow_up_at": {
+      "datatype": "date",
+      "owner": "profile:action"
+    },
+    "format_family": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-format"
+    },
+    "format_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-format"
+      ]
+    },
+    "funnel_stages": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-piece"
+    },
+    "generated_at": {
+      "datatype": "datetime",
+      "owner": "module:daily-context"
+    },
+    "half_life": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-idea"
+    },
+    "hashtag_count": {
+      "datatype": "integer",
+      "minimum": 0,
+      "owner": "profile:content-version"
+    },
+    "host_kind": {
+      "datatype": "enum",
+      "enum": [
+        "laptop",
+        "desktop",
+        "server",
+        "vps",
+        "cloud-runtime"
+      ],
+      "owner": "profile:host"
+    },
+    "host_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:runtime",
+      "target_profiles": [
+        "host"
+      ]
+    },
+    "hourly_rate": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "hours": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "hypothesis_ids": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-learning-candidate"
+    },
+    "iban": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-account"
+    },
+    "id": {
+      "datatype": "uuidv7",
+      "owner": "foundation"
+    },
+    "idea_kind": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-idea"
+    },
+    "idea_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "promoted",
+        "merged",
+        "rejected"
+      ],
+      "owner": "profile:idea"
+    },
+    "idea_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-idea"
+      ]
+    },
+    "idempotency_key": {
+      "datatype": "plain-text",
+      "owner": "profile:content-production-job"
+    },
+    "immutable": {
+      "datatype": "literal",
+      "owner": "module:knowledge-context",
+      "value": true
+    },
+    "index_scope": {
+      "datatype": "enum",
+      "enum": [
+        "root",
+        "section"
+      ],
+      "owner": "profile:owner-index"
+    },
+    "input_kind": {
+      "datatype": "enum",
+      "enum": [
+        "chat",
+        "voice-note",
+        "handwritten",
+        "screenshot",
+        "file",
+        "url",
+        "manual",
+        "other"
+      ],
+      "owner": "profile:capture"
+    },
+    "input_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-input"
+      ]
+    },
+    "institution": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-account"
+    },
+    "integration_access_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:integration",
+      "target_profiles": [
+        "access-record"
+      ]
+    },
+    "integration_kind": {
+      "datatype": "enum",
+      "enum": [
+        "api",
+        "cli",
+        "sync",
+        "plugin",
+        "filesystem",
+        "messaging"
+      ],
+      "owner": "profile:integration"
+    },
+    "interaction_date": {
+      "datatype": "date",
+      "owner": "profile:interaction-event"
+    },
+    "interaction_kind": {
+      "datatype": "enum",
+      "enum": [
+        "call",
+        "meeting",
+        "workshop",
+        "in-person",
+        "interview",
+        "session"
+      ],
+      "owner": "profile:interaction-event"
+    },
+    "interaction_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:signal-processing",
+      "target_profiles": [
+        "interaction-event",
+        "conversation-stream",
+        "signal-digest"
+      ]
+    },
+    "inventory_kind": {
+      "datatype": "enum",
+      "enum": [
+        "item",
+        "candidate",
+        "entity",
+        "corpus",
+        "question",
+        "watch"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "inventory_state": {
+      "datatype": "enum",
+      "enum": [
+        "proposed",
+        "accepted",
+        "blocked",
+        "parked",
+        "rejected",
+        "superseded"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "invoice_number": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-invoice"
+    },
+    "invoice_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "finance-invoice"
+      ]
+    },
+    "invoice_state": {
+      "datatype": "enum",
+      "enum": [
+        "draft",
+        "open",
+        "overdue",
+        "paid",
+        "voided"
+      ],
+      "owner": "profile:finance-invoice"
+    },
+    "invokes_skill_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:capability-io",
+      "target_profiles": [
+        "skill"
+      ]
+    },
+    "issued_on": {
+      "datatype": "date",
+      "owner": "profile:finance-invoice"
+    },
+    "job_state": {
+      "datatype": "enum",
+      "enum": [
+        "queued",
+        "in-progress",
+        "blocked",
+        "in-review",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "owner": "profile:content-production-job"
+    },
+    "journal_author_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "profile:journal-entry"
+    },
+    "journal_kind": {
+      "datatype": "enum",
+      "enum": [
+        "diary",
+        "reflection",
+        "thought",
+        "conversation",
+        "note"
+      ],
+      "owner": "profile:journal-entry"
+    },
+    "journal_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:day-record",
+      "target_profiles": [
+        "journal-entry"
+      ]
+    },
+    "knowledge_article_kind": {
+      "datatype": "enum",
+      "enum": [
+        "concept",
+        "topic",
+        "reference",
+        "thesis",
+        "pattern",
+        "framework",
+        "source",
+        "analysis"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "knowledge_confidence": {
+      "datatype": "enum",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "knowledge_log_scope": {
+      "datatype": "enum",
+      "enum": [
+        "hub",
+        "topic"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "knowledge_maturity": {
+      "datatype": "enum",
+      "enum": [
+        "core",
+        "useful",
+        "emerging",
+        "needs-review",
+        "unclassified"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "knowledge_source_kind": {
+      "datatype": "enum",
+      "enum": [
+        "article",
+        "paper",
+        "repository",
+        "note",
+        "dataset",
+        "video",
+        "audio",
+        "social",
+        "manual",
+        "conversation",
+        "unknown"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "knowledge_volatility": {
+      "datatype": "enum",
+      "enum": [
+        "hot",
+        "warm",
+        "cold",
+        "unknown"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "last_booked_period": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-recurring-obligation",
+      "pattern": "^[0-9]{4}-[0-9]{2}$"
+    },
+    "last_material_at": {
+      "datatype": "datetime",
+      "owner": "profile:conversation-stream"
+    },
+    "lifecycle": {
+      "datatype": "enum",
+      "owner": "module:lifecycle",
+      "profile_constrained": true
+    },
+    "link_state": {
+      "datatype": "enum",
+      "enum": [
+        "draft",
+        "active",
+        "paused",
+        "expired",
+        "archived"
+      ],
+      "owner": "profile:content-tracking-link"
+    },
+    "live_url": {
+      "datatype": "uri",
+      "owner": "profile:content-publication"
+    },
+    "manifest_state": {
+      "datatype": "enum",
+      "enum": [
+        "collecting",
+        "complete",
+        "sealed"
+      ],
+      "owner": "profile:finance-tax-manifest"
+    },
+    "market_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:business-context",
+      "target_profiles": [
+        "market"
+      ]
+    },
+    "measurement_scope": {
+      "datatype": "enum",
+      "enum": [
+        "body-composition",
+        "performance",
+        "clinical",
+        "mixed"
+      ],
+      "owner": "profile:health-measurement"
+    },
+    "merge_target_ref": {
+      "datatype": "wikilink",
+      "forbid_self": true,
+      "legacy_targets": "warn",
+      "owner": "profile:idea",
+      "target_profiles": [
+        "idea"
+      ]
+    },
+    "native_id": {
+      "datatype": "plain-text",
+      "owner": "profile:content-publication"
+    },
+    "next_due_on": {
+      "datatype": "date",
+      "owner": "profile:finance-recurring-obligation"
+    },
+    "not_before": {
+      "datatype": "date",
+      "owner": "profile:action"
+    },
+    "obligation_state": {
+      "datatype": "enum",
+      "enum": [
+        "active",
+        "paused",
+        "cancelled",
+        "ended"
+      ],
+      "owner": "profile:finance-recurring-obligation"
+    },
+    "observability_scope": {
+      "datatype": "enum",
+      "enum": [
+        "host",
+        "runtime",
+        "service",
+        "automation",
+        "access",
+        "integration",
+        "system"
+      ],
+      "owner": "profile:system-observability-view"
+    },
+    "observability_source_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:system-observability-view"
+    },
+    "observation_ids": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-learning-candidate"
+    },
+    "observed_at": {
+      "datatype": "datetime",
+      "owner": "profile:system-observability-view"
+    },
+    "occurred_at": {
+      "datatype": "datetime",
+      "owner": "module:daily-context"
+    },
+    "operating_system_kind": {
+      "datatype": "enum",
+      "enum": [
+        "personal-os",
+        "business-os",
+        "content-os",
+        "ai-os",
+        "agent-os",
+        "module-contract"
+      ],
+      "owner": "profile:operating-system"
+    },
+    "origin_operation_id": {
+      "datatype": "plain-text",
+      "owner": "module:content-core"
+    },
+    "overlay_kind": {
+      "datatype": "enum",
+      "enum": [
+        "behavior-extension",
+        "domain-specialization",
+        "runtime-specialization"
+      ],
+      "owner": "profile:agent-persona-overlay"
+    },
+    "owning_skill_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:skill-reference",
+      "target_profiles": [
+        "skill"
+      ]
+    },
+    "paid_on": {
+      "datatype": "date",
+      "owner": "profile:finance-invoice"
+    },
+    "parent_project_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:relations",
+      "target_profiles": [
+        "project"
+      ]
+    },
+    "participant_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:signal-processing",
+      "target_profiles": [
+        "person",
+        "company",
+        "identity-record"
+      ]
+    },
+    "payment_source_registry_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "finance-payment-source-registry"
+      ]
+    },
+    "payment_state": {
+      "datatype": "enum",
+      "enum": [
+        "unknown",
+        "open",
+        "paid",
+        "recipient-confirmed"
+      ],
+      "owner": "profile:finance-expense"
+    },
+    "persona_scope": {
+      "datatype": "enum",
+      "enum": [
+        "shared"
+      ],
+      "owner": "profile:agent-persona"
+    },
+    "piece_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-piece"
+      ]
+    },
+    "placement": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-tracking-link"
+    },
+    "plan_state": {
+      "datatype": "enum",
+      "enum": [
+        "draft",
+        "active",
+        "paused",
+        "superseded"
+      ],
+      "owner": "profile:health-plan"
+    },
+    "platform": {
+      "datatype": "lower-kebab",
+      "owner": "module:content-core"
+    },
+    "primary_company_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "profile:person",
+      "target_profiles": [
+        "company"
+      ]
+    },
+    "primary_contact_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:company",
+      "target_profiles": [
+        "person"
+      ]
+    },
+    "primary_intents": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-piece"
+    },
+    "primary_pillar_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-piece"
+    },
+    "priority": {
+      "datatype": "enum",
+      "enum": [
+        "critical",
+        "high",
+        "normal",
+        "low"
+      ],
+      "owner": "profile:project"
+    },
+    "priority_control_expires_on": {
+      "datatype": "date",
+      "owner": "profile:priority-control"
+    },
+    "priority_control_review_on": {
+      "datatype": "date",
+      "owner": "profile:priority-control"
+    },
+    "priority_excluded_action_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:priority-control",
+      "target_profiles": [
+        "action"
+      ]
+    },
+    "priority_focus_action_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:priority-control",
+      "target_profiles": [
+        "action"
+      ]
+    },
+    "priority_focus_areas": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:priority-control"
+    },
+    "priority_ordered_action_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "profile:priority-control",
+      "target_profiles": [
+        "action"
+      ]
+    },
+    "processed_at": {
+      "datatype": "datetime",
+      "owner": "profile:processing-receipt"
+    },
+    "processed_until": {
+      "datatype": "datetime",
+      "owner": "module:signal-processing"
+    },
+    "processing_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "no-op",
+        "routed",
+        "promoted"
+      ],
+      "owner": "profile:capture"
+    },
+    "producer_kind": {
+      "datatype": "enum",
+      "enum": [
+        "human",
+        "agent",
+        "automation",
+        "external-system",
+        "hybrid"
+      ],
+      "owner": "module:daily-context"
+    },
+    "producer_name": {
+      "datatype": "plain-text",
+      "owner": "module:daily-context"
+    },
+    "producer_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:daily-context"
+    },
+    "producer_skill_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:signal-processing",
+      "target_profiles": [
+        "skill"
+      ]
+    },
+    "production_spec_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-production-spec"
+      ]
+    },
+    "project_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "achieved",
+        "partially-achieved",
+        "not-achieved",
+        "not-assessed"
+      ],
+      "owner": "profile:project"
+    },
+    "project_phase": {
+      "datatype": "lower-kebab",
+      "owner": "profile:project"
+    },
+    "project_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:relations",
+      "target_profiles": [
+        "project"
+      ]
+    },
+    "promotion_ref": {
+      "datatype": "wikilink",
+      "forbid_self": true,
+      "legacy_targets": "warn",
+      "owner": "profile:idea",
+      "target_profiles": [
+        "action",
+        "project",
+        "truth-system",
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "template",
+        "runbook",
+        "check",
+        "skill",
+        "identity-record",
+        "brand",
+        "market",
+        "offer",
+        "product",
+        "strategy",
+        "knowledge-topic",
+        "knowledge-article",
+        "knowledge-inventory-item",
+        "finance-account",
+        "finance-transaction",
+        "finance-expense",
+        "finance-invoice",
+        "finance-time-entry",
+        "finance-client-cost",
+        "finance-recurring-obligation",
+        "finance-tax-dossier",
+        "finance-budget",
+        "finance-report",
+        "health-profile",
+        "health-measurement",
+        "health-provider-snapshot",
+        "health-daily-assessment",
+        "health-training-session",
+        "health-plan",
+        "health-review"
+      ]
+    },
+    "provenance_key": {
+      "datatype": "plain-text",
+      "owner": "profile:content-evidence"
+    },
+    "provider_id": {
+      "datatype": "plain-text",
+      "owner": "profile:content-tracking-link"
+    },
+    "provider_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-tracking-link"
+    },
+    "provider_snapshot_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:health-daily-assessment",
+      "target_profiles": [
+        "health-provider-snapshot"
+      ]
+    },
+    "provisioning_state": {
+      "datatype": "enum",
+      "enum": [
+        "configured",
+        "partial",
+        "documented-only",
+        "retired"
+      ],
+      "owner": "profile:access-record"
+    },
+    "publication_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-publication"
+      ]
+    },
+    "publication_state": {
+      "datatype": "enum",
+      "enum": [
+        "planned",
+        "approved",
+        "publishing",
+        "live",
+        "outcome-unknown",
+        "failed",
+        "cancelled"
+      ],
+      "owner": "profile:content-publication"
+    },
+    "published_at": {
+      "datatype": "datetime",
+      "owner": "profile:content-publication"
+    },
+    "published_at_precision": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-publication"
+    },
+    "publishing_account_key": {
+      "datatype": "lower-kebab",
+      "owner": "module:content-core"
+    },
+    "quality_profile_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-configuration"
+      ]
+    },
+    "readiness_band": {
+      "datatype": "enum",
+      "enum": [
+        "green",
+        "yellow",
+        "red",
+        "unknown"
+      ],
+      "owner": "profile:health-daily-assessment"
+    },
+    "reads_profile_keys": {
+      "datatype": "profile-key-list",
+      "min_items": 1,
+      "owner": "module:capability-io",
+      "registered_profile": true
+    },
+    "receipt_kind": {
+      "datatype": "enum",
+      "enum": [
+        "source-ingest",
+        "semantic-propagation",
+        "reconciliation"
+      ],
+      "owner": "profile:processing-receipt"
+    },
+    "receipt_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "propagated",
+        "partial",
+        "blocked"
+      ],
+      "owner": "profile:processing-receipt"
+    },
+    "recharge_state": {
+      "datatype": "enum",
+      "enum": [
+        "pending-evidence",
+        "pending-usage",
+        "ready-to-bill",
+        "invoiced",
+        "paid",
+        "waived"
+      ],
+      "owner": "profile:finance-client-cost"
+    },
+    "recipe_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-production-recipe"
+      ]
+    },
+    "recipe_revisions": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-context-pack"
+    },
+    "recipe_steps": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-production-recipe"
+    },
+    "recorded_at": {
+      "datatype": "datetime",
+      "owner": "module:daily-context"
+    },
+    "redaction_mode": {
+      "datatype": "enum",
+      "enum": [
+        "none",
+        "minimized",
+        "redacted"
+      ],
+      "owner": "profile:source-evidence"
+    },
+    "redirect_target_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:relations",
+      "target_profiles": [
+        "project",
+        "working-note",
+        "redirect",
+        "truth-system",
+        "owner-index",
+        "identity-record",
+        "identity-biography",
+        "identity-personal-constitution",
+        "identity-operating-profile",
+        "identity-life-orientation",
+        "identity-legal",
+        "identity-capabilities",
+        "person",
+        "company",
+        "brand",
+        "brand-voice",
+        "brand-design-system",
+        "market",
+        "customer-profile",
+        "product",
+        "offer",
+        "business-model",
+        "strategy",
+        "automation",
+        "agent",
+        "agent-persona-overlay",
+        "runtime",
+        "host",
+        "system-service",
+        "integration",
+        "access-record",
+        "operating-system",
+        "view-record",
+        "system-observability-view",
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "template",
+        "runbook",
+        "check"
+      ]
+    },
+    "reference_kind": {
+      "datatype": "enum",
+      "enum": [
+        "calibration",
+        "pattern-memory",
+        "schema-reference",
+        "provider-reference",
+        "compatibility-fixture",
+        "example"
+      ],
+      "owner": "profile:skill-reference"
+    },
+    "registry_state": {
+      "datatype": "enum",
+      "enum": [
+        "active",
+        "retired"
+      ],
+      "owner": "profile:finance-payment-source-registry"
+    },
+    "rejection_evidence_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:idea",
+      "target_profiles": [
+        "evidence",
+        "source",
+        "report",
+        "decision",
+        "interaction"
+      ]
+    },
+    "related_topic_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:knowledge-context",
+      "target_profiles": [
+        "knowledge-topic"
+      ]
+    },
+    "requested_extraction": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-source"
+    },
+    "research_question": {
+      "datatype": "plain-text",
+      "owner": "profile:content-research"
+    },
+    "research_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-research"
+      ]
+    },
+    "result_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-idea",
+        "content-source",
+        "content-research",
+        "content-format",
+        "content-series",
+        "content-production-recipe",
+        "content-piece",
+        "content-context-pack",
+        "content-production-spec",
+        "content-asset-manifest",
+        "content-production-job",
+        "content-version",
+        "content-publication",
+        "content-tracking-link",
+        "content-evidence",
+        "content-knowledge-candidate",
+        "content-learning-candidate"
+      ]
+    },
+    "retention_class": {
+      "datatype": "enum",
+      "enum": [
+        "material-run",
+        "daily-aggregate"
+      ],
+      "owner": "module:signal-processing"
+    },
+    "retention_disposition": {
+      "datatype": "enum",
+      "enum": [
+        "raw-retained",
+        "redacted",
+        "stable-pointer",
+        "compacted",
+        "discarded"
+      ],
+      "owner": "profile:capture"
+    },
+    "retention_reason": {
+      "datatype": "plain-text",
+      "owner": "module:signal-processing"
+    },
+    "reverses_decision_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:decision",
+      "target_profiles": [
+        "decision"
+      ]
+    },
+    "review_at": {
+      "datatype": "date",
+      "owner": "profile:attention-trigger"
+    },
+    "revision": {
+      "datatype": "integer",
+      "minimum": 1,
+      "owner": "module:content-core"
+    },
+    "routing_decision": {
+      "datatype": "plain-text",
+      "owner": "profile:content-input"
+    },
+    "run_ended_at": {
+      "datatype": "datetime",
+      "owner": "profile:automation-run-receipt"
+    },
+    "run_id": {
+      "datatype": "plain-text",
+      "owner": "profile:automation-run-receipt"
+    },
+    "run_outcome": {
+      "datatype": "enum",
+      "enum": [
+        "changed",
+        "partial",
+        "failed",
+        "stale",
+        "deferred",
+        "pending",
+        "external-mutation",
+        "audit-no-op"
+      ],
+      "owner": "profile:automation-run-receipt"
+    },
+    "run_started_at": {
+      "datatype": "datetime",
+      "owner": "profile:automation-run-receipt"
+    },
+    "run_trigger": {
+      "datatype": "enum",
+      "enum": [
+        "scheduled",
+        "manual",
+        "webhook",
+        "backfill",
+        "event"
+      ],
+      "owner": "profile:automation-run-receipt"
+    },
+    "runtime_kind": {
+      "datatype": "enum",
+      "enum": [
+        "cli",
+        "daemon",
+        "desktop-app",
+        "server",
+        "orchestration-framework"
+      ],
+      "owner": "profile:runtime"
+    },
+    "runtime_name": {
+      "datatype": "plain-text",
+      "owner": "module:daily-context"
+    },
+    "schedule_timezone": {
+      "datatype": "plain-text",
+      "iana_timezone": true,
+      "owner": "profile:automation"
+    },
+    "schema_version": {
+      "datatype": "literal",
+      "owner": "foundation",
+      "value": "pos-v1"
+    },
+    "secondary_pillar_keys": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-piece"
+    },
+    "secret_owner": {
+      "datatype": "enum",
+      "enum": [
+        "onepassword",
+        "local-environment",
+        "runtime-store",
+        "external-provider",
+        "none"
+      ],
+      "owner": "profile:access-record"
+    },
+    "secure_locator": {
+      "datatype": "plain-text",
+      "owner": "profile:finance-account"
+    },
+    "series_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-series"
+      ]
+    },
+    "service_date": {
+      "datatype": "date",
+      "owner": "profile:finance-time-entry"
+    },
+    "service_integration_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:system-service",
+      "target_profiles": [
+        "integration"
+      ]
+    },
+    "service_kind": {
+      "datatype": "enum",
+      "enum": [
+        "launch-agent",
+        "daemon",
+        "scheduled-job",
+        "local-api",
+        "sync-service"
+      ],
+      "owner": "profile:system-service"
+    },
+    "shared_persona_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "profile:agent-persona-overlay",
+      "target_profiles": [
+        "agent-persona"
+      ]
+    },
+    "skill_version": {
+      "datatype": "semver",
+      "owner": "profile:skill"
+    },
+    "slug": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-piece"
+    },
+    "snapshot_date": {
+      "datatype": "date",
+      "owner": "profile:health-provider-snapshot"
+    },
+    "snapshot_state": {
+      "datatype": "enum",
+      "enum": [
+        "complete",
+        "partial",
+        "pending",
+        "unavailable"
+      ],
+      "owner": "profile:health-provider-snapshot"
+    },
+    "source_amount": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "source_channel": {
+      "datatype": "plain-text",
+      "owner": "module:signal-processing"
+    },
+    "source_expense_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "finance-expense"
+      ]
+    },
+    "source_integrity": {
+      "datatype": "enum",
+      "enum": [
+        "complete",
+        "partial",
+        "unknown"
+      ],
+      "owner": "module:knowledge-context"
+    },
+    "source_kind": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-source"
+    },
+    "source_locator": {
+      "datatype": "plain-text",
+      "owner": "module:knowledge-context"
+    },
+    "source_owner_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:view-record"
+    },
+    "source_ref": {
+      "datatype": "plain-text",
+      "owner": "module:signal-processing"
+    },
+    "source_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:knowledge-context",
+      "target_profiles": [
+        "knowledge-source",
+        "content-source"
+      ]
+    },
+    "source_state": {
+      "datatype": "enum",
+      "enum": [
+        "captured",
+        "processing",
+        "processed",
+        "partial",
+        "failed",
+        "archived"
+      ],
+      "owner": "profile:content-source"
+    },
+    "source_system": {
+      "datatype": "plain-text",
+      "owner": "module:signal-processing"
+    },
+    "sponsor_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:relations",
+      "target_profiles": [
+        "person",
+        "company",
+        "identity-record"
+      ]
+    },
+    "storage_profile_key": {
+      "datatype": "lower-kebab",
+      "owner": "profile:content-asset-manifest"
+    },
+    "strategy_revision": {
+      "datatype": "plain-text",
+      "owner": "profile:content-context-pack"
+    },
+    "stream_state": {
+      "datatype": "enum",
+      "enum": [
+        "active",
+        "dormant",
+        "closed"
+      ],
+      "owner": "profile:conversation-stream"
+    },
+    "subject_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:subject-context",
+      "target_profiles": [
+        "identity-record"
+      ]
+    },
+    "successor_decision_ref": {
+      "datatype": "wikilink",
+      "forbid_self": true,
+      "legacy_targets": "warn",
+      "owner": "profile:decision",
+      "target_profiles": [
+        "decision"
+      ]
+    },
+    "supersedes_decision_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:decision",
+      "target_profiles": [
+        "decision"
+      ]
+    },
+    "supersedes_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:normative-lineage",
+      "target_profiles": [
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "template",
+        "runbook",
+        "check",
+        "skill"
+      ]
+    },
+    "system_kind": {
+      "datatype": "enum",
+      "enum": [
+        "personal-os",
+        "business-os",
+        "shared-workspace",
+        "external-service"
+      ],
+      "owner": "profile:truth-system"
+    },
+    "system_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "module:system-dependencies",
+      "target_profiles": [
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "template",
+        "runbook",
+        "check",
+        "truth-system",
+        "data-model-document"
+      ]
+    },
+    "target": {
+      "datatype": "date",
+      "owner": "profile:action"
+    },
+    "target_owner_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "warn",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "knowledge-topic",
+        "content-configuration",
+        "content-guide"
+      ]
+    },
+    "target_profile_key": {
+      "datatype": "profile-key",
+      "owner": "profile:template",
+      "registered_profile": true
+    },
+    "tax_dossier_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:finance-context",
+      "target_profiles": [
+        "finance-tax-dossier"
+      ]
+    },
+    "tax_rate": {
+      "datatype": "decimal",
+      "owner": "module:finance-context"
+    },
+    "tax_year": {
+      "datatype": "plain-text",
+      "owner": "module:finance-context",
+      "pattern": "^[0-9]{4}$"
+    },
+    "template_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:capability-io",
+      "target_profiles": [
+        "template"
+      ]
+    },
+    "timezone": {
+      "datatype": "plain-text",
+      "iana_timezone": true,
+      "owner": "module:daily-context"
+    },
+    "title": {
+      "datatype": "plain-text",
+      "min_length": 1,
+      "owner": "foundation"
+    },
+    "topic_keys": {
+      "datatype": "plain-text-list",
+      "min_items": 1,
+      "owner": "profile:content-idea"
+    },
+    "topic_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:knowledge-context",
+      "target_profiles": [
+        "knowledge-topic"
+      ]
+    },
+    "tracking_link_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "reject",
+      "min_items": 1,
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-tracking-link"
+      ]
+    },
+    "training_recommendation": {
+      "datatype": "enum",
+      "enum": [
+        "train",
+        "light",
+        "rest",
+        "unknown"
+      ],
+      "owner": "profile:health-daily-assessment"
+    },
+    "triage_by": {
+      "datatype": "date",
+      "owner": "profile:action-candidate"
+    },
+    "trigger_kind": {
+      "datatype": "enum",
+      "enum": [
+        "date",
+        "event"
+      ],
+      "owner": "profile:attention-trigger"
+    },
+    "trigger_ref": {
+      "datatype": "wikilink",
+      "owner": "profile:attention-trigger"
+    },
+    "type": {
+      "datatype": "profile-key",
+      "owner": "foundation",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "updated": {
+      "datatype": "date",
+      "owner": "foundation"
+    },
+    "verification_result": {
+      "datatype": "enum",
+      "enum": [
+        "pass",
+        "warn",
+        "blocked"
+      ],
+      "owner": "profile:processing-receipt"
+    },
+    "verified_on": {
+      "datatype": "date",
+      "owner": "module:knowledge-context"
+    },
+    "verifies_refs": {
+      "datatype": "wikilink-list",
+      "legacy_targets": "warn",
+      "min_items": 1,
+      "owner": "profile:check",
+      "target_profiles": [
+        "principle",
+        "rule",
+        "contract",
+        "convention",
+        "framework",
+        "template",
+        "runbook",
+        "skill"
+      ]
+    },
+    "version_ref": {
+      "datatype": "wikilink",
+      "legacy_targets": "reject",
+      "owner": "module:content-core",
+      "target_profiles": [
+        "content-version"
+      ]
+    },
+    "view_kind": {
+      "datatype": "enum",
+      "enum": [
+        "table",
+        "dashboard",
+        "report",
+        "inventory",
+        "navigation"
+      ],
+      "owner": "profile:view-record"
+    },
+    "human_role": {
+      "datatype": "enum",
+      "enum": [
+        "owner",
+        "sponsor",
+        "lead",
+        "contributor",
+        "observer"
+      ],
+      "owner": "profile:project"
+    },
+    "waiting_on": {
+      "datatype": "plain-text",
+      "owner": "profile:action"
+    },
+    "workflow": {
+      "datatype": "enum",
+      "enum": [
+        "general",
+        "commercial",
+        "delivery",
+        "migration",
+        "research",
+        "personal-change",
+        "program"
+      ],
+      "owner": "profile:project"
+    },
+    "writes_profile_keys": {
+      "datatype": "profile-key-list",
+      "min_items": 1,
+      "owner": "module:capability-io",
+      "registered_profile": true
+    }
+  },
+  "registry_version": "0.40.0"
+}

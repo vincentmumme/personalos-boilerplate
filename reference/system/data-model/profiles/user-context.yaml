@@ -1,0 +1,20 @@
+name: user-context
+page_shape: pointer-record
+canonical_owner: root-user-projection
+allowed_roots: [USER.md]
+path_pattern: ^USER\.md$
+required_modules: [subject-context]
+optional_modules: []
+required_fields: [subject_ref]
+optional_fields: []
+fields: {}
+required_sections: [Kurzprofil, Arbeitsweise und Denkstil, Entscheidungen, Arbeitsbeziehung mit Agenten, Wichtige Beziehungen und Rollen, Werte und Haltung, Wahrheitskarte, Pflege]
+section_order: [Kurzprofil, Arbeitsweise und Denkstil, Entscheidungen, Arbeitsbeziehung mit Agenten, Wichtige Beziehungen und Rollen, Werte und Haltung, Wahrheitskarte, Pflege]
+template: system/templates/core/bootstrap/user-context.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-user-context.fixture
+  positive_logical_path: USER.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-user-context.fixture
+  negative_logical_path: USER.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,78 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/automation-day-summary.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "day_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "day_summary_outcome": {
+      "enum": [
+        "success",
+        "partial",
+        "failed",
+        "stale"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "processed_until": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "producer_skill_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "retention_class": {
+      "enum": [
+        "daily-aggregate"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "timezone": {
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_+.-]+(?:/[A-Za-z0-9_+.-]+)*$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "automation-day-summary"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "day_date",
+    "day_summary_outcome",
+    "processed_until",
+    "producer_skill_ref",
+    "retention_class",
+    "timezone"
+  ],
+  "title": "PersonalOS pos-v1 automation-day-summary frontmatter",
+  "type": "object"
+}

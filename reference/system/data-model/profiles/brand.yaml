@@ -1,0 +1,23 @@
+name: brand
+page_shape: state-record
+canonical_owner: business-brand
+allowed_roots: [business]
+path_pattern: ^business/brands/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: [company_refs, brand_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Definition, Scope and Boundaries, Identity and Promise, Positioning and Expression, Relationships, Sources, Timeline]
+section_order: [Current Truth, Definition, Scope and Boundaries, Identity and Promise, Positioning and Expression, Relationships, Sources, Timeline]
+template: system/templates/business/brand.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-brand.fixture
+  positive_logical_path: business/brands/example-brand.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-brand.fixture
+  negative_logical_path: business/brands/example-brand.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

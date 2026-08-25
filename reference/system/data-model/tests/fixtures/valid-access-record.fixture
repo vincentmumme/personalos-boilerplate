@@ -1,0 +1,45 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-78bd-b414-d64e2b2bdc76
+type: access-record
+title: "Example Access Record"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: pointer
+access_kind: credential
+secret_owner: onepassword
+provisioning_state: configured
+access_target_refs: ["[[system/integrations/example-integration/index]]"]
+---
+
+# Example Access Record
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Access Identity
+
+Example content.
+
+## Targets
+
+Example content.
+
+## Provisioning
+
+Example content.
+
+## Security Boundary
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

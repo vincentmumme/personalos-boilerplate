@@ -1,0 +1,37 @@
+name: capture
+page_shape: state-record
+canonical_owner: inbox-capture-record
+allowed_roots: [inbox]
+path_pattern: ^inbox/captures/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [lifecycle, relations]
+optional_modules: []
+required_fields: [lifecycle, input_kind]
+optional_fields: [processing_outcome, retention_disposition, evidence_refs]
+fields:
+  input_kind:
+    datatype: enum
+    enum: [chat, voice-note, handwritten, screenshot, file, url, manual, other]
+  processing_outcome:
+    datatype: enum
+    enum: [no-op, routed, promoted]
+  retention_disposition:
+    datatype: enum
+    enum: [raw-retained, redacted, stable-pointer, compacted, discarded]
+module_constraints:
+  lifecycle:
+    enum: [unprocessed, staged, processed]
+conditional_rules:
+  processed:
+    when_field: lifecycle
+    when_in: [processed]
+    require_fields: [processing_outcome, retention_disposition]
+required_sections: [Current Truth, Original Input, Source Basis, Processing and Routing, Retention, Timeline]
+section_order: [Current Truth, Original Input, Source Basis, Processing and Routing, Retention, Timeline]
+template: system/templates/capture.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-capture.fixture
+  positive_logical_path: inbox/captures/019ff1bc-2bac-72f3-a283-df530e91c2e0.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-capture.fixture
+  negative_logical_path: inbox/captures/019ff1bc-2bd9-7f20-85b6-aae70ab0fdf4.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

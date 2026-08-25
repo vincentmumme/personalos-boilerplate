@@ -1,0 +1,105 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/access-record.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "access_kind": {
+      "enum": [
+        "credential",
+        "account",
+        "cli-authorization",
+        "ssh-access",
+        "api-authorization"
+      ],
+      "type": "string"
+    },
+    "access_target_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authority_scope": {
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "type": "string"
+    },
+    "canonical_system_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "paused",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "provisioning_state": {
+      "enum": [
+        "configured",
+        "partial",
+        "documented-only",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "secret_owner": {
+      "enum": [
+        "onepassword",
+        "local-environment",
+        "runtime-store",
+        "external-provider",
+        "none"
+      ],
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "access-record"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "access_kind",
+    "access_target_refs",
+    "authority_scope",
+    "canonical_system_ref",
+    "lifecycle",
+    "provisioning_state",
+    "secret_owner"
+  ],
+  "title": "PersonalOS pos-v1 access-record frontmatter",
+  "type": "object"
+}

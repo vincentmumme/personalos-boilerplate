@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-efaf-752a-991b-fe3fcecb32af
+type: operating-model
+title: "Example Operating Model"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Operating Model
+
+## Current Truth
+
+Missing the profile contract.

@@ -1,0 +1,24 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7bd3-a3e4-4aee1378ea10"
+type: "unknown-content-profile"
+title: "Example content-guide"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "active"
+revision: 1
+---
+
+# Example content-guide
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

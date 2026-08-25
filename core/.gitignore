@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.tmp/
+__pycache__/
+*.py[cod]

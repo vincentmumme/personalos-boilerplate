@@ -1,0 +1,23 @@
+name: runbook
+page_shape: normative-record
+canonical_owner: system-runbooks
+allowed_roots: [system]
+path_pattern: ^system/runbooks/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage, system-dependencies]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, system_refs]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Purpose, Trigger, Preconditions, Procedure, Verification, Escalation, Change History]
+section_order: [Purpose, Trigger, Preconditions, Procedure, Verification, Escalation, Change History]
+template: system/templates/runbook.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-runbook.fixture
+  positive_logical_path: system/runbooks/example-runbook.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-runbook.fixture
+  negative_logical_path: system/runbooks/example-runbook.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

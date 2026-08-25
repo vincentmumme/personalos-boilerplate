@@ -1,0 +1,416 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/skill.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed-tools": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "description": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "pattern": "^[^<>]+$",
+      "type": "string"
+    },
+    "license": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "pos_writes_profile_keys"
+            ]
+          },
+          "then": {
+            "required": [
+              "pos_check_refs"
+            ]
+          }
+        }
+      ],
+      "patternProperties": {
+        "^(?!pos_).+$": {}
+      },
+      "properties": {
+        "pos_check_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_created": {
+          "format": "date",
+          "type": "string"
+        },
+        "pos_decision_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_derived_from_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "pos_invokes_skill_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_lifecycle": {
+          "enum": [
+            "active",
+            "deprecated",
+            "retired"
+          ],
+          "type": "string"
+        },
+        "pos_reads_profile_keys": {
+          "items": {
+            "enum": [
+              "access-record",
+              "action",
+              "action-candidate",
+              "activity-contribution",
+              "agent",
+              "agent-entry-pointer",
+              "agent-persona",
+              "agent-persona-overlay",
+              "attention-trigger",
+              "automation",
+              "automation-day-summary",
+              "automation-run-receipt",
+              "brand",
+              "brand-design-system",
+              "brand-voice",
+              "business-model",
+              "capture",
+              "check",
+              "company",
+              "content-asset-manifest",
+              "content-configuration",
+              "content-context-pack",
+              "content-evidence",
+              "content-format",
+              "content-guide",
+              "content-idea",
+              "content-input",
+              "content-knowledge-candidate",
+              "content-learning-candidate",
+              "content-piece",
+              "content-production-job",
+              "content-production-recipe",
+              "content-production-spec",
+              "content-publication",
+              "content-research",
+              "content-series",
+              "content-source",
+              "content-tracking-link",
+              "content-version",
+              "context-gap-review",
+              "contract",
+              "convention",
+              "conversation-stream",
+              "customer-profile",
+              "daily-briefing",
+              "data-model-changelog",
+              "data-model-document",
+              "day-record",
+              "decision",
+              "finance-account",
+              "finance-client-cost",
+              "finance-expense",
+              "finance-invoice",
+              "finance-payment-source-registry",
+              "finance-recurring-obligation",
+              "finance-tax-dossier",
+              "finance-tax-manifest",
+              "finance-time-entry",
+              "framework",
+              "health-daily-assessment",
+              "health-measurement",
+              "health-operating-model",
+              "health-plan",
+              "health-profile",
+              "health-provider-snapshot",
+              "host",
+              "idea",
+              "identity-biography",
+              "identity-capabilities",
+              "identity-legal",
+              "identity-life-orientation",
+              "identity-operating-profile",
+              "identity-personal-constitution",
+              "identity-record",
+              "integration",
+              "interaction-analysis",
+              "interaction-event",
+              "journal-entry",
+              "knowledge-article",
+              "knowledge-assessment",
+              "knowledge-dataset",
+              "knowledge-inventory-item",
+              "knowledge-log",
+              "knowledge-source",
+              "knowledge-topic",
+              "legacy-schema-pack",
+              "market",
+              "offer",
+              "operating-model",
+              "operating-system",
+              "owner-index",
+              "person",
+              "principle",
+              "priority-control",
+              "processing-receipt",
+              "product",
+              "project",
+              "redirect",
+              "root-index",
+              "rule",
+              "runbook",
+              "runtime",
+              "signal-digest",
+              "skill",
+              "skill-prompt",
+              "skill-reference",
+              "skill-resolver",
+              "source-evidence",
+              "strategy",
+              "system-observability-view",
+              "system-service",
+              "template",
+              "truth-system",
+              "user-context",
+              "view-record",
+              "working-note"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_schema_version": {
+          "const": "pos-v1"
+        },
+        "pos_skill_version": {
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$",
+          "type": "string"
+        },
+        "pos_supersedes_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_system_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_template_refs": {
+          "items": {
+            "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "pos_title": {
+          "minLength": 1,
+          "pattern": "^[^\\n]+$",
+          "type": "string"
+        },
+        "pos_type": {
+          "const": "skill"
+        },
+        "pos_updated": {
+          "format": "date",
+          "type": "string"
+        },
+        "pos_writes_profile_keys": {
+          "items": {
+            "enum": [
+              "access-record",
+              "action",
+              "action-candidate",
+              "activity-contribution",
+              "agent",
+              "agent-entry-pointer",
+              "agent-persona",
+              "agent-persona-overlay",
+              "attention-trigger",
+              "automation",
+              "automation-day-summary",
+              "automation-run-receipt",
+              "brand",
+              "brand-design-system",
+              "brand-voice",
+              "business-model",
+              "capture",
+              "check",
+              "company",
+              "content-asset-manifest",
+              "content-configuration",
+              "content-context-pack",
+              "content-evidence",
+              "content-format",
+              "content-guide",
+              "content-idea",
+              "content-input",
+              "content-knowledge-candidate",
+              "content-learning-candidate",
+              "content-piece",
+              "content-production-job",
+              "content-production-recipe",
+              "content-production-spec",
+              "content-publication",
+              "content-research",
+              "content-series",
+              "content-source",
+              "content-tracking-link",
+              "content-version",
+              "context-gap-review",
+              "contract",
+              "convention",
+              "conversation-stream",
+              "customer-profile",
+              "daily-briefing",
+              "data-model-changelog",
+              "data-model-document",
+              "day-record",
+              "decision",
+              "finance-account",
+              "finance-client-cost",
+              "finance-expense",
+              "finance-invoice",
+              "finance-payment-source-registry",
+              "finance-recurring-obligation",
+              "finance-tax-dossier",
+              "finance-tax-manifest",
+              "finance-time-entry",
+              "framework",
+              "health-daily-assessment",
+              "health-measurement",
+              "health-operating-model",
+              "health-plan",
+              "health-profile",
+              "health-provider-snapshot",
+              "host",
+              "idea",
+              "identity-biography",
+              "identity-capabilities",
+              "identity-legal",
+              "identity-life-orientation",
+              "identity-operating-profile",
+              "identity-personal-constitution",
+              "identity-record",
+              "integration",
+              "interaction-analysis",
+              "interaction-event",
+              "journal-entry",
+              "knowledge-article",
+              "knowledge-assessment",
+              "knowledge-dataset",
+              "knowledge-inventory-item",
+              "knowledge-log",
+              "knowledge-source",
+              "knowledge-topic",
+              "legacy-schema-pack",
+              "market",
+              "offer",
+              "operating-model",
+              "operating-system",
+              "owner-index",
+              "person",
+              "principle",
+              "priority-control",
+              "processing-receipt",
+              "product",
+              "project",
+              "redirect",
+              "root-index",
+              "rule",
+              "runbook",
+              "runtime",
+              "signal-digest",
+              "skill",
+              "skill-prompt",
+              "skill-reference",
+              "skill-resolver",
+              "source-evidence",
+              "strategy",
+              "system-observability-view",
+              "system-service",
+              "template",
+              "truth-system",
+              "user-context",
+              "view-record",
+              "working-note"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "pos_schema_version",
+        "pos_id",
+        "pos_type",
+        "pos_title",
+        "pos_created",
+        "pos_updated",
+        "pos_lifecycle",
+        "pos_skill_version"
+      ],
+      "type": "object"
+    },
+    "name": {
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "metadata"
+  ],
+  "title": "PersonalOS pos-v1 skill SKILL.md frontmatter",
+  "type": "object"
+}

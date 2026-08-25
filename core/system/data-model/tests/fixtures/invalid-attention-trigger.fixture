@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 019ff139-acf9-7491-81b6-330d41509506
+type: attention-trigger
+title: "Review unspecified context"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: scheduled
+trigger_kind: date
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+---
+
+# Review unspecified context
+
+## Current Truth
+
+The date trigger omits its required review date.
+
+## Trigger
+
+No valid trigger is supplied.
+
+## Reassessment Rule
+
+Reassess later.
+
+## Context and Evidence
+
+The shape is intentionally invalid.
+
+## Timeline
+
+- **2026-08-11** | Invalid fixture created.

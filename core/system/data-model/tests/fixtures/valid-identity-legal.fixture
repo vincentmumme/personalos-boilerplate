@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-af92-7e63-9795-e28d401558ff
+type: identity-legal
+title: "Legal Identity"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Legal Identity
+
+## Current Truth
+Current legal identity.
+
+## Legal Identity Facts
+Legal facts.
+
+## Residency and Personal Status
+Residency.
+
+## Official Identifiers
+Identifiers.
+
+## External Document References
+Document pointers.
+
+## Sources
+Official evidence.
+
+## Timeline
+- **2026-08-13** | Record created.

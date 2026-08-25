@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000005
+type: health-plan
+title: "Training Plan"
+created: 2026-08-14
+updated: 2026-08-14
+plan_state: draft
+subject_ref: "[[identity/me]]"
+---
+
+# Training Plan
+
+## Current Truth
+
+Minimal draft.
+
+## Plan
+
+Three sessions.
+
+## Calibration Rules
+
+Adjust by recovery.
+
+## Progression Boundary
+
+Expand after real use.
+
+## Sources
+
+Health profile.
+
+## Timeline
+
+- **2026-08-14** | Created.

@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ff1d5-b325-7cec-a89d-294de57f770d
+type: idea
+title: "Agentenfähige Angebotsbibliothek prüfen"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: active
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+---
+
+# Agentenfähige Angebotsbibliothek prüfen
+
+## Current Truth
+
+Die Idee ist bewusst bewahrt und gehört fachlich zur Business-Domain, ist aber noch kein Commitment oder Project.
+
+## Idea
+
+Eine agentenfähige Bibliothek wiederverwendbarer Angebotsbausteine könnte die Angebotserstellung beschleunigen.
+
+## Why It Matters
+
+Der mögliche dauerhafte Nutzen rechtfertigt die weitere Entwicklung der Idee.
+
+## Source Basis
+
+Die Idee entstand im PersonalOS-Architekturgespräch.
+
+## Evidence and Assumptions
+
+Nutzen und konkreter Scope sind noch Annahmen.
+
+## Development
+
+Vor einer Promotion müssen Bedarf, Abgrenzung und gewünschtes Ergebnis geklärt werden.
+
+## Resolution
+
+Noch nicht aufgelöst.
+
+## Timeline
+
+- **2026-08-11** | Idea Record bewusst angelegt.

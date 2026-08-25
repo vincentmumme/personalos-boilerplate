@@ -1,0 +1,4 @@
+{"intent":"skillify this workflow","expected_skill":"skillify"}
+{"intent":"mach aus diesem wiederkehrenden Ablauf einen getesteten Skill","expected_skill":"skillify"}
+{"intent":"ist das hier ein Skill oder nur ein einmaliger Task?","expected_skill":"skillify"}
+{"intent":"check skill completeness for knowledge-ingest","expected_skill":"skillify","ambiguous_with":["knowledge-ingest"]}

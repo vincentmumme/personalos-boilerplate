@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-edd1-793b-93d4-bb8e2637dd7e
+type: customer-profile
+title: "Example Customer"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Customer
+
+## Current Truth
+
+Missing the profile contract.

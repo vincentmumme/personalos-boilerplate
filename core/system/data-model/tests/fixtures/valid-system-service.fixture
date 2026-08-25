@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-71e7-9001-731c874ed7a4
+type: system-service
+title: "Example System Service"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+service_kind: launch-agent
+execution_target_refs: ["[[system/hosts/example-host]]"]
+desired_state: running
+---
+
+# Example System Service
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Desired State
+
+Example content.
+
+## Execution Target
+
+Example content.
+
+## Trigger and Dependencies
+
+Example content.
+
+## Health
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

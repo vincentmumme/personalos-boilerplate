@@ -1,0 +1,14 @@
+---
+schema_version: pos-v1
+id: 019ffb24-20f5-774b-987e-a9ca06cbc76b
+type: agent-entry-pointer
+title: "PersonalOS Agent Entry"
+created: 2026-08-13
+updated: 2026-08-13
+entry_kind: common-bootstrap
+bootstrap_ref: "[[AGENTS]]"
+---
+
+# PersonalOS Agent Entry
+
+Invalid self-parented common bootstrap.

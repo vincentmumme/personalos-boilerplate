@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb8b-22f1-7ade-94f2-9069b21a0c18
+type: brand-design-system
+title: "Invalid Brand Design System"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+brand_refs: ["[[business/brands/example-brand]]"]
+---
+
+# Invalid Brand Design System
+
+## Current Truth
+Missing the companion contract.

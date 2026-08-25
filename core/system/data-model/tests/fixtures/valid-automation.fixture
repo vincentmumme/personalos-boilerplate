@@ -1,0 +1,46 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000010
+type: automation
+title: "Example Automation"
+created: 2026-08-12
+updated: 2026-08-12
+lifecycle: active
+automation_kind: scheduled
+schedule_timezone: Europe/Berlin
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+---
+
+# Example Automation
+
+## Current Truth
+
+The automation is active and healthy.
+
+## Purpose
+
+Verify an example source.
+
+## Trigger and Cadence
+
+Runs daily.
+
+## Capability and Runtime
+
+Uses the linked skill.
+
+## Inputs and Outputs
+
+Reads a source and writes receipts.
+
+## Credentials Required
+
+No secret value is stored here.
+
+## Health and Freshness
+
+Current.
+
+## Timeline
+
+- **2026-08-12** | Record created.

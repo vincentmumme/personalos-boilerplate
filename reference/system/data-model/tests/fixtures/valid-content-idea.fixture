@@ -1,0 +1,26 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7aab-b82d-5cfba1cbbab4"
+type: "content-idea"
+title: "Example content-idea"
+created: "2026-08-15"
+updated: "2026-08-15"
+lifecycle: "captured"
+revision: 1
+idea_kind: "piece"
+input_refs: ["[[content/inputs/example-input]]"]
+---
+
+# Example content-idea
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

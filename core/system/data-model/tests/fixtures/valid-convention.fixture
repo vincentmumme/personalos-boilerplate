@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019fec59-ef70-7c9c-8c0b-03a165e7cf3f
+type: convention
+title: "Example Convention"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+---
+
+# Example Convention
+
+## Convention
+
+Ein konsistenter Default.
+
+## Use When
+
+Wenn mehrere Varianten gültig sind.
+
+## Default
+
+Die registrierte Standardform.
+
+## Allowed Variations
+
+Begründete Abweichung.
+
+## Examples
+
+Ein Beispiel.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

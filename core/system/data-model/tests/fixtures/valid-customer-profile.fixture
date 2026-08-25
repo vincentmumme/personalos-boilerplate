@@ -1,0 +1,49 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-eda2-75fa-ac18-64245b4b6e10
+type: customer-profile
+title: "Example Customer"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Customer
+
+## Current Truth
+
+Example context.
+
+## Definition
+
+Example context.
+
+## Scope and Boundaries
+
+Example context.
+
+## Target Customer
+
+Example context.
+
+## Problems and Desired Outcomes
+
+Example context.
+
+## Qualification
+
+Example context.
+
+## Relationships
+
+Example context.
+
+## Sources
+
+Example context.
+
+## Timeline
+
+- **2026-08-13** | Record created.

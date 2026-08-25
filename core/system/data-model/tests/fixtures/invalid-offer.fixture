@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ee91-709b-9223-b1bfe6d02311
+type: offer
+title: "Example Offer"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Offer
+
+## Current Truth
+
+Missing the profile contract.

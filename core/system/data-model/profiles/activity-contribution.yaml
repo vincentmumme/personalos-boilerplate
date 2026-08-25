@@ -1,0 +1,30 @@
+name: activity-contribution
+page_shape: event-record
+canonical_owner: daily-activity-contribution
+allowed_roots: [daily]
+path_pattern: ^daily/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}/activity/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+path_date_field: day_date
+path_date_prefix_template: daily/{year}/{date}/activity/
+parent_record:
+  when_path_pattern: ^daily/(?P<year>[0-9]{4})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/activity/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+  required_path_template: daily/{year}/{date}/{date}.md
+  required_profile: day-record
+  skip_when_relations_disabled: true
+required_modules: [daily-context, relations]
+optional_modules: []
+required_fields: [day_date, timezone, occurred_at, recorded_at, producer_kind, producer_name, activity_outcome, affected_owner_refs]
+optional_fields: [runtime_name, producer_ref, evidence_refs]
+fields:
+  activity_outcome:
+    datatype: enum
+    enum: [changed, completed, decided, verified, observed, partial, failed]
+required_sections: [Activity, Outcome, Affected Owners, Evidence, Corrections]
+section_order: [Activity, Outcome, Affected Owners, Evidence, Corrections]
+template: system/templates/daily/activity-contribution.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-activity-contribution.fixture
+  positive_logical_path: daily/2026/2026-08-11/activity/019ff260-fb11-7170-858c-069ba03cc56d.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-activity-contribution.fixture
+  negative_logical_path: daily/2026/2026-08-11/activity/019ff260-fb35-729b-ac7d-1c0379578f55.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

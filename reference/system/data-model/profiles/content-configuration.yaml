@@ -1,0 +1,25 @@
+name: "content-configuration"
+page_shape: "state-record"
+canonical_owner: "contentos-configuration"
+allowed_roots: ["content"]
+path_pattern: "^content/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "configuration_kind"]
+optional_fields: ["origin_operation_id", "content_tags"]
+fields:
+  configuration_kind:
+    datatype: "lower-kebab"
+module_constraints:
+  lifecycle:
+    enum: ["draft", "in-review", "active", "paused", "deprecated", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-configuration.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-configuration.fixture"
+  positive_logical_path: "content/strategy/example-configuration.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-configuration.fixture"
+  negative_logical_path: "content/strategy/example-configuration.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

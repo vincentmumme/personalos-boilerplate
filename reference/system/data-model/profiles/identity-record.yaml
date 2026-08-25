@@ -1,0 +1,23 @@
+name: identity-record
+page_shape: state-record
+canonical_owner: identity-subject
+allowed_roots: [identity]
+path_pattern: ^identity/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, retired]
+required_sections: [Current Truth, Core Identity, Identity Facets, Connected Context, Sources, Timeline]
+section_order: [Current Truth, Core Identity, Identity Facets, Connected Context, Sources, Timeline]
+template: system/templates/identity/identity-record.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-identity-record.fixture
+  positive_logical_path: identity/example-person.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-identity-record.fixture
+  negative_logical_path: identity/example-person.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

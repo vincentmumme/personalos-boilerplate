@@ -1,0 +1,33 @@
+name: Fehler melden
+description: Reproduzierbaren Fehler in Boilerplate, Installer oder Dokumentation melden
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Veröffentliche keine persönlichen PersonalOS-Inhalte, Kundendaten oder Zugangsdaten.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Fehler
+      description: Was ist passiert und was hast du erwartet?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduktion
+      description: Welche datenschutzsicheren Schritte lösen den Fehler aus?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version oder Commit
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Umgebung
+      description: Betriebssystem, Python-Version und verwendeter Agent oder Editor

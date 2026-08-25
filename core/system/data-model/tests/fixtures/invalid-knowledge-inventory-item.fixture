@@ -1,0 +1,18 @@
+---
+schema_version: pos-v1
+id: 01a00170-1000-7000-8000-000000000008
+type: knowledge-inventory-item
+title: "Example Candidate"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+topic_ref: "[[knowledge/topics/example-topic/example-topic]]"
+inventory_kind: candidate
+inventory_state: proposed
+---
+
+# Example Candidate
+
+## Current State
+
+Invalid placement.

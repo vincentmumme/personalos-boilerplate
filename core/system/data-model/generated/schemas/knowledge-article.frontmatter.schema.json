@@ -1,0 +1,122 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/knowledge-article.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "knowledge_article_kind": {
+      "enum": [
+        "concept",
+        "topic",
+        "reference",
+        "thesis",
+        "pattern",
+        "framework",
+        "source",
+        "analysis"
+      ],
+      "type": "string"
+    },
+    "knowledge_confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "knowledge_maturity": {
+      "enum": [
+        "core",
+        "useful",
+        "emerging",
+        "needs-review",
+        "unclassified"
+      ],
+      "type": "string"
+    },
+    "knowledge_volatility": {
+      "enum": [
+        "hot",
+        "warm",
+        "cold",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "draft",
+        "active",
+        "needs-review",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "related_topic_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "topic_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "type": {
+      "const": "knowledge-article"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    },
+    "verified_on": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "knowledge_article_kind",
+    "knowledge_confidence",
+    "knowledge_maturity",
+    "knowledge_volatility",
+    "lifecycle",
+    "topic_ref"
+  ],
+  "title": "PersonalOS pos-v1 knowledge-article frontmatter",
+  "type": "object"
+}

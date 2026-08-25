@@ -1,0 +1,23 @@
+name: identity-legal
+page_shape: state-record
+canonical_owner: identity-legal
+allowed_roots: [identity]
+path_pattern: ^identity/legal-identity\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, subject_ref]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, retired]
+required_sections: [Current Truth, Legal Identity Facts, Residency and Personal Status, Official Identifiers, External Document References, Sources, Timeline]
+section_order: [Current Truth, Legal Identity Facts, Residency and Personal Status, Official Identifiers, External Document References, Sources, Timeline]
+template: system/templates/identity/legal-identity.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-identity-legal.fixture
+  positive_logical_path: identity/legal-identity.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-identity-legal.fixture
+  negative_logical_path: identity/legal-identity.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

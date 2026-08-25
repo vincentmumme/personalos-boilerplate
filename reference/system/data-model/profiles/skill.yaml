@@ -1,0 +1,33 @@
+name: skill
+page_shape: normative-record
+canonical_owner: skill-capability
+allowed_roots: [skills]
+path_pattern: ^skills/[a-z0-9]+(?:-[a-z0-9]+)*/SKILL\.md$
+frontmatter_layout: skill-runtime-envelope
+metadata_prefix: pos_
+runtime_required_fields: [name, description, metadata]
+runtime_optional_fields: [license, allowed-tools]
+required_modules: [lifecycle]
+optional_modules: [normative-lineage, system-dependencies, capability-io]
+required_fields: [lifecycle, skill_version]
+optional_fields: [decision_refs, derived_from_refs, supersedes_refs, system_refs, reads_profile_keys, writes_profile_keys, template_refs, invokes_skill_refs, check_refs]
+fields:
+  skill_version:
+    datatype: semver
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+conditional_rules:
+  pos_record_write:
+    when_present: writes_profile_keys
+    require_fields: [check_refs]
+required_sections: []
+section_order: []
+template: system/templates/skill.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-skill.fixture
+  positive_logical_path: skills/example-skill/SKILL.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-skill.fixture
+  negative_logical_path: skills/example-skill/SKILL.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

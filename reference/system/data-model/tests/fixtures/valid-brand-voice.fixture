@@ -1,0 +1,38 @@
+---
+schema_version: pos-v1
+id: 019ffb8b-2269-7519-9b3e-ca810424a760
+type: brand-voice
+title: "Example Brand Tone of Voice"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+brand_refs: ["[[business/brands/example-brand]]"]
+---
+
+# Example Brand Tone of Voice
+
+## Current Truth
+Current voice.
+
+## Voice Principles
+Principles.
+
+## Tone and Register
+Tone.
+
+## Language Patterns
+Patterns.
+
+## Boundaries
+Boundaries.
+
+## Application
+Application.
+
+## Sources
+Sources.
+
+## Timeline
+- **2026-08-13** | Record created.

@@ -1,0 +1,34 @@
+name: agent-persona-overlay
+page_shape: state-record
+canonical_owner: system-agent-persona-overlay
+allowed_roots: [system]
+path_pattern: ^system/agents/(?P<agent>[a-z0-9]+(?:-[a-z0-9]+)*)/persona-overlay\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, agent_ref, shared_persona_ref, overlay_kind]
+optional_fields: []
+fields:
+  agent_ref:
+    datatype: wikilink
+    target_profiles: [agent]
+    legacy_targets: reject
+  shared_persona_ref:
+    datatype: wikilink
+    target_profiles: [agent-persona]
+    legacy_targets: reject
+  overlay_kind:
+    datatype: enum
+    enum: [behavior-extension, domain-specialization, runtime-specialization]
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Current Truth, Inheritance, Behavior Additions, Communication, Boundaries, Sources, Timeline]
+section_order: [Current Truth, Inheritance, Behavior Additions, Communication, Boundaries, Sources, Timeline]
+template: system/templates/topology/agent-persona-overlay.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-agent-persona-overlay.fixture
+  positive_logical_path: system/agents/example-agent/persona-overlay.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-agent-persona-overlay.fixture
+  negative_logical_path: system/agents/example-agent/persona-overlay.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

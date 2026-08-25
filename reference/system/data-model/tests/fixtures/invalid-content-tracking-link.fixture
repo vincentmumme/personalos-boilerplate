@@ -1,0 +1,29 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7370-b2da-c181a8d5175e"
+type: "unknown-content-profile"
+title: "Example content-tracking-link"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+link_state: "active"
+piece_ref: "[[content/pieces/2026/example-piece/piece]]"
+channel_key: "instagram"
+placement: "caption"
+destination_url: "https://example.com/community"
+provider_key: "native"
+---
+
+# Example content-tracking-link
+
+## Current Truth
+
+<current_truth>
+
+## Details
+
+<details>
+
+## Timeline
+
+<timeline>

@@ -1,0 +1,37 @@
+name: agent-entry-pointer
+page_shape: pointer-record
+canonical_owner: root-agent-bootstrap
+allowed_roots: [AGENTS.md, CLAUDE.md]
+path_pattern: ^(?:AGENTS|CLAUDE)\.md$
+required_modules: []
+optional_modules: []
+required_fields: [entry_kind]
+optional_fields: [bootstrap_ref]
+fields:
+  entry_kind:
+    datatype: enum
+    enum: [common-bootstrap, runtime-adapter]
+  bootstrap_ref:
+    datatype: wikilink
+    target_profiles: [agent-entry-pointer]
+    legacy_targets: reject
+    forbid_self: true
+conditional_rules:
+  runtime_adapter_target:
+    when_field: entry_kind
+    when_in: [runtime-adapter]
+    require_fields: [bootstrap_ref]
+  common_bootstrap_has_no_parent:
+    when_field: entry_kind
+    when_in: [common-bootstrap]
+    forbid_fields: [bootstrap_ref]
+required_sections: []
+section_order: []
+template: system/templates/core/bootstrap/agent-entry.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-agent-entry-pointer.fixture
+  positive_logical_path: AGENTS.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-agent-entry-pointer.fixture
+  negative_logical_path: AGENTS.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

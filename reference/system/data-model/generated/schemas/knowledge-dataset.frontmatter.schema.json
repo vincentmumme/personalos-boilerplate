@@ -1,0 +1,90 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/knowledge-dataset.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "dataset_kind": {
+      "enum": [
+        "external",
+        "mutable",
+        "binary",
+        "sensitive",
+        "queryable",
+        "corpus"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "paused",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "related_topic_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_locator": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "source_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "topic_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "type": {
+      "const": "knowledge-dataset"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "dataset_kind",
+    "lifecycle",
+    "source_locator",
+    "topic_ref"
+  ],
+  "title": "PersonalOS pos-v1 knowledge-dataset frontmatter",
+  "type": "object"
+}

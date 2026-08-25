@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019fec59-ef9c-7371-9203-bdc345491709
+type: framework
+title: "Example Framework"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+---
+
+# Example Framework
+
+## Purpose
+
+Ein wiederverwendbares Modell.
+
+## Model
+
+Input wird nach Regeln geroutet.
+
+## Components
+
+Owner, Consumer und Check.
+
+## Decision Logic
+
+Der semantische Owner entscheidet.
+
+## Interfaces
+
+Direkte Systemreferenzen.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

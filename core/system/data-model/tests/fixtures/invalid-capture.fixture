@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019ff1bc-2bd9-7f20-85b6-aae70ab0fdf4
+type: capture
+title: "Unvollständig verarbeiteter Capture"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: processed
+input_kind: chat
+---
+
+# Unvollständig verarbeiteter Capture
+
+## Current Truth
+
+Der Capture behauptet, verarbeitet zu sein, dokumentiert aber weder Ergebnis noch Retention.
+
+## Original Input
+
+Beispielinput.
+
+## Source Basis
+
+Chat.
+
+## Processing and Routing
+
+Unvollständig.
+
+## Retention
+
+Ungeklärt.
+
+## Timeline
+
+- **2026-08-11** | Absichtlich ungültige Fixture angelegt.

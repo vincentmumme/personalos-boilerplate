@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 019fec59-eef0-775a-819c-2acc1e9e435c
+type: principle
+title: "Example Principle"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+---
+
+# Example Principle
+
+## Principle
+
+Eine dauerhafte Grundlage.
+
+## Rationale
+
+Sie ermöglicht konsistente Ableitung.
+
+## Implications
+
+Nachgelagerte Artefakte müssen ihr entsprechen.
+
+## Boundaries
+
+Sie ersetzt keine konkrete Rule.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a001a1-55b3-7a2e-979c-60e9158bf1d9
+type: finance-time-entry
+title: "Invalid Time Entry"
+created: 2026-08-14
+updated: 2026-08-14
+service_date: 2026-08-14
+billing_state: unbilled
+client_ref: "[[companies/example-client]]"
+hours: 2
+---
+
+# Invalid Time Entry
+
+## Current Truth
+Invalid.
+## Service
+Invalid.
+## Time and Value
+Invalid.
+## Billing State
+Invalid.
+## Client and Project
+Invalid.
+## Invoice Allocation
+Invalid.
+## Evidence
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

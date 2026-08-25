@@ -1,0 +1,23 @@
+name: identity-operating-profile
+page_shape: state-record
+canonical_owner: identity-operating-profile
+allowed_roots: [identity]
+path_pattern: ^identity/operating-profile\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, subject_ref]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, retired]
+required_sections: [Current Truth, Traits and Preferences, Thinking and Decision-Making, Learning, Communication, Work and Execution, Helpful Conditions, Failure Modes and Friction, Sources, Timeline]
+section_order: [Current Truth, Traits and Preferences, Thinking and Decision-Making, Learning, Communication, Work and Execution, Helpful Conditions, Failure Modes and Friction, Sources, Timeline]
+template: system/templates/identity/operating-profile.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-identity-operating-profile.fixture
+  positive_logical_path: identity/operating-profile.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-identity-operating-profile.fixture
+  negative_logical_path: identity/operating-profile.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

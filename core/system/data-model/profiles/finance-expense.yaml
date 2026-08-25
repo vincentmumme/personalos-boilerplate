@@ -1,0 +1,28 @@
+name: finance-expense
+page_shape: state-record
+canonical_owner: finance-expense-context
+allowed_roots: [finance]
+path_pattern: ^finance/(?:belege|entity-costs)/(?!index\.md$)[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [expense_date, booking_state, finance_scope]
+optional_fields: [payment_state, company_ref, external_authority_ref, external_record_id, project_ref, amount_net, amount_gross, source_amount, currency, tax_rate, evidence_refs]
+fields:
+  expense_date:
+    datatype: date
+  booking_state:
+    datatype: enum
+    enum: [received, pending-review, pending-booking, booked, rejected, cancelled]
+  payment_state:
+    datatype: enum
+    enum: [unknown, open, paid, recipient-confirmed]
+required_sections: [Current Truth, Expense, Booking and Payment State, Allocation, External Authority, Evidence, Timeline]
+section_order: [Current Truth, Expense, Booking and Payment State, Allocation, External Authority, Evidence, Timeline]
+template: system/templates/finance/finance-expense.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-expense.fixture
+  positive_logical_path: finance/belege/2026-08-14-example-expense.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-expense.fixture
+  negative_logical_path: finance/rechnungen/2026-08-14-example-expense.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

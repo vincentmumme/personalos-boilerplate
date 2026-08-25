@@ -1,0 +1,14 @@
+---
+schema_version: pos-v1
+id: 01a0011a-da3d-7f58-a103-bf505a7dca24
+type: data-model-changelog
+title: "Data Model Changelog"
+created: 2026-08-14
+updated: 2026-08-14
+---
+
+# Data Model Changelog
+
+## 2026-08-14 · Registry 1.0.0
+
+- Beispieländerung.

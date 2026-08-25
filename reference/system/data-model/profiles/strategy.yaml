@@ -1,0 +1,23 @@
+name: strategy
+page_shape: state-record
+canonical_owner: business-strategy
+allowed_roots: [business]
+path_pattern: ^business/strategies/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: [company_refs, brand_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Definition, Scope and Boundaries, Strategic Direction, Choices and Trade-offs, Assumptions and Measures, Relationships, Sources, Timeline]
+section_order: [Current Truth, Definition, Scope and Boundaries, Strategic Direction, Choices and Trade-offs, Assumptions and Measures, Relationships, Sources, Timeline]
+template: system/templates/business/strategy.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-strategy.fixture
+  positive_logical_path: business/strategies/example-strategy.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-strategy.fixture
+  negative_logical_path: business/strategies/example-strategy.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,35 @@
+name: "content-production-job"
+page_shape: "event-record"
+canonical_owner: "contentos-production-job"
+allowed_roots: ["content"]
+path_pattern: "^content/production/jobs/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "job_state", "piece_ref", "production_spec_ref", "executor_type", "idempotency_key", "attempt"]
+optional_fields: ["origin_operation_id", "content_tags", "executor_key", "expected_outputs", "asset_ids"]
+fields:
+  job_state:
+    datatype: "enum"
+    enum: ["queued", "in-progress", "blocked", "in-review", "completed", "failed", "cancelled"]
+  executor_type:
+    datatype: "lower-kebab"
+  executor_key:
+    datatype: "lower-kebab"
+  idempotency_key:
+    datatype: "plain-text"
+  attempt:
+    datatype: "integer"
+    minimum: 1
+  expected_outputs:
+    datatype: "plain-text-list"
+    min_items: 1
+required_sections: ["Summary", "Evidence", "Corrections"]
+section_order: ["Summary", "Evidence", "Corrections"]
+template: "system/templates/content/content-production-job.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-production-job.fixture"
+  positive_logical_path: "content/production/jobs/example-job.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-production-job.fixture"
+  negative_logical_path: "content/production/jobs/example-job.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

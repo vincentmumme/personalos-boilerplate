@@ -1,0 +1,25 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7d51-b15c-34b1cff5ed25"
+type: "content-source"
+title: "Example content-source"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+source_kind: "social-post"
+source_state: "captured"
+---
+
+# Example content-source
+
+## Summary
+
+<summary>
+
+## Evidence
+
+<evidence>
+
+## Corrections
+
+<corrections>

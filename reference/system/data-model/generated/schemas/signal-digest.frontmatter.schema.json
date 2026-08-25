@@ -1,0 +1,109 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/signal-digest.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "affected_owner_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "coverage_ended_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "coverage_started_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "digest_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "digest_kind": {
+      "enum": [
+        "news",
+        "creator-x",
+        "creator-youtube",
+        "weekly-synthesis"
+      ],
+      "type": "string"
+    },
+    "digest_outcome": {
+      "enum": [
+        "success",
+        "partial",
+        "failed",
+        "stale",
+        "empty"
+      ],
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "producer_skill_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_channel": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "source_system": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "signal-digest"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "coverage_ended_at",
+    "coverage_started_at",
+    "digest_date",
+    "digest_kind",
+    "digest_outcome",
+    "producer_skill_ref"
+  ],
+  "title": "PersonalOS pos-v1 signal-digest frontmatter",
+  "type": "object"
+}

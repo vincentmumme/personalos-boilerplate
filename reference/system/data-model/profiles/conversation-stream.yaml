@@ -1,0 +1,25 @@
+name: conversation-stream
+page_shape: state-record
+canonical_owner: conversation-stream-record
+allowed_roots: [interactions]
+path_pattern: ^interactions/conversations/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*/conversation\.md$
+required_modules: [signal-processing]
+optional_modules: []
+required_fields: [stream_state, source_channel, participant_refs]
+optional_fields: [coverage_started_at, coverage_ended_at, last_material_at]
+fields:
+  stream_state:
+    datatype: enum
+    enum: [active, dormant, closed]
+  last_material_at:
+    datatype: datetime
+required_sections: [Current Truth, Participants, Coverage, Open Source Gaps, Owner Links, Timeline]
+section_order: [Current Truth, Participants, Coverage, Open Source Gaps, Owner Links, Timeline]
+template: system/templates/interactions/conversation-stream.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-conversation-stream.fixture
+  positive_logical_path: interactions/conversations/gmail/example-thread/conversation.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-conversation-stream.fixture
+  negative_logical_path: interactions/conversations/example-thread/conversation.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

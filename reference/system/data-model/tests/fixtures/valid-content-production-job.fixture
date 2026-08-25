@@ -1,0 +1,29 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7043-905c-bbd89b4e224e"
+type: "content-production-job"
+title: "Example content-production-job"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+job_state: "queued"
+piece_ref: "[[content/pieces/2026/example-piece/piece]]"
+production_spec_ref: "[[content/pieces/2026/example-piece/production]]"
+executor_type: "human"
+idempotency_key: "example-job-v1"
+attempt: 1
+---
+
+# Example content-production-job
+
+## Summary
+
+<summary>
+
+## Evidence
+
+<evidence>
+
+## Corrections
+
+<corrections>

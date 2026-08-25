@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "default_enabled": [],
+  "modules": [
+    {"id": "business", "kind": "domain", "title": "Business", "entry": "business/index"},
+    {"id": "content", "kind": "domain", "title": "Content", "entry": "content/index"},
+    {"id": "finance", "kind": "domain", "title": "Finanzen", "entry": "finance/index"},
+    {"id": "health", "kind": "domain", "title": "Gesundheit", "entry": "health/index"},
+    {"id": "obsidian", "kind": "tool", "title": "Obsidian", "entry": "system/runbooks/modules/obsidian"},
+    {"id": "codex", "kind": "agent-adapter", "title": "Codex", "entry": "system/runbooks/modules/codex"},
+    {"id": "claude-code", "kind": "agent-adapter", "title": "Claude Code", "entry": "system/runbooks/modules/claude-code"},
+    {"id": "hermes", "kind": "agent-runtime", "title": "Hermes", "entry": "system/runbooks/modules/hermes"},
+    {"id": "multi-agent", "kind": "architecture", "title": "Mehrere Agenten", "entry": "system/runbooks/modules/multi-agent"},
+    {"id": "external-signals", "kind": "capability", "title": "Externe Signale", "entry": "system/runbooks/modules/external-signals"},
+    {"id": "automations", "kind": "capability", "title": "Automationen", "entry": "system/runbooks/modules/automations"},
+    {"id": "backup-git", "kind": "infrastructure", "title": "Backup und Git", "entry": "system/runbooks/modules/backup-git"},
+    {"id": "multi-host", "kind": "infrastructure", "title": "Mehrere Hosts", "entry": "system/runbooks/modules/multi-host"}
+  ]
+}

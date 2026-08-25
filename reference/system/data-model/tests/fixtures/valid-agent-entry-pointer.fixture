@@ -1,0 +1,25 @@
+---
+schema_version: pos-v1
+id: 019ffb24-1f21-7b6a-8d77-0434fcdcd672
+type: agent-entry-pointer
+title: "PersonalOS Agent Entry"
+created: 2026-08-13
+updated: 2026-08-13
+entry_kind: common-bootstrap
+---
+
+# PersonalOS Agent Entry
+
+This is the shared bootstrap for the example PersonalOS instance.
+
+## Verbindlicher Start
+
+Read [[INDEX]], [[USER]] and [[SOUL]].
+
+## Arbeiten im PersonalOS
+
+Use [[skills/RESOLVER]] and [[system/index]].
+
+## Autorität
+
+System truth remains under [[system/index]].

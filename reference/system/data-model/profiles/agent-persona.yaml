@@ -1,0 +1,26 @@
+name: agent-persona
+page_shape: normative-record
+canonical_owner: root-shared-agent-persona
+allowed_roots: [SOUL.md]
+path_pattern: ^SOUL\.md$
+required_modules: [lifecycle, normative-lineage, system-dependencies]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, system_refs, persona_scope]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields:
+  persona_scope:
+    datatype: enum
+    enum: [shared]
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Mission, Grundhaltung, Arbeitsweise, Truth-Seeking, System-Subject verstehen, Kommunikation, Externe und folgenreiche Handlungen, Konfliktgrenzen, Pflege, Change History]
+section_order: [Mission, Grundhaltung, Arbeitsweise, Truth-Seeking, System-Subject verstehen, Kommunikation, Externe und folgenreiche Handlungen, Konfliktgrenzen, Pflege, Change History]
+template: system/templates/core/bootstrap/agent-persona.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-agent-persona.fixture
+  positive_logical_path: SOUL.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-agent-persona.fixture
+  negative_logical_path: SOUL.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

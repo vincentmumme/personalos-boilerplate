@@ -1,0 +1,31 @@
+name: processing-receipt
+page_shape: event-record
+canonical_owner: interaction-processing-receipt
+allowed_roots: [interactions]
+path_pattern: ^interactions/(?:(?:meetings/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*/processing)|(?:conversations/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*/processing/[0-9]{4}))/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [relations, signal-processing]
+optional_modules: []
+required_fields: [receipt_kind, receipt_outcome, processed_at, verification_result, producer_skill_ref, interaction_ref, evidence_refs, affected_owner_refs]
+optional_fields: []
+fields:
+  receipt_kind:
+    datatype: enum
+    enum: [source-ingest, semantic-propagation, reconciliation]
+  receipt_outcome:
+    datatype: enum
+    enum: [propagated, partial, blocked]
+  processed_at:
+    datatype: datetime
+  verification_result:
+    datatype: enum
+    enum: [pass, warn, blocked]
+required_sections: [Processing Summary, Coverage, Propagation, Verification, Errors and Pending, Corrections]
+section_order: [Processing Summary, Coverage, Propagation, Verification, Errors and Pending, Corrections]
+template: system/templates/interactions/processing-receipt.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-processing-receipt.fixture
+  positive_logical_path: interactions/meetings/2026/2026-08-12-example-call/processing/019ff59c-1000-7000-8000-000000000004.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-processing-receipt.fixture
+  negative_logical_path: interactions/meetings/2026/2026-08-12-example-call/analysis/019ff59c-1000-7000-8000-000000000004.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

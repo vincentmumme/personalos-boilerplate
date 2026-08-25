@@ -1,0 +1,12 @@
+name: subject-context
+purpose: Stable relation from a subject-owned facet or projection to its canonical human Identity Record.
+admission_state: pilot
+planned_consumers: [user-context, identity-biography, identity-personal-constitution, identity-operating-profile, identity-life-orientation, identity-legal, identity-capabilities]
+fields:
+  subject_ref:
+    datatype: wikilink
+    target_profiles: [identity-record]
+    legacy_targets: warn
+invariants:
+  one_subject_owner: true
+  subject_truth_not_duplicated_in_projection: true

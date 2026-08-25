@@ -1,0 +1,26 @@
+name: health-measurement
+page_shape: state-record
+canonical_owner: health-measurement-context
+allowed_roots: [health]
+path_pattern: ^health/body/measurements\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, measurement_scope, subject_ref]
+optional_fields: []
+fields:
+  measurement_scope:
+    datatype: enum
+    enum: [body-composition, performance, clinical, mixed]
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+required_sections: [Current Truth, Measurement Policy, Current Measurements, Sources, Timeline]
+section_order: [Current Truth, Measurement Policy, Current Measurements, Sources, Timeline]
+template: system/templates/health/health-measurement.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-health-measurement.fixture
+  positive_logical_path: health/body/measurements.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-health-measurement.fixture
+  negative_logical_path: health/measurements.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

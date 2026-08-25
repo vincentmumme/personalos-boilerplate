@@ -1,0 +1,28 @@
+name: pos-v1-foundation
+schema_version: pos-v1
+field_order: [schema_version, id, type, title, created, updated]
+required_fields: [schema_version, id, type, title, created, updated]
+unknown_fields: reject
+frontmatter_maps: reject
+null_values: reject
+empty_strings: reject
+empty_lists: reject
+fields:
+  schema_version:
+    datatype: literal
+    value: pos-v1
+  id:
+    datatype: uuidv7
+  type:
+    datatype: profile-key
+    pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$
+  title:
+    datatype: plain-text
+    min_length: 1
+  created:
+    datatype: date
+  updated:
+    datatype: date
+invariants:
+  updated_not_before_created: true
+  title_matches_h1: true

@@ -1,0 +1,49 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ef81-7f26-927e-8a1dc0dfb6b7
+type: operating-model
+title: "Example Operating Model"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Operating Model
+
+## Current Truth
+
+Example context.
+
+## Definition
+
+Example context.
+
+## Scope and Boundaries
+
+Example context.
+
+## Operating Principles
+
+Example context.
+
+## Roles and Responsibilities
+
+Example context.
+
+## Processes and Cadence
+
+Example context.
+
+## Relationships
+
+Example context.
+
+## Sources
+
+Example context.
+
+## Timeline
+
+- **2026-08-13** | Record created.

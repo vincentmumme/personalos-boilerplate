@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000020
+type: automation-day-summary
+title: "Invalid Automation Day"
+created: 2026-08-12
+updated: 2026-08-12
+day_date: 2026-08-12
+timezone: Europe/Berlin
+processed_until: 2026-08-12 18:00
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+retention_class: material-run
+day_summary_outcome: empty
+---
+
+# Invalid Automation Day
+
+## Run Summary
+
+Invalid.
+
+## Coverage
+
+Invalid.
+
+## Material Receipts
+
+None.
+
+## No-op Accounting
+
+Invalid.
+
+## Failures and Pending
+
+Invalid.
+
+## Propagation
+
+Invalid.
+
+## Corrections
+
+None.

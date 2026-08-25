@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-730f-b061-1f60ad5a52e8
+type: runtime
+title: "Example Runtime"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# Example Runtime
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Agents
+
+Example content.
+
+## Hosts and Execution
+
+Example content.
+
+## Configuration
+
+Example content.
+
+## Credentials Required
+
+Example content.
+
+## Health
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

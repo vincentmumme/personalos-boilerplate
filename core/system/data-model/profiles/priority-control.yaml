@@ -1,0 +1,50 @@
+name: priority-control
+page_shape: state-record
+canonical_owner: operations-priority-control
+allowed_roots: [operations]
+path_pattern: ^operations/priority-control\.md$
+required_modules: [lifecycle]
+optional_modules: []
+required_fields: [lifecycle, priority_control_review_on]
+optional_fields: [priority_control_expires_on, priority_focus_areas, priority_focus_action_refs, priority_ordered_action_refs, priority_excluded_action_refs]
+fields:
+  priority_control_review_on:
+    datatype: date
+  priority_control_expires_on:
+    datatype: date
+  priority_focus_areas:
+    datatype: plain-text-list
+    min_items: 1
+  priority_focus_action_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [action]
+    legacy_targets: reject
+  priority_ordered_action_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [action]
+    legacy_targets: reject
+  priority_excluded_action_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [action]
+    legacy_targets: reject
+module_constraints:
+  lifecycle:
+    enum: [active, inactive]
+conditional_rules:
+  active_expiry:
+    when_field: lifecycle
+    when_in: [active]
+    require_fields: [priority_control_expires_on]
+required_sections: [Current Truth, Manual Direction, Scope and Expiry, Timeline]
+section_order: [Current Truth, Manual Direction, Scope and Expiry, Timeline]
+template: system/templates/operations/priority-control.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-priority-control.fixture
+  positive_logical_path: operations/priority-control.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-priority-control.fixture
+  negative_logical_path: operations/priority-control.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

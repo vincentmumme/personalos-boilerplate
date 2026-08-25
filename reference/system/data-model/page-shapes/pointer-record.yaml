@@ -1,0 +1,6 @@
+name: pointer-record
+purpose: Local locator and continuity contract without competing domain truth.
+requires_current_truth: false
+requires_timeline: false
+timeline_mode: optional
+allows_companion_data: false

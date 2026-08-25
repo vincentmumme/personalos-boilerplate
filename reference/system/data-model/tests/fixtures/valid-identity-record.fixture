@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-adcc-75ec-a562-f60626dd2bbb
+type: identity-record
+title: "Example Person"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Person
+
+## Current Truth
+
+Canonical human system-subject.
+
+## Core Identity
+
+Stable identity context.
+
+## Identity Facets
+
+Standard facet navigation.
+
+## Connected Context
+
+Related people, companies and projects.
+
+## Sources
+
+- Subject-provided context.
+
+## Timeline
+
+- **2026-08-13** | Record created.

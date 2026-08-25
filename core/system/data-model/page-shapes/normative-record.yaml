@@ -1,0 +1,6 @@
+name: normative-record
+purpose: Current binding definition or contract with append-only change history and explicit supersession.
+requires_current_truth: true
+requires_timeline: true
+timeline_mode: append-only-change-history
+allows_companion_data: true

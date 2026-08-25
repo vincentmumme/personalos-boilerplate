@@ -1,0 +1,23 @@
+name: legacy-schema-pack
+page_shape: state-record
+canonical_owner: legacy-schema-compatibility-reference
+allowed_roots: [system]
+path_pattern: ^system/schema-packs/[a-z0-9]+(?:-[a-z0-9]+)*/README\.md$
+required_modules: [lifecycle]
+optional_modules: []
+required_fields: [lifecycle]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [read-only, retired]
+required_sections: [Current Truth, State, Open Threads, See Also, Timeline]
+section_order: [Current Truth, State, Open Threads, See Also, Timeline]
+template: system/templates/data-model/legacy-schema-pack.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-legacy-schema-pack.fixture
+  positive_logical_path: system/schema-packs/example-v1/README.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-legacy-schema-pack.fixture
+  negative_logical_path: system/schema-packs/example-v1/README.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

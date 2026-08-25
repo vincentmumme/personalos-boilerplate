@@ -1,0 +1,82 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/agent-persona-overlay.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "agent_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "authority_scope": {
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "type": "string"
+    },
+    "canonical_system_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "deprecated",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "overlay_kind": {
+      "enum": [
+        "behavior-extension",
+        "domain-specialization",
+        "runtime-specialization"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "shared_persona_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "agent-persona-overlay"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "agent_ref",
+    "authority_scope",
+    "canonical_system_ref",
+    "lifecycle",
+    "overlay_kind",
+    "shared_persona_ref"
+  ],
+  "title": "PersonalOS pos-v1 agent-persona-overlay frontmatter",
+  "type": "object"
+}

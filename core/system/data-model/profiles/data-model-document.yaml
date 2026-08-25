@@ -1,0 +1,26 @@
+name: data-model-document
+page_shape: normative-record
+canonical_owner: data-model-human-contract
+allowed_roots: [system]
+path_pattern: ^system/data-model/(?:frontmatter|governance|legacy-mapping)\.md$
+required_modules: [lifecycle, normative-lineage]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, document_kind]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields:
+  document_kind:
+    datatype: enum
+    enum: [frontmatter-guide, registry-governance, legacy-mapping]
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: []
+section_order: []
+template: system/templates/data-model/data-model-document.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-data-model-document.fixture
+  positive_logical_path: system/data-model/frontmatter.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-data-model-document.fixture
+  negative_logical_path: system/data-model/frontmatter.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

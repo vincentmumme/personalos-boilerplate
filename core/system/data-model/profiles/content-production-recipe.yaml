@@ -1,0 +1,26 @@
+name: "content-production-recipe"
+page_shape: "state-record"
+canonical_owner: "contentos-production-recipe"
+allowed_roots: ["content"]
+path_pattern: "^content/production/recipes/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "format_ref"]
+optional_fields: ["origin_operation_id", "content_tags", "series_ref", "recipe_steps", "quality_profile_refs"]
+fields:
+  recipe_steps:
+    datatype: "plain-text-list"
+    min_items: 1
+module_constraints:
+  lifecycle:
+    enum: ["draft", "active", "deprecated", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-production-recipe.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-production-recipe.fixture"
+  positive_logical_path: "content/production/recipes/example-recipe.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-production-recipe.fixture"
+  negative_logical_path: "content/production/recipes/example-recipe.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

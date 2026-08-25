@@ -1,0 +1,29 @@
+name: "content-learning-candidate"
+page_shape: "work-artifact"
+canonical_owner: "contentos-learning-candidate"
+allowed_roots: ["content"]
+path_pattern: "^content/analytics/learning\\-candidates/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "candidate_state"]
+optional_fields: ["origin_operation_id", "content_tags", "content_evidence_refs", "observation_ids", "hypothesis_ids", "target_owner_ref"]
+fields:
+  observation_ids:
+    datatype: "plain-text-list"
+    min_items: 1
+  hypothesis_ids:
+    datatype: "plain-text-list"
+    min_items: 1
+module_constraints:
+  candidate_state:
+    enum: ["proposed", "approved", "rejected", "superseded"]
+required_sections: ["Purpose", "Working Notes"]
+section_order: ["Purpose", "Working Notes"]
+template: "system/templates/content/content-learning-candidate.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-learning-candidate.fixture"
+  positive_logical_path: "content/analytics/learning-candidates/example-learning.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-learning-candidate.fixture"
+  negative_logical_path: "content/analytics/learning-candidates/example-learning.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

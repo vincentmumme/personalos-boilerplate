@@ -1,0 +1,28 @@
+name: truth-system
+page_shape: state-record
+canonical_owner: system-registry
+allowed_roots: [system]
+path_pattern: ^system/truth-systems/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: []
+optional_modules: []
+required_fields: [system_kind]
+optional_fields: [canonical_uri, default_timezone]
+fields:
+  system_kind:
+    datatype: enum
+    enum: [personal-os, business-os, shared-workspace, external-service]
+  canonical_uri:
+    datatype: uri
+  default_timezone:
+    datatype: plain-text
+    iana_timezone: true
+required_sections: [Current Truth, Scope, Authority, Interfaces, Timeline]
+section_order: [Current Truth, Scope, Authority, Interfaces, Timeline]
+template: system/templates/truth-system.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-truth-system.fixture
+  positive_logical_path: system/truth-systems/personalos.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-truth-system.fixture
+  negative_logical_path: system/truth-systems/personalos.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,33 @@
+name: "content-source"
+page_shape: "event-record"
+canonical_owner: "contentos-source"
+allowed_roots: ["content"]
+path_pattern: "^content/(?:(?:sources/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*(?:/source)?)|(?:pieces/[0-9]{4}/[a-z0-9]+(?:-[a-z0-9]+)*/sources/[a-z0-9]+(?:-[a-z0-9]+)*/source))\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "source_kind", "source_state"]
+optional_fields: ["origin_operation_id", "content_tags", "input_refs", "canonical_url", "requested_extraction", "extraction_gaps"]
+fields:
+  source_kind:
+    datatype: "lower-kebab"
+  canonical_url:
+    datatype: "uri"
+  requested_extraction:
+    datatype: "plain-text-list"
+    min_items: 1
+  extraction_gaps:
+    datatype: "plain-text-list"
+    min_items: 1
+  source_state:
+    datatype: "enum"
+    enum: ["captured", "processing", "processed", "partial", "failed", "archived"]
+required_sections: ["Summary", "Evidence", "Corrections"]
+section_order: ["Summary", "Evidence", "Corrections"]
+template: "system/templates/content/content-source.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-source.fixture"
+  positive_logical_path: "content/sources/example-source/source.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-source.fixture"
+  negative_logical_path: "content/sources/example-source/source.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

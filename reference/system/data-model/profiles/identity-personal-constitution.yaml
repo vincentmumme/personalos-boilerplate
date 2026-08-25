@@ -1,0 +1,23 @@
+name: identity-personal-constitution
+page_shape: state-record
+canonical_owner: identity-personal-constitution
+allowed_roots: [identity]
+path_pattern: ^identity/personal-constitution\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, subject_ref]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, retired]
+required_sections: [Current Truth, Values, Personal Principles, Beliefs, Boundaries and Non-Negotiables, Internal Tensions, Sources, Timeline]
+section_order: [Current Truth, Values, Personal Principles, Beliefs, Boundaries and Non-Negotiables, Internal Tensions, Sources, Timeline]
+template: system/templates/identity/personal-constitution.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-identity-personal-constitution.fixture
+  positive_logical_path: identity/personal-constitution.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-identity-personal-constitution.fixture
+  negative_logical_path: identity/personal-constitution.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

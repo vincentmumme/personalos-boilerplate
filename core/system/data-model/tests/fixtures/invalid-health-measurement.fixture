@@ -1,0 +1,13 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000008
+type: health-measurement
+title: "Invalid Body Measurements"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+measurement_scope: unknown
+subject_ref: "[[identity/me]]"
+---
+
+# Invalid Body Measurements

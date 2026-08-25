@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 01a001a1-55dc-759a-95a3-64ea108d4bd5
+type: finance-invoice
+title: "RE2026-9999 - Example Invoice"
+created: 2026-08-14
+updated: 2026-08-14
+issued_on: 2026-08-14
+invoice_state: open
+invoice_number: "RE2026-9999"
+client_ref: "[[companies/example-client]]"
+external_authority_ref: "[[examples/external-authority]]"
+amount_net: "1000.00"
+amount_gross: "1190.00"
+currency: "EUR"
+---
+
+# RE2026-9999 - Example Invoice
+
+## Current Truth
+Open outgoing invoice.
+## Invoice
+RE2026-9999 issued 2026-08-14.
+## Service and Amounts
+1000.00 EUR net and 1190.00 EUR gross.
+## Delivery
+Finalized and delivered.
+## Payment State
+Open.
+## Client and Project
+Example client.
+## External Authority
+Lexware.
+## Evidence
+Delivery evidence.
+## Timeline
+- **2026-08-14** | Created.

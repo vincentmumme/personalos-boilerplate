@@ -1,0 +1,45 @@
+---
+schema_version: pos-v1
+id: 019ffb24-1fae-78e6-982a-ae0561e9ec4a
+type: user-context
+title: "USER — Example Person"
+created: 2026-08-13
+updated: 2026-08-13
+subject_ref: "[[identity/example-person]]"
+---
+
+# USER — Example Person
+
+Compact projection for the example system subject.
+
+## Kurzprofil
+
+Example profile.
+
+## Arbeitsweise und Denkstil
+
+Example work style.
+
+## Entscheidungen
+
+Example decision style.
+
+## Arbeitsbeziehung mit Agenten
+
+Example agent relationship.
+
+## Wichtige Beziehungen und Rollen
+
+Example relationships.
+
+## Werte und Haltung
+
+Example values.
+
+## Wahrheitskarte
+
+See [[identity/example-person]].
+
+## Pflege
+
+Keep this projection compact.

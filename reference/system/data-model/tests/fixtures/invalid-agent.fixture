@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-7586-98bb-d5c9413fccec
+type: agent
+title: "Example Agent"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# Example Agent
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Scope and Responsibilities
+
+Example content.
+
+## Persona and Behavior
+
+Example content.
+
+## Runtime and Hosts
+
+Example content.
+
+## Access and Boundaries
+
+Example content.
+
+## Sources
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

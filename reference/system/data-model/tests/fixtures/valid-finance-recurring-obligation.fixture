@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5630-746a-bee0-07f1cdbf3bb6
+type: finance-recurring-obligation
+title: "Example Subscription"
+created: 2026-08-14
+updated: 2026-08-14
+obligation_state: active
+finance_scope: business
+cadence: monthly
+due_day: "14"
+amount_gross: "20.00"
+currency: "EUR"
+---
+
+# Example Subscription
+
+## Current Truth
+Active monthly subscription.
+## Obligation
+Example service.
+## Cadence and Due State
+Monthly on day 14.
+## Cost and Allocation
+20.00 EUR business expense.
+## Payment Source
+Safe registry label.
+## External Authority
+Provider and Lexware.
+## Evidence
+Provider invoice.
+## Timeline
+- **2026-08-14** | Created.

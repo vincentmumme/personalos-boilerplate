@@ -1,0 +1,16 @@
+---
+schema_version: pos-v1
+id: 019ffb82-bc1c-72ec-a568-37ee0c247396
+type: person
+title: "Invalid Person"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: personal-context
+---
+
+# Invalid Person
+
+## Current Truth
+Missing the entity contract.

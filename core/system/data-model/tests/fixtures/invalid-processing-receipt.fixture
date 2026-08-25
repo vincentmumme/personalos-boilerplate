@@ -1,0 +1,40 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000005
+type: processing-receipt
+title: "Invalid Processing Receipt"
+created: 2026-08-12
+updated: 2026-08-12
+receipt_kind: run
+receipt_outcome: success
+processed_at: "2026-08-12 14:00"
+verification_result: done
+producer_skill_ref: "invalid"
+interaction_ref: "invalid"
+---
+
+# Invalid Processing Receipt
+
+## Processing Summary
+
+Invalid.
+
+## Coverage
+
+Invalid.
+
+## Propagation
+
+Invalid.
+
+## Verification
+
+Invalid.
+
+## Errors and Pending
+
+Invalid.
+
+## Corrections
+
+None.

@@ -1,0 +1,26 @@
+name: template
+page_shape: normative-record
+canonical_owner: system-templates
+allowed_roots: [system]
+path_pattern: ^system/templates/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage, system-dependencies]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, system_refs, target_profile_key]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields:
+  target_profile_key:
+    datatype: profile-key
+    registered_profile: true
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Template Contract, Blueprint, Usage, Change History]
+section_order: [Template Contract, Blueprint, Usage, Change History]
+template: system/templates/template.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-template.fixture
+  positive_logical_path: system/templates/example-template.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-template.fixture
+  negative_logical_path: system/templates/example-template.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

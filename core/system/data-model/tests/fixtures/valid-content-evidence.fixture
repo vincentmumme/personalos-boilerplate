@@ -1,0 +1,29 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-70c4-a5a2-cc53d3b022c1"
+type: "content-evidence"
+title: "Example content-evidence"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+evidence_state: "captured"
+piece_ref: "[[content/pieces/2026/example-piece/piece]]"
+content_evidence_kind: "platform-snapshot"
+collection_state: "complete"
+content_observed_at: "2026-08-15T14:00:00+02:00"
+provenance_key: "instagram-api"
+---
+
+# Example content-evidence
+
+## Summary
+
+<summary>
+
+## Evidence
+
+<evidence>
+
+## Corrections
+
+<corrections>

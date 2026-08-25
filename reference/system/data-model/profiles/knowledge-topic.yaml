@@ -1,0 +1,23 @@
+name: knowledge-topic
+page_shape: state-record
+canonical_owner: knowledge-topic-truth
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/(?P<topic>[a-z0-9]+(?:-[a-z0-9]+)*)/(?P=topic)\.md$
+required_modules: [lifecycle]
+optional_modules: []
+required_fields: [lifecycle]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, archived]
+required_sections: [Current Truth, Scope, Ownership and Boundaries, Source and Compilation Policy, Timeline]
+section_order: [Current Truth, Scope, Ownership and Boundaries, Source and Compilation Policy, Timeline]
+template: system/templates/knowledge/knowledge-topic.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-topic.fixture
+  positive_logical_path: knowledge/topics/example-topic/example-topic.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-topic.fixture
+  negative_logical_path: knowledge/topics/example-topic/config.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

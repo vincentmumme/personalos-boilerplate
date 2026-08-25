@@ -1,0 +1,3 @@
+{"intent":"erstelle einen neuen PersonalOS Skill","expected_skill":"write-skill"}
+{"intent":"erstelle direkt den Skill mit dem Namen onboarding-brief","expected_skill":"write-skill"}
+{"intent":"überarbeite den kanonischen Skill-Erstellungsprozess","expected_skill":"write-skill"}

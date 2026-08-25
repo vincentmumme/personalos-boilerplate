@@ -1,0 +1,40 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000014
+type: conversation-stream
+title: "Example Gmail Thread"
+created: 2026-08-12
+updated: 2026-08-12
+stream_state: active
+source_channel: gmail
+participant_refs: ["[[USER]]"]
+coverage_started_at: 2026-08-12T08:00:00+02:00
+coverage_ended_at: 2026-08-12T11:00:00+02:00
+last_material_at: 2026-08-12T09:00:00+02:00
+---
+
+# Example Gmail Thread
+
+## Current Truth
+
+The stream is current through the covered window.
+
+## Participants
+
+- [[USER]]
+
+## Coverage
+
+Covered through 11:00.
+
+## Open Source Gaps
+
+None.
+
+## Owner Links
+
+- [[USER]]
+
+## Timeline
+
+- **2026-08-12** | Stream created.

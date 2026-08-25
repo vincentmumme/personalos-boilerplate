@@ -1,0 +1,35 @@
+---
+schema_version: pos-v1
+id: 019fec59-ef1a-7315-a0b4-6c9e0a227adf
+type: rule
+title: "Example Rule"
+created: 2026-08-10
+updated: 2026-08-10
+decision_refs: ["[[operations/decisions/example-decision]]"]
+---
+
+# Example Rule
+
+## Rule
+
+Der Lifecycle fehlt.
+
+## Scope and Trigger
+
+Invalid fixture.
+
+## Required Behavior
+
+Keine.
+
+## Exceptions
+
+Keine.
+
+## Verification
+
+Keine.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

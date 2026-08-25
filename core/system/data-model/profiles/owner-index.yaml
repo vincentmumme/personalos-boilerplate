@@ -1,0 +1,23 @@
+name: owner-index
+page_shape: pointer-record
+canonical_owner: owner-local-navigation
+allowed_roots: [inbox, identity, people, companies, business, projects, interactions, knowledge, content, finance, health, operations, decisions, automations, daily, skills, system, tables]
+path_pattern: ^(?:inbox|identity|people|companies|business|projects|interactions|knowledge|content|finance|health|operations|decisions|automations|daily|skills|system|tables)/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*index\.md$
+required_modules: []
+optional_modules: []
+required_fields: [index_scope]
+optional_fields: []
+fields:
+  index_scope:
+    datatype: enum
+    enum: [root, section]
+required_sections: [Purpose, Ownership and Boundaries, Navigation, Maintenance]
+section_order: [Purpose, Ownership and Boundaries, Navigation, Maintenance]
+template: system/templates/core/owner-index.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-owner-index.fixture
+  positive_logical_path: business/index.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-owner-index.fixture
+  negative_logical_path: business/index.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

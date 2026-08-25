@@ -1,0 +1,30 @@
+---
+schema_version: pos-v1
+id: 019fec59-efc6-7d58-a221-476ce7b2a346
+type: template
+title: "Example Template"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+system_refs: ["[[system/contracts/example-contract]]"]
+target_profile_key: unknown-profile
+---
+
+# Example Template
+
+## Template Contract
+
+Das Zielprofile ist nicht registriert.
+
+## Blueprint
+
+Invalid fixture.
+
+## Usage
+
+Keine.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

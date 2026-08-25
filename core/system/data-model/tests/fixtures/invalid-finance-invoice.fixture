@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5606-71cf-b9c2-e25665e2c675
+type: finance-invoice
+title: "Invalid Invoice"
+created: 2026-08-14
+updated: 2026-08-14
+issued_on: 2026-08-14
+invoice_state: sent
+invoice_number: "RE2026-9999"
+client_ref: "[[companies/example-client]]"
+external_authority_ref: "[[examples/external-authority]]"
+amount_net: "1000.00"
+amount_gross: "1190.00"
+currency: "EUR"
+---
+
+# Invalid Invoice
+
+## Current Truth
+Invalid.
+## Invoice
+Invalid.
+## Service and Amounts
+Invalid.
+## Delivery
+Invalid.
+## Payment State
+Invalid.
+## Client and Project
+Invalid.
+## External Authority
+Invalid.
+## Evidence
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

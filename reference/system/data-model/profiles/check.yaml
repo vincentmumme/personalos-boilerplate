@@ -1,0 +1,31 @@
+name: check
+page_shape: normative-record
+canonical_owner: system-checks
+allowed_roots: [system]
+path_pattern: ^system/checks/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage, system-dependencies]
+optional_modules: []
+required_fields: [lifecycle, decision_refs, system_refs, check_kind, verifies_refs]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields:
+  check_kind:
+    datatype: enum
+    enum: [schema, content, relation, runtime, migration, health]
+  verifies_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [principle, rule, contract, convention, framework, template, runbook, skill]
+    legacy_targets: warn
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Purpose, Assertions, Implementation, Invocation, Outcomes, Change History]
+section_order: [Purpose, Assertions, Implementation, Invocation, Outcomes, Change History]
+template: system/templates/check.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-check.fixture
+  positive_logical_path: system/checks/example-check.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-check.fixture
+  negative_logical_path: system/checks/example-check.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

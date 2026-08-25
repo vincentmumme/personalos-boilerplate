@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a001a1-54e5-7034-9775-9eac240e08ed
+type: finance-expense
+title: "Example Expense"
+created: 2026-08-14
+updated: 2026-08-14
+expense_date: 2026-08-14
+booking_state: booked
+finance_scope: business
+external_authority_ref: "[[examples/external-authority]]"
+amount_gross: "119.00"
+currency: "EUR"
+---
+
+# Example Expense
+
+## Current Truth
+Booked business expense.
+## Expense
+Example service for 119.00 EUR.
+## Booking and Payment State
+Booked; payment state not independently asserted.
+## Allocation
+Business.
+## External Authority
+Lexware.
+## Evidence
+Provider invoice.
+## Timeline
+- **2026-08-14** | Created.

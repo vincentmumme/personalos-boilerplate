@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 01a0251c-ad00-702e-8717-14ec58d50902
+type: priority-control
+title: "Priority Control"
+created: 2026-08-21
+updated: 2026-08-21
+lifecycle: active
+priority_control_review_on: 2026-08-23
+priority_control_expires_on: 2026-08-24
+priority_focus_areas: ["Kundencommitment schließen"]
+priority_focus_action_refs: ["[[operations/actions/019ff139-ac6c-7cb3-ba83-fe8dd4cdb32d]]"]
+priority_ordered_action_refs: ["[[operations/actions/019ff139-ac6c-7cb3-ba83-fe8dd4cdb32d]]"]
+priority_excluded_action_refs: ["[[operations/actions/019ff139-ac6c-7cb3-ba83-fe8dd4cdb32d|Example Action]]"]
+---
+
+# Priority Control
+
+## Current Truth
+
+Example current control state.
+
+## Manual Direction
+
+Example manual direction.
+
+## Scope and Expiry
+
+Example expiry boundary.
+
+## Timeline
+
+- **2026-08-21** | Example control created.

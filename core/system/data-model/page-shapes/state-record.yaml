@@ -1,0 +1,6 @@
+name: state-record
+purpose: Canonical mutable current truth with an append-only change timeline.
+requires_current_truth: true
+requires_timeline: true
+timeline_mode: append-only
+allows_companion_data: true

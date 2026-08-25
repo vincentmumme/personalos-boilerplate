@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a001a1-558a-73a5-8425-be478aaf929e
+type: finance-time-entry
+title: "Example Time Entry"
+created: 2026-08-14
+updated: 2026-08-14
+service_date: 2026-08-14
+billing_state: unbilled
+client_ref: "[[companies/example-client]]"
+hours: "1.50"
+---
+
+# Example Time Entry
+
+## Current Truth
+Unbilled time entry.
+## Service
+Example consulting.
+## Time and Value
+1.50 hours.
+## Billing State
+Unbilled.
+## Client and Project
+Example client.
+## Invoice Allocation
+Not allocated.
+## Evidence
+Delivery evidence.
+## Timeline
+- **2026-08-14** | Created.

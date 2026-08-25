@@ -1,0 +1,39 @@
+---
+schema_version: pos-v1
+id: 019fec59-f01c-7842-941b-1fdb5513183b
+type: check
+title: "Example Check"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+system_refs: ["[[system/contracts/example-contract]]"]
+check_kind: schema
+verifies_refs: ["[[system/contracts/example-contract]]"]
+---
+
+# Example Check
+
+## Purpose
+
+Einen Contract deterministisch prüfen.
+
+## Assertions
+
+Pflichtfelder existieren.
+
+## Implementation
+
+Ein Validator-Script.
+
+## Invocation
+
+Ein reproduzierbarer Befehl.
+
+## Outcomes
+
+Pass, Warn oder Fail.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 01a0020f-3066-7a10-abe4-548a2fb77d3e
+type: signal-digest
+title: "Nightly News — 2026-08-14"
+created: 2026-08-14
+updated: 2026-08-14
+digest_date: 2026-08-14
+digest_kind: news
+digest_outcome: success
+coverage_started_at: 2026-08-13T22:00:00+02:00
+coverage_ended_at: 2026-08-14T22:00:00+02:00
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+source_system: "public-web"
+source_channel: "web"
+---
+
+# Nightly News — 2026-08-14
+
+## Digest Summary
+
+Three validated developments.
+
+## Coverage
+
+Twenty-four-hour source window.
+
+## Signals
+
+Three ranked signals.
+
+## Source Map
+
+Canonical source URLs and dates.
+
+## Propagation
+
+No automatic ContentOS write.
+
+## Gaps and Corrections
+
+None.

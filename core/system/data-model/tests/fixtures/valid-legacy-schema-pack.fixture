@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 01a0011a-da67-72b5-9072-00951de0f2a2
+type: legacy-schema-pack
+title: "Example v1 Schema Pack"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: read-only
+---
+
+# Example v1 Schema Pack
+
+## Current Truth
+
+Das Pack ist nur noch lesbar.
+
+## State
+
+Die maschinenlesbare Referenz bleibt erhalten.
+
+## Open Threads
+
+Entfernung erst nach null Consumern.
+
+## See Also
+
+Siehe das aktuelle Datenmodell.
+
+## Timeline
+
+- **2026-08-14** | Beispiel angelegt.

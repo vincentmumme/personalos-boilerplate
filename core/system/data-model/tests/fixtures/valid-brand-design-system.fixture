@@ -1,0 +1,38 @@
+---
+schema_version: pos-v1
+id: 019ffb8b-22c3-728e-84e7-1224737d8b8a
+type: brand-design-system
+title: "Example Brand Design System"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+brand_refs: ["[[business/brands/example-brand]]"]
+---
+
+# Example Brand Design System
+
+## Current Truth
+Current design system.
+
+## Design Principles
+Principles.
+
+## Visual System
+Visual system.
+
+## Components and Tokens
+Components.
+
+## Application
+Application.
+
+## Boundaries
+Boundaries.
+
+## Sources
+Sources.
+
+## Timeline
+- **2026-08-13** | Record created.

@@ -1,0 +1,39 @@
+---
+schema_version: pos-v1
+id: 01a0018c-3000-7000-8000-000000000003
+type: health-daily-assessment
+title: "Health Assessment - 2026-08-14"
+created: 2026-08-14
+updated: 2026-08-14
+assessment_date: 2026-08-14
+readiness_band: green
+training_recommendation: train
+provider_snapshot_ref: "[[examples/provider-snapshot]]"
+subject_ref: "[[identity/me]]"
+---
+
+# Health Assessment - 2026-08-14
+
+## Current Truth
+
+Training is reasonable.
+
+## Readiness
+
+Green.
+
+## Training Guidance
+
+Train with normal subjective calibration.
+
+## Evidence
+
+- 2026 08 14 whoop
+
+## Data Gaps
+
+None.
+
+## Timeline
+
+- **2026-08-14** | Assessment created.

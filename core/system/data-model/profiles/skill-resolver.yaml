@@ -1,0 +1,20 @@
+name: skill-resolver
+page_shape: pointer-record
+canonical_owner: capability-routing-control-plane
+allowed_roots: [skills]
+path_pattern: ^skills/RESOLVER\.md$
+required_modules: []
+optional_modules: []
+required_fields: []
+optional_fields: []
+fields: {}
+required_sections: [Purpose, Routes, Routing Rules, Maintenance]
+section_order: [Purpose, Routes, Routing Rules, Maintenance]
+template: system/templates/skills/skill-resolver.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-skill-resolver.fixture
+  positive_logical_path: skills/RESOLVER.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-skill-resolver.fixture
+  negative_logical_path: skills/RESOLVER.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

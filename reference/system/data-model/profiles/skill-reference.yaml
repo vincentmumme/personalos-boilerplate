@@ -1,0 +1,30 @@
+name: skill-reference
+page_shape: normative-record
+canonical_owner: owning-skill-local-reference
+allowed_roots: [skills]
+path_pattern: ^skills/[a-z0-9]+(?:-[a-z0-9]+)*/references/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle]
+optional_modules: [normative-lineage, system-dependencies]
+required_fields: [lifecycle, owning_skill_ref, reference_kind]
+optional_fields: [derived_from_refs, supersedes_refs, system_refs]
+fields:
+  owning_skill_ref:
+    datatype: wikilink
+    target_profiles: [skill]
+    legacy_targets: reject
+  reference_kind:
+    datatype: enum
+    enum: [calibration, pattern-memory, schema-reference, provider-reference, compatibility-fixture, example]
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: []
+section_order: []
+template: system/templates/skills/skill-reference.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-skill-reference.fixture
+  positive_logical_path: skills/example-skill/references/example-reference.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-skill-reference.fixture
+  negative_logical_path: skills/example-skill/example-reference.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,20 @@
+---
+schema_version: pos-v1
+id: 01a0020f-308d-767d-b8d6-bcecef30a763
+type: signal-digest
+title: "Invalid Signal Digest"
+created: 2026-08-14
+updated: 2026-08-14
+digest_date: 2026-08-13
+digest_kind: content-idea
+digest_outcome: complete
+coverage_started_at: "yesterday"
+coverage_ended_at: 2026-08-14T22:00:00+02:00
+producer_skill_ref: "nightly-news"
+---
+
+# Invalid Signal Digest
+
+## Digest Summary
+
+Invalid.

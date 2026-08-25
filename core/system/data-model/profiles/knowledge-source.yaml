@@ -1,0 +1,23 @@
+name: knowledge-source
+page_shape: event-record
+canonical_owner: knowledge-source-evidence
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/[a-z0-9]+(?:-[a-z0-9]+)*/raw(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, topic_ref, knowledge_source_kind, source_locator, captured_on, source_integrity, immutable]
+optional_fields: [related_topic_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, archived]
+required_sections: [Source Summary, Routing, Source Boundary, Evidence, Extraction Gaps, Corrections]
+section_order: [Source Summary, Routing, Source Boundary, Evidence, Extraction Gaps, Corrections]
+template: system/templates/knowledge/knowledge-source.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-source.fixture
+  positive_logical_path: knowledge/topics/example-topic/raw/articles/example-source.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-source.fixture
+  negative_logical_path: knowledge/topics/example-topic/wiki/concepts/example-source.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

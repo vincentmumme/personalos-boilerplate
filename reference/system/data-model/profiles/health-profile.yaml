@@ -1,0 +1,23 @@
+name: health-profile
+page_shape: state-record
+canonical_owner: personal-health-profile
+allowed_roots: [health]
+path_pattern: ^health/profile\.md$
+required_modules: [lifecycle, subject-context]
+optional_modules: []
+required_fields: [lifecycle, subject_ref]
+optional_fields: []
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+required_sections: [Current Truth, Goals and Context, Constraints, Coaching Mode, Open Calibration, Timeline]
+section_order: [Current Truth, Goals and Context, Constraints, Coaching Mode, Open Calibration, Timeline]
+template: system/templates/health/health-profile.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-health-profile.fixture
+  positive_logical_path: health/profile.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-health-profile.fixture
+  negative_logical_path: health/profiles/{{user_slug}}.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

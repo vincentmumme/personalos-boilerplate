@@ -1,0 +1,81 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/knowledge-log.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "knowledge_log_scope": {
+            "enum": [
+              "topic"
+            ]
+          }
+        },
+        "required": [
+          "knowledge_log_scope"
+        ]
+      },
+      "then": {
+        "required": [
+          "topic_ref"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "knowledge_log_scope": {
+      "enum": [
+        "hub",
+        "topic"
+      ],
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "topic_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "type": {
+      "const": "knowledge-log"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "knowledge_log_scope",
+    "lifecycle"
+  ],
+  "title": "PersonalOS pos-v1 knowledge-log frontmatter",
+  "type": "object"
+}

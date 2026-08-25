@@ -1,0 +1,30 @@
+---
+schema_version: pos-v1
+id: 01a00126-926d-791f-a39e-7bd292d20308
+type: skill-resolver
+title: "Skills Resolver"
+created: 2026-08-14
+updated: 2026-08-14
+---
+
+# Skills Resolver
+
+## Purpose
+
+Route Intents to owning Skills.
+
+## Routes
+
+### Example
+
+| Intent | Capability |
+|---|---|
+| Verify a write | `pos-verify` |
+
+## Routing Rules
+
+Read the owning Skill before acting.
+
+## Maintenance
+
+Run the resolver check after every change.

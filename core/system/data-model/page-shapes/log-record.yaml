@@ -1,0 +1,6 @@
+name: log-record
+purpose: Stable temporal container whose entries remain append-only while a compact derived summary may be refreshed.
+requires_current_truth: false
+requires_timeline: false
+timeline_mode: append-only-entries-with-derived-summary
+allows_companion_data: true

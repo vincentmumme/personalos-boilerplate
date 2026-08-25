@@ -1,0 +1,26 @@
+name: finance-client-cost
+page_shape: state-record
+canonical_owner: finance-client-recharge-context
+allowed_roots: [finance]
+path_pattern: ^finance/client-costs/(?!index\.md$)[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [cost_period, recharge_state, client_ref]
+optional_fields: [project_ref, source_expense_ref, invoice_ref, amount_net, amount_gross, source_amount, currency, evidence_refs]
+fields:
+  cost_period:
+    datatype: plain-text
+    pattern: ^[0-9]{4}-[0-9]{2}$
+  recharge_state:
+    datatype: enum
+    enum: [pending-evidence, pending-usage, ready-to-bill, invoiced, paid, waived]
+required_sections: [Current Truth, Cost, Recharge State, Client and Project, Source Expense, Invoice Allocation, Evidence, Timeline]
+section_order: [Current Truth, Cost, Recharge State, Client and Project, Source Expense, Invoice Allocation, Evidence, Timeline]
+template: system/templates/finance/finance-client-cost.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-client-cost.fixture
+  positive_logical_path: finance/client-costs/2026-08-example-cost.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-client-cost.fixture
+  negative_logical_path: finance/entity-costs/2026-08-example-cost.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

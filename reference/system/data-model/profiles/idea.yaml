@@ -1,0 +1,69 @@
+name: idea
+page_shape: state-record
+canonical_owner: domain-owned-idea-record
+allowed_roots: [identity, business, knowledge, finance, health, projects]
+path_pattern: ^(?:(?:identity|business|knowledge|finance|health)/ideas|projects/[a-z0-9]+(?:-[a-z0-9]+)*/working/ideas)/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+parent_record:
+  when_path_pattern: ^projects/(?P<project_slug>[a-z0-9]+(?:-[a-z0-9]+)*)/working/ideas/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+  required_path_template: projects/{project_slug}/{project_slug}.md
+  required_profile: project
+required_modules: [lifecycle, relations]
+optional_modules: []
+required_fields: [lifecycle, evidence_refs]
+optional_fields: [idea_outcome, promotion_ref, merge_target_ref, rejection_evidence_refs]
+fields:
+  idea_outcome:
+    datatype: enum
+    enum: [promoted, merged, rejected]
+  promotion_ref:
+    datatype: wikilink
+    target_profiles: [action, project, truth-system, principle, rule, contract, convention, framework, template, runbook, check, skill, identity-record, brand, market, offer, product, strategy, knowledge-topic, knowledge-article, knowledge-inventory-item, finance-account, finance-transaction, finance-expense, finance-invoice, finance-time-entry, finance-client-cost, finance-recurring-obligation, finance-tax-dossier, finance-budget, finance-report, health-profile, health-measurement, health-provider-snapshot, health-daily-assessment, health-training-session, health-plan, health-review]
+    legacy_targets: warn
+    forbid_self: true
+  merge_target_ref:
+    datatype: wikilink
+    target_profiles: [idea]
+    legacy_targets: warn
+    forbid_self: true
+  rejection_evidence_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [evidence, source, report, decision, interaction]
+    legacy_targets: warn
+module_constraints:
+  lifecycle:
+    enum: [active, parked, terminal]
+conditional_rules:
+  terminal:
+    when_field: lifecycle
+    when_in: [terminal]
+    require_fields: [idea_outcome]
+  promoted:
+    when_field: idea_outcome
+    when_in: [promoted]
+    require_fields: [promotion_ref]
+    forbid_fields: [merge_target_ref, rejection_evidence_refs]
+  merged:
+    when_field: idea_outcome
+    when_in: [merged]
+    require_fields: [merge_target_ref]
+    forbid_fields: [promotion_ref, rejection_evidence_refs]
+  rejected:
+    when_field: idea_outcome
+    when_in: [rejected]
+    require_fields: [rejection_evidence_refs]
+    forbid_fields: [promotion_ref, merge_target_ref]
+  non_terminal:
+    when_field: lifecycle
+    when_in: [active, parked]
+    forbid_fields: [idea_outcome, promotion_ref, merge_target_ref, rejection_evidence_refs]
+required_sections: [Current Truth, Idea, Why It Matters, Source Basis, Evidence and Assumptions, Development, Resolution, Timeline]
+section_order: [Current Truth, Idea, Why It Matters, Source Basis, Evidence and Assumptions, Development, Resolution, Timeline]
+template: system/templates/idea.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-idea.fixture
+  positive_logical_path: business/ideas/019ff1d5-b325-7cec-a89d-294de57f770d.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-idea.fixture
+  negative_logical_path: business/ideas/019ff1d5-b354-74d1-b8a8-532e7bb7bd0e.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

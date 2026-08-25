@@ -1,0 +1,42 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000003
+type: automation-run-receipt
+title: "Example Automation Run"
+created: 2026-08-12
+updated: 2026-08-12
+run_id: example-2026-08-12T100000+0200
+run_started_at: 2026-08-12T10:00:00+02:00
+run_ended_at: 2026-08-12T10:01:00+02:00
+run_outcome: changed
+run_trigger: scheduled
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+retention_class: material-run
+affected_owner_refs: ["[[system/index]]"]
+---
+
+# Example Automation Run
+
+## Run Summary
+
+The run changed one owner.
+
+## Coverage
+
+The source window was complete.
+
+## Propagation
+
+One owner changed.
+
+## Errors and Pending
+
+None.
+
+## Evidence
+
+Example evidence.
+
+## Corrections
+
+None.

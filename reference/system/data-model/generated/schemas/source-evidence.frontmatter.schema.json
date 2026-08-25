@@ -1,0 +1,84 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/source-evidence.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "evidence_captured_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "evidence_kind": {
+      "enum": [
+        "transcript",
+        "message-batch",
+        "source-card",
+        "asset-pointer",
+        "visual-context",
+        "audio-transcript",
+        "research"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "interaction_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "redaction_mode": {
+      "enum": [
+        "none",
+        "minimized",
+        "redacted"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "source_ref": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "source_system": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "source-evidence"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "evidence_captured_at",
+    "evidence_kind",
+    "interaction_ref",
+    "redaction_mode",
+    "source_ref",
+    "source_system"
+  ],
+  "title": "PersonalOS pos-v1 source-evidence frontmatter",
+  "type": "object"
+}

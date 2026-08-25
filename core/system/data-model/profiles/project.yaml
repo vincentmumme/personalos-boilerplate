@@ -1,0 +1,50 @@
+name: project
+page_shape: state-record
+canonical_owner: project-main-record
+allowed_roots: [projects]
+path_pattern: ^projects/(?P<slug>[a-z0-9]+(?:-[a-z0-9]+)*)/(?P=slug)\.md$
+required_modules: [lifecycle, relations, authority]
+optional_modules: []
+required_fields: [lifecycle, priority, workflow, sponsor_refs, human_role, canonical_system_ref, authority_scope]
+optional_fields: [project_phase, commercial_state, closure_mode, project_outcome, closed_at, evidence_refs, parent_project_ref, dependency_project_refs, follow_on_project_refs]
+fields:
+  priority:
+    datatype: enum
+    enum: [critical, high, normal, low]
+  workflow:
+    datatype: enum
+    enum: [general, commercial, delivery, migration, research, personal-change, program]
+  project_phase:
+    datatype: lower-kebab
+  commercial_state:
+    datatype: enum
+    enum: [open, won, lost, withdrawn]
+  human_role:
+    datatype: enum
+    enum: [owner, sponsor, lead, contributor, observer]
+  closure_mode:
+    datatype: enum
+    enum: [completed, cancelled, merged, duplicate, superseded, created-in-error]
+  project_outcome:
+    datatype: enum
+    enum: [achieved, partially-achieved, not-achieved, not-assessed]
+  closed_at:
+    datatype: date
+module_constraints:
+  lifecycle:
+    enum: [planned, active, waiting, paused, closed, archived]
+conditional_rules:
+  closure:
+    when_field: lifecycle
+    when_in: [closed, archived]
+    require_fields: [closure_mode, project_outcome, closed_at, evidence_refs]
+required_sections: [Current Truth, Outcome and Success Criteria, Scope, Authority and Roles, Navigation, Propagation, Timeline]
+section_order: [Current Truth, Outcome and Success Criteria, Scope, Authority and Roles, Navigation, Propagation, Timeline]
+template: system/templates/project.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-project.fixture
+  positive_logical_path: projects/example-migration/example-migration.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-project.fixture
+  negative_logical_path: projects/example-migration/example-migration.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

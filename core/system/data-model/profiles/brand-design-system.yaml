@@ -1,0 +1,23 @@
+name: brand-design-system
+page_shape: state-record
+canonical_owner: business-brand-design-system
+allowed_roots: [business]
+path_pattern: ^business/brands/[a-z0-9]+(?:-[a-z0-9]+)*/design-system\.md$
+required_modules: [lifecycle, authority, business-context]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, brand_refs]
+optional_fields: [company_refs, market_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [draft, active, paused, retired]
+required_sections: [Current Truth, Design Principles, Visual System, Components and Tokens, Application, Boundaries, Sources, Timeline]
+section_order: [Current Truth, Design Principles, Visual System, Components and Tokens, Application, Boundaries, Sources, Timeline]
+template: system/templates/business/brand-design-system.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-brand-design-system.fixture
+  positive_logical_path: business/brands/example-brand/design-system.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-brand-design-system.fixture
+  negative_logical_path: business/brands/example-brand/design-system.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

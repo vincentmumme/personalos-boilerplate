@@ -1,0 +1,96 @@
+---
+schema_version: pos-v1
+id: 01a0015e-8a7b-76bd-8dbb-cf7a300bfe6b
+type: context-gap-review
+title: "Context Gap Review 2026-08-14"
+created: 2026-08-14
+updated: 2026-08-14
+day_date: 2026-08-14
+timezone: Europe/Berlin
+generated_at: 2026-08-14T11:00:00+02:00
+context_gap_kind: question-batch
+producer_skill_ref: "[[skills/pos-verify/SKILL]]"
+---
+
+# Context Gap Review 2026-08-14
+
+## Review
+
+Der aktuelle Kontext wurde geprüft.
+
+## Gap Map
+
+Fünf priorisierte Lücken wurden ausgewählt.
+
+## Questions and Answers
+
+### 1. Beispiel 1
+
+**Frage:** Eine konkrete Frage?
+**Warum jetzt:** Sie beeinflusst aktuelle Unterstützung.
+**Evidenz:** Ein belegter Kontextgap.
+**Was verbessert sich:** Künftiges Routing.
+**Write-back-Ziel:** `identity/operating-profile.md`
+**Antwortformat:** Zwei Sätze.
+**Sensitivität:** niedrig
+**Score:** 24
+
+### 2. Beispiel 2
+
+**Frage:** Eine konkrete Frage?
+**Warum jetzt:** Sie beeinflusst aktuelle Unterstützung.
+**Evidenz:** Ein belegter Kontextgap.
+**Was verbessert sich:** Künftiges Routing.
+**Write-back-Ziel:** `identity/operating-profile.md`
+**Antwortformat:** Zwei Sätze.
+**Sensitivität:** niedrig
+**Score:** 23
+
+### 3. Beispiel 3
+
+**Frage:** Eine konkrete Frage?
+**Warum jetzt:** Sie beeinflusst aktuelle Unterstützung.
+**Evidenz:** Ein belegter Kontextgap.
+**Was verbessert sich:** Künftiges Routing.
+**Write-back-Ziel:** `identity/operating-profile.md`
+**Antwortformat:** Zwei Sätze.
+**Sensitivität:** niedrig
+**Score:** 22
+
+### 4. Beispiel 4
+
+**Frage:** Eine konkrete Frage?
+**Warum jetzt:** Sie beeinflusst aktuelle Unterstützung.
+**Evidenz:** Ein belegter Kontextgap.
+**Was verbessert sich:** Künftiges Routing.
+**Write-back-Ziel:** `identity/operating-profile.md`
+**Antwortformat:** Zwei Sätze.
+**Sensitivität:** niedrig
+**Score:** 21
+
+### 5. Beispiel 5
+
+**Frage:** Eine konkrete Frage?
+**Warum jetzt:** Sie beeinflusst aktuelle Unterstützung.
+**Evidenz:** Ein belegter Kontextgap.
+**Was verbessert sich:** Künftiges Routing.
+**Write-back-Ziel:** `identity/operating-profile.md`
+**Antwortformat:** Zwei Sätze.
+**Sensitivität:** niedrig
+**Score:** 20
+
+## Routing and Propagation
+
+Noch keine Propagation.
+
+## Sources
+
+Aktueller PersonalOS-Kontext.
+
+## Verification
+
+Profil und Tageszuordnung geprüft.
+
+## Corrections
+
+None.

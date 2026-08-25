@@ -1,0 +1,29 @@
+name: health-provider-snapshot
+page_shape: event-record
+canonical_owner: health-provider-snapshot
+allowed_roots: [health]
+path_pattern: ^health/whoop/[0-9]{4}/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})-whoop\.md$
+path_date_field: snapshot_date
+path_date_group: date
+required_modules: [signal-processing, subject-context]
+optional_modules: []
+required_fields: [snapshot_date, captured_at, snapshot_state, source_system, subject_ref]
+optional_fields: []
+fields:
+  snapshot_date:
+    datatype: date
+  captured_at:
+    datatype: datetime
+  snapshot_state:
+    datatype: enum
+    enum: [complete, partial, pending, unavailable]
+required_sections: [Snapshot Summary, Metrics, Workouts, Body Measurement, Interpretation Boundary, Sources, Corrections]
+section_order: [Snapshot Summary, Metrics, Workouts, Body Measurement, Interpretation Boundary, Sources, Corrections]
+template: system/templates/health/health-provider-snapshot.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-health-provider-snapshot.fixture
+  positive_logical_path: health/whoop/2026/2026-08-14-whoop.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-health-provider-snapshot.fixture
+  negative_logical_path: health/daily/2026/2026-08-14-whoop.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

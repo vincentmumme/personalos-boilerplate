@@ -1,0 +1,26 @@
+name: operating-system
+page_shape: state-record
+canonical_owner: system-operating-system-registry
+allowed_roots: [system]
+path_pattern: ^system/operating-systems/(?!index\.md$)[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, operating_system_kind]
+optional_fields: []
+fields:
+  operating_system_kind:
+    datatype: enum
+    enum: [personal-os, business-os, content-os, ai-os, agent-os, module-contract]
+module_constraints:
+  lifecycle:
+    enum: [planned, active, paused, retired]
+required_sections: [Current Truth, Purpose, Scope, Authority, Interfaces, Modules, Timeline]
+section_order: [Current Truth, Purpose, Scope, Authority, Interfaces, Modules, Timeline]
+template: system/templates/topology/operating-system.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-operating-system.fixture
+  positive_logical_path: system/operating-systems/example-os.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-operating-system.fixture
+  negative_logical_path: system/operating-systems/example-os.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

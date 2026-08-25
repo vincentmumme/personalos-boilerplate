@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000001
+type: source-evidence
+title: "Example Call Transcript"
+created: 2026-08-12
+updated: 2026-08-12
+evidence_kind: transcript
+evidence_captured_at: 2026-08-12T10:00:00+02:00
+source_system: google-meet
+source_ref: google-doc-example
+interaction_ref: "[[interactions/meetings/2026/2026-08-12-example-call/2026-08-12-example-call]]"
+redaction_mode: minimized
+---
+
+# Example Call Transcript
+
+## Evidence Summary
+
+An example transcript.
+
+## Source Boundary
+
+It proves what was said, not later execution.
+
+## Evidence
+
+Redacted example evidence.
+
+## Corrections
+
+None.

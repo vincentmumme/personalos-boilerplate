@@ -1,0 +1,29 @@
+---
+schema_version: pos-v1
+id: 01a001a1-5683-7012-bf8c-2dea65cf8fac
+type: finance-tax-dossier
+title: "Steuererklärung 2025"
+created: 2026-08-14
+updated: 2026-08-14
+tax_year: "2025"
+filing_state: filed
+---
+
+# Steuererklärung 2025
+
+## Current Truth
+Filed, assessment pending.
+## Filing Scope
+Income and VAT returns.
+## Filing State
+Filed.
+## Tax Context
+Sourced tax context.
+## Documents and Evidence
+External asset manifest.
+## External Authority
+Tax administration.
+## Open Assessment
+Assessment pending.
+## Timeline
+- **2026-08-14** | Created.

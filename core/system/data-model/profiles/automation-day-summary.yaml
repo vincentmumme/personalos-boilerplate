@@ -1,0 +1,28 @@
+name: automation-day-summary
+page_shape: log-record
+canonical_owner: automation-daily-processing-summary
+allowed_roots: [automations]
+path_pattern: ^automations/[a-z0-9]+(?:-[a-z0-9]+)*/daily/[0-9]{4}/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})\.md$
+path_date_field: day_date
+path_date_group: date
+required_modules: [daily-context, signal-processing]
+optional_modules: []
+required_fields: [day_date, timezone, processed_until, producer_skill_ref, retention_class, day_summary_outcome]
+optional_fields: []
+fields:
+  day_summary_outcome:
+    datatype: enum
+    enum: [success, partial, failed, stale]
+module_constraints:
+  retention_class:
+    enum: [daily-aggregate]
+required_sections: [Run Summary, Coverage, Material Receipts, No-op Accounting, Failures and Pending, Propagation, Corrections]
+section_order: [Run Summary, Coverage, Material Receipts, No-op Accounting, Failures and Pending, Propagation, Corrections]
+template: system/templates/automations/automation-day-summary.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-automation-day-summary.fixture
+  positive_logical_path: automations/example-automation/daily/2026/2026-08-12.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-automation-day-summary.fixture
+  negative_logical_path: automations/example-automation/daily/2025/2025-08-12.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,23 @@
+name: knowledge-inventory-item
+page_shape: work-artifact
+canonical_owner: knowledge-inventory-state
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/topics/[a-z0-9]+(?:-[a-z0-9]+)*/inventory(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, topic_ref, inventory_kind, inventory_state]
+optional_fields: [source_refs, related_topic_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, closed, archived]
+required_sections: [Current State, Rationale, Handoff, Sources, Re-entry]
+section_order: [Current State, Rationale, Handoff, Sources, Re-entry]
+template: system/templates/knowledge/knowledge-inventory-item.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-inventory-item.fixture
+  positive_logical_path: knowledge/topics/example-topic/inventory/candidates/example-candidate.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-inventory-item.fixture
+  negative_logical_path: knowledge/topics/example-topic/wiki/example-candidate.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

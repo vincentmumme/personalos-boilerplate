@@ -1,0 +1,32 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000016
+type: source-evidence
+title: "Invalid Evidence"
+created: 2026-08-12
+updated: 2026-08-12
+evidence_kind: raw
+evidence_captured_at: 2026-08-12 10:00
+source_system: google-meet
+source_ref: example
+interaction_ref: "not-a-link"
+redaction_mode: maybe
+---
+
+# Invalid Evidence
+
+## Evidence Summary
+
+Invalid.
+
+## Source Boundary
+
+Invalid.
+
+## Evidence
+
+Invalid.
+
+## Corrections
+
+None.

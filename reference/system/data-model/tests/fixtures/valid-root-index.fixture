@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 019ffb24-1f81-74d7-955f-81706e372f2f
+type: root-index
+title: "PersonalOS Index"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# PersonalOS Index
+
+This is the active system map for an example PersonalOS instance.
+
+## Zentrale Einstiege
+
+- [[USER]]
+- [[SOUL]]
+
+## Root-Owner
+
+`system/` owns system truth.
+
+## Routing
+
+Use [[skills/RESOLVER]].
+
+## Grundgrenzen
+
+One current truth has one owner.
+
+## Pflege
+
+Keep only active navigation here.

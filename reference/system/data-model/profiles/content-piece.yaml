@@ -1,0 +1,44 @@
+name: "content-piece"
+page_shape: "state-record"
+canonical_owner: "contentos-piece"
+allowed_roots: ["content"]
+path_pattern: "^content/pieces/[0-9]{4}/[a-z0-9]+(?:-[a-z0-9]+)*/piece\\.md$"
+required_modules: ["content-core", "lifecycle", "knowledge-context"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "slug", "creation_mode", "input_refs"]
+optional_fields: ["origin_operation_id", "content_tags", "idea_refs", "source_refs", "research_refs", "format_ref", "series_ref", "recipe_refs", "derived_from_ref", "primary_intents", "audience_keys", "funnel_stages", "awareness_stages", "primary_pillar_key", "secondary_pillar_keys"]
+fields:
+  slug:
+    datatype: "lower-kebab"
+  creation_mode:
+    datatype: "lower-kebab"
+  primary_intents:
+    datatype: "plain-text-list"
+    min_items: 1
+  audience_keys:
+    datatype: "plain-text-list"
+    min_items: 1
+  funnel_stages:
+    datatype: "plain-text-list"
+    min_items: 1
+  awareness_stages:
+    datatype: "plain-text-list"
+    min_items: 1
+  primary_pillar_key:
+    datatype: "lower-kebab"
+  secondary_pillar_keys:
+    datatype: "plain-text-list"
+    min_items: 1
+module_constraints:
+  lifecycle:
+    enum: ["draft", "planned", "production-ready", "in-production", "in-review", "approved", "active", "cancelled", "retired"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-piece.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-piece.fixture"
+  positive_logical_path: "content/pieces/2026/example-piece/piece.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-piece.fixture"
+  negative_logical_path: "content/pieces/2026/example-piece/piece.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

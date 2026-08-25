@@ -1,0 +1,27 @@
+---
+schema_version: pos-v1
+id: 019ffb88-8784-7169-8d36-1a238860582d
+type: owner-index
+title: "Business"
+created: 2026-08-13
+updated: 2026-08-13
+index_scope: root
+---
+
+# Business
+
+## Purpose
+
+Business owner navigation.
+
+## Ownership and Boundaries
+
+Owns Business Objects, not Companies or Projects.
+
+## Navigation
+
+Curated owner entry points.
+
+## Maintenance
+
+Stable navigation only.

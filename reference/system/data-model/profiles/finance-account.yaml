@@ -1,0 +1,33 @@
+name: finance-account
+page_shape: state-record
+canonical_owner: finance-account-context
+allowed_roots: [finance]
+path_pattern: ^finance/konten/(?!payment-sources\.md$)[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [subject-context, finance-context]
+optional_modules: []
+required_fields: [account_state, finance_scope, institution, subject_ref]
+optional_fields: [company_ref, external_authority_ref, secure_locator, payment_source_registry_ref, iban, bic, account_number]
+fields:
+  account_state:
+    datatype: enum
+    enum: [active, closed, unknown]
+  institution:
+    datatype: plain-text
+  secure_locator:
+    datatype: plain-text
+  iban:
+    datatype: plain-text
+  bic:
+    datatype: plain-text
+  account_number:
+    datatype: plain-text
+required_sections: [Current Truth, Purpose and Scope, Account Identity, Usage, External Authority, Security Boundary, Sources, Timeline]
+section_order: [Current Truth, Purpose and Scope, Account Identity, Usage, External Authority, Security Boundary, Sources, Timeline]
+template: system/templates/finance/finance-account.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-account.fixture
+  positive_logical_path: finance/konten/example-account.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-account.fixture
+  negative_logical_path: finance/recurring/example-account.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,23 @@
+name: finance-tax-manifest
+page_shape: state-record
+canonical_owner: finance-annual-tax-source-manifest
+allowed_roots: [finance]
+path_pattern: ^finance/taxes/(?P<tax_year>[0-9]{4})/manifest\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [tax_year, manifest_state, tax_dossier_ref]
+optional_fields: [evidence_refs]
+fields:
+  manifest_state:
+    datatype: enum
+    enum: [collecting, complete, sealed]
+required_sections: [Current Truth, Scope, Source Inventory, Integrity, Missing Sources, Dossier Relation, Timeline]
+section_order: [Current Truth, Scope, Source Inventory, Integrity, Missing Sources, Dossier Relation, Timeline]
+template: system/templates/finance/finance-tax-manifest.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-tax-manifest.fixture
+  positive_logical_path: finance/taxes/2025/manifest.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-tax-manifest.fixture
+  negative_logical_path: finance/taxes/2025/sources.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

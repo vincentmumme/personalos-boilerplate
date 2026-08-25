@@ -1,0 +1,206 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/decision.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision_state": {
+            "enum": [
+              "active"
+            ]
+          }
+        },
+        "required": [
+          "decision_state"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "successor_decision_ref"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision_state": {
+            "enum": [
+              "superseded"
+            ]
+          }
+        },
+        "required": [
+          "decision_state"
+        ]
+      },
+      "then": {
+        "required": [
+          "successor_decision_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision_state": {
+            "enum": [
+              "reversed"
+            ]
+          }
+        },
+        "required": [
+          "decision_state"
+        ]
+      },
+      "then": {
+        "required": [
+          "successor_decision_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "supersedes_decision_refs"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "reverses_decision_refs"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "reverses_decision_refs"
+        ]
+      },
+      "then": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "supersedes_decision_refs"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "affected_owner_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "decided_by_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "decided_on": {
+      "format": "date",
+      "type": "string"
+    },
+    "decision_confidence": {
+      "enum": [
+        "locked",
+        "leaning",
+        "open-bet"
+      ],
+      "type": "string"
+    },
+    "decision_state": {
+      "enum": [
+        "active",
+        "superseded",
+        "reversed"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "reverses_decision_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "successor_decision_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "supersedes_decision_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "decision"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "affected_owner_refs",
+    "decided_by_refs",
+    "decided_on",
+    "decision_confidence",
+    "decision_state"
+  ],
+  "title": "PersonalOS pos-v1 decision frontmatter",
+  "type": "object"
+}

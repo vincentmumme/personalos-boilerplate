@@ -1,0 +1,17 @@
+---
+schema_version: pos-v1
+id: 019ffb7e-ed12-7995-8ae7-967aa5dc8e84
+type: brand
+title: "Example Brand"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Brand
+
+## Current Truth
+
+Missing the profile contract.

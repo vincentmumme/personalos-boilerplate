@@ -1,0 +1,41 @@
+---
+schema_version: pos-v1
+id: 019fec59-ef45-7943-a78b-eeb6a05c5cc6
+type: contract
+title: "Example Contract"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+contract_version: 1.0.0
+---
+
+# Example Contract
+
+## Contract
+
+Ein prüfbarer Systemvertrag.
+
+## Scope
+
+Ein Beispielsbereich.
+
+## Invariants
+
+- Eine Invariante.
+
+## Interfaces
+
+Ein Consumer.
+
+## Compliance
+
+Ein Check.
+
+## Evolution
+
+Semantische Versionierung.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

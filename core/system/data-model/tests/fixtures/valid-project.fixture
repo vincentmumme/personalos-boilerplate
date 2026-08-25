@@ -1,0 +1,46 @@
+---
+schema_version: pos-v1
+id: 019fec25-5626-7adb-ba27-4454deb6334e
+type: project
+title: "Example Migration"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+priority: high
+workflow: migration
+project_phase: cutover
+sponsor_refs: ["[[USER]]"]
+human_role: owner
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+---
+
+# Example Migration
+
+## Current Truth
+
+The migration contract is active.
+
+## Outcome and Success Criteria
+
+The target system validates cleanly.
+
+## Scope
+
+The project covers one system migration.
+
+## Authority and Roles
+
+{{user_name}} owns the project.
+
+## Navigation
+
+Working artifacts live below this project.
+
+## Propagation
+
+Accepted truth moves to its canonical domain owner.
+
+## Timeline
+
+- **2026-08-10** | Project created.

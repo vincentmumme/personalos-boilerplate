@@ -1,0 +1,33 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000007
+type: health-measurement
+title: "Body Measurements"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+measurement_scope: body-composition
+subject_ref: "[[identity/me]]"
+---
+
+# Body Measurements
+
+## Current Truth
+
+Manual values win when fresher.
+
+## Measurement Policy
+
+No judgment from one value.
+
+## Current Measurements
+
+None.
+
+## Sources
+
+WHOOP or manual report.
+
+## Timeline
+
+- **2026-08-14** | Created.

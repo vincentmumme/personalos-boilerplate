@@ -1,0 +1,30 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-730f-91b7-abe6efbfd88a
+type: system-observability-view
+title: "Example System Observability View"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# Example System Observability View
+
+## Purpose
+
+Example content.
+
+## Observed Scope
+
+Example content.
+
+## Desired versus Observed
+
+Example content.
+
+## Sources and Freshness
+
+Example content.
+
+## Limitations
+
+Example content.

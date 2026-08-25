@@ -1,0 +1,23 @@
+name: principle
+page_shape: normative-record
+canonical_owner: system-principles
+allowed_roots: [system]
+path_pattern: ^system/principles/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage]
+optional_modules: []
+required_fields: [lifecycle, decision_refs]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Principle, Rationale, Implications, Boundaries, Change History]
+section_order: [Principle, Rationale, Implications, Boundaries, Change History]
+template: system/templates/principle.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-principle.fixture
+  positive_logical_path: system/principles/example-principle.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-principle.fixture
+  negative_logical_path: system/principles/example-principle.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,33 @@
+name: view-record
+page_shape: view-record
+canonical_owner: system-derived-view
+allowed_roots: [system, operations]
+path_pattern: ^(?:system/views/[a-z0-9]+(?:-[a-z0-9]+)*|operations/priority-dashboard)\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, view_kind, derivation_mode, source_owner_refs]
+optional_fields: []
+fields:
+  view_kind:
+    datatype: enum
+    enum: [table, dashboard, report, inventory, navigation]
+  derivation_mode:
+    datatype: enum
+    enum: [manual, generated, query, hybrid]
+  source_owner_refs:
+    datatype: wikilink-list
+    min_items: 1
+    legacy_targets: warn
+module_constraints:
+  lifecycle:
+    enum: [active, paused, retired]
+required_sections: [Purpose, Source Owners, Derivation, Freshness, Limitations]
+section_order: [Purpose, Source Owners, Derivation, Freshness, Limitations]
+template: system/templates/topology/view-record.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-view-record.fixture
+  positive_logical_path: system/views/example-view.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-view-record.fixture
+  negative_logical_path: system/views/example-view.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

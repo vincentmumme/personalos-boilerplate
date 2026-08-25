@@ -1,0 +1,40 @@
+---
+schema_version: pos-v1
+id: 019ff139-ac6c-7cb3-ba83-fe8dd4cdb32d
+type: action
+title: "Send approved proposal"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: ready
+execution_mode: agent-prepare
+action_priority: high
+due: 2026-08-15
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+affected_owner_refs: ["[[system/index]]"]
+---
+
+# Send approved proposal
+
+## Current Truth
+
+The proposal is a confirmed personal commitment.
+
+## Desired Outcome
+
+The approved proposal reaches the recipient.
+
+## Done Boundary
+
+Delivery is evidenced and the project owner is updated.
+
+## Next Action
+
+Prepare the final revision for {{user_name}}'s sending approval.
+
+## Context and Evidence
+
+The linked decision defines the action boundary.
+
+## Timeline
+
+- **2026-08-11** | Action created.

@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 01a0015e-8a7b-7814-954e-824456496495
+type: skill-reference
+title: "Example Skill Reference"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: active
+owning_skill_ref: "[[skills/example-skill/SKILL]]"
+reference_kind: calibration
+---
+
+# Example Skill Reference
+
+Skill-specific calibration.

@@ -1,0 +1,36 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-ae82-73cb-a8f9-71dcd61d4664
+type: identity-personal-constitution
+title: "Personal Constitution"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Personal Constitution
+
+## Current Truth
+Current constitution.
+
+## Values
+Values.
+
+## Personal Principles
+Principles.
+
+## Beliefs
+Beliefs.
+
+## Boundaries and Non-Negotiables
+Boundaries.
+
+## Internal Tensions
+Tensions.
+
+## Sources
+Subject context.
+
+## Timeline
+- **2026-08-13** | Record created.

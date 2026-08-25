@@ -1,0 +1,30 @@
+name: integration
+page_shape: state-record
+canonical_owner: system-integration-registry
+allowed_roots: [system]
+path_pattern: ^system/integrations/[a-z0-9]+(?:-[a-z0-9]+)*/index\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope, integration_kind]
+optional_fields: [integration_access_ref]
+fields:
+  integration_kind:
+    datatype: enum
+    enum: [api, cli, sync, plugin, filesystem, messaging]
+  integration_access_ref:
+    datatype: wikilink
+    target_profiles: [access-record]
+    legacy_targets: reject
+module_constraints:
+  lifecycle:
+    enum: [planned, active, paused, retired]
+required_sections: [Current Truth, Purpose, External Boundary, Data and Authority, Credentials Required, Health, Timeline]
+section_order: [Current Truth, Purpose, External Boundary, Data and Authority, Credentials Required, Health, Timeline]
+template: system/templates/topology/integration.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-integration.fixture
+  positive_logical_path: system/integrations/example-integration/index.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-integration.fixture
+  negative_logical_path: system/integrations/example-integration/index.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

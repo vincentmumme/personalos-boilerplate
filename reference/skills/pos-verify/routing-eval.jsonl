@@ -1,0 +1,4 @@
+{"intent":"Prüfe die gerade geänderten POS Dateien.","expected_skill":"pos-verify"}
+{"intent":"Run pos-verify on these files.","expected_skill":"pos-verify"}
+{"intent":"Check changed PersonalOS files after the write.","expected_skill":"pos-verify"}
+{"intent":"Prüfe, ob die neue Wahrheit korrekt im richtigen Owner und in Current Truth/Timeline gelandet ist.","expected_skill":"pos-verify"}

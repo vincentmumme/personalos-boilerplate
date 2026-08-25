@@ -1,0 +1,40 @@
+---
+schema_version: pos-v1
+id: 019fec59-eff1-7e86-a97e-220dcf72f790
+type: runbook
+title: "Example Runbook"
+created: 2026-08-10
+updated: 2026-08-10
+lifecycle: active
+decision_refs: ["[[operations/decisions/example-decision]]"]
+---
+
+# Example Runbook
+
+## Purpose
+
+Die Systemabhängigkeit fehlt.
+
+## Trigger
+
+Invalid fixture.
+
+## Preconditions
+
+Keine.
+
+## Procedure
+
+Keine.
+
+## Verification
+
+Keine.
+
+## Escalation
+
+Keine.
+
+## Change History
+
+- **{{install_date}}** | Foundation adopted from PersonalOS Boilerplate.

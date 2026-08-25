@@ -1,0 +1,51 @@
+---
+schema_version: pos-v1
+id: 019ff23d-f467-77b0-bcf9-46cbb3aa0c2f
+type: decision
+title: "Example Decision"
+created: 2026-08-11
+updated: 2026-08-11
+decision_state: active
+decision_confidence: locked
+decided_on: 2026-08-11
+decided_by_refs: ["[[USER]]"]
+affected_owner_refs: ["[[system/index]]"]
+---
+
+# Example Decision
+
+## Decision
+
+Choose the validated option.
+
+## Context
+
+Two real alternatives existed.
+
+## Why
+
+The chosen option preserves the system contracts.
+
+## Alternatives
+
+The competing option created duplicate truth.
+
+## Consequences
+
+The affected owner is updated.
+
+## Reconsider When
+
+New evidence invalidates the owner model.
+
+## Affected Owners
+
+beispielprojekt
+
+## Sources
+
+Confirmed user decision.
+
+## Corrections
+
+None.

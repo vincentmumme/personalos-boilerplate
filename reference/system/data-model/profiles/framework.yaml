@@ -1,0 +1,23 @@
+name: framework
+page_shape: normative-record
+canonical_owner: system-frameworks
+allowed_roots: [system]
+path_pattern: ^system/frameworks/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, normative-lineage]
+optional_modules: []
+required_fields: [lifecycle, decision_refs]
+optional_fields: [derived_from_refs, supersedes_refs]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, deprecated, retired]
+required_sections: [Purpose, Model, Components, Decision Logic, Interfaces, Change History]
+section_order: [Purpose, Model, Components, Decision Logic, Interfaces, Change History]
+template: system/templates/framework.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-framework.fixture
+  positive_logical_path: system/frameworks/example-framework.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-framework.fixture
+  negative_logical_path: system/frameworks/example-framework.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

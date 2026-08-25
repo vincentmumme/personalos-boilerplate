@@ -1,0 +1,20 @@
+name: redirect
+page_shape: pointer-record
+canonical_owner: continuity-layer
+allowed_roots: [inbox, identity, projects, system, agents, operations, automations, deals, programs]
+path_pattern: ^(?:(?:identity|projects|system|agents|deals|programs)/.+|inbox/[a-z0-9]+(?:-[a-z0-9]+)*|operations/(?:todo|(?:observability|migrations)/.+)|automations/(?:automation-output-contract|discord-context/index|content-dashboard/spec))\.md$
+required_modules: [relations]
+optional_modules: []
+required_fields: [redirect_target_ref]
+optional_fields: []
+fields: {}
+required_sections: [Target, Continuity, Removal Prerequisite]
+section_order: [Target, Continuity, Removal Prerequisite]
+template: system/templates/redirect.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-redirect.fixture
+  positive_logical_path: deals/migration-workroom.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-redirect.fixture
+  negative_logical_path: deals/migration-workroom.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

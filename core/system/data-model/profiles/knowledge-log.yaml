@@ -1,0 +1,28 @@
+name: knowledge-log
+page_shape: log-record
+canonical_owner: knowledge-change-log
+allowed_roots: [knowledge]
+path_pattern: ^knowledge/(?:log|topics/[a-z0-9]+(?:-[a-z0-9]+)*/log)\.md$
+required_modules: [lifecycle, knowledge-context]
+optional_modules: []
+required_fields: [lifecycle, knowledge_log_scope]
+optional_fields: [topic_ref]
+fields: {}
+module_constraints:
+  lifecycle:
+    enum: [active, archived]
+conditional_rules:
+  topic_log_requires_topic:
+    when_field: knowledge_log_scope
+    when_in: [topic]
+    require_fields: [topic_ref]
+required_sections: [Entries, Corrections]
+section_order: [Entries, Corrections]
+template: system/templates/knowledge/knowledge-log.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-knowledge-log.fixture
+  positive_logical_path: knowledge/topics/example-topic/log.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-knowledge-log.fixture
+  negative_logical_path: knowledge/topics/example-topic/history.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

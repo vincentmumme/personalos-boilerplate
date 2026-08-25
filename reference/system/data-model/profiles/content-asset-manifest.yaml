@@ -1,0 +1,29 @@
+name: "content-asset-manifest"
+page_shape: "state-record"
+canonical_owner: "contentos-asset-manifest"
+allowed_roots: ["content"]
+path_pattern: "^content/pieces/[0-9]{4}/[a-z0-9]+(?:-[a-z0-9]+)*/assets\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "piece_ref", "storage_profile_key", "asset_base"]
+optional_fields: ["origin_operation_id", "content_tags", "asset_ids", "canonical_final_asset_id"]
+fields:
+  storage_profile_key:
+    datatype: "lower-kebab"
+  asset_base:
+    datatype: "uri"
+  canonical_final_asset_id:
+    datatype: "plain-text"
+module_constraints:
+  lifecycle:
+    enum: ["draft", "active", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-asset-manifest.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-asset-manifest.fixture"
+  positive_logical_path: "content/pieces/2026/example-piece/assets.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-asset-manifest.fixture"
+  negative_logical_path: "content/pieces/2026/example-piece/assets.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

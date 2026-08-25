@@ -1,0 +1,28 @@
+---
+schema_version: pos-v1
+id: 01a001a1-550e-7782-adc6-42bb7f94ceab
+type: finance-expense
+title: "Invalid Expense"
+created: 2026-08-14
+updated: 2026-08-14
+expense_date: 2026-08-14
+booking_state: done
+finance_scope: business
+---
+
+# Invalid Expense
+
+## Current Truth
+Invalid.
+## Expense
+Invalid.
+## Booking and Payment State
+Invalid.
+## Allocation
+Invalid.
+## External Authority
+Invalid.
+## Evidence
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.

@@ -1,0 +1,28 @@
+name: company
+page_shape: state-record
+canonical_owner: companies-company-record
+allowed_roots: [companies]
+path_pattern: ^companies/[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [lifecycle, authority]
+optional_modules: []
+required_fields: [lifecycle, canonical_system_ref, authority_scope]
+optional_fields: [primary_contact_refs]
+fields:
+  primary_contact_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [person]
+    legacy_targets: warn
+module_constraints:
+  lifecycle:
+    enum: [active, inactive, dissolved]
+required_sections: [Current Truth, Entity Facts, Relationship to Subject, People and Roles, Connected Business Context, Relevant Context, Sources, Timeline]
+section_order: [Current Truth, Entity Facts, Relationship to Subject, People and Roles, Connected Business Context, Relevant Context, Sources, Timeline]
+template: system/templates/entities/company.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-company.fixture
+  positive_logical_path: companies/example-company.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-company.fixture
+  negative_logical_path: companies/example-company.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

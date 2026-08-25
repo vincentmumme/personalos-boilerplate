@@ -1,0 +1,27 @@
+name: "content-series"
+page_shape: "state-record"
+canonical_owner: "contentos-series"
+allowed_roots: ["content"]
+path_pattern: "^content/series/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core", "lifecycle"]
+optional_modules: []
+required_fields: ["lifecycle", "revision", "format_ref", "editorial_promise"]
+optional_fields: ["origin_operation_id", "content_tags", "content_cadence", "recipe_refs"]
+fields:
+  editorial_promise:
+    datatype: "plain-text"
+  content_cadence:
+    datatype: "plain-text"
+module_constraints:
+  lifecycle:
+    enum: ["draft", "active", "deprecated", "archived"]
+required_sections: ["Current Truth", "Details", "Timeline"]
+section_order: ["Current Truth", "Details", "Timeline"]
+template: "system/templates/content/content-series.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-series.fixture"
+  positive_logical_path: "content/series/example-series.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-series.fixture"
+  negative_logical_path: "content/series/example-series.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

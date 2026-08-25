@@ -1,0 +1,31 @@
+---
+schema_version: pos-v1
+id: 019fec26-4da1-7c7f-a70d-95a2853ef399
+type: truth-system
+title: "PersonalOS"
+created: 2026-08-10
+updated: 2026-08-10
+system_kind: unknown-system-kind
+---
+
+# PersonalOS
+
+## Current Truth
+
+This fixture uses an unregistered system kind.
+
+## Scope
+
+Test scope.
+
+## Authority
+
+Test authority.
+
+## Interfaces
+
+Test interface.
+
+## Timeline
+
+- **2026-08-10** | Invalid fixture created.

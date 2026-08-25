@@ -1,0 +1,25 @@
+name: finance-time-entry
+page_shape: state-record
+canonical_owner: finance-billable-time-context
+allowed_roots: [finance]
+path_pattern: ^finance/client-hours/(?!index\.md$)[a-z0-9]+(?:-[a-z0-9]+)*\.md$
+required_modules: [finance-context, relations]
+optional_modules: []
+required_fields: [service_date, billing_state, client_ref, hours]
+optional_fields: [project_ref, invoice_ref, hourly_rate, amount_net, currency, evidence_refs]
+fields:
+  service_date:
+    datatype: date
+  billing_state:
+    datatype: enum
+    enum: [unbilled, invoiced, paid, non-billable, waived]
+required_sections: [Current Truth, Service, Time and Value, Billing State, Client and Project, Invoice Allocation, Evidence, Timeline]
+section_order: [Current Truth, Service, Time and Value, Billing State, Client and Project, Invoice Allocation, Evidence, Timeline]
+template: system/templates/finance/finance-time-entry.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-finance-time-entry.fixture
+  positive_logical_path: finance/client-hours/2026-08-14-example-service.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-finance-time-entry.fixture
+  negative_logical_path: finance/client-costs/2026-08-14-example-service.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

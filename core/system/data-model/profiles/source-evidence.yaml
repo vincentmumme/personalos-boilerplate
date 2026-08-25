@@ -1,0 +1,28 @@
+name: source-evidence
+page_shape: event-record
+canonical_owner: interaction-source-evidence
+allowed_roots: [interactions]
+path_pattern: ^interactions/(?:(?:meetings/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*/evidence)|(?:conversations/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*/evidence/[0-9]{4})|(?:signals/[a-z0-9]+(?:-[a-z0-9]+)*/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}/evidence))/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [signal-processing]
+optional_modules: []
+required_fields: [evidence_kind, evidence_captured_at, source_system, source_ref, interaction_ref, redaction_mode]
+optional_fields: []
+fields:
+  evidence_kind:
+    datatype: enum
+    enum: [transcript, message-batch, source-card, asset-pointer, visual-context, audio-transcript, research]
+  evidence_captured_at:
+    datatype: datetime
+  redaction_mode:
+    datatype: enum
+    enum: [none, minimized, redacted]
+required_sections: [Evidence Summary, Source Boundary, Evidence, Corrections]
+section_order: [Evidence Summary, Source Boundary, Evidence, Corrections]
+template: system/templates/interactions/source-evidence.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-source-evidence.fixture
+  positive_logical_path: interactions/meetings/2026/2026-08-12-example-call/evidence/019ff59c-1000-7000-8000-000000000001.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-source-evidence.fixture
+  negative_logical_path: interactions/meetings/2026/2026-08-12-example-call/source/019ff59c-1000-7000-8000-000000000001.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

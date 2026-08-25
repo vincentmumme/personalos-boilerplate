@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-aeaf-7086-bc2b-48c14fc91a61
+type: identity-personal-constitution
+title: "Personal Constitution"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Personal Constitution
+
+## Current Truth
+Missing the constitution contract.

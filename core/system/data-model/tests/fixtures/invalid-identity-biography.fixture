@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-ae53-7a97-9531-86a8e55b9fa9
+type: identity-biography
+title: "Biografie"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Biografie
+
+## Current Truth
+Missing the biography contract.

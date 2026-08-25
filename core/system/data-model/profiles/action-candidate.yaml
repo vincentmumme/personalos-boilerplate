@@ -1,0 +1,25 @@
+name: action-candidate
+page_shape: state-record
+canonical_owner: inbox-action-candidate
+allowed_roots: [inbox]
+path_pattern: ^inbox/action-candidates/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [lifecycle, relations]
+optional_modules: []
+required_fields: [lifecycle, evidence_refs]
+optional_fields: [triage_by]
+fields:
+  triage_by:
+    datatype: date
+module_constraints:
+  lifecycle:
+    enum: [pending, promoted-to-action, promoted-to-trigger, merged, discarded, needs-clarification]
+required_sections: [Current Truth, Candidate Assessment, Promotion Gate, Context and Evidence, Timeline]
+section_order: [Current Truth, Candidate Assessment, Promotion Gate, Context and Evidence, Timeline]
+template: system/templates/action-candidate.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-action-candidate.fixture
+  positive_logical_path: inbox/action-candidates/019ff139-ad27-7a78-b727-8487fe8d4d13.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-action-candidate.fixture
+  negative_logical_path: inbox/action-candidates/019ff139-ad56-7d9a-a989-6dd7c244748c.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

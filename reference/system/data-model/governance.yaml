@@ -1,0 +1,52 @@
+name: pos-v1-registry-governance
+contract: pos-v1
+governance_version: 1.0.0
+profile_states: [draft, pilot, active, read-only, deprecated, retired]
+writable_profile_states: [pilot, active]
+module_states: [pilot, active, deprecated, retired]
+closed_page_shapes: [state-record, normative-record, event-record, work-artifact, log-record, view-record, pointer-record]
+change_classes:
+  additive:
+    registry_bump: minor
+    examples: [new-profile, new-module, new-optional-field, expanded-enum, added-validation-warning]
+    migration_required: false
+  corrective:
+    registry_bump: patch
+    examples: [documentation-fix, validator-fix-without-contract-change, generated-view-fix]
+    migration_required: false
+  deprecation:
+    registry_bump: minor
+    examples: [field-deprecation, profile-deprecation, module-deprecation]
+    migration_required: planned
+  breaking:
+    registry_bump: contract-generation
+    examples: [removed-field, changed-semantics, changed-datatype, changed-cardinality, new-underivable-required-field, incompatible-state-transition, changed-page-shape]
+    migration_required: true
+admission:
+  page_shape:
+    required_keys: [name, purpose, requires_current_truth, requires_timeline, timeline_mode, allows_companion_data]
+    new_shape_requires_architecture_decision: true
+  module:
+    required_keys: [name, purpose, admission_state, fields, invariants]
+    minimum_active_consumers: 2
+    pilot_exception_requires: [planned_consumers]
+  profile:
+    required_keys: [name, page_shape, canonical_owner, allowed_roots, path_pattern, required_modules, optional_modules, required_fields, optional_fields, fields, required_sections, section_order, template, admission]
+    required_artifacts: [profile-yaml, template, positive-fixture, negative-fixture, validator-coverage, migration-mapping, registry-entry]
+    admission_evidence_keys: [positive_fixture, positive_logical_path, negative_fixture, negative_logical_path, validator_test, migration_mapping]
+  field:
+    required_keys: [datatype]
+    admission_tests: [query-or-routing-value, single-semantic-owner, stable-datatype, omission-rule, validation-rule, no-body-or-companion-data-fit]
+activation:
+  draft_to_pilot_requires: [complete-admission, green-fixtures, write-scoped-verification, named-owner]
+  pilot_to_active_requires: [representative-real-records, no-blocking-drift, migration-path, stable-writer]
+  active_to_read_only_requires: [replacement-or-retention-plan, writer-disabled]
+  read_only_to_retired_requires: [zero-active-records, completed-migration, retained-receipt]
+deprecation:
+  required_metadata: [replacement, rationale, announced_on, write_policy, migration_ref]
+  allowed_write_policies: [reject-new, read-only]
+  silent_removal_forbidden: true
+release:
+  atomic_artifacts: [registry, foundation, governance, deprecations, page-shapes, modules, profiles, templates, runtime, fixtures, generated-views, changelog]
+  generated_drift_blocks_write: true
+  legacy_and_target_parallel_truth_forbidden: true

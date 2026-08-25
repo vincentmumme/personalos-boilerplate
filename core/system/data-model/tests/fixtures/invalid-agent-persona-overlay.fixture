@@ -1,0 +1,38 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-781d-af75-abca63fc6bf5
+type: agent-persona-overlay
+title: "Example Agent Persona Overlay"
+created: 2026-08-13
+updated: 2026-08-13
+---
+
+# Example Agent Persona Overlay
+
+## Current Truth
+
+Example content.
+
+## Inheritance
+
+Example content.
+
+## Behavior Additions
+
+Example content.
+
+## Communication
+
+Example content.
+
+## Boundaries
+
+Example content.
+
+## Sources
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

@@ -1,0 +1,54 @@
+name: action
+page_shape: state-record
+canonical_owner: operations-action-record
+allowed_roots: [operations]
+path_pattern: ^operations/actions/[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\.md$
+required_modules: [lifecycle, relations]
+optional_modules: []
+required_fields: [lifecycle, execution_mode, evidence_refs]
+optional_fields: [action_priority, due, target, not_before, follow_up_at, waiting_on, blocked_by, affected_owner_refs]
+fields:
+  execution_mode:
+    datatype: enum
+    enum: [agent-execute, agent-prepare, human-only]
+  action_priority:
+    datatype: enum
+    enum: [critical, high, normal, low]
+  due:
+    datatype: date
+  target:
+    datatype: date
+  not_before:
+    datatype: date
+  follow_up_at:
+    datatype: date
+  waiting_on:
+    datatype: plain-text
+  blocked_by:
+    datatype: plain-text
+module_constraints:
+  lifecycle:
+    enum: [ready, in-progress, waiting, blocked, deferred, completed, cancelled]
+conditional_rules:
+  waiting:
+    when_field: lifecycle
+    when_in: [waiting]
+    require_fields: [waiting_on, follow_up_at]
+  blocked:
+    when_field: lifecycle
+    when_in: [blocked]
+    require_fields: [blocked_by]
+  deferred:
+    when_field: lifecycle
+    when_in: [deferred]
+    require_fields: [not_before]
+required_sections: [Current Truth, Desired Outcome, Done Boundary, Next Action, Context and Evidence, Timeline]
+section_order: [Current Truth, Desired Outcome, Done Boundary, Next Action, Context and Evidence, Timeline]
+template: system/templates/action.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-action.fixture
+  positive_logical_path: operations/actions/019ff139-ac6c-7cb3-ba83-fe8dd4cdb32d.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-action.fixture
+  negative_logical_path: operations/actions/019ff139-ac9d-7441-97f5-9e9b83003b63.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

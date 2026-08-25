@@ -1,0 +1,102 @@
+name: "content-core"
+purpose: "Shared ContentOS identity, lineage, distribution and learning fields used across primary Content profiles."
+admission_state: "active"
+fields:
+  revision:
+    datatype: "integer"
+    minimum: 1
+  origin_operation_id:
+    datatype: "plain-text"
+  content_tags:
+    datatype: "plain-text-list"
+    min_items: 1
+  input_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-input"]
+    legacy_targets: "reject"
+  result_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-idea", "content-source", "content-research", "content-format", "content-series", "content-production-recipe", "content-piece", "content-context-pack", "content-production-spec", "content-asset-manifest", "content-production-job", "content-version", "content-publication", "content-tracking-link", "content-evidence", "content-knowledge-candidate", "content-learning-candidate"]
+    legacy_targets: "reject"
+  idea_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-idea"]
+    legacy_targets: "reject"
+  research_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-research"]
+    legacy_targets: "reject"
+  format_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-format"]
+    legacy_targets: "reject"
+  series_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-series"]
+    legacy_targets: "reject"
+  recipe_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-production-recipe"]
+    legacy_targets: "reject"
+  quality_profile_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-configuration"]
+    legacy_targets: "reject"
+  piece_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-piece"]
+    legacy_targets: "reject"
+  production_spec_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-production-spec"]
+    legacy_targets: "reject"
+  version_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-version"]
+    legacy_targets: "reject"
+  publication_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-publication"]
+    legacy_targets: "reject"
+  tracking_link_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-tracking-link"]
+    legacy_targets: "reject"
+  content_evidence_refs:
+    datatype: "wikilink-list"
+    min_items: 1
+    target_profiles: ["content-evidence"]
+    legacy_targets: "reject"
+  derived_from_ref:
+    datatype: "wikilink"
+    target_profiles: ["content-piece"]
+    legacy_targets: "reject"
+  target_owner_ref:
+    datatype: "wikilink"
+    target_profiles: ["knowledge-topic", "content-configuration", "content-guide"]
+    legacy_targets: "warn"
+  platform:
+    datatype: "lower-kebab"
+  publishing_account_key:
+    datatype: "lower-kebab"
+  cta_intents:
+    datatype: "plain-text-list"
+    min_items: 1
+  asset_ids:
+    datatype: "plain-text-list"
+    min_items: 1
+  candidate_state:
+    datatype: "enum"
+    profile_constrained: true
+invariants:
+  content_domain_owner: "content"
+  empty_optional_lists: "omitted"
+  structured_payloads: "body-or-companion-data"
+  platform_publication_identity: "separate-records"

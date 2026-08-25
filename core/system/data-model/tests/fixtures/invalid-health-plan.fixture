@@ -1,0 +1,12 @@
+---
+schema_version: pos-v1
+id: 01a00193-e000-7000-8000-000000000006
+type: health-plan
+title: "Invalid Training Plan"
+created: 2026-08-14
+updated: 2026-08-14
+plan_state: complex
+subject_ref: "[[identity/me]]"
+---
+
+# Invalid Training Plan

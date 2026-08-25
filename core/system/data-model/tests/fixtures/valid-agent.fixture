@@ -1,0 +1,47 @@
+---
+schema_version: pos-v1
+id: 019ffbfe-bec5-734c-81a2-f7e1258f118a
+type: agent
+title: "Example Agent"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+canonical_system_ref: "[[system/truth-systems/personalos]]"
+authority_scope: full
+agent_kind: general
+agent_scope: personalos
+---
+
+# Example Agent
+
+## Current Truth
+
+Example content.
+
+## Purpose
+
+Example content.
+
+## Scope and Responsibilities
+
+Example content.
+
+## Persona and Behavior
+
+Example content.
+
+## Runtime and Hosts
+
+Example content.
+
+## Access and Boundaries
+
+Example content.
+
+## Sources
+
+Example content.
+
+## Timeline
+
+- **2026-08-13** | Example record created.

@@ -1,0 +1,6 @@
+name: work-artifact
+purpose: Non-authoritative analysis, planning, exploration, draft or working truth.
+requires_current_truth: false
+requires_timeline: false
+timeline_mode: optional
+allows_companion_data: true

@@ -1,0 +1,23 @@
+name: business-context
+purpose: Typed links that connect distributed Business Objects without turning a Company or Brand into a file container.
+admission_state: pilot
+planned_consumers: [brand, market, customer-profile, product, offer, business-model, strategy, operating-model]
+fields:
+  company_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [company]
+    legacy_targets: warn
+  brand_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [brand]
+    legacy_targets: warn
+  market_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [market]
+    legacy_targets: warn
+invariants:
+  relations_do_not_transfer_truth_ownership: true
+  inverse_business_views_are_derived: true

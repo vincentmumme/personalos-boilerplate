@@ -1,0 +1,44 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000011
+type: automation
+title: "Invalid Automation"
+created: 2026-08-12
+updated: 2026-08-12
+lifecycle: running
+automation_kind: cron
+---
+
+# Invalid Automation
+
+## Current Truth
+
+Invalid lifecycle and kind.
+
+## Purpose
+
+Invalid.
+
+## Trigger and Cadence
+
+Invalid.
+
+## Capability and Runtime
+
+Invalid.
+
+## Inputs and Outputs
+
+Invalid.
+
+## Credentials Required
+
+Invalid.
+
+## Health and Freshness
+
+Invalid.
+
+## Timeline
+
+- **2026-08-12** | Invalid fixture.

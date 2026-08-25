@@ -1,0 +1,39 @@
+---
+schema_version: pos-v1
+id: 019ffb7a-af37-7779-9b81-58bb5b7fbeca
+type: identity-life-orientation
+title: "Life Orientation"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+subject_ref: "[[identity/example-person]]"
+---
+
+# Life Orientation
+
+## Current Truth
+Current direction.
+
+## Desired Way of Life
+Desired life.
+
+## Long-Term Directions
+Directions.
+
+## Enduring Priorities
+Priorities.
+
+## Non-Negotiables
+Non-negotiables.
+
+## Trade-offs
+Trade-offs.
+
+## Related Projects
+Project links.
+
+## Sources
+Subject context.
+
+## Timeline
+- **2026-08-13** | Record created.

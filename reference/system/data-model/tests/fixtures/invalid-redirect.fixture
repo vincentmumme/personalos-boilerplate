@@ -1,0 +1,24 @@
+---
+schema_version: pos-v1
+id: 019fec26-3e74-7e80-a98f-c7ed47de371e
+type: redirect
+title: "Moved: Migration Workroom"
+created: 2026-08-10
+updated: 2026-08-10
+redirect_target_ref: "[[projects/example-migration/working/migration-workroom]]"
+status: active
+---
+
+# Moved: Migration Workroom
+
+## Target
+
+The working note moved.
+
+## Continuity
+
+This fixture deliberately contains an unregistered field.
+
+## Removal Prerequisite
+
+Remove after all active inbound consumers use the canonical target and the link postflight is green.

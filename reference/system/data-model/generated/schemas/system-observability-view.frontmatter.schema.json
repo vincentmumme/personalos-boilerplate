@@ -1,0 +1,91 @@
+{
+  "$id": "https://personal-os.local/schemas/pos-v1/system-observability-view.frontmatter.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_scope": {
+      "enum": [
+        "full",
+        "personal-context",
+        "pointer"
+      ],
+      "type": "string"
+    },
+    "canonical_system_ref": {
+      "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+      "type": "string"
+    },
+    "created": {
+      "format": "date",
+      "type": "string"
+    },
+    "id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "lifecycle": {
+      "enum": [
+        "active",
+        "stale",
+        "retired"
+      ],
+      "type": "string"
+    },
+    "observability_scope": {
+      "enum": [
+        "host",
+        "runtime",
+        "service",
+        "automation",
+        "access",
+        "integration",
+        "system"
+      ],
+      "type": "string"
+    },
+    "observability_source_refs": {
+      "items": {
+        "pattern": "^\\[\\[[^\\]\\n]+\\]\\]$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "observed_at": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "pos-v1"
+    },
+    "title": {
+      "minLength": 1,
+      "pattern": "^[^\\n]+$",
+      "type": "string"
+    },
+    "type": {
+      "const": "system-observability-view"
+    },
+    "updated": {
+      "format": "date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "type",
+    "title",
+    "created",
+    "updated",
+    "authority_scope",
+    "canonical_system_ref",
+    "lifecycle",
+    "observability_scope",
+    "observability_source_refs",
+    "observed_at"
+  ],
+  "title": "PersonalOS pos-v1 system-observability-view frontmatter",
+  "type": "object"
+}

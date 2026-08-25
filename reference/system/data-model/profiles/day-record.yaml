@@ -1,0 +1,42 @@
+name: day-record
+page_shape: log-record
+canonical_owner: daily-day-container
+allowed_roots: [daily]
+path_pattern: ^daily/[0-9]{4}/[0-9]{4}-[0-9]{2}-[0-9]{2}/[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$
+path_date_field: day_date
+path_date_prefix_template: daily/{year}/{date}/{date}
+required_modules: [daily-context]
+optional_modules: []
+required_fields: [day_date, timezone]
+optional_fields: [activity_refs, journal_refs, briefing_refs, context_gap_refs]
+fields:
+  activity_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [activity-contribution]
+    legacy_targets: reject
+  journal_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [journal-entry]
+    legacy_targets: reject
+  briefing_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [daily-briefing]
+    legacy_targets: reject
+  context_gap_refs:
+    datatype: wikilink-list
+    min_items: 1
+    target_profiles: [context-gap-review]
+    legacy_targets: reject
+required_sections: [Day Summary, Key Outcomes, Activity Contributions, Journal, Affected Owners, Sources, Corrections]
+section_order: [Day Summary, Key Outcomes, Activity Contributions, Journal, Affected Owners, Sources, Corrections]
+template: system/templates/daily/day-record.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-day-record.fixture
+  positive_logical_path: daily/2026/2026-08-11/2026-08-11.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-day-record.fixture
+  negative_logical_path: daily/2025/2025-08-11/2025-08-11.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019ff139-ac9d-7441-97f5-9e9b83003b63
+type: action
+title: "Wait for reply"
+created: 2026-08-11
+updated: 2026-08-11
+lifecycle: waiting
+execution_mode: human-only
+evidence_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+---
+
+# Wait for reply
+
+## Current Truth
+
+This waiting action omits the required external owner and follow-up date.
+
+## Desired Outcome
+
+A reply arrives.
+
+## Done Boundary
+
+The response is processed.
+
+## Next Action
+
+Wait.
+
+## Context and Evidence
+
+The shape is intentionally invalid.
+
+## Timeline
+
+- **2026-08-11** | Invalid fixture created.

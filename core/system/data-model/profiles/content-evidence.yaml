@@ -1,0 +1,31 @@
+name: "content-evidence"
+page_shape: "event-record"
+canonical_owner: "contentos-evidence"
+allowed_roots: ["content"]
+path_pattern: "^content/analytics/evidence/(?:[a-z0-9]+(?:-[a-z0-9]+)*/)*[a-z0-9]+(?:-[a-z0-9]+)*\\.md$"
+required_modules: ["content-core"]
+optional_modules: []
+required_fields: ["revision", "evidence_state", "piece_ref", "content_evidence_kind", "collection_state", "content_observed_at", "provenance_key"]
+optional_fields: ["origin_operation_id", "content_tags", "publication_ref"]
+fields:
+  evidence_state:
+    datatype: "enum"
+    enum: ["captured", "normalized", "reviewed", "rejected"]
+  content_evidence_kind:
+    datatype: "lower-kebab"
+  collection_state:
+    datatype: "lower-kebab"
+  content_observed_at:
+    datatype: "datetime"
+  provenance_key:
+    datatype: "plain-text"
+required_sections: ["Summary", "Evidence", "Corrections"]
+section_order: ["Summary", "Evidence", "Corrections"]
+template: "system/templates/content/content-evidence.md"
+admission:
+  positive_fixture: "system/data-model/tests/fixtures/valid-content-evidence.fixture"
+  positive_logical_path: "content/analytics/evidence/example-evidence.md"
+  negative_fixture: "system/data-model/tests/fixtures/invalid-content-evidence.fixture"
+  negative_logical_path: "content/analytics/evidence/example-evidence.md"
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: "system/data-model/legacy-mapping.md"

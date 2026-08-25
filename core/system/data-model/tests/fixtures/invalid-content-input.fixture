@@ -1,0 +1,25 @@
+---
+schema_version: "pos-v1"
+id: "01a002b7-e000-7bc2-9376-89d9f5882cee"
+type: "unknown-content-profile"
+title: "Example content-input"
+created: "2026-08-15"
+updated: "2026-08-15"
+revision: 1
+content_captured_at: "2026-08-15T12:00:00+02:00"
+routing_decision: "capture"
+---
+
+# Example content-input
+
+## Summary
+
+<summary>
+
+## Evidence
+
+<evidence>
+
+## Corrections
+
+<corrections>

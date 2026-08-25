@@ -1,0 +1,23 @@
+name: health-plan
+page_shape: state-record
+canonical_owner: health-plan
+allowed_roots: [health]
+path_pattern: ^health/training/plan\.md$
+required_modules: [subject-context]
+optional_modules: []
+required_fields: [plan_state, subject_ref]
+optional_fields: []
+fields:
+  plan_state:
+    datatype: enum
+    enum: [draft, active, paused, superseded]
+required_sections: [Current Truth, Plan, Calibration Rules, Progression Boundary, Sources, Timeline]
+section_order: [Current Truth, Plan, Calibration Rules, Progression Boundary, Sources, Timeline]
+template: system/templates/health/health-plan.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-health-plan.fixture
+  positive_logical_path: health/training/plan.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-health-plan.fixture
+  negative_logical_path: health/plan.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

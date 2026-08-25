@@ -1,0 +1,37 @@
+---
+schema_version: pos-v1
+id: 019ff59c-1000-7000-8000-000000000015
+type: conversation-stream
+title: "Invalid Stream"
+created: 2026-08-12
+updated: 2026-08-12
+stream_state: running
+source_channel: gmail
+participant_refs: []
+---
+
+# Invalid Stream
+
+## Current Truth
+
+Invalid.
+
+## Participants
+
+None.
+
+## Coverage
+
+None.
+
+## Open Source Gaps
+
+None.
+
+## Owner Links
+
+None.
+
+## Timeline
+
+- **2026-08-12** | Invalid fixture.

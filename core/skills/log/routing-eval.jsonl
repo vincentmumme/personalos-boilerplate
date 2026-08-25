@@ -1,0 +1,3 @@
+{"intent":"speicher diesen Chat im PersonalOS","expected_skill":"log"}
+{"intent":"mach bitte /log für diese Session","expected_skill":"log"}
+{"intent":"diese Entscheidung soll ins System und in den Daily Log","expected_skill":"log"}

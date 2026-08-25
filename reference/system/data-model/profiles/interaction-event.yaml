@@ -1,0 +1,27 @@
+name: interaction-event
+page_shape: event-record
+canonical_owner: interaction-event-record
+allowed_roots: [interactions]
+path_pattern: ^interactions/meetings/[0-9]{4}/(?P<event>[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(?:-[a-z0-9]+)*)/(?P=event)\.md$
+path_date_field: interaction_date
+path_date_prefix_template: interactions/meetings/{year}/{date}-
+required_modules: [relations, signal-processing]
+optional_modules: []
+required_fields: [interaction_date, interaction_kind, participant_refs, evidence_refs]
+optional_fields: []
+fields:
+  interaction_date:
+    datatype: date
+  interaction_kind:
+    datatype: enum
+    enum: [call, meeting, workshop, in-person, interview, session]
+required_sections: [Event, Outcome, Commitments, Open Questions, Propagation, Sources, Corrections]
+section_order: [Event, Outcome, Commitments, Open Questions, Propagation, Sources, Corrections]
+template: system/templates/interactions/interaction-event.md
+admission:
+  positive_fixture: system/data-model/tests/fixtures/valid-interaction-event.fixture
+  positive_logical_path: interactions/meetings/2026/2026-08-12-example-call/2026-08-12-example-call.md
+  negative_fixture: system/data-model/tests/fixtures/invalid-interaction-event.fixture
+  negative_logical_path: interactions/meetings/2025/2025-08-12-example-call/2025-08-12-example-call.md
+  validator_test: system/data-model/tests/test_registry_contract.py
+  migration_mapping: system/data-model/legacy-mapping.md

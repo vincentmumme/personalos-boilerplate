@@ -1,0 +1,15 @@
+---
+schema_version: pos-v1
+id: 01a00110-1fbf-70e1-b52f-9c75ff6931be
+type: skill-prompt
+title: "Example Skill — Cron Prompt"
+created: 2026-08-14
+updated: 2026-08-14
+lifecycle: running
+decision_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+system_refs: ["[[system/contracts/core/capability-interface]]"]
+---
+
+# Example Skill — Cron Prompt
+
+Der ausführende Skill fehlt und der Lifecycle ist unzulässig.

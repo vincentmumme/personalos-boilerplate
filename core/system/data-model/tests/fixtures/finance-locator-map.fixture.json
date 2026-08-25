@@ -1,0 +1,10 @@
+{
+  "finance/konten/c24-hauptkonto.md": {
+    "secure_locator": "op://PersonalOS/C24 Hauptkonto",
+    "transfer_confirmed": true
+  },
+  "finance/konten/fyrst-base.md": {
+    "secure_locator": "op://PersonalOS/FYRST Base",
+    "transfer_confirmed": true
+  }
+}

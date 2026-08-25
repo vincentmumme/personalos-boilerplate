@@ -1,0 +1,16 @@
+---
+schema_version: pos-v1
+id: 019ffb24-2181-73b1-875e-a6fe9a2e843b
+type: agent-persona
+title: "SOUL — Invalid Agent Grounding"
+created: 2026-08-13
+updated: 2026-08-13
+lifecycle: active
+decision_refs: ["[[decisions/{{install_year}}/{{install_date}}-adopt-personalos-foundation]]"]
+system_refs: ["[[system/contracts/core/bootstrap-und-portabilitaet]]"]
+persona_scope: agent-specific
+---
+
+# SOUL — Invalid Agent Grounding
+
+The root profile is shared only.

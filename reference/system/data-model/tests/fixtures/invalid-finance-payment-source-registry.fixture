@@ -1,0 +1,27 @@
+---
+schema_version: pos-v1
+id: 01a001a1-54bb-7798-9cd6-20a0e26def0c
+type: finance-payment-source-registry
+title: "Invalid Payment Sources"
+created: 2026-08-14
+updated: 2026-08-14
+registry_state: stale
+subject_ref: "[[identity/me]]"
+---
+
+# Invalid Payment Sources
+
+## Current Truth
+Invalid.
+## Canonical Labels
+Invalid.
+## Usage Rules
+Invalid.
+## External Authority
+Invalid.
+## Security Boundary
+Invalid.
+## Sources
+Invalid.
+## Timeline
+- **2026-08-14** | Invalid.
