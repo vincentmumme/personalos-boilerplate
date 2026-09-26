@@ -6,23 +6,21 @@
 
 Ein offenes, Markdown-basiertes Betriebssystem für deinen persönlichen Kontext. Es gibt dir und deinen KI-Agenten eine gemeinsame Grundlage für Projekte, Entscheidungen, Beziehungen, Regeln, Aufgaben und Wissen.
 
-Die Boilerplate ist der öffentliche Einstieg in PersonalOS. Vincent hat sie direkt aus seinem real genutzten PersonalOS abgeleitet. Sie stellt dieselbe Systembasis bereit: Struktur, Regeln, Datenmodelle, Templates, Prüfungen und Arbeitsweisen.
+Die Boilerplate ist der öffentliche Einstieg in PersonalOS. Vincent hat sie direkt aus seinem real genutzten PersonalOS abgeleitet. Sie stellt dessen öffentlich portable Systembasis bereit: Struktur, Regeln, Datenmodelle, Templates, Prüfungen und Arbeitsweisen.
 
 ## In 30 Sekunden mit deinem Agenten starten
 
-Gib deinem Coding Agent diesen Repository-Link:
+Gib deinem Agenten den Repository-Link und einen Satz:
 
 ```text
 https://github.com/vincentmumme/personalos-boilerplate
+
+Ich möchte mit PersonalOS starten.
 ```
 
-Sende direkt danach diesen Prompt:
+Der Agent klärt dein Ziel, prüft deine Umgebung und führt dich mit wenigen passenden Fragen zum ersten eigenen Arbeitsablauf. Ein bereits klarer Auftrag wird direkt aufgegriffen. Du kannst klein anfangen, bestehende Dateien weiterentwickeln, das System erst verstehen oder vollständig aufbauen.
 
-```text
-Lies zuerst AGENTS.md und START-HERE.md in diesem Repository. Zeige mir danach die vier möglichen Wege, hilf mir bei der Auswahl und ändere noch keine Dateien.
-```
-
-Der Agent liest die eingebauten Arbeitsregeln, erklärt dir die möglichen Einstiege und zeigt einen kurzen Plan. Erst wenn du einen Weg gewählt und den Plan bestätigt hast, schreibt er Dateien. Der vollständige Ablauf steht in [START-HERE.md](START-HERE.md).
+Alternativ: **Code → Download ZIP**, entpacken und den Ordner im Agenten öffnen. Git ist dafür nicht nötig. Der vollständige Ablauf steht in [START-HERE.md](START-HERE.md), die technischen Schritte für macOS, Linux und Windows in [Lokal einrichten](docs/getting-started.md).
 
 ## Was PersonalOS ist
 
@@ -54,12 +52,14 @@ Die ausführliche [Systemkarte](docs/system-map.md) zeigt, wo diese Prinzipien a
 
 ## Vier mögliche Wege
 
-1. **Vollständig aufbauen:** Kern und alle Module als Ausgangspunkt verwenden.
-2. **Gezielt aufbauen:** Mit dem Pflichtkern beginnen und nur passende Module ergänzen.
-3. **Erst verstehen:** Architektur und Entscheidungen erklären lassen, ohne Dateien anzulegen.
-4. **Einzelne Teile übernehmen:** Regeln, Frameworks oder Templates in ein bestehendes System übertragen.
+1. **Klein neu starten:** Mit dem Kern, eigenem Kontext und nur den jetzt hilfreichen Modulen beginnen.
+2. **Bestehendes verbessern:** Das eigene System erst verstehen und dann gezielt weiterentwickeln, mit Sicherung und nachvollziehbaren Änderungen.
+3. **Erst verstehen:** Architektur und Entscheidungen erklären lassen, ohne Installation oder Dateiänderungen.
+4. **Vollständig aufbauen:** Den Kern und alle öffentlichen Module mit eigenen Angaben einrichten; Dienste separat verbinden.
 
 Du musst Vincents Struktur nicht blind kopieren. Die Boilerplate stellt die Systementscheidungen vollständig zur Verfügung. Du entscheidest gemeinsam mit deinem Agenten, was zu deiner Arbeit passt.
+
+Zum Lesen genügt ein Browser oder Editor; die Installation braucht Python ab 3.11. Obsidian, Git, Server und zusätzliche Accounts sind optional. Die Boilerplate hat keine Lizenzkosten. KI-Anbieter und später verbundene Dienste können Kosten verursachen. Ein Cloud-Agent kann auch lokal gespeicherte Inhalte beim Verarbeiten an seinen Anbieter übertragen. [Module und Voraussetzungen](docs/modules.md) helfen bei der Auswahl.
 
 ## Was im Repository enthalten ist
 
@@ -99,29 +99,17 @@ Für mehrere Geräte gilt ein einfaches Betriebsmodell: Pro PersonalOS-Repositor
 
 Der vollständige portable Vertrag mit Failover, Backups, externen Daten und Secret-Grenzen steht in [Externe Systeme und Synchronisation](docs/external-systems-and-sync.md).
 
-## In fünf Minuten lokal ausprobieren
+## Vom Download zum eigenen System
 
-Du brauchst Git und Python 3.11 oder neuer.
+Die [Schritt-für-Schritt-Anleitung](docs/getting-started.md) führt durch Download, Python-Setup, lesende Vorprüfung mit `doctor`, private Installationswerte und Aufbau. Sie enthält getrennte Befehle für macOS/Linux und Windows PowerShell, ohne Aktivierung der virtuellen Umgebung.
 
-```bash
-git clone https://github.com/vincentmumme/personalos-boilerplate.git
-cd personalos-boilerplate
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -e .
+Dein persönlicher Zielordner liegt außerhalb der öffentlichen Vorlage und muss für eine Neuinstallation leer sein. Antworten und Installationswerte bleiben privat; die fiktiven Angaben aus `examples/` sind nur für Demos gedacht. Bei einem bestehenden System beginnt der Agent mit einer lesenden Bestandsaufnahme und einer begrenzten Verbesserung.
 
-pos-boilerplate install \
-  --build . \
-  --destination ../PersonalOS-example \
-  --values examples/install-values.example.json \
-  --all-modules
-```
-
-Der Zielordner muss leer oder noch nicht vorhanden sein. Die Beispielinstallation enthält ausschließlich fiktive Werte. Für dein echtes PersonalOS übernimmt der Agent nur Angaben, die du selbst bestätigt hast.
+Danach prüft ihr einen eigenen Arbeitsablauf und öffnet einen neuen Chat, der den gespeicherten Kontext wiederfindet. [Deine erste Woche](docs/first-week.md) beschreibt einfache Routinen, Sicherung, Wiederherstellung und spätere Erweiterungen.
 
 ## Was vollständig bedeutet
 
-Du bekommst mit der Boilerplate 1:1 dieselbe Systembasis, mit der Vincent arbeitet. Für die enthaltenen Bereiche gelten dieselbe Struktur, dieselben Templates und dieselbe Logik. Dazu gehören Systemverfassung, Datenmodelle, Prüfungen, Arbeitsweisen und die mitgelieferten Fähigkeiten. Jede versionierte Datei aus Vincents PersonalOS wird beim Ableiten erfasst und erhält eine ausdrückliche Behandlung.
+Du bekommst die öffentlich portable Systembasis aus Vincents PersonalOS. Dazu gehören die enthaltene Struktur, Systemverfassung, Datenmodelle, Templates, Prüfungen und Arbeitsweisen. Jede versionierte Datei des verwendeten Referenzstands wird beim Ableiten erfasst und erhält eine ausdrückliche Behandlung. Die [Modulübersicht](docs/modules.md) trennt mitgelieferte Inhalte von Fähigkeiten, die erst eingerichtet werden müssen.
 
 Die Boilerplate ist nicht dieselbe betriebsbereite Laufzeit wie Vincents persönliche Instanz. Seine Daten, Kundenkontexte, Accounts, Geräte, verbundenen Dienste, privaten Spezialfähigkeiten und laufenden Automationen sind nicht enthalten. Sie hängen von seiner konkreten Umgebung ab. Du verbindest stattdessen deine eigenen Daten, Dienste und Geräte mit derselben Systembasis.
 
@@ -132,32 +120,32 @@ Die genaue Abgrenzung steht im [Produktvertrag](docs/product-contract.md). Das [
 Das separate `personalos-demo` Repository ist Vincents sichere Oberfläche für Videos und Präsentationen. Es wird mit allen Modulen aus dieser Boilerplate gebaut. Vincents eigener öffentlicher Kontext bleibt real. Andere Menschen, Kunden, Unternehmen, Gespräche und Projekte sind ausdrücklich erfunden.
 
 ```bash
-pos-boilerplate demo \
+.venv/bin/python -m pos_boilerplate demo \
   --build . \
   --destination ../personalos-demo-build \
   --values examples/recording-demo/values.json \
   --fixtures examples/recording-demo/overlay
 ```
 
-Auch dieser Befehl schreibt nur in ein leeres oder noch nicht vorhandenes Ziel.
+Auch dieser Befehl schreibt nur in ein leeres oder noch nicht vorhandenes Ziel. Er setzt die vorbereitete Python-Umgebung voraus; unter Windows verwende den in [Lokal einrichten](docs/getting-started.md) beschriebenen Interpreter und schreibe den Befehl in eine Zeile.
 
 ## Projektstatus und eigene Prüfung
 
-Version `0.1.0` ist der erste vorgesehene öffentliche Stand. Die Architektur ist installierbar und wird gegen Struktur, Manifest, Links, Datenmodell, Datenschutzgrenzen und die vollständige Git-Historie geprüft. Der aktuelle Funktionsumfang und bekannte Grenzen stehen im [Changelog](CHANGELOG.md).
+Die Boilerplate ist ein junges Open-Source-Projekt. Die Architektur ist installierbar und wird gegen Struktur, Manifest, Links, Datenmodell, Datenschutzgrenzen und die vollständige Git-Historie geprüft. Der aktuelle Funktionsumfang und bekannte Grenzen stehen im [Changelog](CHANGELOG.md). Verhalten und Einstieg werden zusätzlich anhand der [Onboarding-Szenarien](onboarding/validation-scenarios.md) geprüft; die Szenarien selbst sind noch kein Ausführungsnachweis.
 
 ```bash
-python3 -m unittest discover -s tests -v
+.venv/bin/python -m unittest discover -s tests -v
 
-pos-boilerplate audit \
+.venv/bin/python -m pos_boilerplate audit \
   --build . \
   --public-safe-terms policy/public-safe-terms.json
 
-pos-boilerplate secret-scan \
+.venv/bin/python -m pos_boilerplate secret-scan \
   --repository . \
   --history
 ```
 
-Installiere nur aus diesem Repository oder aus einem Fork, dessen Änderungen du geprüft hast. Der Installer verifiziert das Build-Manifest und führt anschließend den mitgelieferten Datenmodell-Check aus.
+Diese Entwicklungsprüfungen setzen die vorbereitete Python-Umgebung voraus; die vollständige Git-Historie kann nur in einem Git-Checkout geprüft werden. Für eine ZIP-Installation genügt die technische Anleitung mit `doctor`. Installiere nur aus diesem Repository oder aus einem Fork, dessen Änderungen du geprüft hast. Der Installer verifiziert das Build-Manifest und führt anschließend den mitgelieferten Datenmodell-Check aus.
 
 ## Beitragen, Support und Sicherheit
 

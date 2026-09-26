@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "personalos-boilerplate"
-version = "0.1.0"
+version = "0.2.0"
 description = "Build and verify the PersonalOS boilerplate without personal source data"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Vincent Mumme"}]
 requires-python = ">=3.11"
+dependencies = ["tzdata>=2024.1"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "License :: OSI Approved :: MIT License",

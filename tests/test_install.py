@@ -2,17 +2,36 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import tempfile
 import unittest
 import uuid
 from pathlib import Path
+from unittest import mock
 
 from pos_boilerplate.cli import main
-from pos_boilerplate.install import InstallConfig, InstallError, install_personalos
+from pos_boilerplate.install import (
+    InstallConfig,
+    InstallError,
+    _normalize_installed_text,
+    install_personalos,
+)
 from pos_boilerplate.sync import BUILD_CONTRACT
 
 
 class InstallTests(unittest.TestCase):
+    def test_install_refuses_private_target_inside_public_build(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            build = self.make_build(Path(temp))
+            before = {p.relative_to(build).as_posix(): p.read_bytes() for p in build.rglob("*") if p.is_file()}
+            for target in (build, build / "PersonalOS", build / "nested/PersonalOS"):
+                with self.subTest(target=target), self.assertRaisesRegex(InstallError, "outside"):
+                    install_personalos(InstallConfig(build, target, (), {"user_name": "Private Example"}))
+            after = {p.relative_to(build).as_posix(): p.read_bytes() for p in build.rglob("*") if p.is_file()}
+            self.assertEqual(before, after)
+            self.assertFalse((build / "PersonalOS").exists())
+            self.assertFalse((build / "nested").exists())
+
     def make_build(self, root: Path) -> Path:
         build = root / "build"
         (build / "core").mkdir(parents=True)
@@ -89,6 +108,210 @@ class InstallTests(unittest.TestCase):
             encoding="utf-8",
         )
         return build
+
+    def update_payload(self, build: Path, relative: str, content: bytes) -> None:
+        manifest_path = build / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        for prefix in ("core", "reference"):
+            target = build / prefix / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+            entry_path = f"{prefix}/{relative}"
+            entry = next(
+                (item for item in manifest["managed_files"] if item["path"] == entry_path),
+                None,
+            )
+            if entry is None:
+                entry = {"path": entry_path, "source_path": "test-fixture", "rule_id": "test-fixture"}
+                manifest["managed_files"].append(entry)
+            entry["sha256"] = hashlib.sha256(content).hexdigest()
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8", newline="\n")
+
+    def test_install_normalizes_crlf_once_and_preserves_blank_lines(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            self.update_payload(build, "USER.md", b"Name: {{user_name}}\r\n\r\nTail\r\n")
+            destination = root / "PersonalOS"
+
+            install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertEqual((destination / "USER.md").read_bytes(), b"Name: Alex\n\nTail\n")
+            self.assertEqual((destination / "script.py").read_bytes(), b'MESSAGE = "public"\n')
+
+    def test_receipt_records_final_bytes_without_identity_or_absolute_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            destination = root / "private-destination"
+
+            def rebuild(staging: Path) -> None:
+                (staging / "script.py").write_bytes(b"# rebuilt\n")
+                (staging / "registry.json").write_bytes(b'{"records": []}\n')
+
+            with mock.patch("pos_boilerplate.install.rebuild_installed_data_model", side_effect=rebuild):
+                install_personalos(
+                    InstallConfig(build, destination, ("example",), {"user_name": "Sensitive Owner"})
+                )
+
+            receipt_text = (destination / ".personalos-install.json").read_text(encoding="utf-8")
+            receipt = json.loads(receipt_text)
+            self.assertEqual(receipt["schema_version"], 1)
+            self.assertEqual(receipt["boilerplate_version"], "0.1.0")
+            self.assertEqual(receipt["source_revision"], "a" * 40)
+            self.assertEqual(receipt["source_date"], "2026-08-23T15:51:49+02:00")
+            self.assertEqual(receipt["modules"], ["example"])
+            self.assertNotIn("Sensitive Owner", receipt_text)
+            self.assertNotIn("private-destination", receipt_text)
+            self.assertNotIn(str(root), receipt_text)
+            managed = {entry["path"]: entry["sha256"] for entry in receipt["managed_files"]}
+            expected_paths = {
+                file.relative_to(destination).as_posix()
+                for file in destination.rglob("*")
+                if file.is_file() and file.name != ".personalos-install.json"
+            }
+            self.assertEqual(set(managed), expected_paths)
+            self.assertIn("registry.json", managed)
+            self.assertNotIn(".personalos-install.json", managed)
+            for relative, digest in managed.items():
+                self.assertEqual(digest, hashlib.sha256((destination / relative).read_bytes()).hexdigest())
+
+    def test_registry_rebuild_keeps_lf_text_and_binary_bytes_without_bytecode(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            self.update_payload(
+                build,
+                "system/data-model/scripts/registry_helper.py",
+                b"RESULT = b'registry rebuilt\\r\\n\\r\\nfinished\\r\\n'\n"
+                b"BINARY = b'\\x00binary\\r\\n'\n"
+                b"RAW = b'\\xffbinary\\r\\n'\n",
+            )
+            self.update_payload(
+                build,
+                "system/data-model/scripts/pos_v1.py",
+                b"import sys\nfrom pathlib import Path\nimport registry_helper\n"
+                b"root = Path(sys.argv[sys.argv.index('--root') + 1])\n"
+                b"(root / 'registry.json').write_bytes(registry_helper.RESULT)\n"
+                b"(root / 'registry.bin').write_bytes(registry_helper.BINARY)\n"
+                b"(root / 'raw.bin').write_bytes(registry_helper.RAW)\n",
+            )
+            destination = root / "PersonalOS"
+            # Exercise a real subprocess import even if the parent shell disables
+            # bytecode writes or redirects them to a shared cache directory.
+            with mock.patch.dict(os.environ, {"PYTHONDONTWRITEBYTECODE": "", "PYTHONPYCACHEPREFIX": ""}):
+                install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            expected_files = {
+                "registry.json": b"registry rebuilt\n\nfinished\n",
+                "registry.bin": b"\x00binary\r\n",
+                "raw.bin": b"\xffbinary\r\n",
+            }
+            for relative, content in expected_files.items():
+                self.assertEqual((destination / relative).read_bytes(), content)
+            self.assertEqual(list(destination.rglob("__pycache__")), [])
+            self.assertEqual(list(destination.rglob("*.pyc")), [])
+            receipt = json.loads((destination / ".personalos-install.json").read_text(encoding="utf-8"))
+            managed_paths = {entry["path"] for entry in receipt["managed_files"]}
+            self.assertIn("registry.json", managed_paths)
+            self.assertFalse(any("__pycache__" in path or path.endswith(".pyc") for path in managed_paths))
+            managed = {entry["path"]: entry["sha256"] for entry in receipt["managed_files"]}
+            for relative, content in expected_files.items():
+                self.assertEqual(managed[relative], hashlib.sha256(content).hexdigest())
+
+    def test_install_rejects_reserved_receipt_payload_and_cleans_staging(self) -> None:
+        for relative in (".personalos-install.json", ".PERSONALOS-INSTALL.JSON", ".personalos-install.json/payload"):
+            with self.subTest(relative=relative), tempfile.TemporaryDirectory() as temp_dir:
+                root = Path(temp_dir)
+                build = self.make_build(root)
+                self.update_payload(build, relative, b"reserved\n")
+                destination = root / "PersonalOS"
+                destination.mkdir()
+
+                with self.assertRaisesRegex(InstallError, "reserved"):
+                    install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+                self.assertTrue(destination.is_dir())
+                self.assertEqual(list(destination.iterdir()), [])
+                self.assertEqual(list(root.glob(".PersonalOS-install-*")), [])
+
+    def test_normalization_rejects_all_symlinks_before_writing_any_file(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            staging = root / "staging"
+            staging.mkdir()
+            first = staging / "a-first.md"
+            first.write_bytes(b"unchanged before validation\r\n")
+            outside = root / "outside.md"
+            outside.write_bytes(b"outside content\r\n")
+            try:
+                (staging / "z-symlink.md").symlink_to(outside)
+            except OSError as exc:
+                if os.name == "nt" and getattr(exc, "winerror", None) == 1314:
+                    self.skipTest("Windows runner lacks permission to create symlinks")
+                raise
+
+            with self.assertRaisesRegex(InstallError, "unsafe file"):
+                _normalize_installed_text(staging)
+
+            self.assertEqual(first.read_bytes(), b"unchanged before validation\r\n")
+            self.assertEqual(outside.read_bytes(), b"outside content\r\n")
+
+    def test_install_failure_preserves_empty_target_and_removes_staging(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            destination = root / "PersonalOS"
+            destination.mkdir()
+
+            with mock.patch(
+                "pos_boilerplate.install.rebuild_installed_data_model",
+                side_effect=InstallError("Registry failed"),
+            ), self.assertRaisesRegex(InstallError, "Registry failed"):
+                install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertTrue(destination.is_dir())
+            self.assertEqual(list(destination.iterdir()), [])
+            self.assertEqual(list(root.glob(".PersonalOS-install-*")), [])
+
+    def test_install_refuses_symlinked_target_without_changing_its_contents(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            actual = root / "actual"
+            actual.mkdir()
+            destination = root / "PersonalOS"
+            try:
+                destination.symlink_to(actual, target_is_directory=True)
+            except OSError as exc:
+                if os.name == "nt" and getattr(exc, "winerror", None) == 1314:
+                    self.skipTest("Windows runner lacks permission to create symlinks")
+                raise
+
+            with self.assertRaisesRegex(InstallError, "symlink"):
+                install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertTrue(destination.is_symlink())
+            self.assertEqual(list(actual.iterdir()), [])
+
+    def test_install_preserves_files_added_to_destination_during_rebuild(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            destination = root / "PersonalOS"
+            destination.mkdir()
+
+            def rebuild(staging: Path) -> None:
+                (destination / "mine.md").write_bytes(b"created while install was running\n")
+
+            with mock.patch(
+                "pos_boilerplate.install.rebuild_installed_data_model", side_effect=rebuild
+            ), self.assertRaises(OSError):
+                install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertEqual((destination / "mine.md").read_bytes(), b"created while install was running\n")
+            self.assertEqual(list(destination.iterdir()), [destination / "mine.md"])
+            self.assertEqual(list(root.glob(".PersonalOS-install-*")), [])
 
     def test_install_renders_identity_values_and_selected_modules(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -205,7 +428,7 @@ class InstallTests(unittest.TestCase):
             build = self.make_build(root)
             content = '#!/bin/sh\necho "{{user_name}}"\n'
             for relative in ("core/hook", "reference/hook"):
-                (build / relative).write_text(content, encoding="utf-8")
+                (build / relative).write_text(content, encoding="utf-8", newline="\n")
             manifest_path = build / "manifest.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             for item in manifest["managed_files"]:
