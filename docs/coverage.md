@@ -39,10 +39,10 @@ Vollständige Abdeckung bedeutet nicht, dass jede private Datei im öffentlichen
 
 ## Aktuelle Release-Grenze
 
-Version 0.1.0 enthält Kern, Module, vollständige öffentliche Referenz, agentengeführtes Onboarding, Release-Prüfungen und MIT-Lizenz. Die technische Freigabe wird über Tests, Build-Audit, vollständigen Git-History-Secret-Scan und einen isolierten Clean-Install belegt.
+Version 0.2.0 ergänzt die bestehende portable Grundlage um ein geführtes Onboarding für vier Nutzungswege, einen lesenden Vorabcheck, einen Installationsbeleg, einen ersten Arbeitsablauf und Hinweise zur ersten Woche. Zeilenenden sind für Textdateien auf LF festgelegt; tzdata versorgt Python auch ohne System-Zeitzonendaten. Die CI prüft Linux, macOS und Windows mit Python 3.11 und 3.13. Ein eingerichteter Testlauf ist erst mit seinem erfolgreichen Ergebnis ein Plattformnachweis.
 
 Nicht enthalten sind vollständige operative Parität aller privaten Fach-Skills, aktive Connectoren oder ein fertiger Hermes-/VPS-Betrieb. Diese Grenze ist Teil des Produktversprechens und kein stiller Restpunkt.
 
-Vor der öffentlichen Veröffentlichung bleiben das externe GitHub-Freigabegate und die Prüfung des öffentlichen Links ohne Maintainer-Zugriff.
+Das Repository ist öffentlich. Änderungen werden über geprüfte Pull Requests integriert; ein Versionsrelease erhält eine eigene bewusste Freigabe und eine Prüfung des öffentlich erreichbaren Stands.
 
-Ein automatischer Updatepfad für bereits personalisierte Nutzerinstanzen gehört nicht zu Version 0.1.0.
+Ein automatischer Updatepfad für bereits personalisierte Nutzerinstanzen ist weiterhin nicht enthalten. Die [Update-Anleitung](update-model.md) beschreibt den Installationsbeleg und die kontrollierte manuelle Übernahme.

@@ -74,6 +74,10 @@ Der Sync darf niemals direkt auf das private PersonalOS oder auf dieses Git-Repo
 
 Der Maintainer aktualisiert die Boilerplate einseitig aus dem privaten Referenzsystem. Das Repository zeichnet Quell-Commit und Quelldatum im Manifest auf. Bereits personalisierte Nutzerinstanzen erhalten in dieser Version keinen automatischen Updater.
 
+Ab Version 0.2.0 erzeugt der Installer im persönlichen Zielordner eine technische Datei namens .personalos-install.json. Sie nennt die Boilerplate-Version, den Quellstand, gewählte Module und SHA-256-Hashes der installierten Dateien. Persönliche Fragebogenantworten, Zugangsdaten und absolute Pfade werden nicht in diesen Beleg aufgenommen. Er dokumentiert die Ausgangsbasis; spätere persönliche Änderungen aktualisieren ihn nicht automatisch. Er ist kein Backup und kein Auftrag, abweichende Dateien zurückzusetzen.
+
+Für eine bestehende Instanz wird eine neue Version zuerst getrennt installiert. Der Agent vergleicht alte Basis, eigene Änderungen und neue Basis, erklärt die Abhängigkeiten und schlägt einen kleinen Übernahmeschnitt vor. Erst nach Sicherung und bestätigtem Umfang werden einzelne Änderungen angewendet und geprüft. Bei alten Installationen ohne Beleg bleibt die Basisversion bis zum Nachweis unbekannt. Der Installer wird nie auf einen befüllten Zielordner angewendet.
+
 ## Verhältnis zum Demo-POS
 
-Das Demo-POS wird später aus derselben Boilerplate plus fiktiven Fixtures erzeugt. Es ist kein zweites, manuell gepflegtes System und kein Abbild privater Referenzdaten.
+Das vorhandene Demo-POS entsteht aus derselben Boilerplate plus fiktiven Fixtures. Es ist kein zweites, manuell gepflegtes System und kein Abbild privater Referenzdaten. Die Demo-Overlays verändern installierte Inhalte nachträglich; der Installationsbeleg bezeichnet deshalb die Basis vor diesen Beispieldaten.

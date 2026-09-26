@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import tempfile
 import unittest
@@ -9,6 +10,7 @@ from unittest import mock
 
 from pos_boilerplate.policy import ExportPolicy
 from pos_boilerplate.sync import (
+    BOILERPLATE_VERSION,
     PrivacyError,
     SyncConfig,
     SyncError,
@@ -109,7 +111,7 @@ class SyncTests(unittest.TestCase):
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["source_revision"], result.source_revision)
             self.assertEqual(manifest["counts"], {"copy": 1, "exclude": 1, "module": 1, "render": 1})
-            self.assertEqual(manifest["boilerplate_version"], "0.1.0")
+            self.assertEqual(manifest["boilerplate_version"], BOILERPLATE_VERSION)
             self.assertEqual(len(manifest["managed_files"]), 7)
 
     def test_sync_refuses_to_replace_unmanaged_directory(self) -> None:
@@ -268,7 +270,15 @@ class SyncTests(unittest.TestCase):
             blueprints.mkdir()
             outside.mkdir()
             (outside / "private.md").write_text("outside\n", encoding="utf-8")
-            (blueprints / "_static").symlink_to(outside, target_is_directory=True)
+            try:
+                (blueprints / "_static").symlink_to(outside, target_is_directory=True)
+            except OSError as exc:
+                # Windows may deny symlinks without Developer Mode or elevation.
+                # Skip only this actual capability denial; Linux still exercises
+                # the security check and other errors remain real failures.
+                if os.name == "nt" and getattr(exc, "winerror", None) == 1314:
+                    self.skipTest("Windows runner lacks permission to create symlinks")
+                raise
             self.init_source(source, {"system/contract.md": "contract\n"})
 
             with self.assertRaises(SyncError):

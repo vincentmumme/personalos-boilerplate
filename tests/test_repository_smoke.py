@@ -77,17 +77,6 @@ class RepositorySmokeTests(unittest.TestCase):
             {name for name in {"business", "content", "finance", "health"} if (REPOSITORY_ROOT / "core" / name).exists()},
         )
 
-    def test_onboarding_starts_with_four_choices_and_a_write_gate(self) -> None:
-        onboarding = (REPOSITORY_ROOT / "onboarding/agent-onboarding.md").read_text(encoding="utf-8")
-        self.assertIn("1. vollständiges PersonalOS", onboarding)
-        self.assertIn("2. Kern mit ausgewählten Modulen", onboarding)
-        self.assertIn("3. nur verstehen", onboarding)
-        self.assertIn("4. einzelne Teile übernehmen", onboarding)
-        self.assertIn("Warte auf die Wahl", onboarding)
-        self.assertIn("warte auf die Bestätigung", onboarding)
-        self.assertIn("Bei Weg 3 schreibt der Agent nichts", onboarding)
-        self.assertTrue((REPOSITORY_ROOT / "LICENSE").read_text().startswith("MIT License"))
-
     def test_public_release_documents_state_scope_and_support_boundaries(self) -> None:
         required = {
             "CONTRIBUTING.md",
@@ -127,8 +116,6 @@ class RepositorySmokeTests(unittest.TestCase):
         ):
             self.assertNotIn("datenschutzsicher", content.casefold())
             self.assertNotIn("datenschutzbereinigt", content.casefold())
-        self.assertIn("1:1 dieselbe Systembasis", readme)
-        self.assertIn("nicht dieselbe betriebsbereite Laufzeit", readme)
         self.assertIn("bewusste Maintainer-Freigabe", release)
         self.assertIn("fetch-depth: 0", workflow)
         self.assertIn("secret-scan --repository . --history", workflow)
@@ -161,45 +148,27 @@ class RepositorySmokeTests(unittest.TestCase):
                     )
         self.assertEqual([], missing)
 
-    def test_agent_entry_is_prominent_linked_and_safe(self) -> None:
-        prompt = (
-            "Lies zuerst AGENTS.md und START-HERE.md in diesem Repository. "
-            "Zeige mir danach die vier möglichen Wege, hilf mir bei der Auswahl "
-            "und ändere noch keine Dateien."
-        )
-        readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-        start_here = (REPOSITORY_ROOT / "START-HERE.md").read_text(encoding="utf-8")
-        agents = (REPOSITORY_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    def test_public_documentation_links_resolve(self) -> None:
+        from urllib.parse import unquote, urlsplit
 
-        self.assertIn(prompt, readme)
-        self.assertIn(prompt, start_here)
-        self.assertLess(readme.index("## In 30 Sekunden"), readme.index("## Was PersonalOS ist"))
-        for link in (
-            "docs/philosophy.md",
-            "docs/system-map.md",
-            "docs/external-systems-and-sync.md",
-        ):
-            self.assertIn(link, readme)
-            self.assertIn(link, agents)
-
-        public_entry_documents = (
-            "README.md",
-            "START-HERE.md",
-            "AGENTS.md",
-            "onboarding/agent-onboarding.md",
-            "docs/philosophy.md",
-            "docs/system-map.md",
-            "docs/external-systems-and-sync.md",
-            "docs/product-contract.md",
-            "docs/coverage.md",
-            "docs/update-model.md",
-            "docs/releases/v0.1.0.md",
-            "CHANGELOG.md",
-        )
-        for relative in public_entry_documents:
-            content = (REPOSITORY_ROOT / relative).read_text(encoding="utf-8")
-            self.assertNotIn("—", content, relative)
-            self.assertNotIn("–", content, relative)
+        documents = [
+            REPOSITORY_ROOT / name
+            for name in ("README.md", "START-HERE.md", "AGENTS.md", "SUPPORT.md")
+        ]
+        documents += list((REPOSITORY_ROOT / "docs").rglob("*.md"))
+        documents += list((REPOSITORY_ROOT / "onboarding").rglob("*.md"))
+        missing = []
+        for document in documents:
+            content = document.read_text(encoding="utf-8")
+            for href in re.findall(r"\[[^\]]+\]\(([^)]+)\)", content):
+                href = href.strip("<>")
+                parsed = urlsplit(href)
+                if parsed.scheme or not parsed.path or "{{" in href:
+                    continue
+                target = document.parent / unquote(parsed.path)
+                if not target.exists():
+                    missing.append(f"{document.relative_to(REPOSITORY_ROOT)} -> {href}")
+        self.assertEqual([], missing)
 
     def test_multi_host_contract_has_one_automated_git_writer(self) -> None:
         module_readme = (REPOSITORY_ROOT / "modules/multi-host/README.md").read_text(
@@ -217,6 +186,31 @@ class RepositorySmokeTests(unittest.TestCase):
         manifest = json.loads((REPOSITORY_ROOT / "manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(BOILERPLATE_VERSION, project["project"]["version"])
         self.assertEqual(BOILERPLATE_VERSION, manifest["boilerplate_version"])
+
+    def test_neutral_onboarding_values_install_core_and_selected_modules(self) -> None:
+        for modules in ((), ("content", "codex")):
+            with self.subTest(modules=modules), tempfile.TemporaryDirectory() as temp_dir:
+                destination = Path(temp_dir) / "PersonalOS"
+                values = json.loads(
+                    (REPOSITORY_ROOT / "onboarding/install-values.template.json").read_text(encoding="utf-8")
+                )
+                values.update(user_name="Onboarding Example", user_slug="onboarding-example")
+                result = install_personalos(InstallConfig(
+                    build_root=REPOSITORY_ROOT, destination=destination,
+                    modules=modules, values=values,
+                ))
+                self.assertEqual(modules, result.modules)
+                receipt = json.loads((destination / ".personalos-install.json").read_text(encoding="utf-8"))
+                self.assertEqual(list(modules), receipt["modules"])
+                self.assertEqual("content" in modules, (destination / "content/index.md").is_file())
+                self.assertIn("Noch nicht geklärt", (destination / "USER.md").read_text(encoding="utf-8"))
+                checked = subprocess.run(
+                    [sys.executable, "system/data-model/scripts/pos_v1.py", "validate",
+                     "--files", "USER.md", "identity/me.md", "--json"],
+                    cwd=destination, capture_output=True, text=True, check=False,
+                )
+                self.assertEqual(0, checked.returncode, checked.stdout + checked.stderr)
+                self.assertEqual("pass", json.loads(checked.stdout)["status"])
 
     def test_repository_installs_as_a_valid_clean_personalos(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

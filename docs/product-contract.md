@@ -45,6 +45,14 @@ Die Boilerplate ist nicht:
 
 ## Produktschichten
 
+### Geführter Einstieg
+
+Ein Repository-Link und der Wunsch, mit PersonalOS zu starten, genügen für die erste Orientierung. Der Agent respektiert bereits genannte Ziele und führt durch vier Wege: ein neues System aufbauen, ein bestehendes verbessern, die Architektur verstehen oder die vollständige portable Grundlage übernehmen.
+
+Er klärt fehlenden Kontext in kleinen Schritten, empfiehlt Optionen und fragt nur dort nach, wo eine tatsächliche Entscheidung offen ist. Der reine Erklärweg verändert keine Dateien. Ein vorhandenes System wird zuerst lesend untersucht; Übernahmen erfolgen nur im vereinbarten Umfang mit Sicherung und überprüfbarem Rückweg.
+
+Der Aufbau endet mit einem nutzbaren ersten Ablauf, der Wiederverwendung im neuen Chat und einer klaren Übergabe. Eine bestandene technische Prüfung allein bestätigt weder angemeldete Dienste noch den persönlichen Nutzen.
+
 ### Pflichtkern
 
 Der Kern enthält Bootstrap, Navigation, die elf allgemeinen Root-Bereiche, Systemverträge, Datenmodell, Templates, Mutationsregeln und Prüfungen. Er funktioniert lokal ohne externe Dienste.
@@ -52,6 +60,8 @@ Der Kern enthält Bootstrap, Navigation, die elf allgemeinen Root-Bereiche, Syst
 ### Optionale Module
 
 Module ergänzen optionale Domains und konkrete Fähigkeiten wie Content, Gesundheit, Obsidian, Codex, Claude Code, Hermes, externe Signale, Backups oder Automationen. Kein Modul darf zu einer stillen Voraussetzung des Kerns werden.
+
+Der [Modulüberblick](modules.md) nennt den tatsächlich gelieferten Inhalt und den zusätzlichen Einrichtungsbedarf. Installiert, verbunden und erfolgreich geprüft sind unterschiedliche Zustände.
 
 ### Vollständige Referenz
 

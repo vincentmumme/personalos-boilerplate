@@ -2,7 +2,11 @@
 
 Dieser Ablauf richtet sich an Maintainer mit Zugriff auf die private Referenzinstanz. Öffentliche Nutzer benötigen weder die private Quelle noch lokale Markerdateien.
 
-## 1. Referenzstand festlegen
+## 1. Umfang und Referenzstand festlegen
+
+Änderungen an Installer und öffentlicher Nutzerführung brauchen keinen neuen Export privater Daten. Solange Kern und Modul-Payloads unverändert bleiben, bleibt auch source_revision im Manifest unverändert. Paketversion, BOILERPLATE_VERSION und boilerplate_version im Manifest müssen dieselbe neue Version nennen.
+
+Sobald abgeleitete Systemdateien verändert werden, folgt der unten beschriebene isolierte Export. Generierte Dateien nicht einzeln nachpatchen, um einen Hashcheck grün zu bekommen.
 
 Der private PersonalOS-Stand muss committed sein. Nicht commitete Änderungen werden vom Generator bewusst nicht übernommen. Die neue `source_revision` im Manifest muss dem freigegebenen Commit entsprechen.
 
@@ -50,18 +54,18 @@ pos-boilerplate secret-scan \
   --public-safe-terms policy/public-safe-terms.json
 ```
 
-Zusätzlich wird die Installation in einem neuen Zielordner ausgeführt und der Einstieg aus Sicht eines Nutzers geprüft, der keinen Zugriff auf die private Referenzinstanz besitzt.
+Zusätzlich wird die Installation in einem neuen Zielordner ausgeführt und der Einstieg aus Sicht eines Nutzers geprüft, der keinen Zugriff auf die private Referenzinstanz besitzt. Die CI-Matrix für Linux, macOS und Windows mit Python 3.11/3.13 muss auf dem tatsächlichen Pull-Request-Stand grün sein.
+
+Die vier Onboarding-Wege werden anhand der [Abnahmeszenarien](../onboarding/validation-scenarios.md) geprüft. Ein bloßer Wortlauttest der Anleitung belegt kein hilfreiches Agentenverhalten. Clean-Install, Erhalt eines bestehenden Systems und unveränderter Erklärweg sind getrennte Nachweise.
 
 ## 4. Öffentliche Freigabe
 
 1. Release-Diff, Changelog, Version und Lizenz prüfen.
-2. GitHub Issues aktivieren.
-3. CI auf dem Release-Commit abwarten.
-4. Version `v0.1.0` taggen und einen GitHub-Release als Entwurf vorbereiten.
-5. Repository öffentlich schalten.
-6. Unmittelbar danach **Security → Private vulnerability reporting** aktivieren. GitHub stellt diese Funktion erst für öffentliche Repositories bereit.
-7. Repository-Link ausgeloggt öffnen und Schnellstart, Lizenz, Issues sowie **Security → Report a vulnerability** prüfen.
-8. Den vorbereiteten GitHub-Release veröffentlichen.
-9. Erst danach den Link in externen Kanälen teilen.
+2. Pull Request einschließlich Datenschutzcheck und Plattformmatrix prüfen und bewusst integrieren.
+3. Den integrierten Commit in einen leeren Ordner klonen beziehungsweise als ZIP entpacken; Einstieg und Installation erneut prüfen.
+4. Die gewählte Version taggen und einen GitHub-Release als Entwurf vorbereiten.
+5. Repository-Link ausgeloggt öffnen und Schnellstart, Lizenz, Issues sowie **Security → Report a vulnerability** prüfen.
+6. Den vorbereiteten GitHub-Release nach Freigabe veröffentlichen.
+7. Erst danach die neue Version in externen Kanälen ankündigen.
 
 Die öffentliche GitHub-Freigabe und externe Kommunikation benötigen eine bewusste Maintainer-Freigabe.

@@ -1,64 +1,53 @@
 # Starte hier
 
-Dieses Repository ist der öffentliche Einstieg in PersonalOS. Es enthält die vollständige öffentlich portable Systemlogik aus Vincent Mummes Referenzsystem: Ordner, Regeln, Verträge, Frameworks, Templates, Runbooks, Checks und optionale Erweiterungen. Private Daten, konkrete Accounts, Secret-Werte und aktive Laufzeiten gehören bewusst nicht dazu.
+Dein PersonalOS ist ein Ordner, in dem du und deine KI-Agenten persönlichen Kontext, Projekte, Entscheidungen und Aufgaben nachvollziehbar pflegen. Diese Boilerplate liefert die Struktur und Arbeitsweise dafür. Du füllst sie mit deinem eigenen Leben.
 
-## Am einfachsten mit einem Coding Agent
+## Ein Satz reicht
 
-Gib Codex, Claude Code oder einem anderen Coding Agent den Repository-Link und schreibe:
+Gib deinem Agenten den Link oder öffne den heruntergeladenen Ordner:
 
 ```text
-Lies zuerst AGENTS.md und START-HERE.md in diesem Repository. Zeige mir danach die vier möglichen Wege, hilf mir bei der Auswahl und ändere noch keine Dateien.
+https://github.com/vincentmumme/personalos-boilerplate
+
+Ich möchte mit PersonalOS starten.
 ```
 
-Der Agent liest die eingebauten Arbeitsregeln, erklärt dir die vier Wege und zeigt einen kurzen Plan. Erst nach deiner Auswahl und Bestätigung baut er etwas auf.
+Der Agent liest die Einstiegshilfe, klärt dein Ziel und führt dich durch die nächsten Schritte. Du brauchst vorab weder eine Liste aller Projekte noch Kenntnisse der Ordnerstruktur. Wenn du schon weißt, was du möchtest, sage es direkt, etwa: „Verbessere mein bestehendes PersonalOS“ oder „Erkläre mir erst das System, ohne etwas zu verändern“.
 
-## Die vier Wege
+Kann dein Agent keine Webseiten öffnen, lade auf GitHub über **Code → Download ZIP** das Repository herunter, entpacke es und öffne den Ordner im Agenten. Kann er auch keine lokalen Dateien bearbeiten, kannst du mit ihm die Architektur verstehen und den Aufbau vorbereiten. Für die Installation brauchst du anschließend eine Umgebung mit Dateizugriff und Terminal oder führst die Schritte selbst aus.
 
-1. **Vollständiges PersonalOS:** Kern und alle Module als Ausgangspunkt nutzen.
-2. **Kern mit Auswahl:** Pflichtfundament aufbauen und nur passende Module ergänzen.
-3. **Verstehen:** Architektur, Regeln und Abwägungen erklären lassen, ohne Installation.
-4. **Teile übernehmen:** Einzelne Frameworks, Regeln oder Templates in dein System übertragen.
+## Welcher Weg passt zu dir?
 
-## Lokal ausprobieren
+| Dein Ziel | Was dabei herauskommt |
+| --- | --- |
+| **Klein neu starten** | Der Kern mit deinem bestätigten Kontext, optionalen passenden Modulen und einem ersten nutzbaren Arbeitsablauf. Unsere Empfehlung, wenn du noch kein System hast. |
+| **Bestehendes verbessern** | Erst eine Bestandsaufnahme, dann eine begrenzte Verbesserung mit Sicherung, nachvollziehbaren Änderungen und Erhalt deines Kontextes. |
+| **Verstehen** | Eine verständliche Systemkarte und ein Beispiel vom Eingang bis zum nächsten Schritt. Keine Installation, keine Dateiänderungen. |
+| **Vollständig aufbauen** | Der Kern und alle öffentlichen Module. Gemeinsam klärt ihr, was du sofort nutzt und was später eingerichtet wird. |
 
-Du brauchst Git und Python 3.11 oder neuer.
+„Vollständig“ meint die öffentlich portable Architektur aus Vincents PersonalOS: Struktur, Regeln, Templates und Arbeitsweisen. Seine privaten Daten, Accounts, Geräte und laufenden Dienste sind nicht enthalten. Ein installiertes Modul aktiviert noch keinen Dienst.
 
-```bash
-git clone https://github.com/vincentmumme/personalos-boilerplate.git
-cd personalos-boilerplate
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -e .
-```
+## So läuft das Onboarding
 
-Danach kannst du deinem Coding Agent den lokalen Ordner geben oder mit den fiktiven Beispielwerten eine vollständige Testinstallation erzeugen:
+1. **Orientieren:** Was willst du zuerst erreichen, was existiert bereits und worauf hat dein Agent Zugriff?
+2. **Vorbereiten:** Gerät, Werkzeuge, privater Zielordner und vorhandene Dateien prüfen. Kosten oder externe Verbindungen kommen nur ins Spiel, wenn du sie brauchst.
+3. **Dich kennenlernen:** Wenige passende Fragen zu dir, deinem Alltag und deiner Zusammenarbeit mit KI. „Später“, „weiß ich noch nicht“ und ein Pseudonym sind erlaubt.
+4. **Aufbauen:** Bestätigte Angaben eintragen, prüfen und zeigen, wo sie liegen. Du kannst jederzeit korrigieren oder pausieren.
+5. **Benutzen:** Eine echte kleine Aufgabe bearbeiten. Ein neuer Chat findet den gespeicherten Kontext wieder, ohne dass du alles erneut erklärst.
 
-```bash
-pos-boilerplate install \
-  --build . \
-  --destination ../PersonalOS-example \
-  --values examples/install-values.example.json \
-  --all-modules
-```
+Deine persönlichen Antworten landen in deinem privaten System. Für eine Pause vereinbart ihr einen privaten Speicherort außerhalb der öffentlichen Boilerplate oder haltet den Fortsetzungstext nur im Chat fest.
 
-Der Zielordner muss leer oder noch nicht vorhanden sein. Für dein echtes PersonalOS ersetzt der Agent die Beispielwerte ausschließlich durch Angaben, die du selbst bestätigt hast.
+## Welche Werkzeuge brauche ich?
 
-## Was wo liegt
+Zum Lesen genügt ein Browser oder Texteditor. Für die Installation brauchst du **Python ab 3.11**. Ein Agent mit Dateizugriff und Terminal erleichtert den Aufbau; Obsidian ist eine optionale Oberfläche. Git brauchst du nur zum Klonen oder für eine spätere Git-Sicherung, nicht für eine heruntergeladene ZIP-Datei. Ein Server, zusätzliche Module und verbundene Konten sind keine Voraussetzung.
 
-- `core/` enthält das Pflichtfundament und funktioniert ohne externe Dienste.
-- `modules/` enthält optionale Bereiche wie Content, Gesundheit, Codex, Hermes, externe Signale oder mehrere Hosts.
-- `reference/` zeigt die vollständige Zusammensetzung aus Kern und allen Modulen.
-- `examples/` enthält fiktive Werte und später vollständige Demo-Abläufe.
-- `onboarding/` beschreibt die Zusammenarbeit mit deinem Agenten.
+Die Boilerplate selbst hat keine Lizenzkosten. Dein gewählter KI-Dienst oder später verbundene Anbieter können Kosten verursachen. Lokal gespeicherte Dateien können von einem Cloud-Agenten an dessen Anbieter übertragen werden; lokale Dateien bedeuten nicht automatisch lokale KI-Verarbeitung.
 
-Du musst Vincents Struktur nicht blind kopieren. Sie gibt dir alle Entscheidungen und Systemlogiken als Ausgangspunkt. Du entscheidest, was zu deiner Arbeit passt.
-
-## Wenn du tiefer einsteigen willst
-
+- [Technischer Aufbau für macOS, Linux und Windows](docs/getting-started.md)
+- [Module und ihre tatsächlichen Voraussetzungen](docs/modules.md)
+- [Die erste Woche, Sicherung und Wiederherstellung](docs/first-week.md)
 - [Warum PersonalOS existiert](docs/philosophy.md)
-- [Karte des vollständigen Systems](docs/system-map.md)
-- [Externe Systeme und Synchronisation](docs/external-systems-and-sync.md)
-- [Produktvertrag und klare Grenzen](docs/product-contract.md)
-- [Abdeckung der privaten Referenzinstanz](docs/coverage.md)
+- [Systemkarte](docs/system-map.md) und [Produktgrenzen](docs/product-contract.md)
+- [Hilfe bei Problemen](SUPPORT.md)
 
-Bei Installationsfehlern nutze [GitHub Issues](https://github.com/vincentmumme/personalos-boilerplate/issues). Für Austausch und Anwendungsfragen gibt es den [Mummentum Discord](https://discord.gg/T8MEvRtKB5). Es besteht kein individueller Supportanspruch.
+**Für Agenten:** Der Ablauf mit Fragen, Routen und Abschlusskriterien steht in [onboarding/agent-onboarding.md](onboarding/agent-onboarding.md).

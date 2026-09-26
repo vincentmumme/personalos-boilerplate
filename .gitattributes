@@ -1,0 +1,3 @@
+# Manifest hashes describe LF bytes. Preserve them even with core.autocrlf=true.
+# Binary files remain unchanged through Git's automatic text detection.
+* text=auto eol=lf

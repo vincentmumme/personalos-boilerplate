@@ -8,6 +8,7 @@ from typing import Sequence
 
 from .audit import audit_build
 from .demo import DemoConfig, build_demo
+from .doctor import check_environment
 from .install import InstallConfig, install_personalos
 from .inventory import git_tracked_files, inventory
 from .policy import ExportPolicy
@@ -44,6 +45,14 @@ def build_parser() -> argparse.ArgumentParser:
         description="Build and verify the PersonalOS boilerplate.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+    doctor_parser = subparsers.add_parser(
+        "doctor", help="Prüft die lokale Vorbereitung, ohne Dateien oder Accounts zu verändern.",
+    )
+    doctor_parser.add_argument("--build", type=Path, default=Path("."))
+    doctor_parser.add_argument("--destination", type=Path)
+    doctor_parser.add_argument("--mode", choices=("new", "existing"), default="new")
+    doctor_parser.add_argument("--timezone", default="UTC")
+    doctor_parser.add_argument("--json", action="store_true")
     inventory_parser = subparsers.add_parser(
         "inventory",
         help="Classify every versioned file in a PersonalOS source repository.",
@@ -125,6 +134,20 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.command == "doctor":
+        report = check_environment(
+            args.build, args.destination, mode=args.mode, timezone_name=args.timezone,
+        )
+        if args.json:
+            print(json.dumps(report.to_dict(), ensure_ascii=False, indent=2))
+        else:
+            print("Vorabcheck: " + ("keine technischen Blocker erkannt" if report.ok else "Vorbereitung unvollständig"))
+            labels = {"pass": "OK", "warn": "HINWEIS", "fail": "FEHLER"}
+            for item in report.checks:
+                print(f"{labels[item.status]}: {item.message}")
+                if item.remedy:
+                    print(f"  {item.remedy}")
+        return 0 if report.ok else 2
     if args.command == "inventory":
         policy = ExportPolicy.load(args.policy)
         result = inventory(git_tracked_files(args.source), policy)
@@ -201,7 +224,9 @@ def main(argv: Sequence[str] | None = None) -> int:
                 values=values,
             )
         )
-        print(f"Installed {result.file_count} files at {result.destination}")
+        print(f"PersonalOS angelegt: {result.file_count} Vorlagendateien plus Installationsbeleg und erzeugte Datenmodell-Dateien.")
+        print(f"Ziel: {result.destination}")
+        print("Jetzt den ersten Arbeitsablauf und die Wiederverwendung im neuen Chat prüfen.")
         return 0
     if args.command == "demo":
         values = _load_string_map(

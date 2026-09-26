@@ -4,14 +4,18 @@ Du arbeitest in der öffentlichen PersonalOS-Boilerplate. Das private Referenzsy
 
 ## Einstieg mit einem Nutzer
 
-Wenn dir ein Nutzer nur den Link zu diesem Repository gibt, lies zuerst `START-HERE.md` und `onboarding/agent-onboarding.md`. Zeige danach diese vier Wege:
+Wenn dir jemand den Repository-Link oder diesen Ordner gibt und mit PersonalOS starten möchte, lies `START-HERE.md` und `onboarding/agent-onboarding.md`. Es gibt vier Wege:
 
-1. das vollständige PersonalOS aufbauen
-2. den Kern aufbauen und passende Module auswählen
-3. Architektur und Arbeitsweise verstehen, ohne Dateien anzulegen
-4. einzelne Regeln, Frameworks oder Templates übernehmen
+1. klein neu starten und passende Module auswählen
+2. ein bestehendes PersonalOS gezielt verbessern
+3. Architektur und Arbeitsweise nur verstehen
+4. die vollständige öffentlich portable Architektur aufbauen
 
-Schreibe keine Datei, bevor der Nutzer einen Weg gewählt und deinen kurzen Plan bestätigt hat.
+Leite einen klaren Weg aus dem Auftrag ab. Frage bereits beantwortete Dinge nicht erneut und verlange keine zusätzliche pauschale Planfreigabe für beauftragte Arbeit. Bei unklarem Ziel stelle eine kurze Auswahlfrage mit Empfehlung. Vor Änderungen müssen Zielordner, Umfang und Umgang mit vorhandenem Inhalt geklärt sein. Der Erklärweg bleibt vollständig lesend, einschließlich Gesprächsnotizen.
+
+Prüfe erst Quellzugriff, Umgebung und vorhandenen Kontext. Kannst du den Link oder lokale Dateien nicht lesen, sage das konkret und führe zum nächsten ausführbaren Schritt. Behaupte nie, ungelesene Dateien geprüft, Accounts verbunden oder Dienste gestartet zu haben.
+
+Persönliche Antworten und Installationswerte gehören niemals in diesen öffentlichen Checkout. Halte einen Zwischenstand nur an einem vereinbarten privaten Ort außerhalb des Checkout fest; ohne solchen Ort bleibt er im Chat. Nutze `onboarding/session-template.md`. Nach der Einrichtung gelten die bestehenden registrierten Profile, keine neue Onboarding-Datenstruktur.
 
 Verwende danach nur die Dokumentation, die für die Frage nötig ist:
 
@@ -23,7 +27,9 @@ Verwende danach nur die Dokumentation, die für die Frage nötig ist:
 
 Lade nicht vorsorglich das gesamte Repository in den Kontext. Nutze `docs/system-map.md`, um die kleinste passende Regel, das passende Framework, Template oder Runbook zu finden.
 
-Beim Aufbau fragst du in Blöcken mit drei bis fünf Fragen. Fasse jede Antwortgruppe zusammen. Beende das Interview, sobald ein brauchbarer Startkontext vorliegt. Erfinde keine Personen, Projekte oder andere persönliche Records. Beispiele bleiben unter `examples/`.
+Beim Aufbau frage adaptiv, üblicherweise eine bis drei zusammenhängende Fragen. Übernimm bekannte Antworten, erlaube Überspringen und markiere Unbekanntes. `onboarding/intake.md` enthält die bedarfsweise Fragenhilfe. Beginne mit einem echten kleinen Nutzen und vertiefe später. Erfinde keine Personen, Werte, Projekte oder Zusagen; fiktive Beispiele bleiben Lernmaterial.
+
+Der Aufbau endet mit einem geprüften ersten Arbeitsablauf, einer inhaltlichen Prüfung samt nötigen Korrekturen und einem neuen Chat, der den Kontext aus Dateien wiederfindet. Bis zum tatsächlichen Test bleibt diese Übergabe offen. Installation, Personalisierung, verbundene Dienste und laufende Automationen sind getrennte Zustände. Technischer Einstieg: `docs/getting-started.md`; Alltag und Wiederherstellung: `docs/first-week.md`.
 
 Wenn mehrere Geräte beteiligt sind, richte pro PersonalOS-Repository genau einen automatischen Git-Writer ein. Lies vor jeder Einrichtung `docs/external-systems-and-sync.md` und die Module `multi-host` sowie `backup-git`.
 
@@ -47,4 +53,4 @@ Wenn mehrere Geräte beteiligt sind, richte pro PersonalOS-Repository genau eine
 
 ## Sprache
 
-Schreibe in klarem Deutsch. Erkläre nötige Fachbegriffe beim ersten Auftreten und verwende das Glossar unter `system/frameworks/core/glossar.md`. Technische Ordner, Felder und Typen dürfen Englisch bleiben.
+Schreibe in klarem Deutsch. Erkläre nötige Fachbegriffe beim ersten Auftreten und verwende das Glossar unter `core/system/frameworks/core/glossar.md` beziehungsweise `system/frameworks/core/glossar.md` in der installierten Instanz. Technische Ordner, Felder und Typen dürfen Englisch bleiben.

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 import re
 import secrets
@@ -38,6 +40,7 @@ class InstallResult:
 
 
 PLACEHOLDER_RE = re.compile(r"\{\{([A-Za-z0-9_]+)\}\}")
+INSTALL_RECEIPT = ".personalos-install.json"
 EXECUTABLE_TEXT_SUFFIXES = frozenset(
     {".bash", ".cjs", ".fish", ".js", ".mjs", ".php", ".pl", ".ps1", ".py", ".rb", ".sh", ".ts", ".zsh"}
 )
@@ -217,13 +220,69 @@ def rebuild_installed_data_model(staging: Path) -> None:
             capture_output=True,
             text=True,
             timeout=300,
+            # Imported registry helpers must not leave transient bytecode in
+            # the delivered installation or its managed-file receipt.
+            env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
         )
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
         detail = getattr(exc, "stderr", "") or str(exc)
         raise InstallError(f"Installed data-model build failed: {detail.strip()}") from exc
 
 
+def _normalize_installed_text(staging: Path) -> None:
+    paths = sorted(staging.rglob("*"))
+    # Validate the complete tree before writing: registry output may contain
+    # links, and normalization must never follow one into another location.
+    for path in paths:
+        if path.is_symlink():
+            relative = path.relative_to(staging).as_posix()
+            raise InstallError(f"Installed data model contains an unsafe file: {relative}")
+    for path in paths:
+        if not path.is_file():
+            continue
+        content = path.read_bytes()
+        if b"\x00" in content or b"\r\n" not in content:
+            continue
+        try:
+            content.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        path.write_bytes(content.replace(b"\r\n", b"\n"))
+
+
+def _write_install_receipt(staging: Path, build_root: Path, modules: tuple[str, ...]) -> None:
+    manifest = json.loads((build_root / "manifest.json").read_text(encoding="utf-8"))
+    managed_files = []
+    for path in sorted(staging.rglob("*")):
+        relative = path.relative_to(staging).as_posix()
+        if path.relative_to(staging).parts[0].casefold() == INSTALL_RECEIPT:
+            raise InstallError(f"Install path is reserved: {relative}")
+        if path.is_symlink():
+            raise InstallError(f"Installed data model contains an unsafe file: {relative}")
+        if path.is_file():
+            managed_files.append(
+                {"path": relative, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+            )
+    receipt = {
+        "schema_version": 1,
+        "boilerplate_version": manifest["boilerplate_version"],
+        "source_revision": manifest["source_revision"],
+        "source_date": manifest["source_date"],
+        "modules": list(modules),
+        "managed_files": managed_files,
+    }
+    (staging / INSTALL_RECEIPT).write_text(
+        json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
 def install_personalos(config: InstallConfig) -> InstallResult:
+    if config.destination.is_symlink():
+        raise InstallError(f"Destination may not be a symlink: {config.destination}")
+    if config.destination.resolve().is_relative_to(config.build_root.resolve()):
+        raise InstallError("Destination must be outside the public boilerplate directory")
     if config.destination.exists():
         if not config.destination.is_dir():
             raise InstallError(f"Destination exists but is not a directory: {config.destination}")
@@ -267,6 +326,8 @@ def install_personalos(config: InstallConfig) -> InstallResult:
         rendered_paths: set[str] = set()
         for relative, source in sorted(files.items()):
             rendered_relative = _render_relative_path(relative, values, ids)
+            if Path(rendered_relative).parts[0].casefold() == INSTALL_RECEIPT:
+                raise InstallError(f"Install path is reserved: {rendered_relative}")
             if rendered_relative in rendered_paths:
                 raise InstallError(f"Rendered install path collision: {rendered_relative}")
             rendered_paths.add(rendered_relative)
@@ -279,9 +340,12 @@ def install_personalos(config: InstallConfig) -> InstallResult:
                 destination.write_bytes(content)
                 continue
             _assert_safe_executable_template(relative, text)
-            destination.write_text(_render_text(text, values, ids), encoding="utf-8")
+            rendered = _render_text(text, values, ids).replace("\r\n", "\n")
+            destination.write_text(rendered, encoding="utf-8", newline="\n")
         if config.rebuild_data_model:
             rebuild_installed_data_model(staging)
+        _normalize_installed_text(staging)
+        _write_install_receipt(staging, config.build_root, selected_modules)
         if config.destination.exists():
             config.destination.rmdir()
         os.replace(staging, config.destination)
