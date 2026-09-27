@@ -17,6 +17,7 @@ from pos_boilerplate.install import (
     install_personalos,
 )
 from pos_boilerplate.sync import BUILD_CONTRACT
+from pos_boilerplate.target import hand_over
 
 
 class InstallTests(unittest.TestCase):
@@ -369,6 +370,63 @@ class InstallTests(unittest.TestCase):
                 )
 
             self.assertEqual((destination / "mine.md").read_text(), "keep")
+
+    def test_install_keeps_a_prepared_obsidian_vault_in_place(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            destination = root / "PersonalOS"
+            (destination / ".obsidian").mkdir(parents=True)
+            (destination / ".obsidian/app.json").write_bytes(b'{"vault": "mine"}')
+            (destination / ".DS_Store").write_bytes(b"finder")
+            identity = os.stat(destination).st_ino
+
+            install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertEqual((destination / ".obsidian/app.json").read_bytes(), b'{"vault": "mine"}')
+            self.assertEqual((destination / ".DS_Store").read_bytes(), b"finder")
+            self.assertIn("Name: Alex", (destination / "USER.md").read_text(encoding="utf-8"))
+            self.assertEqual(os.stat(destination).st_ino, identity)
+            receipt = (destination / ".personalos-install.json").read_text(encoding="utf-8")
+            self.assertNotIn(".obsidian", receipt)
+            self.assertNotIn(".DS_Store", receipt)
+            self.assertEqual(list(root.glob(".PersonalOS-install-*")), [])
+
+    def test_install_refuses_notes_next_to_a_prepared_vault(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            build = self.make_build(root)
+            destination = root / "PersonalOS"
+            (destination / ".obsidian").mkdir(parents=True)
+            (destination / "note.md").write_text("keep", encoding="utf-8")
+
+            with self.assertRaisesRegex(InstallError, "not empty"):
+                install_personalos(InstallConfig(build, destination, (), {"user_name": "Alex"}))
+
+            self.assertEqual(sorted(p.name for p in destination.iterdir()), [".obsidian", "note.md"])
+            self.assertEqual(list(root.glob(".PersonalOS-install-*")), [])
+
+    def test_failed_handover_moves_installed_entries_back(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            staging = root / "staging"
+            staging.mkdir()
+            (staging / "AGENTS.md").write_text("a", encoding="utf-8")
+            (staging / "USER.md").write_text("u", encoding="utf-8")
+            destination = root / "PersonalOS"
+            (destination / ".obsidian").mkdir(parents=True)
+            real_replace = os.replace
+
+            def flaky(source, target):
+                if Path(source).name == "USER.md":
+                    raise PermissionError("locked")
+                real_replace(source, target)
+
+            with mock.patch("pos_boilerplate.target.os.replace", side_effect=flaky), self.assertRaises(OSError):
+                hand_over(staging, destination)
+
+            self.assertEqual([p.name for p in destination.iterdir()], [".obsidian"])
+            self.assertEqual(sorted(p.name for p in staging.iterdir()), ["AGENTS.md", "USER.md"])
 
     def test_install_rejects_unknown_module(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

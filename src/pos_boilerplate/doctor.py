@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .audit import audit_build
+from .target import PREPARED_ENTRIES_HINT, blocking_entries, prepared_entries
 
 
 @dataclass(frozen=True)
@@ -65,10 +66,10 @@ def _check_destination(build_root: Path, destination: Path, mode: str) -> list[E
             "existing-system", "pass", "Bestehender Ordner für eine lesende Bestandsaufnahme gefunden.",
             "Vor Änderungen Sicherung und Übernahmeplan klären. Den Installer nicht auf diesen Ordner anwenden.",
         )]
-    if destination.exists() and any(destination.iterdir()):
+    if blocking_entries(destination):
         return [EnvironmentCheck(
             "destination-not-empty", "fail", "Der Zielordner enthält bereits Dateien.",
-            "Einen leeren neuen Ordner wählen oder --mode existing zur Bestandsaufnahme verwenden.",
+            f"Einen leeren neuen Ordner wählen oder --mode existing zur Bestandsaufnahme verwenden. {PREPARED_ENTRIES_HINT}",
         )]
     parent = destination.parent
     while not parent.exists() and parent != parent.parent:
@@ -77,6 +78,13 @@ def _check_destination(build_root: Path, destination: Path, mode: str) -> list[E
         return [EnvironmentCheck(
             "destination-access", "fail", "Der übergeordnete Ordner ist nicht zugänglich oder beschreibbar.",
             "Einen beschreibbaren persönlichen Ordner wählen oder dessen Zugriffsrechte prüfen.",
+        )]
+    if prepared_entries(destination):
+        return [EnvironmentCheck(
+            "destination", "pass",
+            "Der neue Zielordner ist vorbereitet, etwa als Obsidian-Vault; die gemeldeten Schreibrechte passen.",
+            "Vorhandene `.obsidian/`-Einstellungen und Systemdateien bleiben bei der Installation unverändert erhalten. "
+            "Tatsächliche Schreibfähigkeit wird erst bei der Installation bestätigt.",
         )]
     return [EnvironmentCheck(
         "destination", "pass", "Der neue Zielordner ist frei; die gemeldeten Schreibrechte passen.",

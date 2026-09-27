@@ -25,7 +25,7 @@ Beim Erklärweg entfallen Installation, Tool-Setup, persönliches Interview und 
 | --- | --- |
 | Betriebssystem, Terminal und Python-Version | Passende Anleitung aus `docs/getting-started.md`; Python mindestens 3.11. Keine PowerShell-Aktivierungsrichtlinie ändern. |
 | Agent, Editor und verfügbare Fähigkeiten | Dateizugriff, Terminal und Netz separat feststellen. Ein Chat-Abonnement beweist keinen API-Zugriff. Obsidian und Git sind optional. |
-| Bestehender Kontext und gewünschter Zielordner | Nur ausdrücklich zugängliche, aufgabenrelevante Pfade lesen. Neuanlage braucht ein leeres oder nicht vorhandenes Ziel außerhalb des Quellrepository. |
+| Bestehender Kontext und gewünschter Zielordner | Nur ausdrücklich zugängliche, aufgabenrelevante Pfade lesen. Neuanlage braucht ein leeres oder nicht vorhandenes Ziel außerhalb des Quellrepository. Ein bereits als Obsidian-Vault geöffneter Ordner, der nur `.obsidian/` und Systemdateien wie `.DS_Store` enthält, zählt als leer; diese Einträge bleiben erhalten. |
 | Sprache, Zeitzone und Zeitrahmen | Vorschlag aus Umgebung benennen und bestätigen lassen, wenn er für Termine benötigt wird. Kurzer Einstieg darf ohne vollständige Biografie funktionieren. |
 | Speicherung und Datenschutz | Private Dateien nicht in den öffentlichen Checkout, Issue oder Pull Request schreiben. Cloud-KI-Verarbeitung erklären; sensible Quellen nur im gewünschten Umfang nutzen. |
 | Accounts, Kosten und Berechtigungen | Für den lokalen Kern keine externen Accounts nötig. Bei einem gewünschten Dienst Zweck, notwendigen Zugriff und mögliche Kosten klären; keine Secrets in Markdown oder Chat anfordern. |
