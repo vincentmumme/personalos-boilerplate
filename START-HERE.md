@@ -39,7 +39,7 @@ Deine persönlichen Antworten landen in deinem privaten System. Für eine Pause 
 
 ## Welche Werkzeuge brauche ich?
 
-Zum Lesen genügt ein Browser oder Texteditor. Für die Installation brauchst du **Python ab 3.11**. Ein Agent mit Dateizugriff und Terminal erleichtert den Aufbau; Obsidian ist eine optionale Oberfläche. Git brauchst du nur zum Klonen oder für eine spätere Git-Sicherung, nicht für eine heruntergeladene ZIP-Datei. Ein Server, zusätzliche Module und verbundene Konten sind keine Voraussetzung.
+Zum Lesen genügt ein Browser oder Texteditor. Für die Installation brauchst du **Python ab 3.11**. Ein Agent mit Dateizugriff und Terminal erleichtert den Aufbau; Obsidian ist eine optionale Oberfläche; deinen neuen Zielordner kannst du schon vor der Einrichtung als Vault öffnen. Git brauchst du nur zum Klonen oder für eine spätere Git-Sicherung, nicht für eine heruntergeladene ZIP-Datei. Ein Server, zusätzliche Module und verbundene Konten sind keine Voraussetzung.
 
 Die Boilerplate selbst hat keine Lizenzkosten. Dein gewählter KI-Dienst oder später verbundene Anbieter können Kosten verursachen. Lokal gespeicherte Dateien können von einem Cloud-Agenten an dessen Anbieter übertragen werden; lokale Dateien bedeuten nicht automatisch lokale KI-Verarbeitung.
 

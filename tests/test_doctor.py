@@ -25,6 +25,22 @@ class DoctorTests(unittest.TestCase):
             self.assertFalse(target.parent.exists())
             self.assertEqual("new", result.mode)
 
+    def test_prepared_obsidian_vault_counts_as_new_target(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            build = test_install.InstallTests().make_build(root)
+            target = root / "PersonalOS"
+            (target / ".obsidian").mkdir(parents=True)
+            (target / ".DS_Store").write_bytes(b"finder")
+            result = check_environment(build, target)
+            self.assertTrue(result.ok, result.to_dict())
+            self.assertIn("Obsidian", json.dumps(result.to_dict(), ensure_ascii=False))
+
+            (target / "note.md").write_text("keep", encoding="utf-8")
+            blocked = check_environment(build, target)
+            self.assertFalse(blocked.ok)
+            self.assertIn("destination-not-empty", json.dumps(blocked.to_dict()))
+
     def test_existing_mode_preserves_an_existing_system(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

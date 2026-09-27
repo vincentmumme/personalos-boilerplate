@@ -54,7 +54,7 @@ Halte drei Orte auseinander:
 | --- | --- |
 | `personalos-boilerplate/` | Öffentliche Vorlage und lokales CLI. Hier keine persönlichen Antworten eintragen. |
 | Ein vereinbarter privater Setup-Ordner, etwa `PersonalOS-Setup/` neben der Vorlage | Eigene Installationswerte und optional der Zwischenstand. Er liegt außerhalb der Vorlage und des Installationsziels. |
-| Ein privates Ziel, etwa `PersonalOS/` neben der Vorlage | Dein neues persönliches System. Der Ordner muss leer oder noch nicht vorhanden sein. |
+| Ein privates Ziel, etwa `PersonalOS/` neben der Vorlage | Dein neues persönliches System. Der Ordner muss leer oder noch nicht vorhanden sein. Du darfst ihn vorher schon als Obsidian-Vault öffnen: `.obsidian/` und Systemdateien wie `.DS_Store` bleiben bei der Installation erhalten. |
 
 Prüfe, dass diese Pfade nicht versehentlich in einem öffentlichen Repository oder einer unerwünscht geteilten Ablage liegen. Falls bereits Dateien im Ziel liegen, verwende den Weg „Bestehendes verbessern“ aus dem [Agentenablauf](../onboarding/agent-onboarding.md). Nichts zum Leeren des Ziels löschen.
 

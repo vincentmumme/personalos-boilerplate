@@ -10,7 +10,8 @@ Alle materiellen Änderungen an der öffentlichen PersonalOS Boilerplate werden 
 - Windows-Zeilenenden und Zeitzonendaten berücksichtigt; CI für Linux, macOS und Windows,
 - deterministische LF-Ausgabe und Installationsbeleg mit Version, Modulen und Dateihashes,
 - erster nützlicher Arbeitsablauf, Wiederverwendung im frischen Chat, Sicherungsübung und erste Woche,
-- Modulübersicht mit tatsächlichem Lieferumfang, Voraussetzungen und Funktionstests.
+- Modulübersicht mit tatsächlichem Lieferumfang, Voraussetzungen und Funktionstests,
+- ein schon als Obsidian-Vault geöffneter Zielordner gilt als leer: Vorabcheck, Installer und Demo behalten `.obsidian/` und Systemdateien wie `.DS_Store` unverändert und lehnen andere vorhandene Dateien weiter ab.
 
 Der Stand ist erst nach Integration auf dem Standardzweig über den gewöhnlichen Repository-Link verfügbar. Ein GitHub-Versionsrelease ist ein gesonderter Veröffentlichungsschritt.
 

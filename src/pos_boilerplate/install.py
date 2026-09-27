@@ -17,6 +17,7 @@ from pathlib import Path
 
 from .audit import audit_build
 from .catalog import ModuleSpec, load_module_catalog
+from .target import PREPARED_ENTRIES_HINT, blocking_entries, hand_over
 
 
 class InstallError(RuntimeError):
@@ -286,8 +287,8 @@ def install_personalos(config: InstallConfig) -> InstallResult:
     if config.destination.exists():
         if not config.destination.is_dir():
             raise InstallError(f"Destination exists but is not a directory: {config.destination}")
-        if any(config.destination.iterdir()):
-            raise InstallError(f"Destination is not empty: {config.destination}")
+        if blocking_entries(config.destination):
+            raise InstallError(f"Destination is not empty: {config.destination}. {PREPARED_ENTRIES_HINT}")
     integrity = audit_build(config.build_root, [])
     if not integrity.ok:
         first = integrity.findings[0]
@@ -346,9 +347,7 @@ def install_personalos(config: InstallConfig) -> InstallResult:
             rebuild_installed_data_model(staging)
         _normalize_installed_text(staging)
         _write_install_receipt(staging, config.build_root, selected_modules)
-        if config.destination.exists():
-            config.destination.rmdir()
-        os.replace(staging, config.destination)
+        hand_over(staging, config.destination)
         return InstallResult(
             destination=config.destination,
             modules=selected_modules,

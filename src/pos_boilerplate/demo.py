@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import shutil
 import subprocess
 import sys
@@ -14,6 +13,7 @@ from .install import (
     install_personalos,
     rebuild_installed_data_model,
 )
+from .target import PREPARED_ENTRIES_HINT, blocking_entries, hand_over
 
 
 class DemoError(RuntimeError):
@@ -96,8 +96,8 @@ def build_demo(config: DemoConfig) -> DemoResult:
     if config.destination.exists():
         if not config.destination.is_dir():
             raise DemoError(f"Das Ziel existiert, ist aber kein Ordner: {config.destination}")
-        if any(config.destination.iterdir()):
-            raise DemoError(f"Der Zielordner ist nicht leer: {config.destination}")
+        if blocking_entries(config.destination):
+            raise DemoError(f"Der Zielordner ist nicht leer: {config.destination}. {PREPARED_ENTRIES_HINT}")
 
     fixtures = _fixture_files(config.fixtures)
     config.destination.parent.mkdir(parents=True, exist_ok=True)
@@ -131,11 +131,7 @@ def build_demo(config: DemoConfig) -> DemoResult:
             rebuild_installed_data_model(staging)
             _validate_demo_records(staging, tuple(relative_paths))
 
-            try:
-                config.destination.rmdir()
-            except FileNotFoundError:
-                pass
-            os.replace(staging, config.destination)
+            hand_over(staging, config.destination)
             return DemoResult(
                 destination=config.destination,
                 modules=install.modules,

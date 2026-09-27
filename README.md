@@ -103,7 +103,7 @@ Der vollständige portable Vertrag mit Failover, Backups, externen Daten und Sec
 
 Die [Schritt-für-Schritt-Anleitung](docs/getting-started.md) führt durch Download, Python-Setup, lesende Vorprüfung mit `doctor`, private Installationswerte und Aufbau. Sie enthält getrennte Befehle für macOS/Linux und Windows PowerShell, ohne Aktivierung der virtuellen Umgebung.
 
-Dein persönlicher Zielordner liegt außerhalb der öffentlichen Vorlage und muss für eine Neuinstallation leer sein. Antworten und Installationswerte bleiben privat; die fiktiven Angaben aus `examples/` sind nur für Demos gedacht. Bei einem bestehenden System beginnt der Agent mit einer lesenden Bestandsaufnahme und einer begrenzten Verbesserung.
+Dein persönlicher Zielordner liegt außerhalb der öffentlichen Vorlage und muss für eine Neuinstallation leer sein; einen schon als Obsidian-Vault geöffneten Ordner nimmt der Installer an und behält `.obsidian/`. Antworten und Installationswerte bleiben privat; die fiktiven Angaben aus `examples/` sind nur für Demos gedacht. Bei einem bestehenden System beginnt der Agent mit einer lesenden Bestandsaufnahme und einer begrenzten Verbesserung.
 
 Danach prüft ihr einen eigenen Arbeitsablauf und öffnet einen neuen Chat, der den gespeicherten Kontext wiederfindet. [Deine erste Woche](docs/first-week.md) beschreibt einfache Routinen, Sicherung, Wiederherstellung und spätere Erweiterungen.
 
