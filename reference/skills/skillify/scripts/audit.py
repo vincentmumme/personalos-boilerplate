@@ -25,14 +25,19 @@ FAIL = "fail"
 WARN = "warn"
 NA = "not_applicable"
 
-REQUIRED_FRONTMATTER = ("name", "version", "description", "triggers", "tools", "mutating")
-REQUIRED_SECTIONS = (
-    "## Contract",
-    "## Phases",
-    "## Output Format",
-    "## Anti-Patterns",
-    "## Tools Used",
+# Runtime envelope per skills/write-skill/SKILL.md and system/templates/skill.md.
+REQUIRED_FRONTMATTER = ("name", "description")
+REQUIRED_POS_METADATA = (
+    "pos_schema_version",
+    "pos_id",
+    "pos_type",
+    "pos_title",
+    "pos_created",
+    "pos_updated",
+    "pos_lifecycle",
+    "pos_skill_version",
 )
+LEGACY_TOP_LEVEL = ("schema_version", "type", "role", "status", "version", "triggers", "tools", "mutating")
 
 SCRIPT_HINTS = (
     "script",
@@ -181,10 +186,42 @@ def parse_frontmatter(text: str) -> dict[str, str | list[str]]:
     return data
 
 
-def boolish(value: str | list[str] | None) -> bool:
-    if isinstance(value, list):
-        return bool(value)
-    return str(value).strip().lower() == "true"
+def parse_metadata(text: str) -> dict[str, str]:
+    """Return the keys of the frontmatter `metadata:` block.
+
+    Values are returned as stripped strings. Empty flow lists (`[]`) count as
+    empty, and indented block-list items are joined so that a present list is
+    never mistaken for a missing value.
+    """
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}
+    data: dict[str, str] = {}
+    inside = False
+    current: str | None = None
+    for line in lines[1:]:
+        if line.strip() == "---":
+            break
+        if re.match(r"^metadata:\s*$", line):
+            inside = True
+            continue
+        if not inside:
+            continue
+        if line and not line[0].isspace():
+            inside = False
+            current = None
+            continue
+        item = re.match(r"^\s+-\s*(.*)$", line)
+        if item and current is not None:
+            value = item.group(1).strip().strip('"').strip("'")
+            data[current] = ", ".join(part for part in (data[current], value) if part)
+            continue
+        match = re.match(r"^\s+([A-Za-z0-9_-]+):\s*(.*)$", line)
+        if match:
+            current = match.group(1)
+            value = match.group(2).strip()
+            data[current] = "" if value == "[]" else value.strip('"').strip("'")
+    return data
 
 
 def is_missing_frontmatter_value(value: str | list[str] | None) -> bool:
@@ -318,20 +355,27 @@ def audit_skill(root: Path, target: str, run_global_check: bool = True) -> Audit
     text = read_text(skill_path)
     lower_text = text.lower()
     fm = parse_frontmatter(text)
+    meta = parse_metadata(text)
+    mutating = bool(meta.get("pos_writes_profile_keys"))
 
     missing_fm = [key for key in REQUIRED_FRONTMATTER if is_missing_frontmatter_value(fm.get(key))]
+    missing_fm += [key for key in REQUIRED_POS_METADATA if not meta.get(key)]
+    legacy = [key for key in LEGACY_TOP_LEVEL if key in fm]
     if missing_fm:
         items.append(AuditItem("SKILL.md frontmatter", FAIL, f"missing: {', '.join(missing_fm)}"))
+    elif legacy:
+        items.append(AuditItem("SKILL.md frontmatter", FAIL, f"legacy top-level fields not allowed: {', '.join(legacy)}"))
     elif fm.get("name") != slug:
         items.append(AuditItem("SKILL.md frontmatter", FAIL, f"name={fm.get('name')} does not match slug={slug}"))
+    elif mutating and not meta.get("pos_check_refs"):
+        items.append(AuditItem("SKILL.md frontmatter", FAIL, "pos_writes_profile_keys requires pos_check_refs"))
     else:
-        items.append(AuditItem("SKILL.md frontmatter", PASS, "required fields present and name matches slug"))
+        items.append(AuditItem("SKILL.md frontmatter", PASS, "runtime envelope and pos_* metadata present, name matches slug"))
 
-    missing_sections = [section for section in REQUIRED_SECTIONS if section not in text]
-    if missing_sections:
-        items.append(AuditItem("SKILL.md body", FAIL, f"missing sections: {', '.join(missing_sections)}"))
+    if re.search(r"^## \S", text, re.MULTILINE):
+        items.append(AuditItem("SKILL.md body", PASS, "body is structured with H2 sections (no fixed list per write-skill)"))
     else:
-        items.append(AuditItem("SKILL.md body", PASS, "required body sections present"))
+        items.append(AuditItem("SKILL.md body", FAIL, "body has no H2 sections"))
 
     local_tests = skill_local_test_files(skill_dir)
     local_test_set = {path.resolve() for path in local_tests}
@@ -357,7 +401,7 @@ def audit_skill(root: Path, target: str, run_global_check: bool = True) -> Audit
     else:
         items.append(AuditItem("Unit tests", NA, "no deterministic script files detected"))
 
-    needs_integration = has_any(text, EXTERNAL_OR_SIDE_EFFECT_HINTS) or boolish(fm.get("mutating"))
+    needs_integration = has_any(text, EXTERNAL_OR_SIDE_EFFECT_HINTS) or mutating
     has_smoke = any(term in lower_text for term in ("e2e", "smoke", "integration test", "integration checks"))
     if needs_integration and has_smoke:
         items.append(AuditItem("Integration or E2E smoke", PASS, "skill documents integration or smoke verification"))
@@ -400,7 +444,7 @@ def audit_skill(root: Path, target: str, run_global_check: bool = True) -> Audit
     else:
         items.append(AuditItem("Check-resolvable", WARN, "global check skipped by caller"))
 
-    if boolish(fm.get("mutating")):
+    if mutating:
         guardrail_groups = {
             "provenance/source": ("provenance", "source", "source pointer"),
             "write boundaries": ("write target", "write targets", "write boundaries", "write paths", "canonical"),
@@ -415,7 +459,7 @@ def audit_skill(root: Path, target: str, run_global_check: bool = True) -> Audit
         else:
             items.append(AuditItem("Mutating guardrails", PASS, "provenance, write boundaries, failure handling, and verification are documented"))
     else:
-        items.append(AuditItem("Mutating guardrails", NA, "skill is not mutating"))
+        items.append(AuditItem("Mutating guardrails", NA, "skill declares no pos_writes_profile_keys"))
 
     needs_bulk = has_any(text, BULK_HINTS)
     has_bulk_guard = any(term in lower_text for term in ("test-before-bulk", "small sample", "3-5", "probe"))

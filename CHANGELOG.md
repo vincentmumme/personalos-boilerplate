@@ -11,7 +11,8 @@ Alle materiellen Änderungen an der öffentlichen PersonalOS Boilerplate werden 
 - deterministische LF-Ausgabe und Installationsbeleg mit Version, Modulen und Dateihashes,
 - erster nützlicher Arbeitsablauf, Wiederverwendung im frischen Chat, Sicherungsübung und erste Woche,
 - Modulübersicht mit tatsächlichem Lieferumfang, Voraussetzungen und Funktionstests,
-- ein schon als Obsidian-Vault geöffneter Zielordner gilt als leer: Vorabcheck, Installer und Demo behalten `.obsidian/` und Systemdateien wie `.DS_Store` unverändert und lehnen andere vorhandene Dateien weiter ab.
+- ein schon als Obsidian-Vault geöffneter Zielordner gilt als leer: Vorabcheck, Installer und Demo behalten `.obsidian/` und Systemdateien wie `.DS_Store` unverändert und lehnen andere vorhandene Dateien weiter ab,
+- der Skillify-Audit prüft Skills gegen das aktuelle Format aus `write-skill` und `system/templates/skill`: `name` und `description` oben, die acht `pos_*`-Pflichtfelder unter `metadata`, Legacy-Felder wie `version` oder `mutating` als Fehler, mindestens eine H2-Überschrift statt fester Abschnittsliste und Schreibprüfungen über `pos_writes_profile_keys` samt `pos_check_refs`; ein Test sichert ab, dass alle ausgelieferten Skills bestehen.
 
 Der Stand ist erst nach Integration auf dem Standardzweig über den gewöhnlichen Repository-Link verfügbar. Ein GitHub-Versionsrelease ist ein gesonderter Veröffentlichungsschritt.
 
