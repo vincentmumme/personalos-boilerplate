@@ -95,6 +95,17 @@ class AuditEnvelopeTest(unittest.TestCase):
         self.assertEqual(skillify_audit.FAIL, items["SKILL.md frontmatter"].status)
         self.assertIn("mutating", items["SKILL.md frontmatter"].detail)
 
+    def test_unknown_top_level_field_fails(self) -> None:
+        text = CURRENT.replace("metadata:\n", "foo: 1\nmetadata:\n")
+        items = self.audit(text)
+        self.assertEqual(skillify_audit.FAIL, items["SKILL.md frontmatter"].status)
+        self.assertIn("unknown top-level fields: foo", items["SKILL.md frontmatter"].detail)
+
+    def test_optional_top_level_fields_pass(self) -> None:
+        text = CURRENT.replace("metadata:\n", "license: MIT\nallowed-tools: Read Grep\nmetadata:\n")
+        items = self.audit(text)
+        self.assertEqual(skillify_audit.PASS, items["SKILL.md frontmatter"].status)
+
     def test_body_without_h2_fails(self) -> None:
         items = self.audit(CURRENT.replace("## Purpose", "Purpose"))
         self.assertEqual(skillify_audit.FAIL, items["SKILL.md body"].status)

@@ -37,6 +37,7 @@ REQUIRED_POS_METADATA = (
     "pos_lifecycle",
     "pos_skill_version",
 )
+ALLOWED_TOP_LEVEL = ("name", "description", "license", "allowed-tools", "metadata")
 LEGACY_TOP_LEVEL = ("schema_version", "type", "role", "status", "version", "triggers", "tools", "mutating")
 
 SCRIPT_HINTS = (
@@ -361,10 +362,14 @@ def audit_skill(root: Path, target: str, run_global_check: bool = True) -> Audit
     missing_fm = [key for key in REQUIRED_FRONTMATTER if is_missing_frontmatter_value(fm.get(key))]
     missing_fm += [key for key in REQUIRED_POS_METADATA if not meta.get(key)]
     legacy = [key for key in LEGACY_TOP_LEVEL if key in fm]
+    unknown = [key for key in fm if key not in ALLOWED_TOP_LEVEL and key not in LEGACY_TOP_LEVEL]
     if missing_fm:
         items.append(AuditItem("SKILL.md frontmatter", FAIL, f"missing: {', '.join(missing_fm)}"))
     elif legacy:
         items.append(AuditItem("SKILL.md frontmatter", FAIL, f"legacy top-level fields not allowed: {', '.join(legacy)}"))
+    elif unknown:
+        allowed = ", ".join(ALLOWED_TOP_LEVEL)
+        items.append(AuditItem("SKILL.md frontmatter", FAIL, f"unknown top-level fields: {', '.join(unknown)} (allowed: {allowed})"))
     elif fm.get("name") != slug:
         items.append(AuditItem("SKILL.md frontmatter", FAIL, f"name={fm.get('name')} does not match slug={slug}"))
     elif mutating and not meta.get("pos_check_refs"):

@@ -240,13 +240,13 @@
     },
     {
       "path": "core/skills/skillify/scripts/audit.py",
-      "sha256": "ac4a675cbdc331f013aa7e890ee0aa9646e77007f5c8243d1a6f2795f18322c5",
+      "sha256": "b1dec40226f0f2e83d1276a7ba78ffa79d2993b501ec6cbc5c9ef382c9807f2f",
       "source_path": "skills/skillify/scripts/audit.py",
       "rule_id": "core-skill-maintenance"
     },
     {
       "path": "core/skills/skillify/scripts/test_audit.py",
-      "sha256": "cda892bbe22ac673f8194fed153aef2e81044ae146b7dbbfb992c6dcc6096a41",
+      "sha256": "08416343bafcbf1d32e12ded96311af67948873c620fd28c6cc207128b620581",
       "source_path": "skills/skillify/scripts/test_audit.py",
       "rule_id": "core-skill-maintenance"
     },
@@ -4908,13 +4908,13 @@
     },
     {
       "path": "reference/skills/skillify/scripts/audit.py",
-      "sha256": "ac4a675cbdc331f013aa7e890ee0aa9646e77007f5c8243d1a6f2795f18322c5",
+      "sha256": "b1dec40226f0f2e83d1276a7ba78ffa79d2993b501ec6cbc5c9ef382c9807f2f",
       "source_path": "generated:core/skills/skillify/scripts/audit.py",
       "rule_id": "reference-composition"
     },
     {
       "path": "reference/skills/skillify/scripts/test_audit.py",
-      "sha256": "cda892bbe22ac673f8194fed153aef2e81044ae146b7dbbfb992c6dcc6096a41",
+      "sha256": "08416343bafcbf1d32e12ded96311af67948873c620fd28c6cc207128b620581",
       "source_path": "generated:core/skills/skillify/scripts/test_audit.py",
       "rule_id": "reference-composition"
     },
